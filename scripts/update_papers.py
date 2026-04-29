@@ -40,9 +40,13 @@ from copy import copy
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 AD_XLSX     = PROJECT_DIR / 'AnomalyDetection_Papers_Summary_v10_20260425.xlsx'
 OD_XLSX     = PROJECT_DIR / 'Object_Detection_Papers_Ranking_2021_2026.xlsx'
+CLS_XLSX    = PROJECT_DIR / 'Image_Classification_Papers_Ranking_2021_2026.xlsx'
+AS_XLSX     = PROJECT_DIR / 'Anomaly_Synthesis_Papers_Benchmark_2021_2026.xlsx'
 INDEX_HTML  = PROJECT_DIR / 'index.html'
 AD_JSON     = PROJECT_DIR / 'papers_data.json'
 OD_JSON     = PROJECT_DIR / 'od_data.json'
+CLS_JSON    = PROJECT_DIR / 'cls_data.json'
+AS_JSON     = PROJECT_DIR / 'as_data.json'
 LOG_FILE    = PROJECT_DIR / 'scripts' / 'update_log.txt'
 ENV_FILE    = PROJECT_DIR / 'scripts' / '.env'
 
@@ -60,6 +64,16 @@ AD_QUERIES = [
 OD_QUERIES = [
     # Single broad OD query: detection + COCO/LVIS/DUTS/ODinW + key model tokens
     'cat:cs.CV+AND+%28all:%22object+detection%22+OR+all:%22salient+object%22+OR+all:%22few-shot+detection%22+OR+all:%22YOLO%22+OR+all:%22DETR%22%29',
+]
+
+CLS_QUERIES = [
+    # ImageNet / CIFAR / fine-grained / long-tail / few-shot CLS
+    'cat:cs.CV+AND+%28all:%22image+classification%22+AND+%28all:%22ImageNet%22+OR+all:%22CIFAR%22+OR+all:%22fine-grained%22+OR+all:%22long-tailed%22+OR+all:%22few-shot%22%29%29',
+]
+
+AS_QUERIES = [
+    # Anomaly synthesis / synthetic defect / pseudo anomaly
+    'cat:cs.CV+AND+%28all:%22anomaly+synthesis%22+OR+all:%22synthetic+anomaly%22+OR+all:%22pseudo+anomaly%22+OR+all:%22defect+generation%22+OR+all:%22DRAEM%22+OR+all:%22GLASS%22+OR+all:%22DualAnoDiff%22%29',
 ]
 
 # CLAUDE_updated.md §4: hard-exclude 3D / LiDAR / BEV / point-cloud / medical /
@@ -182,6 +196,108 @@ OD_DATASETS_BY_PATTERNS = [
     ('CAMO-FS',              [r'camo-fs']),
 ]
 OD_DEFAULT_DATASET = 'COCO 2017 val'
+
+# CLS classification + dataset detection
+CLS_CATEGORIES_BY_KEYWORDS = [
+    ('Few-Shot Image Classification-based',     ['few-shot classification', 'miniimagenet', 'tieredimagenet', 'cifar-fs', 'fc100',
+                                                  'meta-learning classification', 'k-shot image classification', 'low-shot']),
+    ('Long-Tailed / Imbalanced Image Classification-based', ['long-tailed', 'long-tail classification', 'imbalanced classification',
+                                                              'imagenet-lt', 'places-lt', 'class-imbalance']),
+    ('Fine-Grained Image Classification-based', ['fine-grained classification', 'fine-grained visual', 'cub-200', 'stanford cars',
+                                                  'fgvc-aircraft', 'oxford flowers', 'nabirds', 'stanford dogs']),
+]
+CLS_DEFAULT_CATEGORY = 'General Image Classification-based'
+
+CLS_DATASETS_BY_PATTERNS = [
+    ('miniImageNet 5w-1s',  [r'miniimagenet.*1[-\s]?shot']),
+    ('miniImageNet 5w-5s',  [r'miniimagenet.*5[-\s]?shot']),
+    ('tieredImageNet 5w-1s',[r'tieredimagenet.*1[-\s]?shot']),
+    ('tieredImageNet 5w-5s',[r'tieredimagenet.*5[-\s]?shot']),
+    ('CIFAR-FS 5w-1s',      [r'cifar-fs.*1[-\s]?shot']),
+    ('CIFAR-FS 5w-5s',      [r'cifar-fs.*5[-\s]?shot']),
+    ('FC100 5w-1s',         [r'fc100.*1[-\s]?shot']),
+    ('FC100 5w-5s',         [r'fc100.*5[-\s]?shot']),
+    ('CUB few-shot 5w-1s',  [r'cub.*few[-\s]?shot.*1[-\s]?shot']),
+    ('CUB few-shot 5w-5s',  [r'cub.*few[-\s]?shot.*5[-\s]?shot']),
+    ('CIFAR-100-LT IF=100', [r'cifar-?100-lt', r'cifar100-?lt']),
+    ('CIFAR-10-LT IF=100',  [r'cifar-?10-lt', r'cifar10-?lt']),
+    ('iNaturalist 2018',    [r'inaturalist.*2018']),
+    ('ImageNet-LT',         [r'imagenet-lt']),
+    ('Places-LT',           [r'places-lt']),
+    ('ImageNet-V2',         [r'imagenet-?v2']),
+    ('ImageNet-ReaL',       [r'imagenet-?real']),
+    ('ImageNet-A',          [r'imagenet-?a\b']),
+    ('ImageNet-R',          [r'imagenet-?r\b']),
+    ('ImageNet-Sketch',     [r'imagenet-?sketch']),
+    ('ImageNet-1K',         [r'imagenet-?1k', r'imagenet[^-]']),
+    ('CIFAR-10',            [r'cifar-?10\b']),
+    ('CIFAR-100',           [r'cifar-?100\b']),
+    ('STL-10',              [r'stl-?10']),
+    ('Places365',           [r'places365']),
+    ('Food-101',            [r'food-?101']),
+    ('CUB-200-2011',        [r'cub-?200', r'cub-200-2011']),
+    ('Stanford Cars',       [r'stanford cars']),
+    ('FGVC-Aircraft',       [r'fgvc-?aircraft']),
+    ('NABirds',             [r'nabirds']),
+    ('Oxford Flowers-102',  [r'oxford flowers', r'flowers-?102']),
+    ('Stanford Dogs',       [r'stanford dogs']),
+    ('Oxford-IIIT Pets',    [r'oxford.*pets']),
+    ('iNaturalist',         [r'inaturalist']),
+]
+CLS_DEFAULT_DATASET = 'ImageNet-1K'
+
+CLS_EXCLUSION_KEYWORDS = [
+    '3d classification', 'point cloud classification',
+    'medical image classification', 'pathology classification',
+    'audio classification', 'video classification',
+    'time series classification', 'graph classification',
+    'text classification',
+]
+def is_cls_excluded(t):
+    t = t.lower()
+    return any(kw in t for kw in CLS_EXCLUSION_KEYWORDS)
+
+# AS classification + dataset detection
+AS_CATEGORIES_BY_KEYWORDS = [
+    ('Vision-language / Foundation-model-based Anomaly Synthesis', ['vlm', 'vision-language', 'clip', 'dinov2', 'foundation model',
+                                                                      'gpt', 'agent', 'agentic']),
+    ('Generative-model-based Anomaly Synthesis',                   ['diffusion', 'gan-based', 'stable diffusion', 'ddpm', 'generative',
+                                                                      'sdas', 'realnet', 'dualanodiff']),
+    ('Distribution-hypothesis / Feature-space Anomaly Synthesis',  ['feature-space', 'feature space', 'distribution hypothesis',
+                                                                      'glass', 'simplenet']),
+    ('Hand-crafted / Rule-based Anomaly Synthesis',                ['cutpaste', 'draem', 'perlin noise', 'rule-based', 'hand-crafted',
+                                                                      'procedural defect']),
+]
+AS_DEFAULT_CATEGORY = 'Downstream Synthesis-based AD / Segmentation'
+
+AS_DATASETS_BY_PATTERNS = [
+    ('MVTec AD 2 TESTpub',  [r'mvtec\s*ad\s*2.*testpub', r'mvtec\s*ad2.*testpub']),
+    ('MVTec AD 2 TESTpriv', [r'mvtec\s*ad\s*2.*testpriv']),
+    ('MVTec LOCO AD',       [r'mvtec\s*loco']),
+    ('MVTec AD pixel-level',[r'mvtec\s*ad.*pixel']),
+    ('MVTec AD image-level',[r'mvtec\s*ad']),
+    ('VisA pixel-level',    [r'\bvisa\b.*pixel']),
+    ('VisA image-level',    [r'\bvisa\b']),
+    ('Real-IAD pixel-level',[r'real-iad.*pixel']),
+    ('Real-IAD image-level',[r'real-iad']),
+    ('BTAD',                [r'\bbtad\b', r'beantech']),
+    ('MPDD',                [r'\bmpdd\b']),
+    ('DAGM',                [r'\bdagm\b']),
+    ('KSDD',                [r'\bksdd\b']),
+    ('KSDD2',               [r'\bksdd2\b']),
+    ('Magnetic Tile Defects',[r'magnetic\s*tile']),
+    ('BTech',               [r'\bbtech\b']),
+    ('Synthesis Quality',   [r'fid', r'kid score', r'synthesis quality', r'fréchet inception']),
+]
+AS_DEFAULT_DATASET = 'MVTec AD image-level'
+
+AS_EXCLUSION_KEYWORDS = [
+    'video anomaly', 'time series anomaly', 'medical anomaly',
+    'log anomaly', 'network anomaly', 'speech anomaly',
+]
+def is_as_excluded(t):
+    t = t.lower()
+    return any(kw in t for kw in AS_EXCLUSION_KEYWORDS)
 
 # How far back to look for new papers
 LOOKBACK_DAYS = 7
@@ -370,6 +486,95 @@ def append_od_all_papers_row(wb, paper):
     style_from(sh, last if last >= 1 else 1, new_row, 8)
     return True
 
+def append_cls_dataset_row(wb, dataset_sheet, paper):
+    """CLS per-dataset sheet (15 cols)."""
+    if dataset_sheet not in wb.sheetnames: return False
+    sh = wb[dataset_sheet]
+    last = find_last_row(sh, key_col=2)
+    new_row = last + 1
+    # Cols: 類別 / 方法 / 作者 / 發表 / 年月 / 狀態 / Top-1 / Top-5 / Acc / F1 / Params / FLOPs / 備註 / 連結 / GitHub
+    sh.cell(row=new_row, column=1).value  = paper['category']
+    sh.cell(row=new_row, column=2).value  = paper['method']
+    sh.cell(row=new_row, column=3).value  = paper['authors']
+    sh.cell(row=new_row, column=4).value  = 'arXiv'
+    sh.cell(row=new_row, column=5).value  = paper['date']
+    sh.cell(row=new_row, column=6).value  = 'arXiv'
+    for c in range(7, 13):
+        sh.cell(row=new_row, column=c).value = None
+    sh.cell(row=new_row, column=13).value = paper.get('note') or 'Auto-fetched; metrics To verify'
+    sh.cell(row=new_row, column=14).value = paper['link']
+    sh.cell(row=new_row, column=15).value = None
+    style_from(sh, last if last >= 2 else 2, new_row, 15)
+    return True
+
+def append_cls_all_papers_row(wb, paper):
+    sn = 'Classification all papers'
+    if sn not in wb.sheetnames: return False
+    sh = wb[sn]
+    last = find_last_row(sh, key_col=2)
+    new_row = last + 1
+    sh.cell(row=new_row, column=1).value  = paper['category']
+    sh.cell(row=new_row, column=2).value  = paper['method']
+    sh.cell(row=new_row, column=3).value  = paper['authors']
+    sh.cell(row=new_row, column=4).value  = 'arXiv'
+    sh.cell(row=new_row, column=5).value  = paper['date']
+    sh.cell(row=new_row, column=6).value  = 'arXiv'
+    for c in range(7, 13):
+        sh.cell(row=new_row, column=c).value = None
+    sh.cell(row=new_row, column=13).value = paper.get('note') or 'Auto-fetched; metrics To verify'
+    sh.cell(row=new_row, column=14).value = paper['link']
+    sh.cell(row=new_row, column=15).value = None
+    style_from(sh, last if last >= 1 else 1, new_row, 15)
+    return True
+
+def append_as_dataset_row(wb, dataset_sheet, paper):
+    """AS per-dataset sheet (20 cols)."""
+    if dataset_sheet not in wb.sheetnames: return False
+    sh = wb[dataset_sheet]
+    last = find_last_row(sh, key_col=2)
+    new_row = last + 1
+    # Cols: 類別 / 方法 / 作者 / 發表 / 年月 / 狀態 / 合成類型 / 任務設定 / 資料集 / Split/Protocol /
+    #       I-AUROC / P-AUROC / AUPRO/PRO / AP/AUPRC / F1/Dice/IoU / 合成品質指標 / Backbone/Detector / 備註 / 連結 / GitHub
+    sh.cell(row=new_row, column=1).value  = paper['category']
+    sh.cell(row=new_row, column=2).value  = paper['method']
+    sh.cell(row=new_row, column=3).value  = paper['authors']
+    sh.cell(row=new_row, column=4).value  = 'arXiv'
+    sh.cell(row=new_row, column=5).value  = paper['date']
+    sh.cell(row=new_row, column=6).value  = 'arXiv'
+    sh.cell(row=new_row, column=7).value  = paper.get('synth_type') or 'TBD'
+    sh.cell(row=new_row, column=8).value  = paper.get('task_setting') or 'TBD'
+    sh.cell(row=new_row, column=9).value  = dataset_sheet
+    for c in range(10, 18):
+        sh.cell(row=new_row, column=c).value = None
+    sh.cell(row=new_row, column=18).value = paper.get('note') or 'Auto-fetched from arXiv'
+    sh.cell(row=new_row, column=19).value = paper['link']
+    sh.cell(row=new_row, column=20).value = None
+    style_from(sh, last if last >= 2 else 2, new_row, 20)
+    return True
+
+def append_as_all_papers_row(wb, paper):
+    sn = 'AS all papers'
+    if sn not in wb.sheetnames: return False
+    sh = wb[sn]
+    last = find_last_row(sh, key_col=2)
+    new_row = last + 1
+    sh.cell(row=new_row, column=1).value  = paper['category']
+    sh.cell(row=new_row, column=2).value  = paper['method']
+    sh.cell(row=new_row, column=3).value  = paper['authors']
+    sh.cell(row=new_row, column=4).value  = 'arXiv'
+    sh.cell(row=new_row, column=5).value  = paper['date']
+    sh.cell(row=new_row, column=6).value  = 'arXiv'
+    sh.cell(row=new_row, column=7).value  = paper.get('synth_type') or 'TBD'
+    sh.cell(row=new_row, column=8).value  = paper.get('task_setting') or 'TBD'
+    sh.cell(row=new_row, column=9).value  = paper['dataset']
+    for c in range(10, 18):
+        sh.cell(row=new_row, column=c).value = None
+    sh.cell(row=new_row, column=18).value = paper.get('note') or 'Auto-fetched from arXiv'
+    sh.cell(row=new_row, column=19).value = paper['link']
+    sh.cell(row=new_row, column=20).value = None
+    style_from(sh, last if last >= 1 else 1, new_row, 20)
+    return True
+
 # ====================================================================
 # JSON regeneration (mirrors the original extraction logic)
 # ====================================================================
@@ -401,18 +606,33 @@ def regenerate_ad_json():
     AD_JSON.write_text(json.dumps(rows, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     return rows
 
+def _extract_hyperlink_display(s):
+    """=HYPERLINK("url", "display")  ->  "display".  Falls back to s unchanged."""
+    if not isinstance(s, str): return s
+    if not s.startswith('=HYPERLINK('): return s
+    m = re.search(r'=HYPERLINK\("[^"]*"\s*,\s*"([^"]+)"\)', s)
+    return m.group(1) if m else s
+
 def regenerate_od_json():
     import pandas as pd
     xl = pd.ExcelFile(OD_XLSX)
-    # Index → category map
+    # Index → category map.  pandas returns NaN for cells whose cached value
+    # is empty (the "資料集 Sheet" cells contain =HYPERLINK formulas without
+    # a cached display value), so we read this sheet via openpyxl directly.
     ds_cat = {}
     if 'Index' in xl.sheet_names:
-        idx = pd.read_excel(xl, sheet_name='Index')
-        for _, r in idx.iterrows():
-            cat = _clean(r.get('分類 / Category'))
-            sheet = _clean(r.get('資料集 Sheet'))
+        from openpyxl import load_workbook
+        wb = load_workbook(OD_XLSX, read_only=True)
+        sh = wb['Index']
+        for r in range(2, sh.max_row + 1):
+            cat   = sh.cell(row=r, column=1).value
+            raw   = sh.cell(row=r, column=2).value
+            sheet = _extract_hyperlink_display(raw) if isinstance(raw, str) else raw
+            cat   = _clean(cat)
+            sheet = _clean(sheet)
             if cat and sheet:
                 ds_cat[sheet] = cat
+        wb.close()
     # All papers
     all_papers = []
     if 'OD all papers' in xl.sheet_names:
@@ -465,7 +685,7 @@ def regenerate_od_json():
     OD_JSON.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     return payload
 
-def reinject_html(ad_data, od_data):
+def reinject_html(ad_data, od_data, cls_data=None, as_data=None):
     html = INDEX_HTML.read_text(encoding='utf-8')
     ad_js = json.dumps(ad_data, ensure_ascii=False, separators=(',', ':'))
     od_js = json.dumps(od_data, ensure_ascii=False, separators=(',', ':'))
@@ -473,7 +693,122 @@ def reinject_html(ad_data, od_data):
                       lambda _: 'const AD_RAW = ' + ad_js + ';', html, count=1)
     new_html = re.sub(r'const OD_DATA = (\{[\s\S]*?\});\s*\n',
                       lambda _: 'const OD_DATA = ' + od_js + ';\n', new_html, count=1)
+    if cls_data is not None:
+        cls_js = json.dumps(cls_data, ensure_ascii=False, separators=(',', ':'))
+        new_html = re.sub(r'const CLS_DATA = (\{[\s\S]*?\});\s*\n',
+                          lambda _: 'const CLS_DATA = ' + cls_js + ';\n', new_html, count=1)
+    if as_data is not None:
+        as_js  = json.dumps(as_data,  ensure_ascii=False, separators=(',', ':'))
+        new_html = re.sub(r'const AS_DATA = (\{[\s\S]*?\});\s*\n',
+                          lambda _: 'const AS_DATA = ' + as_js + ';\n', new_html, count=1)
     INDEX_HTML.write_text(new_html, encoding='utf-8')
+
+def regenerate_cls_json():
+    import pandas as pd
+    if not CLS_XLSX.exists(): return None
+    xl = pd.ExcelFile(CLS_XLSX)
+    all_papers = []
+    if 'Classification all papers' in xl.sheet_names:
+        ap = pd.read_excel(xl, sheet_name='Classification all papers')
+        for _, row in ap.iterrows():
+            rec = {
+                'category': _clean(row.get('類別')),
+                'method':   _clean(row.get('方法')),
+                'authors':  _clean(row.get('作者')),
+                'venue':    _clean(row.get('發表')),
+                'date':     str(_clean(row.get('年月')) or ''),
+                'status':   _clean(row.get('狀態')),
+                'top1':     _clean(row.get('Top-1')),
+                'top5':     _clean(row.get('Top-5')),
+                'acc':      _clean(row.get('Acc')),
+                'f1':       _clean(row.get('F1')),
+                'params':   _clean(row.get('Params')),
+                'flops':    _clean(row.get('FLOPs')),
+                'notes':    _clean(row.get('備註(特色/based)')),
+                'link':     _clean(row.get('連結')),
+                'github':   _clean(row.get('GitHub')),
+            }
+            if rec['method']: all_papers.append(rec)
+    dataset_sheets = [s for s in xl.sheet_names if s != 'Classification all papers']
+    rows = []
+    for sn in dataset_sheets:
+        df = pd.read_excel(xl, sheet_name=sn)
+        if '方法' not in df.columns: continue
+        for _, row in df.iterrows():
+            rec = {
+                'dataset':  sn,
+                'category': _clean(row.get('類別')),
+                'method':   _clean(row.get('方法')),
+                'authors':  _clean(row.get('作者')),
+                'venue':    _clean(row.get('發表')),
+                'date':     str(_clean(row.get('年月')) or ''),
+                'status':   _clean(row.get('狀態')),
+                'top1':     _clean(row.get('Top-1')),
+                'top5':     _clean(row.get('Top-5')),
+                'acc':      _clean(row.get('Acc')),
+                'f1':       _clean(row.get('F1')),
+                'params':   _clean(row.get('Params')),
+                'flops':    _clean(row.get('FLOPs')),
+                'notes':    _clean(row.get('備註(特色/based)')),
+                'link':     _clean(row.get('連結')),
+                'github':   _clean(row.get('GitHub')),
+            }
+            if rec['method']: rows.append(rec)
+    payload = {'datasets': dataset_sheets, 'all_papers': all_papers, 'rows': rows}
+    CLS_JSON.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    return payload
+
+def regenerate_as_json():
+    import pandas as pd
+    if not AS_XLSX.exists(): return None
+    xl = pd.ExcelFile(AS_XLSX)
+    all_papers = []
+    if 'AS all papers' in xl.sheet_names:
+        ap = pd.read_excel(xl, sheet_name='AS all papers')
+        for _, row in ap.iterrows():
+            rec = {
+                'category':      _clean(row.get('類別')),
+                'method':        _clean(row.get('方法')),
+                'authors':       _clean(row.get('作者')),
+                'venue':         _clean(row.get('發表')),
+                'date':          str(_clean(row.get('年月')) or ''),
+                'status':        _clean(row.get('狀態')),
+                'synth_type':    _clean(row.get('合成類型')),
+                'task_setting':  _clean(row.get('任務設定')),
+                'datasets_used': _clean(row.get('資料集')),
+                'split':         _clean(row.get('Split/Protocol')),
+                'backbone':      _clean(row.get('Backbone/Detector')),
+                'notes':         _clean(row.get('備註(特色/可比性)')),
+                'link':          _clean(row.get('連結')),
+                'github':        _clean(row.get('GitHub')),
+            }
+            if rec['method']: all_papers.append(rec)
+    dataset_sheets = [s for s in xl.sheet_names if s != 'AS all papers']
+    rows = []
+    for sn in dataset_sheets:
+        df = pd.read_excel(xl, sheet_name=sn)
+        if '方法' not in df.columns: continue
+        for _, row in df.iterrows():
+            rec = {
+                'dataset':       sn,
+                'category':      _clean(row.get('類別')),
+                'method':        _clean(row.get('方法')),
+                'authors':       _clean(row.get('作者')),
+                'venue':         _clean(row.get('發表')),
+                'date':          str(_clean(row.get('年月')) or ''),
+                'status':        _clean(row.get('狀態')),
+                'synth_type':    _clean(row.get('合成類型')),
+                'task_setting':  _clean(row.get('任務設定')),
+                'split':         _clean(row.get('Split/Protocol')),
+                'backbone':      _clean(row.get('Backbone/Detector')),
+                'notes':         _clean(row.get('備註(特色/可比性)')),
+                'link':          _clean(row.get('連結')),
+                'github':        _clean(row.get('GitHub')),
+            }
+            if rec['method']: rows.append(rec)
+    payload = {'datasets': dataset_sheets, 'all_papers': all_papers, 'rows': rows}
+    AS_JSON.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    return payload
 
 # ====================================================================
 # Email notification
@@ -582,7 +917,77 @@ def render_email_html(new_ad, new_od, ran_at, pushed):
 </div></body></html>'''
     return html
 
-def send_notification(new_ad, new_od, ran_at, pushed):
+def render_email_body_v2(new_ad, new_od, new_cls, new_as, ran_at, pushed):
+    lines = []
+    lines.append('NTUT 自動化檢測實驗室 — 文獻自動更新通知')
+    lines.append(f'執行時間: {ran_at}')
+    lines.append(f'本次新增: AD {len(new_ad)} / OD {len(new_od)} / CLS {len(new_cls)} / AS {len(new_as)}')
+    lines.append(f'GitHub 推送: {"成功" if pushed else "未推送"}')
+    def section(label, papers):
+        lines.append(''); lines.append('=' * 60); lines.append(label); lines.append('=' * 60)
+        if not papers:
+            lines.append('  (本次無新增)'); return
+        for i, p in enumerate(papers, 1):
+            lines.append(f'{i:>2}. [{p["dataset"]} | {p["category"]}]')
+            lines.append(f'    {p["title"]}')
+            if p.get('authors'): lines.append(f'    Authors : {p["authors"]}')
+            lines.append(f'    arXiv   : {p["link"]}')
+            lines.append(f'    Date    : {p["date"]}')
+            lines.append('')
+    section('Anomaly Detection 新增論文',  new_ad)
+    section('Object Detection 新增論文',   new_od)
+    section('Classification 新增論文',     new_cls)
+    section('Anomaly Synthesis 新增論文',  new_as)
+    lines.append('-' * 60)
+    lines.append('提示: 自動分類為 best-effort 啟發式; 新增列的指標皆留空待人工核對.')
+    lines.append('網站: https://112378074.github.io/NTUT-IVI-Lab--SOTA-Literature-Viewer/')
+    return '\n'.join(lines)
+
+def render_email_html_v2(new_ad, new_od, new_cls, new_as, ran_at, pushed):
+    def section(title, papers, color):
+        if not papers:
+            return f'<h3 style="color:#0f172a;margin:18px 0 8px">{title}</h3><p style="color:#64748b;font-size:13px">本次無新增</p>'
+        rows = ''
+        for i, p in enumerate(papers, 1):
+            rows += (f'<tr style="border-top:1px solid #e2e8f0">'
+                     f'<td style="padding:8px;color:#64748b;width:32px;text-align:right">{i}</td>'
+                     f'<td style="padding:8px">'
+                     f'<div style="font-weight:600;color:#0f172a">{p["title"]}</div>'
+                     f'<div style="color:#475569;font-size:13px;margin-top:2px">'
+                     f'<span style="background:{color};color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;margin-right:6px">{p["category"][:36]}</span>'
+                     f'<span style="background:#e2e8f0;color:#334155;padding:1px 7px;border-radius:10px;font-size:11px;margin-right:6px">{p["dataset"]}</span>'
+                     f'<span style="color:#64748b">{p["date"]}</span></div>'
+                     f'<div style="color:#64748b;font-size:12px;margin-top:4px">{(p.get("authors") or "")[:120]}</div>'
+                     f'<div style="margin-top:4px"><a href="{p["link"]}" style="color:#2563eb;font-size:12px">arXiv ↗</a></div>'
+                     f'</td></tr>')
+        return (f'<h3 style="color:#0f172a;margin:18px 0 8px">{title}</h3>'
+                f'<table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden">{rows}</table>')
+
+    push_pill = ('<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:10px;font-size:12px">已推送 GitHub</span>'
+                 if pushed
+                 else '<span style="background:#fef3c7;color:#854d0e;padding:2px 8px;border-radius:10px;font-size:12px">未推送</span>')
+    return ('<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;background:#f6f8fc;padding:20px;color:#1a2233">'
+            '<div style="max-width:780px;margin:0 auto">'
+            '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">'
+            '<div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px">NTUT · IIM · Automated Inspection Lab</div>'
+            '<h2 style="margin:0 0 6px;color:#0f172a">文獻自動更新通知</h2>'
+            f'<div style="color:#64748b;font-size:13px">執行時間 {ran_at}</div>'
+            f'<div style="color:#64748b;font-size:13px;margin-top:6px">本次新增 AD {len(new_ad)} / OD {len(new_od)} / CLS {len(new_cls)} / AS {len(new_as)} · {push_pill}</div>'
+            '</div>'
+            '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">'
+            f'{section("Anomaly Detection",  new_ad,  "#2563eb")}'
+            f'{section("Object Detection",   new_od,  "#7c3aed")}'
+            f'{section("Classification",     new_cls, "#15803d")}'
+            f'{section("Anomaly Synthesis",  new_as,  "#ea580c")}'
+            '</div>'
+            '<div style="color:#64748b;font-size:12px;text-align:center;line-height:1.6;padding:8px 0 16px">'
+            '新增列的指標皆留空待人工核對 (避免錯誤數字).<br>'
+            '<a href="https://112378074.github.io/NTUT-IVI-Lab--SOTA-Literature-Viewer/" style="color:#2563eb">前往網站</a>'
+            '</div></div></body></html>')
+
+def send_notification(new_ad, new_od, ran_at, pushed, new_cls=None, new_as=None):
+    new_cls = new_cls or []
+    new_as  = new_as  or []
     cfg = load_env(ENV_FILE)
     host = cfg.get('SMTP_HOST', 'smtp.gmail.com')
     port = int(cfg.get('SMTP_PORT', '587'))
@@ -594,9 +999,10 @@ def send_notification(new_ad, new_od, ran_at, pushed):
         log(f'  email skipped: SMTP_USER / SMTP_PASSWORD not set in {ENV_FILE}')
         return False
 
-    subject = f'[AIL Auto-Update] +{len(new_ad)} AD / +{len(new_od)} OD ({datetime.now().strftime("%Y-%m-%d")})'
-    text = render_email_body(new_ad, new_od, ran_at, pushed)
-    html = render_email_html(new_ad, new_od, ran_at, pushed)
+    subject = (f'[AIL Auto-Update] +{len(new_ad)} AD / +{len(new_od)} OD / '
+               f'+{len(new_cls)} CLS / +{len(new_as)} AS ({datetime.now().strftime("%Y-%m-%d")})')
+    text = render_email_body_v2(new_ad, new_od, new_cls, new_as, ran_at, pushed)
+    html = render_email_html_v2(new_ad, new_od, new_cls, new_as, ran_at, pushed)
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
@@ -626,7 +1032,10 @@ def send_notification(new_ad, new_od, ran_at, pushed):
 def git_push(message):
     try:
         cwd = str(PROJECT_DIR)
-        files = [INDEX_HTML.name, AD_XLSX.name, OD_XLSX.name, AD_JSON.name, OD_JSON.name]
+        files = [INDEX_HTML.name, AD_XLSX.name, OD_XLSX.name, CLS_XLSX.name, AS_XLSX.name,
+                 AD_JSON.name, OD_JSON.name, CLS_JSON.name, AS_JSON.name]
+        # Filter to existing files (some xlsx may not be present)
+        files = [f for f in files if (PROJECT_DIR / f).exists()]
         subprocess.run(['git', 'add'] + files, cwd=cwd, check=True)
         # Check if anything to commit
         diff = subprocess.run(['git', 'diff', '--cached', '--quiet'], cwd=cwd)
@@ -657,9 +1066,11 @@ def main():
     log(f'Project: {PROJECT_DIR}')
 
     # 1. Existing IDs
-    ad_ids, _ = collect_existing_arxiv_ids(AD_XLSX)
-    od_ids, _ = collect_existing_arxiv_ids(OD_XLSX)
-    log(f'Existing AD arxiv IDs: {len(ad_ids)} | OD arxiv IDs: {len(od_ids)}')
+    ad_ids,  _ = collect_existing_arxiv_ids(AD_XLSX)
+    od_ids,  _ = collect_existing_arxiv_ids(OD_XLSX)
+    cls_ids, _ = collect_existing_arxiv_ids(CLS_XLSX)
+    as_ids,  _ = collect_existing_arxiv_ids(AS_XLSX)
+    log(f'Existing IDs — AD: {len(ad_ids)} | OD: {len(od_ids)} | CLS: {len(cls_ids)} | AS: {len(as_ids)}')
 
     # 2. Fetch + classify AD — require target dataset to be mentioned (avoid noise)
     new_ad = []
@@ -714,14 +1125,63 @@ def main():
     for p in new_od:
         log(f'  OD + [{p["dataset"]}|{p["category"]}] {p["title"][:80]}')
 
+    # 4. Fetch + classify CLS
+    new_cls = []
+    for q in CLS_QUERIES:
+        root = fetch_arxiv(q)
+        for e in parse_entries(root):
+            if not e['arxiv_id']:                continue
+            if e['arxiv_id'] in cls_ids:         continue
+            if not is_within_window(e['published'], LOOKBACK_DAYS): continue
+            text = e['title'] + ' ' + e['summary']
+            if is_cls_excluded(text):
+                log(f'  CLS - skipped (excluded topic): {e["title"][:80]}')
+                continue
+            ds = detect_dataset(text, CLS_DATASETS_BY_PATTERNS)
+            if not ds:
+                log(f'  CLS - skipped (no target dataset): {e["title"][:80]}')
+                continue
+            cat = classify_category(text, CLS_CATEGORIES_BY_KEYWORDS) or CLS_DEFAULT_CATEGORY
+            method = e['title'][:90]
+            cls_ids.add(e['arxiv_id'])
+            new_cls.append({**e, 'category': cat, 'dataset': ds, 'method': method,
+                            'note': 'Auto-fetched from arXiv; metrics To verify'})
+        time.sleep(5)
+    log(f'New CLS candidates: {len(new_cls)}')
+    for p in new_cls:
+        log(f'  CLS + [{p["dataset"]}|{p["category"]}] {p["title"][:80]}')
+
+    # 5. Fetch + classify AS
+    new_as = []
+    for q in AS_QUERIES:
+        root = fetch_arxiv(q)
+        for e in parse_entries(root):
+            if not e['arxiv_id']:                continue
+            if e['arxiv_id'] in as_ids:          continue
+            if not is_within_window(e['published'], LOOKBACK_DAYS): continue
+            text = e['title'] + ' ' + e['summary']
+            if is_as_excluded(text):
+                log(f'  AS - skipped (excluded topic): {e["title"][:80]}')
+                continue
+            ds = detect_dataset(text, AS_DATASETS_BY_PATTERNS) or AS_DEFAULT_DATASET
+            cat = classify_category(text, AS_CATEGORIES_BY_KEYWORDS) or AS_DEFAULT_CATEGORY
+            method = e['title'][:90]
+            as_ids.add(e['arxiv_id'])
+            new_as.append({**e, 'category': cat, 'dataset': ds, 'method': method,
+                           'note': 'Auto-fetched from arXiv; pending verification'})
+        time.sleep(5)
+    log(f'New AS candidates: {len(new_as)}')
+    for p in new_as:
+        log(f'  AS + [{p["dataset"]}|{p["category"]}] {p["title"][:80]}')
+
     if args.dry:
         log('Dry run complete; no files written')
         return 0
 
-    if not new_ad and not new_od:
+    if not new_ad and not new_od and not new_cls and not new_as:
         log('No new papers found — nothing to update')
         if not args.no_email:
-            send_notification([], [], ran_at, pushed=False)
+            send_notification([], [], ran_at, pushed=False, new_cls=[], new_as=[])
         return 0
 
     # 4. Append AD rows
@@ -745,21 +1205,42 @@ def main():
         wb.save(OD_XLSX)
         log(f'OD xlsx updated: +{len(new_od)} rows')
 
-    # 6. Regenerate JSON & inject HTML
-    ad_data = regenerate_ad_json()
-    od_data = regenerate_od_json()
-    reinject_html(ad_data, od_data)
-    log(f'Regenerated: {len(ad_data)} AD records, {len(od_data["all_papers"])} OD methods, {len(od_data["rows"])} OD rows')
+    # 6. Append CLS rows
+    if new_cls and CLS_XLSX.exists():
+        wb = load_workbook(CLS_XLSX)
+        for p in new_cls:
+            append_cls_dataset_row(wb, p['dataset'], p)
+            append_cls_all_papers_row(wb, p)
+        wb.save(CLS_XLSX)
+        log(f'CLS xlsx updated: +{len(new_cls)} rows')
 
-    # 7. Git push
+    # 7. Append AS rows
+    if new_as and AS_XLSX.exists():
+        wb = load_workbook(AS_XLSX)
+        for p in new_as:
+            append_as_dataset_row(wb, p['dataset'], p)
+            append_as_all_papers_row(wb, p)
+        wb.save(AS_XLSX)
+        log(f'AS xlsx updated: +{len(new_as)} rows')
+
+    # 8. Regenerate JSON & inject HTML
+    ad_data  = regenerate_ad_json()
+    od_data  = regenerate_od_json()
+    cls_data = regenerate_cls_json()
+    as_data  = regenerate_as_json()
+    reinject_html(ad_data, od_data, cls_data, as_data)
+    log(f'Regenerated: AD {len(ad_data)} | OD {len(od_data["all_papers"])} ({len(od_data["rows"])} rows) '
+        f'| CLS {len(cls_data["all_papers"]) if cls_data else 0} | AS {len(as_data["all_papers"]) if as_data else 0}')
+
+    # 9. Git push
     pushed = False
     if not args.no_push:
-        msg = f'auto: +{len(new_ad)} AD / +{len(new_od)} OD papers ({datetime.now().strftime("%Y-%m-%d")})'
+        msg = f'auto: +{len(new_ad)} AD / +{len(new_od)} OD / +{len(new_cls)} CLS / +{len(new_as)} AS papers ({datetime.now().strftime("%Y-%m-%d")})'
         pushed = git_push(msg)
 
-    # 8. Email notification
+    # 10. Email notification
     if not args.no_email:
-        send_notification(new_ad, new_od, ran_at, pushed)
+        send_notification(new_ad, new_od, ran_at, pushed, new_cls=new_cls, new_as=new_as)
 
     log('Run complete')
     return 0
