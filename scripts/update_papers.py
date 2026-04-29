@@ -65,17 +65,34 @@ OD_QUERIES = [
 # CLAUDE_updated.md §4: hard-exclude 3D / LiDAR / BEV / point-cloud / medical /
 # autonomous-driving 3D / segmentation-only / tracking-only.
 OD_EXCLUSION_KEYWORDS = [
-    '3d object detection', '3d detection',
+    '3d object detection', '3d detection', '3d bifurcation',
     'lidar', 'point cloud', 'point-cloud', 'pointcloud',
-    'bev ', 'bird\'s-eye-view', "bird's eye view", 'birds-eye-view',
+    'bev ', "bird's-eye-view", "bird's eye view", 'birds-eye-view',
     'kitti 3d', 'nuscenes', 'waymo 3d',
     'multi-modal 3d', 'camera-only 3d',
     'medical image', 'lesion detection', 'tumor detection', 'polyp detection',
+    'tooth', 'caries', 'dental', 'retinal', 'airway-tree', 'cardiac',
     'autonomous driving 3d',
+    'sar object', 'remote sensing',
+    'underwater', 'weed detection', 'pedestrian tracking',
+    'adversarial patch', 'adversarial attack',
+]
+AD_EXCLUSION_KEYWORDS = [
+    '3d lidar', 'lidar anomaly', 'point cloud anomaly',  # only 2D RGB / RGB-D AD
+    'medical image anomaly', 'retinal abnormalit', 'lesion ',
+    'video anomaly detection', 'temporal anomaly',  # not industrial visual AD
+    'time series anomaly', 'log anomaly', 'network anomaly',
+    'speech anomaly', 'audio anomaly',
+    'surveillance', 'expressway', 'traffic anomaly',
+    'fraud detection', 'cyber',
+    'llm adaptation', 'language model adaptation',
 ]
 def is_od_excluded(text):
     t = text.lower()
     return any(kw in t for kw in OD_EXCLUSION_KEYWORDS)
+def is_ad_excluded(text):
+    t = text.lower()
+    return any(kw in t for kw in AD_EXCLUSION_KEYWORDS)
 
 # AD category classification (priority order)
 AD_CATEGORIES_BY_KEYWORDS = [
@@ -644,7 +661,7 @@ def main():
     od_ids, _ = collect_existing_arxiv_ids(OD_XLSX)
     log(f'Existing AD arxiv IDs: {len(ad_ids)} | OD arxiv IDs: {len(od_ids)}')
 
-    # 2. Fetch + classify AD
+    # 2. Fetch + classify AD — require target dataset to be mentioned (avoid noise)
     new_ad = []
     for q in AD_QUERIES:
         root = fetch_arxiv(q)
@@ -653,8 +670,15 @@ def main():
             if e['arxiv_id'] in ad_ids:          continue
             if not is_within_window(e['published'], LOOKBACK_DAYS): continue
             text = e['title'] + ' ' + e['summary']
+            if is_ad_excluded(text):
+                log(f'  AD - skipped (excluded topic): {e["title"][:80]}')
+                continue
+            ds = detect_dataset(text, AD_DATASETS_BY_PATTERNS)
+            if not ds:
+                # No target dataset mentioned -> probably off-topic
+                log(f'  AD - skipped (no target dataset): {e["title"][:80]}')
+                continue
             cat = classify_category(text, AD_CATEGORIES_BY_KEYWORDS) or AD_DEFAULT_CATEGORY
-            ds  = detect_dataset(text, AD_DATASETS_BY_PATTERNS)   or AD_DEFAULT_DATASET
             method = e['title'][:90]
             ad_ids.add(e['arxiv_id'])
             new_ad.append({**e, 'category': cat, 'dataset': ds, 'method': method,
@@ -664,7 +688,7 @@ def main():
     for p in new_ad:
         log(f'  AD + [{p["dataset"]}|{p["category"]}] {p["title"][:80]}')
 
-    # 3. Fetch + classify OD (exclude 3D / LiDAR / BEV / medical per CLAUDE_updated.md §4)
+    # 3. Fetch + classify OD — require target dataset; exclude 3D/medical/etc.
     new_od = []
     for q in OD_QUERIES:
         root = fetch_arxiv(q)
@@ -676,8 +700,11 @@ def main():
             if is_od_excluded(text):
                 log(f'  OD - skipped (excluded topic): {e["title"][:80]}')
                 continue
+            ds = detect_dataset(text, OD_DATASETS_BY_PATTERNS)
+            if not ds:
+                log(f'  OD - skipped (no target dataset): {e["title"][:80]}')
+                continue
             cat = classify_category(text, OD_CATEGORIES_BY_KEYWORDS) or OD_DEFAULT_CATEGORY
-            ds  = detect_dataset(text, OD_DATASETS_BY_PATTERNS)   or OD_DEFAULT_DATASET
             method = e['title'][:90]
             od_ids.add(e['arxiv_id'])
             new_od.append({**e, 'category': cat, 'dataset': ds, 'method': method,
