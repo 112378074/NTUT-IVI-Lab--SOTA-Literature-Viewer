@@ -5,7 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>視覺檢測 SOTA 文獻檢視器</title>
 <style>
+  /* ----- Light theme (default) ----- */
   :root {
+    --bg: #f6f8fc;
+    --panel: #ffffff;
+    --panel-2: #eef2f7;
+    --panel-3: #e2e8f0;
+    --border: #dde3eb;
+    --text: #1a2233;
+    --muted: #5e6a7d;
+    --accent: #2563eb;
+    --accent-2: #7c3aed;
+    --ok: #15803d;
+    --warn: #b45309;
+    --danger: #b91c1c;
+
+    --row-hover: #f1f5fb;
+    --row-border: #e5eaf1;
+    --thead-bg: #f1f5f9;
+    --thead-text: #334155;
+    --topbar-grad: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+    --shadow-sm: 0 1px 3px rgba(15,23,42,.04), 0 4px 12px rgba(15,23,42,.04);
+    --shadow-hover: 0 4px 14px rgba(37,99,235,.12), 0 2px 6px rgba(15,23,42,.06);
+    --strong-text: #0f172a;
+    --table-text: #334155;
+    --table-muted: #475569;
+
+    --badge-recon-bg: #ffedd5; --badge-recon-fg: #9a3412; --badge-recon-bd: #fdba74;
+    --badge-nf-bg:    #dbeafe; --badge-nf-fg:    #1d4ed8; --badge-nf-bd:    #93c5fd;
+    --badge-repr-bg:  #dcfce7; --badge-repr-fg:  #166534; --badge-repr-bd:  #86efac;
+    --badge-aug-bg:   #fef3c7; --badge-aug-fg:   #854d0e; --badge-aug-bd:   #fde047;
+    --badge-diff-bg:  #f1f5f9; --badge-diff-fg:  #334155; --badge-diff-bd:  #cbd5e1;
+    --badge-purp-bg:  #f3e8ff; --badge-purp-fg:  #6b21a8; --badge-purp-bd:  #d8b4fe;
+    --badge-red-bg:   #fee2e2; --badge-red-fg:   #991b1b; --badge-red-bd:   #fca5a5;
+
+    --c-recon: #ea580c;
+    --c-nf:    #2563eb;
+    --c-repr:  #15803d;
+    --c-aug:   #ca8a04;
+    --c-diff:  #64748b;
+
+    --c-ds-mvtec:  #2563eb;
+    --c-ds-loco:   #9333ea;
+    --c-ds-ad2:    #db2777;
+    --c-ds-visa:   #16a34a;
+    --c-ds-mpdd:   #ca8a04;
+    --c-ds-btad:   #ea580c;
+    --c-ds-3d:     #0891b2;
+
+    --c-od-general:   #2563eb;
+    --c-od-realtime:  #ea580c;
+    --c-od-salient:   #15803d;
+    --c-od-fewshot:   #9333ea;
+  }
+
+  /* ----- Dark theme (toggle) ----- */
+  :root[data-theme="dark"] {
     --bg: #0f1115;
     --panel: #161a22;
     --panel-2: #1d222c;
@@ -14,10 +69,29 @@
     --text: #e6e9ef;
     --muted: #8a93a4;
     --accent: #5b9dff;
-    --accent-2: #7c5cff;
-    --ok: #43c59e;
-    --warn: #e9b84a;
-    --danger: #e96a6a;
+    --accent-2: #a78bfa;
+    --ok: #34d399;
+    --warn: #fbbf24;
+    --danger: #f87171;
+
+    --row-hover: #1a1f2a;
+    --row-border: #1f242e;
+    --thead-bg: #1a1f2a;
+    --thead-text: #cfd5e0;
+    --topbar-grad: linear-gradient(180deg, #171b25 0%, var(--bg) 100%);
+    --shadow-sm: none;
+    --shadow-hover: 0 4px 14px rgba(91,157,255,.15);
+    --strong-text: #ffffff;
+    --table-text: #d6dae3;
+    --table-muted: #9aa3b3;
+
+    --badge-recon-bg: rgba(244,162,97,.14); --badge-recon-fg: #f4a261; --badge-recon-bd: rgba(244,162,97,.35);
+    --badge-nf-bg:    rgba(91,157,255,.14); --badge-nf-fg:    #5b9dff; --badge-nf-bd:    rgba(91,157,255,.35);
+    --badge-repr-bg:  rgba(67,197,158,.14); --badge-repr-fg:  #43c59e; --badge-repr-bd:  rgba(67,197,158,.35);
+    --badge-aug-bg:   rgba(233,184,74,.14); --badge-aug-fg:   #e9b84a; --badge-aug-bd:   rgba(233,184,74,.35);
+    --badge-diff-bg:  rgba(176,182,192,.14); --badge-diff-fg: #b0b6c0; --badge-diff-bd:  rgba(176,182,192,.35);
+    --badge-purp-bg:  rgba(167,139,250,.16); --badge-purp-fg: #c4b5fd; --badge-purp-bd:  rgba(167,139,250,.35);
+    --badge-red-bg:   rgba(248,113,113,.16); --badge-red-fg:  #fca5a5; --badge-red-bd:   rgba(248,113,113,.35);
 
     --c-recon: #f4a261;
     --c-nf:    #5b9dff;
@@ -58,7 +132,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    background: linear-gradient(180deg, #171b25 0%, var(--bg) 100%);
+    background: var(--topbar-grad);
   }
   .topbar h1 { margin: 0; font-size: 16px; font-weight: 600; }
   .topbar .sub { color: var(--muted); font-size: 12px; margin-left: auto; }
@@ -74,7 +148,48 @@
   }
   .back-btn:hover { border-color: var(--accent); color: var(--accent); }
   .crumb { color: var(--muted); font-size: 12px; }
+  .crumb a { color: var(--muted); text-decoration: none; cursor: pointer; }
+  .crumb a:hover { color: var(--accent); text-decoration: underline; }
   .crumb b { color: var(--text); font-weight: 500; }
+
+  /* Topbar — area selector */
+  .area-selector {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 30px 7px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+                      linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    transition: border-color .15s;
+  }
+  .area-selector:hover, .area-selector:focus { border-color: var(--accent); outline: none; }
+  .topbar-spacer { flex: 1; }
+  .theme-toggle {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: border-color .15s, background-color .15s;
+  }
+  .theme-toggle:hover { border-color: var(--accent); }
+  .theme-toggle .icon-light, .theme-toggle .icon-dark { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-light { display: inline; }
+  :root:not([data-theme="dark"]) .theme-toggle .icon-dark { display: inline; }
 
   main { padding: 36px 32px 60px; }
 
@@ -95,25 +210,26 @@
     border-radius: 16px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(15,23,42,.04), 0 4px 12px rgba(15,23,42,.04);
   }
   .hero::before {
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(circle at 0% 0%, rgba(91,157,255,.12), transparent 55%),
-      radial-gradient(circle at 100% 100%, rgba(124,92,255,.10), transparent 55%);
+      radial-gradient(circle at 0% 0%, rgba(37,99,235,.08), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(124,58,237,.07), transparent 55%);
     pointer-events: none;
   }
   .hero > * { position: relative; }
   .hero .lab-tag {
     display: inline-block;
-    background: var(--panel-3);
-    color: var(--accent);
+    background: var(--badge-nf-bg);
+    color: var(--badge-nf-fg);
     font-size: 11px;
     font-weight: 600;
     padding: 4px 10px;
     border-radius: 999px;
-    border: 1px solid rgba(91,157,255,.35);
+    border: 1px solid var(--badge-nf-bd);
     letter-spacing: 0.5px;
     margin-bottom: 14px;
   }
@@ -130,7 +246,7 @@
     letter-spacing: 0.3px;
   }
   .hero .lab-desc {
-    color: #c8cdd7;
+    color: var(--text);
     font-size: 14px;
     line-height: 1.75;
     margin: 0;
@@ -140,7 +256,7 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 4px 18px;
     margin: 14px 0 0;
-    color: #d6dae3;
+    color: var(--text);
     font-size: 13px;
   }
   .hero .areas .a-row {
@@ -151,7 +267,7 @@
     width: 7px; height: 7px; border-radius: 50%;
     flex-shrink: 0; transform: translateY(2px);
   }
-  .hero .areas b { color: #fff; font-weight: 600; }
+  .hero .areas b { color: var(--strong-text); font-weight: 600; }
   .hero .areas .a-row .muted { color: var(--muted); }
   .hero .contact {
     color: var(--muted);
@@ -171,44 +287,45 @@
     padding: 36px 32px;
     text-align: left;
     color: var(--text);
-    transition: transform .15s, border-color .15s, background-color .15s;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(15,23,42,.04), 0 2px 8px rgba(15,23,42,.04);
   }
   .home-card::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(circle at 80% -20%, rgba(91,157,255,.18), transparent 60%);
+    background: radial-gradient(circle at 80% -20%, rgba(37,99,235,.10), transparent 60%);
     pointer-events: none;
   }
   .home-card.od::before {
-    background: radial-gradient(circle at 80% -20%, rgba(124,92,255,.18), transparent 60%);
+    background: radial-gradient(circle at 80% -20%, rgba(124,58,237,.10), transparent 60%);
   }
   .home-card.cls::before {
-    background: radial-gradient(circle at 80% -20%, rgba(67,197,158,.14), transparent 60%);
+    background: radial-gradient(circle at 80% -20%, rgba(22,163,74,.08), transparent 60%);
   }
   .home-card.as::before {
-    background: radial-gradient(circle at 80% -20%, rgba(244,162,97,.14), transparent 60%);
+    background: radial-gradient(circle at 80% -20%, rgba(234,88,12,.08), transparent 60%);
   }
   .home-card:hover {
     transform: translateY(-2px);
     border-color: var(--accent);
-    background: var(--panel-2);
+    box-shadow: 0 4px 14px rgba(37,99,235,.12), 0 2px 6px rgba(15,23,42,.06);
   }
   .home-card.disabled {
     cursor: not-allowed;
-    opacity: 0.65;
+    opacity: 0.7;
   }
   .home-card.disabled:hover {
     transform: none;
     border-color: var(--border);
-    background: var(--panel);
+    box-shadow: 0 1px 3px rgba(15,23,42,.04), 0 2px 8px rgba(15,23,42,.04);
   }
   .home-card .soon {
     display: inline-block;
-    background: rgba(233,184,74,.14);
-    color: var(--warn);
-    border: 1px solid rgba(233,184,74,.35);
+    background: var(--badge-aug-bg);
+    color: var(--badge-aug-fg);
+    border: 1px solid var(--badge-aug-bd);
     padding: 2px 8px;
     border-radius: 999px;
     font-size: 11px;
@@ -261,13 +378,14 @@
     padding: 16px 18px;
     text-align: left;
     color: var(--text);
-    transition: transform .12s, border-color .12s, background-color .12s;
+    transition: transform .12s, border-color .12s, box-shadow .12s;
     display: flex;
     flex-direction: column;
     gap: 6px;
     border-left-width: 4px;
+    box-shadow: 0 1px 2px rgba(15,23,42,.04);
   }
-  .menu-btn:hover { transform: translateY(-1px); background: var(--panel-2); }
+  .menu-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(15,23,42,.08); }
   .menu-btn .name { font-weight: 600; font-size: 14px; }
   .menu-btn .meta { color: var(--muted); font-size: 12px; }
 
@@ -308,7 +426,7 @@
 
   .menu-btn.all {
     border-left-color: var(--accent-2);
-    background: linear-gradient(135deg, rgba(124,92,255,.08), rgba(91,157,255,.06));
+    background: linear-gradient(135deg, var(--badge-purp-bg) 0%, var(--badge-nf-bg) 100%);
   }
   .menu-btn.all:hover { border-color: var(--accent-2); }
 
@@ -348,13 +466,14 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(15,23,42,.04), 0 4px 12px rgba(15,23,42,.04);
   }
   .table-scroll { overflow: auto; max-height: calc(100vh - 220px); }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th {
     position: sticky; top: 0;
-    background: #1a1f2a;
-    color: #cfd5e0;
+    background: var(--thead-bg);
+    color: var(--thead-text);
     font-weight: 600;
     text-align: left;
     padding: 10px 12px;
@@ -364,17 +483,17 @@
     z-index: 2;
   }
   thead th.metric { text-align: right; }
-  tbody tr { border-bottom: 1px solid #1f242e; transition: background-color .12s; }
-  tbody tr:hover { background: #1a1f2a; }
-  td { padding: 9px 12px; vertical-align: top; color: #d6dae3; }
+  tbody tr { border-bottom: 1px solid var(--row-border); transition: background-color .12s; }
+  tbody tr:hover { background: var(--row-hover); }
+  td { padding: 9px 12px; vertical-align: top; color: var(--table-text); }
   td.metric { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-  td.method { font-weight: 500; color: #fff; min-width: 200px; }
+  td.method { font-weight: 600; color: var(--strong-text); min-width: 200px; }
   td.rank { color: var(--muted); width: 36px; text-align: right; }
-  td.rank.gold   { color: #f7d774; font-weight: 600; }
-  td.rank.silver { color: #d8dde6; font-weight: 600; }
-  td.rank.bronze { color: #d8a06a; font-weight: 600; }
-  td.notes { max-width: 380px; color: #b6bcc8; font-size: 12px; line-height: 1.5; }
-  td.long-ap { max-width: 320px; white-space: normal; font-size: 12px; color: #c4cad6; }
+  td.rank.gold   { color: #b45309; font-weight: 700; }
+  td.rank.silver { color: var(--muted); font-weight: 700; }
+  td.rank.bronze { color: #92400e; font-weight: 700; }
+  td.notes { max-width: 380px; color: var(--table-muted); font-size: 12px; line-height: 1.5; }
+  td.long-ap { max-width: 320px; white-space: normal; font-size: 12px; color: var(--table-muted); }
 
   .badge {
     display: inline-block;
@@ -385,21 +504,21 @@
     border: 1px solid transparent;
     white-space: nowrap;
   }
-  .cat-badge.cat-recon { background: rgba(244,162,97,.14);  color: var(--c-recon); border-color: rgba(244,162,97,.35); }
-  .cat-badge.cat-nf    { background: rgba(91,157,255,.14);  color: var(--c-nf);    border-color: rgba(91,157,255,.35); }
-  .cat-badge.cat-repr  { background: rgba(67,197,158,.14);  color: var(--c-repr);  border-color: rgba(67,197,158,.35); }
-  .cat-badge.cat-aug   { background: rgba(233,184,74,.14);  color: var(--c-aug);   border-color: rgba(233,184,74,.35); }
-  .cat-badge.cat-diff  { background: rgba(176,182,192,.14); color: var(--c-diff);  border-color: rgba(176,182,192,.35); }
+  .cat-badge.cat-recon { background: var(--badge-recon-bg); color: var(--badge-recon-fg); border-color: var(--badge-recon-bd); }
+  .cat-badge.cat-nf    { background: var(--badge-nf-bg);    color: var(--badge-nf-fg);    border-color: var(--badge-nf-bd); }
+  .cat-badge.cat-repr  { background: var(--badge-repr-bg);  color: var(--badge-repr-fg);  border-color: var(--badge-repr-bd); }
+  .cat-badge.cat-aug   { background: var(--badge-aug-bg);   color: var(--badge-aug-fg);   border-color: var(--badge-aug-bd); }
+  .cat-badge.cat-diff  { background: var(--badge-diff-bg);  color: var(--badge-diff-fg);  border-color: var(--badge-diff-bd); }
 
-  .cat-badge.od-general  { background: rgba(91,157,255,.14);  color: var(--c-od-general);  border-color: rgba(91,157,255,.35); }
-  .cat-badge.od-realtime { background: rgba(244,162,97,.14);  color: var(--c-od-realtime); border-color: rgba(244,162,97,.35); }
-  .cat-badge.od-salient  { background: rgba(67,197,158,.14);  color: var(--c-od-salient);  border-color: rgba(67,197,158,.35); }
-  .cat-badge.od-fewshot  { background: rgba(199,155,255,.14); color: var(--c-od-fewshot);  border-color: rgba(199,155,255,.35); }
+  .cat-badge.od-general  { background: var(--badge-nf-bg);    color: var(--badge-nf-fg);    border-color: var(--badge-nf-bd); }
+  .cat-badge.od-realtime { background: var(--badge-recon-bg); color: var(--badge-recon-fg); border-color: var(--badge-recon-bd); }
+  .cat-badge.od-salient  { background: var(--badge-repr-bg);  color: var(--badge-repr-fg);  border-color: var(--badge-repr-bd); }
+  .cat-badge.od-fewshot  { background: var(--badge-purp-bg);  color: var(--badge-purp-fg);  border-color: var(--badge-purp-bd); }
 
-  .status-pub  { background: rgba(67,197,158,.14); color: var(--ok);    border-color: rgba(67,197,158,.35); }
-  .status-pre  { background: rgba(233,184,74,.14); color: var(--warn);  border-color: rgba(233,184,74,.35); }
-  .status-rev  { background: rgba(233,106,106,.14); color: var(--danger); border-color: rgba(233,106,106,.35); }
-  .status-rep  { background: rgba(124,92,255,.14); color: var(--accent-2); border-color: rgba(124,92,255,.35); }
+  .status-pub  { background: var(--badge-repr-bg); color: var(--badge-repr-fg); border-color: var(--badge-repr-bd); }
+  .status-pre  { background: var(--badge-aug-bg);  color: var(--badge-aug-fg);  border-color: var(--badge-aug-bd); }
+  .status-rev  { background: var(--badge-red-bg);  color: var(--badge-red-fg);  border-color: var(--badge-red-bd); }
+  .status-rep  { background: var(--badge-purp-bg); color: var(--badge-purp-fg); border-color: var(--badge-purp-bd); }
   .status-tbd  { background: var(--panel-2); color: var(--muted); border-color: var(--border); }
 
   .link-btn {
@@ -434,7 +553,18 @@
 <div class="topbar">
   <button class="back-btn" id="back" style="display:none">← 返回</button>
   <h1 id="page-title">視覺檢測 SOTA 文獻檢視器</h1>
+  <select class="area-selector" id="area-selector" title="切換研究領域">
+    <option value="">— 選擇研究領域 —</option>
+    <option value="ad">Anomaly Detection</option>
+    <option value="od">Object Detection</option>
+    <option value="cls">Classification</option>
+    <option value="as">Anomaly Synthesis</option>
+  </select>
+  <span class="topbar-spacer"></span>
   <span class="crumb sub" id="crumb"></span>
+  <button class="theme-toggle" id="theme-toggle" title="切換亮/暗色主題">
+    <span class="icon-dark">🌙</span><span class="icon-light">☀️</span>
+  </button>
 </div>
 
 <main id="app"></main>
@@ -569,6 +699,7 @@ const state = {
   listType: null,
   listKey: null,
   query: '',
+  dsFilter: '',  // dataset filter inside category-view
 };
 
 function navigate(view, opts = {}) {
@@ -576,9 +707,12 @@ function navigate(view, opts = {}) {
   state.listType = opts.listType || null;
   state.listKey = opts.listKey || null;
   state.query = '';
+  state.dsFilter = opts.dsFilter || '';
   let hash = '';
-  if (view === 'list') hash = `${view}/${opts.listType}/${encodeURIComponent(opts.listKey || '')}`;
-  else if (view !== 'home') hash = view;
+  if (view === 'list') {
+    hash = `${view}/${opts.listType}/${encodeURIComponent(opts.listKey || '')}`;
+    if (state.dsFilter) hash += '/' + encodeURIComponent(state.dsFilter);
+  } else if (view !== 'home') hash = view;
   history.replaceState(null, '', hash ? '#' + hash : '#');
   render();
 }
@@ -588,12 +722,13 @@ function parseHash() {
   const h = location.hash.replace(/^#/, '');
   if (!h) { state.view = 'home'; render(); return; }
   const parts = h.split('/');
-  if (parts[0] === 'ad' || parts[0] === 'od') {
+  if (['ad','od','cls','as'].includes(parts[0])) {
     state.view = parts[0];
   } else if (parts[0] === 'list' && parts[1]) {
     state.view = 'list';
     state.listType = parts[1];
     state.listKey = decodeURIComponent(parts[2] || '');
+    state.dsFilter = parts[3] ? decodeURIComponent(parts[3]) : '';
   } else {
     state.view = 'home';
   }
@@ -601,37 +736,79 @@ function parseHash() {
 }
 
 /* ====== Renderers ====== */
+function homeLink() { return '<a data-nav="home">首頁</a>'; }
+
 function render() {
   const app = document.getElementById('app');
   const back = document.getElementById('back');
   const crumb = document.getElementById('crumb');
   const title = document.getElementById('page-title');
+  const areaSel = document.getElementById('area-selector');
 
   if (state.view === 'home') {
     back.style.display = 'none';
     title.textContent = '視覺檢測 SOTA 文獻檢視器';
     crumb.innerHTML = '請選擇研究領域';
+    if (areaSel) areaSel.value = '';
     app.innerHTML = renderHome();
   } else if (state.view === 'ad') {
     back.style.display = '';
     back.onclick = () => navigate('home');
     title.textContent = 'Anomaly Detection (異常檢測)';
-    crumb.innerHTML = '<b>首頁</b> ▸ Anomaly Detection';
+    crumb.innerHTML = `${homeLink()} ▸ Anomaly Detection`;
+    if (areaSel) areaSel.value = 'ad';
     app.innerHTML = renderADMenu();
   } else if (state.view === 'od') {
     back.style.display = '';
     back.onclick = () => navigate('home');
     title.textContent = 'Object Detection (物件偵測)';
-    crumb.innerHTML = '<b>首頁</b> ▸ Object Detection';
+    crumb.innerHTML = `${homeLink()} ▸ Object Detection`;
+    if (areaSel) areaSel.value = 'od';
     app.innerHTML = renderODMenu();
+  } else if (state.view === 'cls') {
+    back.style.display = '';
+    back.onclick = () => navigate('home');
+    title.textContent = 'Classification (影像分類)';
+    crumb.innerHTML = `${homeLink()} ▸ Classification`;
+    if (areaSel) areaSel.value = 'cls';
+    app.innerHTML = renderClsPlaceholder();
+  } else if (state.view === 'as') {
+    back.style.display = '';
+    back.onclick = () => navigate('home');
+    title.textContent = 'Anomaly Synthesis (影像異常合成)';
+    crumb.innerHTML = `${homeLink()} ▸ Anomaly Synthesis`;
+    if (areaSel) areaSel.value = 'as';
+    app.innerHTML = renderASPlaceholder();
   } else if (state.view === 'list') {
     back.style.display = '';
     const isOD = state.listType && state.listType.startsWith('od-');
     back.onclick = () => navigate(isOD ? 'od' : 'ad');
     title.textContent = isOD ? 'Object Detection' : 'Anomaly Detection';
+    crumb.innerHTML = `${homeLink()} ▸ <a data-nav="${isOD ? 'od' : 'ad'}">${isOD ? 'Object Detection' : 'Anomaly Detection'}</a> ▸ 列表`;
+    if (areaSel) areaSel.value = isOD ? 'od' : 'ad';
     app.innerHTML = renderList();
   }
   bindAfterRender();
+}
+
+function renderClsPlaceholder() {
+  return `
+    <div class="placeholder">
+      <h2>Classification (影像分類)</h2>
+      <p>本領域內容開發中。後續將整理 ImageNet / CIFAR-100 / CUB / iNaturalist 等資料集，以及 CNN / ViT / ConvNeXt / DINOv2 / SAM 系列方法的 SOTA 評測結果。</p>
+      <p style="font-size:12px">建議分類：Backbone-based（CNN / Hybrid / ViT）、Self-supervised pretraining、Fine-tuning strategy、Few-shot / Long-tailed Classification。</p>
+    </div>
+  `;
+}
+
+function renderASPlaceholder() {
+  return `
+    <div class="placeholder">
+      <h2>Anomaly Synthesis (影像異常合成)</h2>
+      <p>本領域內容開發中。後續將整理 DRAEM / GLASS / DualAnoDiff / RealNet / STAGE 等近分布異常生成方法，以及 Diffusion / GAN-based 缺陷合成研究。</p>
+      <p style="font-size:12px">建議分類：Image-level / Patch-level / Feature-level / Latent-level synthesis；Procedural defect、Diffusion-based、GAN-based。</p>
+    </div>
+  `;
 }
 
 function renderHome() {
@@ -654,7 +831,7 @@ function renderHome() {
       </div>
       <div class="contact">
         本網站持續整理各領域 SOTA 文獻與 Benchmark 評測結果，目前已上線 AD 與 OD，Classification 與 AS 將陸續更新。<br>
-        <b style="color:#cfd5e0">自動更新時程：</b>每週<b style="color:var(--accent)">三</b>與每週<b style="color:var(--accent)">五</b>凌晨 <b style="color:var(--accent)">02:00</b>，由系統自動由 arXiv 抓取最新 AD / OD 論文，依方法 based 與資料集分類後同步更新至本頁；All Papers 列表亦會一併更新。<br>
+        <b style="color:var(--text)">自動更新時程：</b>每週<b style="color:var(--accent)">三</b>與每週<b style="color:var(--accent)">五</b>凌晨 <b style="color:var(--accent)">02:00</b>，由系統自動由 arXiv 抓取最新 AD / OD 論文，依方法 based 與資料集分類後同步更新至本頁；All Papers 列表亦會一併更新。<br>
         若內容有誤或有任何建議，敬請來信指正：<a href="mailto:azaz31855@gmail.com">azaz31855@gmail.com</a>
       </div>
     </section>
@@ -788,7 +965,9 @@ function renderList() {
 
   if (listType === 'category') {
     const meta = AD_CATEGORIES.find(c => c.key === listKey);
-    rows = adSortByMetric(AD_RAW.filter(r => r.category === listKey));
+    let pool = AD_RAW.filter(r => r.category === listKey);
+    if (state.dsFilter) pool = pool.filter(r => r.dataset === state.dsFilter);
+    rows = adSortByMetric(pool);
     mode = 'ad-metrics';
     title = meta ? meta.label : listKey;
     subTitle = meta ? meta.en : '';
@@ -805,7 +984,9 @@ function renderList() {
     subTitle = '不分類別 / 資料集，依年月新→舊排序';
   } else if (listType === 'od-category') {
     const meta = OD_CATEGORIES.find(c => c.key === listKey);
-    rows = odSortByMetric(OD_DATA.rows.filter(r => r.category === listKey));
+    let pool = OD_DATA.rows.filter(r => r.category === listKey);
+    if (state.dsFilter) pool = pool.filter(r => r.dataset === state.dsFilter);
+    rows = odSortByMetric(pool);
     mode = 'od-metrics';
     title = meta ? meta.label : listKey;
     subTitle = meta ? meta.desc : '';
@@ -884,12 +1065,31 @@ function renderList() {
       : filtered.map((r, i) => renderODRowAll(r, i)).join('');
   }
 
+  // Optional dataset-filter dropdown (only for category views, where same model can recur across datasets)
+  let dsFilterHtml = '';
+  if (listType === 'category') {
+    const datasetsInPool = [...new Set(AD_RAW.filter(r => r.category === listKey).map(r => r.dataset))].sort();
+    dsFilterHtml = `
+      <select class="search" id="ds-filter" title="篩選資料集">
+        <option value="">全部資料集 (${datasetsInPool.length})</option>
+        ${datasetsInPool.map(d => `<option value="${escapeHtml(d)}" ${state.dsFilter === d ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('')}
+      </select>`;
+  } else if (listType === 'od-category') {
+    const datasetsInPool = [...new Set(OD_DATA.rows.filter(r => r.category === listKey).map(r => r.dataset))].sort();
+    dsFilterHtml = `
+      <select class="search" id="ds-filter" title="篩選資料集">
+        <option value="">全部資料集 (${datasetsInPool.length})</option>
+        ${datasetsInPool.map(d => `<option value="${escapeHtml(d)}" ${state.dsFilter === d ? 'selected' : ''}>${escapeHtml(d)}</option>`).join('')}
+      </select>`;
+  }
+
   return `
     <div class="list-header">
       <h2>${escapeHtml(title)}</h2>
       ${subTitle ? `<span class="pill">${escapeHtml(subTitle)}</span>` : ''}
       <span class="pill">${filtered.length} 筆</span>
       <span class="pill">${escapeHtml(sortHint)}</span>
+      ${dsFilterHtml}
       <input class="search" id="search" type="search" placeholder="搜尋方法 / 作者 / 備註…" value="${escapeHtml(state.query)}" />
     </div>
     <div class="table-wrap">
@@ -1015,8 +1215,50 @@ function bindAfterRender() {
       }
     });
   }
+  const dsf = document.getElementById('ds-filter');
+  if (dsf) {
+    dsf.addEventListener('change', e => {
+      state.dsFilter = e.target.value;
+      const app = document.getElementById('app');
+      app.innerHTML = renderList();
+      bindAfterRender();
+      // Update URL hash to keep filter
+      let hash = `list/${state.listType}/${encodeURIComponent(state.listKey)}`;
+      if (state.dsFilter) hash += '/' + encodeURIComponent(state.dsFilter);
+      history.replaceState(null, '', '#' + hash);
+    });
+  }
 }
 
+/* ====== Topbar controls (persistent across renders) ====== */
+function initTopbarControls() {
+  // Theme toggle (persisted in localStorage)
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  const tt = document.getElementById('theme-toggle');
+  if (tt) {
+    tt.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      if (cur === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  }
+  // Area selector (always visible in topbar)
+  const sel = document.getElementById('area-selector');
+  if (sel) {
+    sel.addEventListener('change', e => {
+      const v = e.target.value;
+      if (v) navigate(v);
+    });
+  }
+}
+
+initTopbarControls();
 parseHash();
 </script>
 

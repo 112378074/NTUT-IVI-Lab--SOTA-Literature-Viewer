@@ -9,8 +9,9 @@ source files, regenerates the data inside `index.html`, and pushes to GitHub
 
 | File | Purpose |
 | --- | --- |
-| `update_papers.py` | Main script. Fetches arXiv → classifies → appends rows → regenerates JSON → injects HTML → `git push`. |
+| `update_papers.py` | Main script. Fetches arXiv → classifies → appends rows → regenerates JSON → injects HTML → `git push` → email notification. |
 | `run_update.bat`   | Windows wrapper invoked by Task Scheduler. Logs to `update_log.txt`. |
+| `.env`             | SMTP credentials for email notification (gitignored). Copy `.env.example` and fill in. |
 | `update_log.txt`   | Append-only run log (auto-created on first run). |
 
 ## Manual usage
@@ -24,9 +25,38 @@ python scripts\update_papers.py --dry
 # 2. Update files but skip git push (good for first verification)
 python scripts\update_papers.py --no-push
 
-# 3. Full run (Excel + HTML update, then git push)
+# 3. Full run (Excel + HTML update, then git push, then email)
 python scripts\update_papers.py
+
+# 4. Skip email this run
+python scripts\update_papers.py --no-email
 ```
+
+## Email notification setup
+
+After every scheduled run the script sends a summary email listing the new
+papers (AD + OD), with arXiv links and the classification it picked. Setup:
+
+1. **Enable 2-Step Verification** on the Gmail account (required by Google
+   to use SMTP App Passwords): https://myaccount.google.com/security
+2. **Generate an App Password**: https://myaccount.google.com/apppasswords —
+   select "Mail" + "Windows Computer". Copy the 16-character password.
+3. **Create `scripts/.env`** by copying `scripts/.env.example` and filling
+   in `SMTP_PASSWORD` (and `SMTP_USER` / `NOTIFY_TO` if different):
+
+   ```
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_USER=azaz31855@gmail.com
+   SMTP_PASSWORD=xxxxxxxxxxxxxxxx
+   NOTIFY_TO=azaz31855@gmail.com
+   ```
+
+4. **Test it**: `python scripts\update_papers.py --no-push` once. If you
+   added papers, you should receive the notification email.
+
+If `.env` is missing or `SMTP_PASSWORD` is empty, the script logs
+`email skipped` and continues — the rest of the pipeline still runs.
 
 ## How classification works
 

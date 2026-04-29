@@ -13,9 +13,12 @@ Usage:
     python update_papers.py --no-push # update files but skip git push
 """
 
-import os, sys, json, re, time, argparse, subprocess, ssl
+import os, sys, json, re, time, argparse, subprocess, ssl, smtplib
 import urllib.request, urllib.parse
 import xml.etree.ElementTree as ET
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.utils import formatdate, make_msgid
 
 # Resolve SSL: prefer certifi's CA bundle (works in Anaconda/Windows where
 # the default urllib doesn't always find a usable trust store).
@@ -41,6 +44,7 @@ INDEX_HTML  = PROJECT_DIR / 'index.html'
 AD_JSON     = PROJECT_DIR / 'papers_data.json'
 OD_JSON     = PROJECT_DIR / 'od_data.json'
 LOG_FILE    = PROJECT_DIR / 'scripts' / 'update_log.txt'
+ENV_FILE    = PROJECT_DIR / 'scripts' / '.env'
 
 ARXIV_API = 'http://export.arxiv.org/api/query'
 ATOM_NS   = '{http://www.w3.org/2005/Atom}'
@@ -409,6 +413,151 @@ def reinject_html(ad_data, od_data):
     INDEX_HTML.write_text(new_html, encoding='utf-8')
 
 # ====================================================================
+# Email notification
+# ====================================================================
+def load_env(path):
+    """Read simple KEY=VALUE pairs from a .env file (no quoting / interpolation)."""
+    cfg = {}
+    if not path.exists():
+        return cfg
+    for line in path.read_text(encoding='utf-8').splitlines():
+        line = line.strip()
+        if not line or line.startswith('#') or '=' not in line:
+            continue
+        k, v = line.split('=', 1)
+        cfg[k.strip()] = v.strip().strip('"').strip("'")
+    return cfg
+
+def render_email_body(new_ad, new_od, ran_at, pushed):
+    """Plain-text body listing the new papers."""
+    lines = []
+    lines.append(f'NTUT 自動化檢測實驗室 — 文獻自動更新通知')
+    lines.append(f'執行時間: {ran_at}')
+    lines.append(f'本次新增: AD {len(new_ad)} 篇 / OD {len(new_od)} 篇')
+    lines.append(f'GitHub 推送: {"成功" if pushed else "未推送"}')
+    lines.append('')
+    lines.append('=' * 64)
+    lines.append('Anomaly Detection 新增論文')
+    lines.append('=' * 64)
+    if new_ad:
+        for i, p in enumerate(new_ad, 1):
+            lines.append(f'{i:>2}. [{p["dataset"]} | {p["category"]}]')
+            lines.append(f'    {p["title"]}')
+            if p.get('authors'):
+                lines.append(f'    Authors : {p["authors"]}')
+            lines.append(f'    arXiv   : {p["link"]}')
+            lines.append(f'    Date    : {p["date"]}')
+            lines.append('')
+    else:
+        lines.append('  (本次無新增)')
+        lines.append('')
+
+    lines.append('=' * 64)
+    lines.append('Object Detection 新增論文')
+    lines.append('=' * 64)
+    if new_od:
+        for i, p in enumerate(new_od, 1):
+            lines.append(f'{i:>2}. [{p["dataset"]} | {p["category"]}]')
+            lines.append(f'    {p["title"]}')
+            if p.get('authors'):
+                lines.append(f'    Authors : {p["authors"]}')
+            lines.append(f'    arXiv   : {p["link"]}')
+            lines.append(f'    Date    : {p["date"]}')
+            lines.append('')
+    else:
+        lines.append('  (本次無新增)')
+        lines.append('')
+
+    lines.append('-' * 64)
+    lines.append('提示: 自動分類為 best-effort 啟發式, 指標數字 (AUROC / mAP 等)')
+    lines.append('需手動填入。請參閱 scripts/update_log.txt 確認分類正確。')
+    lines.append('網站: https://112378074.github.io/NTUT-IVI-Lab--SOTA-Literature-Viewer/')
+    return '\n'.join(lines)
+
+def render_email_html(new_ad, new_od, ran_at, pushed):
+    def section(title, papers, cat_color):
+        if not papers:
+            return f'<h3 style="color:#0f172a">{title}</h3><p style="color:#64748b">本次無新增</p>'
+        rows = ''
+        for i, p in enumerate(papers, 1):
+            rows += (f'<tr style="border-top:1px solid #e2e8f0">'
+                     f'<td style="padding:8px;color:#64748b;width:32px;text-align:right">{i}</td>'
+                     f'<td style="padding:8px">'
+                     f'<div style="font-weight:600;color:#0f172a">{p["title"]}</div>'
+                     f'<div style="color:#475569;font-size:13px;margin-top:2px">'
+                     f'<span style="background:{cat_color};color:#fff;padding:1px 7px;border-radius:10px;font-size:11px;margin-right:6px">{p["category"]}</span>'
+                     f'<span style="background:#e2e8f0;color:#334155;padding:1px 7px;border-radius:10px;font-size:11px;margin-right:6px">{p["dataset"]}</span>'
+                     f'<span style="color:#64748b">{p["date"]}</span></div>'
+                     f'<div style="color:#64748b;font-size:12px;margin-top:4px">'
+                     f'{(p.get("authors") or "")[:120]}</div>'
+                     f'<div style="margin-top:4px"><a href="{p["link"]}" style="color:#2563eb;font-size:12px">arXiv ↗</a></div>'
+                     f'</td></tr>')
+        return (f'<h3 style="color:#0f172a;margin-bottom:8px">{title}</h3>'
+                f'<table style="width:100%;border-collapse:collapse;background:#fff;'
+                f'border:1px solid #e2e8f0;border-radius:8px;overflow:hidden">{rows}</table>')
+
+    push_pill = ('<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:10px;font-size:12px">已推送 GitHub</span>'
+                 if pushed
+                 else '<span style="background:#fef3c7;color:#854d0e;padding:2px 8px;border-radius:10px;font-size:12px">未推送</span>')
+    html = f'''<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;background:#f6f8fc;padding:20px;color:#1a2233">
+<div style="max-width:780px;margin:0 auto">
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">
+    <div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px">NTUT · IIM · Automated Inspection Lab</div>
+    <h2 style="margin:0 0 6px;color:#0f172a">文獻自動更新通知</h2>
+    <div style="color:#64748b;font-size:13px">執行時間 {ran_at} · 新增 AD {len(new_ad)} 篇 / OD {len(new_od)} 篇 · {push_pill}</div>
+  </div>
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">
+    {section("Anomaly Detection 新增論文", new_ad, "#2563eb")}
+  </div>
+  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">
+    {section("Object Detection 新增論文", new_od, "#7c3aed")}
+  </div>
+  <div style="color:#64748b;font-size:12px;text-align:center;line-height:1.6;padding:8px 0 16px">
+    自動分類為 best-effort 啟發式; 指標數字需手動填入。<br>
+    <a href="https://112378074.github.io/NTUT-IVI-Lab--SOTA-Literature-Viewer/" style="color:#2563eb">前往網站</a>
+  </div>
+</div></body></html>'''
+    return html
+
+def send_notification(new_ad, new_od, ran_at, pushed):
+    cfg = load_env(ENV_FILE)
+    host = cfg.get('SMTP_HOST', 'smtp.gmail.com')
+    port = int(cfg.get('SMTP_PORT', '587'))
+    user = cfg.get('SMTP_USER', '')
+    pwd  = cfg.get('SMTP_PASSWORD', '')
+    to   = cfg.get('NOTIFY_TO', 'azaz31855@gmail.com')
+
+    if not user or not pwd:
+        log(f'  email skipped: SMTP_USER / SMTP_PASSWORD not set in {ENV_FILE}')
+        return False
+
+    subject = f'[AIL Auto-Update] +{len(new_ad)} AD / +{len(new_od)} OD ({datetime.now().strftime("%Y-%m-%d")})'
+    text = render_email_body(new_ad, new_od, ran_at, pushed)
+    html = render_email_html(new_ad, new_od, ran_at, pushed)
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject
+    msg['From']    = user
+    msg['To']      = to
+    msg['Date']    = formatdate(localtime=True)
+    msg['Message-ID'] = make_msgid()
+    msg.attach(MIMEText(text, 'plain', 'utf-8'))
+    msg.attach(MIMEText(html, 'html',  'utf-8'))
+
+    try:
+        with smtplib.SMTP(host, port, timeout=30) as s:
+            s.ehlo()
+            s.starttls(context=SSL_CTX)
+            s.ehlo()
+            s.login(user, pwd)
+            s.sendmail(user, [to], msg.as_string())
+        log(f'  email sent to {to}')
+        return True
+    except Exception as e:
+        log(f'  email send failed: {type(e).__name__}: {e}')
+        return False
+
+# ====================================================================
 # Git push
 # ====================================================================
 def git_push(message):
@@ -436,7 +585,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dry', action='store_true', help='Fetch and classify only; no writes')
     parser.add_argument('--no-push', action='store_true', help='Skip git push')
+    parser.add_argument('--no-email', action='store_true', help='Skip email notification')
     args = parser.parse_args()
+    ran_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     log('=' * 60)
     log(f'Run start (mode={"dry" if args.dry else "full"})')
@@ -493,6 +644,8 @@ def main():
 
     if not new_ad and not new_od:
         log('No new papers found — nothing to update')
+        if not args.no_email:
+            send_notification([], [], ran_at, pushed=False)
         return 0
 
     # 4. Append AD rows
@@ -523,9 +676,14 @@ def main():
     log(f'Regenerated: {len(ad_data)} AD records, {len(od_data["all_papers"])} OD methods, {len(od_data["rows"])} OD rows')
 
     # 7. Git push
+    pushed = False
     if not args.no_push:
         msg = f'auto: +{len(new_ad)} AD / +{len(new_od)} OD papers ({datetime.now().strftime("%Y-%m-%d")})'
-        git_push(msg)
+        pushed = git_push(msg)
+
+    # 8. Email notification
+    if not args.no_email:
+        send_notification(new_ad, new_od, ran_at, pushed)
 
     log('Run complete')
     return 0
