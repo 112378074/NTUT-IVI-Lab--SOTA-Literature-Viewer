@@ -49,20 +49,82 @@ ENV_FILE    = PROJECT_DIR / 'scripts' / '.env'
 ARXIV_API = 'http://export.arxiv.org/api/query'
 ATOM_NS   = '{http://www.w3.org/2005/Atom}'
 
-# Search queries — keep small to stay polite to arXiv
+# Search queries — derived from CLAUDE.md (AD) and CLAUDE_updated.md (OD).
+# Polite to arXiv: 5s sleep between queries, 60s timeout, 3 retries.
+
 AD_QUERIES = [
+    # Core AD topics
     'cat:cs.CV+AND+%28all:%22industrial+anomaly+detection%22+OR+all:%22visual+anomaly+detection%22%29',
+    'cat:cs.CV+AND+all:%22anomaly+detection+and+localization%22',
+    'cat:cs.CV+AND+all:%22surface+defect+detection%22',
+    'cat:cs.CV+AND+all:%22defect+localization%22',
+    'cat:cs.CV+AND+all:%22anomaly+segmentation%22',
+    # Datasets
     'cat:cs.CV+AND+all:%22MVTec%22+AND+all:%22anomaly%22',
     'cat:cs.CV+AND+all:%22VisA%22+AND+all:%22anomaly%22',
     'cat:cs.CV+AND+all:%22Real-IAD%22',
     'cat:cs.CV+AND+all:%22MVTec+LOCO%22',
+    'cat:cs.CV+AND+all:%22MVTec+AD+2%22',
+    'cat:cs.CV+AND+all:%22MVTec+3D%22',
+    'cat:cs.CV+AND+all:%22MPDD%22+AND+all:%22anomaly%22',
+    'cat:cs.CV+AND+all:%22BTAD%22+AND+all:%22anomaly%22',
+    # Method angles
+    'cat:cs.CV+AND+all:%22zero-shot+anomaly%22',
+    'cat:cs.CV+AND+all:%22few-shot+anomaly%22',
+    'cat:cs.CV+AND+all:%22logical+anomaly%22',
+    'cat:cs.CV+AND+%28all:%22DINOv2%22+OR+all:%22CLIP%22%29+AND+all:%22anomaly%22',
+    'cat:cs.CV+AND+%28all:%22foundation+model%22+OR+all:%22vision-language%22%29+AND+all:%22anomaly%22',
+    'cat:cs.CV+AND+%28all:%22diffusion%22+OR+all:%22normalizing+flow%22%29+AND+all:%22anomaly+detection%22',
+    # Recent strong baselines
+    'cat:cs.CV+AND+all:%22Dinomaly%22',
+    'cat:cs.CV+AND+all:%22EfficientAD%22',
+    'cat:cs.CV+AND+all:%22PatchCore%22',
+    'cat:cs.CV+AND+all:%22GLASS%22+AND+all:%22anomaly%22',
 ]
+
 OD_QUERIES = [
-    'cat:cs.CV+AND+all:%22object+detection%22',
-    'cat:cs.CV+AND+%28all:%22YOLO%22+OR+all:%22RT-DETR%22%29',
+    # General OD
+    'cat:cs.CV+AND+all:%22object+detection%22+AND+all:%22COCO%22',
+    'cat:cs.CV+AND+all:%22DETR%22',
+    'cat:cs.CV+AND+all:%22Co-DETR%22',
+    'cat:cs.CV+AND+all:%22Relation-DETR%22',
+    # YOLO family aliases (CLAUDE_updated.md §2.3 alias rule)
+    'cat:cs.CV+AND+%28all:%22YOLO26%22+OR+all:%22YOLOv26%22%29',
+    'cat:cs.CV+AND+all:%22YOLOv13%22',
+    'cat:cs.CV+AND+all:%22YOLOv12%22',
+    'cat:cs.CV+AND+all:%22RT-DETR%22',
+    'cat:cs.CV+AND+all:%22D-FINE%22+AND+all:%22detection%22',
+    'cat:cs.CV+AND+all:%22DEIM%22+AND+all:%22detection%22',
+    'cat:cs.CV+AND+%28all:%22RF-DETR%22+OR+all:%22RFDETR%22%29',
+    'cat:cs.CV+AND+all:%22RTMDet%22',
+    # Real-Time OD generally
+    'cat:cs.CV+AND+all:%22real-time+object+detection%22',
+    # Salient OD
     'cat:cs.CV+AND+all:%22salient+object+detection%22',
+    'cat:cs.CV+AND+all:%22BiRefNet%22',
+    'cat:cs.CV+AND+all:%22InSPyReNet%22',
+    # Few-Shot OD
     'cat:cs.CV+AND+%28all:%22few-shot+object+detection%22+OR+all:%22open-vocabulary+detection%22%29',
+    'cat:cs.CV+AND+all:%22Grounding+DINO%22',
+    'cat:cs.CV+AND+all:%22CD-ViTO%22',
+    'cat:cs.CV+AND+all:%22UniFS%22',
+    'cat:cs.CV+AND+all:%22ODinW%22',
 ]
+
+# CLAUDE_updated.md §4: hard-exclude 3D / LiDAR / BEV / point-cloud / medical /
+# autonomous-driving 3D / segmentation-only / tracking-only.
+OD_EXCLUSION_KEYWORDS = [
+    '3d object detection', '3d detection',
+    'lidar', 'point cloud', 'point-cloud', 'pointcloud',
+    'bev ', 'bird\'s-eye-view', "bird's eye view", 'birds-eye-view',
+    'kitti 3d', 'nuscenes', 'waymo 3d',
+    'multi-modal 3d', 'camera-only 3d',
+    'medical image', 'lesion detection', 'tumor detection', 'polyp detection',
+    'autonomous driving 3d',
+]
+def is_od_excluded(text):
+    t = text.lower()
+    return any(kw in t for kw in OD_EXCLUSION_KEYWORDS)
 
 # AD category classification (priority order)
 AD_CATEGORIES_BY_KEYWORDS = [
@@ -90,33 +152,66 @@ AD_DATASETS_BY_PATTERNS = [
 ]
 AD_DEFAULT_DATASET = 'MVTec AD'
 
-# OD category classification
+# OD category classification — by alias / topic keywords. CLAUDE_updated.md §3.
 OD_CATEGORIES_BY_KEYWORDS = [
-    ('Real-Time OD',   ['real-time', 'real time detection', 'yolo', 'rt-detr', 'streaming detection']),
-    ('RGB Salient OD', ['salient object detection', 'saliency detection', 'sod ', 'salient mask']),
-    ('Few-Shot OD',    ['few-shot', 'zero-shot detection', 'open-vocabulary', 'open vocabulary',
-                        'open-set', 'class-incremental', 'incremental detection', 'fsod']),
+    ('Few-Shot OD',    ['few-shot object detection', 'fsod', 'novel ap', 'base-to-novel',
+                        'open-vocabulary detection', 'open vocabulary detection',
+                        'open-vocabulary object detection', 'open-set detection',
+                        'class-incremental detection', 'k-shot detection',
+                        'cd-vito', 'unifs', 'grounding dino', 'odinw']),
+    ('RGB Salient OD', ['salient object detection', 'saliency detection',
+                        'salient region', 'birefnet', 'inspyrenet', 'duts-te',
+                        'dut-omron', 'high-resolution salient']),
+    ('Real-Time OD',   ['real-time object detection', 'real-time detection',
+                        'yolo', 'rt-detr', 'rtdetr', 'd-fine', 'dfine ',
+                        'deim ', 'rf-detr', 'rfdetr',
+                        'rtmdet', 'efficientdet', 'nanodet', 'mobiledet',
+                        'real time detector', 'streaming detection',
+                        'edge detection', 'lightweight detection']),
 ]
 OD_DEFAULT_CATEGORY = 'General OD'
 
 # OD dataset detection (subset — only the ones already in workbook)
 OD_DATASETS_BY_PATTERNS = [
-    ('COCO test-dev',  [r'coco\s*test-dev']),
-    ('COCO 2017 val',  [r'coco\s*2017\s*val', r'coco-val', r'val2017']),
-    ('LVIS v1.0 val',  [r'\blvis\b']),
-    ('PASCAL VOC 2007',[r'pascal\s*voc\s*2007', r'\bvoc\s*2007']),
-    ('CrowdHuman',     [r'crowdhuman']),
-    ('ODinW-13',       [r'odinw-?13']),
-    ('ODinW-35',       [r'odinw-?35']),
-    ('DUTS-TE',        [r'duts-te', r'\bduts\b']),
-    ('DUT-OMRON',      [r'dut-omron']),
-    ('ECSSD',          [r'ecssd']),
-    ('HKU-IS',         [r'hku-is']),
-    ('PASCAL-S',       [r'pascal-s']),
-    ('HRSOD',          [r'hrsod']),
-    ('UHRSD',          [r'uhrsd']),
-    ('DAVIS-S',        [r'davis-s']),
-    ('CPPE-5',         [r'cppe-5']),
+    # Few-shot specific (most-specific first)
+    ('MS-COCO 30-shot',      [r'30-shot', r'30\s+shot']),
+    ('MS-COCO 10-shot',      [r'10-shot', r'10\s+shot']),
+    ('MS-COCO 5-shot',       [r'5-shot',  r'5\s+shot']),
+    ('MS-COCO 1-shot',       [r'1-shot',  r'1\s+shot', r'one-shot']),
+    ('PASCAL VOC 2007 15+5', [r'voc\s*15\+?5', r'15\+5\s*split']),
+    ('LVIS v1.0 test-dev',   [r'lvis\s*v?1\.?0?\s*test-dev', r'lvis.*test-dev']),
+    ('LVIS v1.0 val',        [r'\blvis\b']),
+    ('ODinW-35',             [r'odinw-?35']),
+    ('ODinW-13',             [r'odinw-?13']),
+    ('COCO 2017 FSOD',       [r'coco.*fsod', r'fsod.*coco']),
+    # General OD
+    ('COCO test-dev',        [r'coco\s*test-?dev', r'\btest-dev\b']),
+    ('COCO minival',         [r'coco\s*minival', r'\bminival\b']),
+    ('COCO-O',               [r'coco-o\b']),
+    ('COCO 2017 val',        [r'coco\s*2017\s*val', r'coco-val', r'val2017']),
+    ('COCO 2017',            [r'coco\s*2017']),
+    ('PASCAL VOC 2007',      [r'pascal\s*voc\s*2007', r'\bvoc\s*2007']),
+    ('CrowdHuman',           [r'crowdhuman']),
+    ('GraZPEDWRI-DX',        [r'grazpedwri', r'pedwri']),
+    ('CPPE-5',               [r'cppe-5', r'\bcppe\b']),
+    ('Waymo 2D',             [r'waymo\s*2d']),
+    # Argoverse-HD splits (most-specific first)
+    ('Argoverse-HD FS Test', [r'argoverse.*full-stack.*test']),
+    ('Argoverse-HD DO Test', [r'argoverse.*detection-only.*test']),
+    ('Argoverse-HD FS Val',  [r'argoverse.*full-stack']),
+    ('Argoverse-HD DO Val',  [r'argoverse']),
+    # Salient OD
+    ('DUTS-TE',              [r'duts-te', r'\bduts\b']),
+    ('DUT-OMRON',            [r'dut-omron', r'omron']),
+    ('ECSSD',                [r'ecssd']),
+    ('HKU-IS',               [r'hku-is']),
+    ('PASCAL-S',             [r'pascal-s']),
+    ('HRSOD',                [r'\bhrsod\b']),
+    ('UHRSD',                [r'\buhrsd\b']),
+    ('DAVIS-S',              [r'davis-s']),
+    ('SBU-Refine',           [r'sbu-refine']),
+    ('ISTD',                 [r'\bistd\b']),
+    ('CAMO-FS',              [r'camo-fs']),
 ]
 OD_DEFAULT_DATASET = 'COCO 2017 val'
 
@@ -618,7 +713,7 @@ def main():
     for p in new_ad:
         log(f'  AD + [{p["dataset"]}|{p["category"]}] {p["title"][:80]}')
 
-    # 3. Fetch + classify OD
+    # 3. Fetch + classify OD (exclude 3D / LiDAR / BEV / medical per CLAUDE_updated.md §4)
     new_od = []
     for q in OD_QUERIES:
         root = fetch_arxiv(q)
@@ -627,6 +722,9 @@ def main():
             if e['arxiv_id'] in od_ids:          continue
             if not is_within_window(e['published'], LOOKBACK_DAYS): continue
             text = e['title'] + ' ' + e['summary']
+            if is_od_excluded(text):
+                log(f'  OD - skipped (excluded topic): {e["title"][:80]}')
+                continue
             cat = classify_category(text, OD_CATEGORIES_BY_KEYWORDS) or OD_DEFAULT_CATEGORY
             ds  = detect_dataset(text, OD_DATASETS_BY_PATTERNS)   or OD_DEFAULT_DATASET
             method = e['title'][:90]
