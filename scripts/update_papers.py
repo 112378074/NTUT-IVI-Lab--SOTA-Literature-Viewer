@@ -62,8 +62,8 @@ AD_QUERIES = [
 ]
 
 OD_QUERIES = [
-    # Single broad OD query: detection + COCO/LVIS/DUTS/ODinW + key model tokens
-    'cat:cs.CV+AND+%28all:%22object+detection%22+OR+all:%22salient+object%22+OR+all:%22few-shot+detection%22+OR+all:%22YOLO%22+OR+all:%22DETR%22%29',
+    # Broad OD query: detection + COCO/LVIS/DUTS/ODinW + key model tokens (incl. 3D as sub-area)
+    'cat:cs.CV+AND+%28all:%22object+detection%22+OR+all:%22salient+object%22+OR+all:%22few-shot+detection%22+OR+all:%22YOLO%22+OR+all:%22DETR%22+OR+all:%223D+object+detection%22+OR+all:%22LiDAR%22%29',
 ]
 
 CLS_QUERIES = [
@@ -76,17 +76,11 @@ AS_QUERIES = [
     'cat:cs.CV+AND+%28all:%22anomaly+synthesis%22+OR+all:%22synthetic+anomaly%22+OR+all:%22pseudo+anomaly%22+OR+all:%22defect+generation%22+OR+all:%22DRAEM%22+OR+all:%22GLASS%22+OR+all:%22DualAnoDiff%22%29',
 ]
 
-# CLAUDE_updated.md §4: hard-exclude 3D / LiDAR / BEV / point-cloud / medical /
-# autonomous-driving 3D / segmentation-only / tracking-only.
+# 3D OD is now a sub-area (per user spec).  Keep medical / segmentation-only /
+# tracking-only / adversarial / niche-domain exclusions.
 OD_EXCLUSION_KEYWORDS = [
-    '3d object detection', '3d detection', '3d bifurcation',
-    'lidar', 'point cloud', 'point-cloud', 'pointcloud',
-    'bev ', "bird's-eye-view", "bird's eye view", 'birds-eye-view',
-    'kitti 3d', 'nuscenes', 'waymo 3d',
-    'multi-modal 3d', 'camera-only 3d',
     'medical image', 'lesion detection', 'tumor detection', 'polyp detection',
     'tooth', 'caries', 'dental', 'retinal', 'airway-tree', 'cardiac',
-    'autonomous driving 3d',
     'sar object', 'remote sensing',
     'underwater', 'weed detection', 'pedestrian tracking',
     'adversarial patch', 'adversarial attack',
@@ -900,7 +894,7 @@ def render_email_html(new_ad, new_od, ran_at, pushed):
     html = f'''<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;background:#f6f8fc;padding:20px;color:#1a2233">
 <div style="max-width:780px;margin:0 auto">
   <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">
-    <div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px">NTUT · IIM · Automated Inspection Lab</div>
+    <div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px">NTUT · IEM · Automated Visual Inspection System Lab</div>
     <h2 style="margin:0 0 6px;color:#0f172a">文獻自動更新通知</h2>
     <div style="color:#64748b;font-size:13px">執行時間 {ran_at} · 新增 AD {len(new_ad)} 篇 / OD {len(new_od)} 篇 · {push_pill}</div>
   </div>
@@ -969,7 +963,7 @@ def render_email_html_v2(new_ad, new_od, new_cls, new_as, ran_at, pushed):
     return ('<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Arial,sans-serif;background:#f6f8fc;padding:20px;color:#1a2233">'
             '<div style="max-width:780px;margin:0 auto">'
             '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px">'
-            '<div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px">NTUT · IIM · Automated Inspection Lab</div>'
+            '<div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:8px">NTUT · IEM · Automated Visual Inspection System Lab</div>'
             '<h2 style="margin:0 0 6px;color:#0f172a">文獻自動更新通知</h2>'
             f'<div style="color:#64748b;font-size:13px">執行時間 {ran_at}</div>'
             f'<div style="color:#64748b;font-size:13px;margin-top:6px">本次新增 AD {len(new_ad)} / OD {len(new_od)} / CLS {len(new_cls)} / AS {len(new_as)} · {push_pill}</div>'

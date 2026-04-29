@@ -245,6 +245,62 @@
   }
   .search-item .search-links { margin-top: 6px; display: flex; gap: 6px; }
 
+  /* Sub-area page: dataset cards with best-model preview */
+  .subarea-page { max-width: 1300px; margin: 0 auto; }
+  .subarea-header { margin: 0 auto 18px; max-width: 1200px; }
+  .subarea-header h2 { margin: 0 0 4px; font-size: 22px; }
+  .subarea-header .subarea-desc { color: var(--muted); font-size: 13px; }
+  .ds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .ds-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left-width: 4px;
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .ds-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+  .ds-card.cat-recon { border-left-color: var(--c-recon); }
+  .ds-card.cat-nf    { border-left-color: var(--c-nf); }
+  .ds-card.cat-repr  { border-left-color: var(--c-repr); }
+  .ds-card.cat-aug   { border-left-color: var(--c-aug); }
+  .ds-card.cat-diff  { border-left-color: var(--c-diff); }
+  .ds-card.od-general  { border-left-color: var(--c-od-general); }
+  .ds-card.od-realtime { border-left-color: var(--c-od-realtime); }
+  .ds-card.od-salient  { border-left-color: var(--c-od-salient); }
+  .ds-card.od-fewshot  { border-left-color: var(--c-od-fewshot); }
+  .ds-card-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .ds-card .ds-name { font-weight: 600; font-size: 14px; color: var(--strong-text); }
+  .ds-card .ds-count { color: var(--muted); font-size: 12px; }
+  .ds-card .best-row { display: flex; gap: 8px; align-items: center; }
+  .ds-card .best-label { font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .ds-card .best-method { font-weight: 600; color: var(--strong-text); font-size: 14px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .ds-card .best-meta { color: var(--muted); font-size: 12px; }
+  .ds-card .best-meta b { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .ds-card .best-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .ds-card .best-empty { color: var(--muted); font-size: 12px; padding: 8px 0; font-style: italic; }
+  .see-all-btn {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: auto;
+    transition: border-color .12s, background-color .12s;
+  }
+  .see-all-btn:hover { border-color: var(--accent); background: var(--panel-3); }
+
   main { padding: 36px 32px 60px; }
 
   .home-grid {
@@ -673,6 +729,90 @@ const AS_CATEGORIES = [
   { key: 'Downstream Synthesis-based AD / Segmentation',                 label: 'Downstream AD',  desc: '下游 AD / 分割任務',            cls: 'cat-recon' },
 ];
 
+/* ====== Sub-area constants (task-based, per Papers with Code taxonomy) ====== */
+const AD_SUBAREAS = [
+  { key: 'anomaly-detection',              label: 'Anomaly Detection',              desc: '通用異常檢測 (umbrella)',           cls: 'cat-recon' },
+  { key: 'unsupervised-anomaly-detection', label: 'Unsupervised Anomaly Detection', desc: '非監督式異常檢測',                  cls: 'cat-nf' },
+  { key: 'one-class-anomaly-detection',    label: 'One-Class Anomaly Detection',    desc: '單類學習',                          cls: 'cat-repr' },
+  { key: 'supervised-anomaly-detection',   label: 'Supervised Anomaly Detection',   desc: '監督式 (帶異常標籤)',               cls: 'cat-aug' },
+  { key: 'graph-anomaly-detection',        label: 'Graph Anomaly Detection',        desc: '圖結構異常檢測 (網路 / 社交)',       cls: 'cat-diff' },
+];
+const AD_SUBAREA_DATASETS = {
+  'anomaly-detection':              ['MVTec AD', 'MVTec LOCO', 'MVTec AD 2', 'VisA', 'MPDD', 'BTAD', 'MVTec 3D'],
+  'unsupervised-anomaly-detection': ['MVTec AD', 'VisA', 'MPDD', 'BTAD', 'MVTec LOCO', 'MVTec AD 2', 'MVTec 3D'],
+  'one-class-anomaly-detection':    ['MVTec AD'],
+  'supervised-anomaly-detection':   ['MVTec AD'],
+  'graph-anomaly-detection':        [],
+};
+// Heuristic: most existing AD methods are unsupervised + general. Hand-classify exceptions in 備註.
+function adSubareasOfMethod(r) {
+  const txt = ((r.method || '') + ' ' + (r.notes || '') + ' ' + (r.category || '')).toLowerCase();
+  const out = ['anomaly-detection']; // umbrella always
+  if (/\bone[-\s]?class\b|\bsvdd\b|\bdeepsvdd\b/.test(txt))   out.push('one-class-anomaly-detection');
+  if (/\bsupervis/.test(txt) && !/un[-\s]?supervised/.test(txt))
+                                                              out.push('supervised-anomaly-detection');
+  if (/\bgraph\b|\bgnn\b/.test(txt) && /anomaly/.test(txt))   out.push('graph-anomaly-detection');
+  // Default: unsupervised (covers PatchCore / DRAEM / Dinomaly / GLASS / EfficientAD / RD4AD / etc.)
+  out.push('unsupervised-anomaly-detection');
+  return out;
+}
+
+const OD_SUBAREAS = [
+  { key: 'object-detection',              label: 'Object Detection',              desc: '通用 2D 物件偵測 (umbrella)',         cls: 'od-general' },
+  { key: '3d-object-detection',           label: '3D Object Detection',           desc: 'KITTI / nuScenes / Waymo 3D',           cls: 'cat-diff' },
+  { key: 'real-time-object-detection',    label: 'Real-Time Object Detection',    desc: 'YOLO / RT-DETR / 串流偵測',             cls: 'od-realtime' },
+  { key: 'rgb-salient-object-detection',  label: 'RGB Salient Object Detection',  desc: '顯著性 / 高解析 SOD',                   cls: 'od-salient' },
+  { key: 'few-shot-object-detection',     label: 'Few-Shot Object Detection',     desc: '少樣本 / 開放詞彙偵測',                 cls: 'od-fewshot' },
+];
+const OD_SUBAREA_DATASETS = {
+  'object-detection':             ['COCO test-dev','COCO minival','COCO 2017 val','COCO 2017','COCO-O','PASCAL VOC 2007','CrowdHuman','GraZPEDWRI-DX','CPPE-5','LVIS v1.0 val','LVIS v1.0 test-dev'],
+  '3d-object-detection':          ['KITTI 3D','nuScenes','Waymo 3D'],   // not yet in xlsx — populated by future runs
+  'real-time-object-detection':   ['Argoverse-HD FS Val','Argoverse-HD DO Val','Argoverse-HD DO Test','Argoverse-HD FS Test','COCO 2017 val'],
+  'rgb-salient-object-detection': ['DUTS-TE','DUT-OMRON','ECSSD','HKU-IS','PASCAL-S','HRSOD','UHRSD','DAVIS-S','SBU-Refine','ISTD','CAMO-FS'],
+  'few-shot-object-detection':    ['PASCAL VOC 2007 15+5','MS-COCO 1-shot','MS-COCO 5-shot','MS-COCO 10-shot','MS-COCO 30-shot','COCO 2017 FSOD','LVIS v1.0 val','LVIS v1.0 test-dev','ODinW-13','ODinW-35'],
+};
+// Map an OD row's category to one or more sub-areas.
+function odSubareasOfMethod(r) {
+  const cat = r.category || '';
+  const txt = ((r.method || '') + ' ' + (r.notes || '') + ' ' + cat).toLowerCase();
+  const out = ['object-detection']; // umbrella always
+  if (/\b3d\b/.test(txt) && /object detection|detector/.test(txt))  out.push('3d-object-detection');
+  if (cat === 'Real-Time OD'   || /\byolo|rt-detr|d-fine|deim|rf-detr|rtmdet|real[-\s]?time/.test(txt))
+                                                                    out.push('real-time-object-detection');
+  if (cat === 'RGB Salient OD' || /salient|saliency|birefnet|inspyrenet|duts|ecssd|dut-omron/.test(txt))
+                                                                    out.push('rgb-salient-object-detection');
+  if (cat === 'Few-Shot OD'    || /few[-\s]?shot|open[-\s]?vocabulary|odinw|cd-vito|grounding\s*dino/.test(txt))
+                                                                    out.push('few-shot-object-detection');
+  return out;
+}
+
+const CLS_SUBAREAS = [
+  { key: 'image-classification',              label: 'Image Classification',              desc: '通用影像分類 (umbrella)',          cls: 'od-general' },
+  { key: 'few-shot-image-classification',     label: 'Few-Shot Image Classification',     desc: '少樣本分類',                       cls: 'od-fewshot' },
+  { key: 'fine-grained-image-classification', label: 'Fine-Grained Image Classification', desc: '細粒度分類',                       cls: 'od-realtime' },
+  { key: 'semi-supervised-image-classification', label: 'Semi-Supervised Image Classification', desc: '半監督分類',                cls: 'cat-repr' },
+  { key: 'small-data-image-classification',   label: 'Small Data Image Classification',   desc: '小數據量分類',                     cls: 'cat-aug' },
+];
+const CLS_SUBAREA_DATASETS = {
+  'image-classification':              ['ImageNet-1K','ImageNet-V2','ImageNet-ReaL','ImageNet-A','ImageNet-R','ImageNet-Sketch','CIFAR-10','CIFAR-100','STL-10','Places365','Food-101','iNaturalist','iNaturalist 2018','ImageNet-LT','Places-LT','CIFAR-100-LT IF=100','CIFAR-10-LT IF=100'],
+  'few-shot-image-classification':     ['miniImageNet 5w-1s','miniImageNet 5w-5s','tieredImageNet 5w-1s','tieredImageNet 5w-5s','CIFAR-FS 5w-1s','CIFAR-FS 5w-5s','FC100 5w-1s','FC100 5w-5s','CUB few-shot 5w-1s','CUB few-shot 5w-5s'],
+  'fine-grained-image-classification': ['CUB-200-2011','Stanford Cars','FGVC-Aircraft','NABirds','Oxford Flowers-102','Stanford Dogs','Oxford-IIIT Pets','iNaturalist'],
+  'semi-supervised-image-classification': ['ImageNet-1K','STL-10','CIFAR-10','CIFAR-100'],
+  'small-data-image-classification':   ['CIFAR-100','CIFAR-10','STL-10'],
+};
+function clsSubareasOfMethod(r) {
+  const cat = r.category || '';
+  const out = [];
+  if (cat.includes('Few-Shot'))    out.push('few-shot-image-classification');
+  if (cat.includes('Fine-Grained')) out.push('fine-grained-image-classification');
+  // map long-tail / general / semi / small-data heuristically
+  const txt = ((r.method || '') + ' ' + (r.notes || '') + ' ' + cat).toLowerCase();
+  if (/semi[-\s]?supervis/.test(txt))           out.push('semi-supervised-image-classification');
+  if (/\bsmall[-\s]?data\b|low[-\s]?data/.test(txt)) out.push('small-data-image-classification');
+  out.push('image-classification'); // umbrella
+  return out;
+}
+
 /* ====== Helpers ====== */
 function adCategoryClass(cat) {
   if (!cat) return '';
@@ -804,7 +944,8 @@ const state = {
   listType: null,
   listKey: null,
   query: '',
-  dsFilter: '',  // dataset filter inside category-view
+  dsFilter: '',
+  subarea: '',
 };
 
 function navigate(view, opts = {}) {
@@ -812,11 +953,23 @@ function navigate(view, opts = {}) {
   state.listType = opts.listType || null;
   state.listKey = opts.listKey || null;
   state.dsFilter = opts.dsFilter || '';
+  state.subarea = opts.subarea || opts.key || '';
   if (view !== 'search') state.query = '';
   let hash = '';
   if (view === 'list') {
     hash = `${view}/${opts.listType}/${encodeURIComponent(opts.listKey || '')}`;
     if (state.dsFilter) hash += '/' + encodeURIComponent(state.dsFilter);
+  } else if (view === 'list-sub') {
+    // Sub-area list view: list/<type>/<subarea>/<dataset>
+    state.view = 'list';
+    state.listType = opts.listType;
+    state.subarea  = opts.subarea;
+    state.listKey  = opts.dataset;
+    hash = `list/${opts.listType}/${encodeURIComponent(opts.subarea)}/${encodeURIComponent(opts.dataset)}`;
+  } else if (view === 'ad-sub' || view === 'od-sub' || view === 'cls-sub') {
+    state.view = view;
+    state.subarea = opts.key || opts.subarea || '';
+    hash = `${view.replace('-sub','')}/${encodeURIComponent(state.subarea)}`;
   } else if (view === 'search') {
     state.query = opts.query || state.query || '';
     hash = 'search/' + encodeURIComponent(state.query);
@@ -830,16 +983,29 @@ function parseHash() {
   const h = location.hash.replace(/^#/, '');
   if (!h) { state.view = 'home'; render(); return; }
   const parts = h.split('/');
-  if (['ad','od','cls','as'].includes(parts[0])) {
+  if (['ad','od','cls'].includes(parts[0]) && parts[1]) {
+    // Sub-area page:  #ad/<subarea>
+    state.view = parts[0] + '-sub';
+    state.subarea = decodeURIComponent(parts[1]);
+  } else if (['ad','od','cls','as'].includes(parts[0])) {
     state.view = parts[0];
+    state.subarea = '';
   } else if (parts[0] === 'search') {
     state.view = 'search';
     state.query = decodeURIComponent(parts.slice(1).join('/') || '');
   } else if (parts[0] === 'list' && parts[1]) {
     state.view = 'list';
     state.listType = parts[1];
-    state.listKey = decodeURIComponent(parts[2] || '');
-    state.dsFilter = parts[3] ? decodeURIComponent(parts[3]) : '';
+    if (['ad-sub','od-sub','cls-sub'].includes(parts[1])) {
+      // Sub-area list view: list/<type>/<subarea>/<dataset>
+      state.subarea = decodeURIComponent(parts[2] || '');
+      state.listKey = decodeURIComponent(parts[3] || '');
+      state.dsFilter = '';
+    } else {
+      state.subarea = '';
+      state.listKey = decodeURIComponent(parts[2] || '');
+      state.dsFilter = parts[3] ? decodeURIComponent(parts[3]) : '';
+    }
   } else {
     state.view = 'home';
   }
@@ -883,6 +1049,30 @@ function render() {
     crumb.innerHTML = `${homeLink()} ▸ Classification`;
     if (areaSel) areaSel.value = 'cls';
     app.innerHTML = renderCLSMenu();
+  } else if (state.view === 'ad-sub') {
+    back.style.display = '';
+    back.onclick = () => navigate('ad');
+    const m = AD_SUBAREAS.find(s => s.key === state.subarea);
+    title.textContent = `AD · ${m ? m.label : state.subarea}`;
+    crumb.innerHTML = `${homeLink()} ▸ <a data-nav="ad">Anomaly Detection</a> ▸ ${escapeHtml(m ? m.label : state.subarea)}`;
+    if (areaSel) areaSel.value = 'ad';
+    app.innerHTML = renderSubareaPage('ad');
+  } else if (state.view === 'od-sub') {
+    back.style.display = '';
+    back.onclick = () => navigate('od');
+    const m = OD_SUBAREAS.find(s => s.key === state.subarea);
+    title.textContent = `OD · ${m ? m.label : state.subarea}`;
+    crumb.innerHTML = `${homeLink()} ▸ <a data-nav="od">Object Detection</a> ▸ ${escapeHtml(m ? m.label : state.subarea)}`;
+    if (areaSel) areaSel.value = 'od';
+    app.innerHTML = renderSubareaPage('od');
+  } else if (state.view === 'cls-sub') {
+    back.style.display = '';
+    back.onclick = () => navigate('cls');
+    const m = CLS_SUBAREAS.find(s => s.key === state.subarea);
+    title.textContent = `CLS · ${m ? m.label : state.subarea}`;
+    crumb.innerHTML = `${homeLink()} ▸ <a data-nav="cls">Classification</a> ▸ ${escapeHtml(m ? m.label : state.subarea)}`;
+    if (areaSel) areaSel.value = 'cls';
+    app.innerHTML = renderSubareaPage('cls');
   } else if (state.view === 'as') {
     back.style.display = '';
     back.onclick = () => navigate('home');
@@ -899,14 +1089,25 @@ function render() {
     app.innerHTML = renderSearch();
   } else if (state.view === 'list') {
     back.style.display = '';
-    const isOD  = state.listType && state.listType.startsWith('od-');
-    const isCLS = state.listType && state.listType.startsWith('cls-');
-    const isAS  = state.listType && state.listType.startsWith('as-');
+    const lt = state.listType || '';
+    const isSub = lt.endsWith('-sub');
+    const isOD  = lt.startsWith('od');
+    const isCLS = lt.startsWith('cls');
+    const isAS  = lt.startsWith('as');
     const parent = isOD ? 'od' : isCLS ? 'cls' : isAS ? 'as' : 'ad';
     const parentLabel = ({ od:'Object Detection', cls:'Classification', as:'Anomaly Synthesis', ad:'Anomaly Detection' })[parent];
-    back.onclick = () => navigate(parent);
-    title.textContent = parentLabel;
-    crumb.innerHTML = `${homeLink()} ▸ <a data-nav="${parent}">${parentLabel}</a> ▸ 列表`;
+    if (isSub && state.subarea) {
+      // Back to the sub-area page, not the domain menu
+      back.onclick = () => navigate(parent + '-sub', { key: state.subarea });
+      const subareas = parent === 'ad' ? AD_SUBAREAS : parent === 'od' ? OD_SUBAREAS : CLS_SUBAREAS;
+      const m = subareas.find(s => s.key === state.subarea);
+      title.textContent = parentLabel;
+      crumb.innerHTML = `${homeLink()} ▸ <a data-nav="${parent}">${parentLabel}</a> ▸ <a data-nav="${parent}-sub" data-key="${escapeHtml(state.subarea)}">${escapeHtml(m ? m.label : state.subarea)}</a> ▸ ${escapeHtml(state.listKey)}`;
+    } else {
+      back.onclick = () => navigate(parent);
+      title.textContent = parentLabel;
+      crumb.innerHTML = `${homeLink()} ▸ <a data-nav="${parent}">${parentLabel}</a> ▸ 列表`;
+    }
     if (areaSel) areaSel.value = parent;
     app.innerHTML = renderList();
   }
@@ -914,41 +1115,100 @@ function render() {
 }
 
 function renderCLSMenu() {
-  const catCounts = {};
-  CLS_CATEGORIES.forEach(c => {
-    catCounts[c.key] = new Set(CLS_DATA.all_papers.filter(r => r.category === c.key).map(r => r.method)).size;
-  });
-  const dsCount = {};
-  CLS_DATA.rows.forEach(r => { dsCount[r.dataset] = (dsCount[r.dataset] || 0) + 1; });
   const totalMethods = new Set(CLS_DATA.all_papers.map(r => r.method)).size;
-
-  const catBtns = CLS_CATEGORIES.map(c => `
-    <button class="menu-btn ${c.cls}" data-list="cls-category" data-key="${escapeHtml(c.key)}">
-      <span class="name">${escapeHtml(c.label)}</span>
-      <span class="meta">${escapeHtml(c.desc)} · ${catCounts[c.key] || 0} 方法</span>
-    </button>
-  `).join('');
-
-  const dsBtns = CLS_DATA.datasets.map(ds => `
-    <button class="menu-btn cat-nf" data-list="cls-dataset" data-key="${escapeHtml(ds)}">
-      <span class="name">${escapeHtml(ds)}</span>
-      <span class="meta">${dsCount[ds] || 0} 筆</span>
-    </button>
-  `).join('');
-
+  const subBtns = CLS_SUBAREAS.map(s => {
+    const ds = CLS_SUBAREA_DATASETS[s.key] || [];
+    return `
+      <button class="menu-btn ${s.cls}" data-nav="cls-sub" data-key="${escapeHtml(s.key)}">
+        <span class="name">${escapeHtml(s.label)}</span>
+        <span class="meta">${escapeHtml(s.desc)} · ${ds.length} 個資料集</span>
+      </button>`;
+  }).join('');
   return `
     <div class="menu-section">
-      <h2>方法類別 (4 Categories)</h2>
-      <div class="button-grid">${catBtns}</div>
-      <h2>資料集 (${CLS_DATA.datasets.length} Datasets)</h2>
-      <div class="button-grid">${dsBtns}</div>
-      <h2>全部論文</h2>
+      <h2>子領域 (5 Sub-areas)</h2>
+      <div class="button-grid">${subBtns}</div>
+      <h2>全部論文 (跨子領域)</h2>
       <div class="button-grid">
         <button class="menu-btn all" data-list="cls-all" data-key="all">
           <span class="name">All Papers</span>
-          <span class="meta">不分類別 / 不分資料集，共 ${totalMethods} 個獨立方法 · 依 Top-1 高→低</span>
+          <span class="meta">不分類別 / 資料集 / 子領域,共 ${totalMethods} 個獨立方法 · 依 Top-1 高→低</span>
         </button>
       </div>
+    </div>
+  `;
+}
+
+/* ====== Sub-area page (datasets with Best Model preview + See All button) ====== */
+function renderSubareaPage(domain) {
+  let subareas, subareaDatasets, methodSubareasFn, dataRows, methodAllPapers, primaryMetricKey, primaryMetricLabel, sortFn, listType;
+  if (domain === 'ad') {
+    subareas = AD_SUBAREAS; subareaDatasets = AD_SUBAREA_DATASETS;
+    methodSubareasFn = adSubareasOfMethod;
+    dataRows = AD_RAW; methodAllPapers = AD_RAW;
+    primaryMetricKey = 'i_auroc'; primaryMetricLabel = 'I-AUROC';
+    sortFn = adSortByMetric; listType = 'ad-sub';
+  } else if (domain === 'od') {
+    subareas = OD_SUBAREAS; subareaDatasets = OD_SUBAREA_DATASETS;
+    methodSubareasFn = odSubareasOfMethod;
+    dataRows = OD_DATA.rows; methodAllPapers = OD_DATA.all_papers;
+    primaryMetricKey = 'mAP'; primaryMetricLabel = 'mAP';
+    sortFn = odSortByMetric; listType = 'od-sub';
+  } else if (domain === 'cls') {
+    subareas = CLS_SUBAREAS; subareaDatasets = CLS_SUBAREA_DATASETS;
+    methodSubareasFn = clsSubareasOfMethod;
+    dataRows = CLS_DATA.rows; methodAllPapers = CLS_DATA.all_papers;
+    primaryMetricKey = 'top1'; primaryMetricLabel = 'Top-1';
+    sortFn = clsSortByMetric; listType = 'cls-sub';
+  } else {
+    return '<div class="placeholder">未知子領域</div>';
+  }
+  const subKey = state.subarea;
+  const meta = subareas.find(s => s.key === subKey);
+  if (!meta) return '<div class="placeholder">未知子領域</div>';
+  const datasets = subareaDatasets[subKey] || [];
+
+  const cards = datasets.map(ds => {
+    // Filter rows: dataset match + sub-area match
+    const pool = dataRows.filter(r => r.dataset === ds && methodSubareasFn(r).includes(subKey));
+    const sorted = sortFn(pool);
+    const best = sorted[0];
+    const fmtMetric = v => (v === null || v === undefined || v === '') ? '—' : (typeof v === 'number' ? v.toFixed(1) : v);
+    const bestBlock = best ? `
+      <div class="best-row">
+        <div class="best-label">🏆 Best</div>
+        <div class="best-method" title="${escapeHtml(best.notes || '')}">${escapeHtml(best.method || '—')}</div>
+      </div>
+      <div class="best-meta">
+        ${primaryMetricLabel}: <b>${fmtMetric(best[primaryMetricKey])}</b>
+        ${best.venue ? ` · ${escapeHtml(best.venue)}` : ''}
+        ${best.date ? ` · ${escapeHtml(best.date)}` : ''}
+      </div>
+      <div class="best-links">
+        ${best.link   ? `<a class="link-btn" href="${escapeHtml(best.link)}" target="_blank" rel="noopener">論文 ↗</a>` : ''}
+        ${best.github ? `<a class="link-btn" href="${escapeHtml(best.github)}" target="_blank" rel="noopener">GitHub ↗</a>` : ''}
+      </div>` : `
+      <div class="best-empty">尚無方法資料 — 待自動排程或人工補上</div>`;
+    return `
+      <div class="ds-card ${meta.cls}">
+        <div class="ds-card-head">
+          <div class="ds-name">${escapeHtml(ds)}</div>
+          <div class="ds-count">${pool.length} 筆</div>
+        </div>
+        ${bestBlock}
+        <button class="see-all-btn" data-nav="list-sub" data-list-type="${listType}" data-sub="${escapeHtml(subKey)}" data-ds="${escapeHtml(ds)}">See All ↗</button>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="subarea-page">
+      <div class="subarea-header">
+        <h2>${escapeHtml(meta.label)}</h2>
+        <div class="subarea-desc">${escapeHtml(meta.desc)} · ${datasets.length} 個資料集</div>
+      </div>
+      ${datasets.length === 0
+        ? `<div class="placeholder"><h2>${escapeHtml(meta.label)}</h2><p>本子領域目前尚無資料 — 待自動排程從 arXiv / GitHub 抓取後補上.</p></div>`
+        : `<div class="ds-grid">${cards}</div>`}
     </div>
   `;
 }
@@ -1001,7 +1261,7 @@ function renderHome() {
 
   return `
     <section class="hero">
-      <span class="lab-tag">NTUT · IIM · Automated Inspection Lab</span>
+      <span class="lab-tag">NTUT · IEM · Automated Visual Inspection System Lab</span>
       <h2>自動化檢測實驗室</h2>
       <div class="lab-en">National Taipei University of Technology &nbsp;·&nbsp; Institute of Industrial Engineering and Management</div>
       <p class="lab-desc">本實驗室隸屬於 <b>國立臺北科技大學工業工程與管理研究所</b>，聚焦於工業視覺檢測核心技術，研究主軸涵蓋以下四大領域：</p>
@@ -1037,49 +1297,35 @@ function renderHome() {
         <div class="desc">影像分類 — 涵蓋 ImageNet / CIFAR / 細粒度 / 長尾 / 少樣本等 ${CLS_DATA.datasets.length} 個資料集，主流 Backbone (CNN / ViT / ConvNeXt / DINOv2 等)。</div>
         <div class="stats-line">收錄 <b>${new Set(CLS_DATA.all_papers.map(r => r.method)).size}</b> 個方法、<b>${CLS_DATA.rows.length}</b> 筆評測紀錄</div>
       </button>
-      <button class="home-card as" data-nav="as">
+      <button class="home-card as disabled" type="button" disabled>
         <span class="tag">Defect Synthesis</span>
-        <h2>Anomaly Synthesis</h2>
-        <div class="desc">影像異常合成 — Hand-crafted / Feature-space / Generative / VLM-based / Downstream AD 共 5 大類，涵蓋 ${AS_DATA.datasets.length} 個資料集 (含 Synthesis Quality)。</div>
-        <div class="stats-line">收錄 <b>${new Set(AS_DATA.all_papers.map(r => r.method)).size}</b> 個方法、<b>${AS_DATA.rows.length}</b> 筆評測紀錄</div>
+        <h2>Anomaly Synthesis <span class="soon">待開發中</span></h2>
+        <div class="desc">影像異常合成 — DRAEM / GLASS / DualAnoDiff / RealNet 等近分布異常生成方法，以及 Diffusion / GAN-based 缺陷合成研究。</div>
+        <div class="stats-line">內容開發中</div>
       </button>
     </div>
   `;
 }
 
 function renderADMenu() {
-  const catCounts = {};
-  AD_CATEGORIES.forEach(c => {
-    catCounts[c.key] = new Set(AD_RAW.filter(r => r.category === c.key).map(r => r.method)).size;
-  });
-  const dsCounts = {};
-  AD_DATASETS.forEach(d => { dsCounts[d.key] = AD_RAW.filter(r => r.dataset === d.key).length; });
   const totalMethods = new Set(AD_RAW.map(r => r.method)).size;
-
-  const catBtns = AD_CATEGORIES.map(c => `
-    <button class="menu-btn ${c.cls}" data-list="category" data-key="${escapeHtml(c.key)}">
-      <span class="name">${escapeHtml(c.label)}</span>
-      <span class="meta">${escapeHtml(c.en)} · ${catCounts[c.key]} 方法</span>
-    </button>
-  `).join('');
-  const dsBtns = AD_DATASETS.map(d => `
-    <button class="menu-btn ${d.cls}" data-list="dataset" data-key="${escapeHtml(d.key)}">
-      <span class="name">${escapeHtml(d.label)}</span>
-      <span class="meta">${escapeHtml(d.desc)} · ${dsCounts[d.key]} 筆</span>
-    </button>
-  `).join('');
-
+  const subBtns = AD_SUBAREAS.map(s => {
+    const ds = AD_SUBAREA_DATASETS[s.key] || [];
+    return `
+      <button class="menu-btn ${s.cls}" data-nav="ad-sub" data-key="${escapeHtml(s.key)}">
+        <span class="name">${escapeHtml(s.label)}</span>
+        <span class="meta">${escapeHtml(s.desc)} · ${ds.length} 個資料集</span>
+      </button>`;
+  }).join('');
   return `
     <div class="menu-section">
-      <h2>方法類別 (5 Based)</h2>
-      <div class="button-grid">${catBtns}</div>
-      <h2>資料集 (7 Datasets)</h2>
-      <div class="button-grid">${dsBtns}</div>
-      <h2>全部論文</h2>
+      <h2>子領域 (5 Sub-areas)</h2>
+      <div class="button-grid">${subBtns}</div>
+      <h2>全部論文 (跨子領域)</h2>
       <div class="button-grid">
         <button class="menu-btn all" data-list="all" data-key="all">
           <span class="name">All Papers</span>
-          <span class="meta">不分類別 / 不分資料集，共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
+          <span class="meta">不分類別 / 資料集 / 子領域,共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
         </button>
       </div>
     </div>
@@ -1087,54 +1333,24 @@ function renderADMenu() {
 }
 
 function renderODMenu() {
-  const catCounts = {};
-  OD_CATEGORIES.forEach(c => {
-    catCounts[c.key] = new Set(OD_DATA.all_papers.filter(r => r.category === c.key).map(r => r.method)).size;
-  });
-  const dsCount = {};
-  OD_DATA.rows.forEach(r => { dsCount[r.dataset] = (dsCount[r.dataset] || 0) + 1; });
-
-  const dsByCat = {};
-  Object.entries(OD_DATA.dataset_category_map).forEach(([ds, cat]) => {
-    if (!dsByCat[cat]) dsByCat[cat] = [];
-    dsByCat[cat].push(ds);
-  });
-
   const totalMethods = new Set(OD_DATA.all_papers.map(r => r.method)).size;
-
-  const catBtns = OD_CATEGORIES.map(c => `
-    <button class="menu-btn ${c.cls}" data-list="od-category" data-key="${escapeHtml(c.key)}">
-      <span class="name">${escapeHtml(c.label)}</span>
-      <span class="meta">${escapeHtml(c.desc)} · ${catCounts[c.key] || 0} 方法</span>
-    </button>
-  `).join('');
-
-  const datasetSections = OD_CATEGORIES.map(cat => {
-    const list = dsByCat[cat.key] || [];
-    if (list.length === 0) return '';
-    const btns = list.map(ds => `
-      <button class="menu-btn ${cat.cls}" data-list="od-dataset" data-key="${escapeHtml(ds)}">
-        <span class="name">${escapeHtml(ds)}</span>
-        <span class="meta">${escapeHtml(cat.label)} · ${dsCount[ds] || 0} 筆</span>
-      </button>
-    `).join('');
+  const subBtns = OD_SUBAREAS.map(s => {
+    const ds = OD_SUBAREA_DATASETS[s.key] || [];
     return `
-      <h3>${escapeHtml(cat.label)} 資料集 (${list.length})</h3>
-      <div class="button-grid">${btns}</div>
-    `;
+      <button class="menu-btn ${s.cls}" data-nav="od-sub" data-key="${escapeHtml(s.key)}">
+        <span class="name">${escapeHtml(s.label)}</span>
+        <span class="meta">${escapeHtml(s.desc)} · ${ds.length} 個資料集</span>
+      </button>`;
   }).join('');
-
   return `
     <div class="menu-section">
-      <h2>方法類別 (4 Categories)</h2>
-      <div class="button-grid">${catBtns}</div>
-      <h2>資料集 (${OD_DATA.datasets.length} Datasets)</h2>
-      ${datasetSections}
-      <h2>全部論文</h2>
+      <h2>子領域 (5 Sub-areas)</h2>
+      <div class="button-grid">${subBtns}</div>
+      <h2>全部論文 (跨子領域)</h2>
       <div class="button-grid">
         <button class="menu-btn all" data-list="od-all" data-key="all">
           <span class="name">All Papers</span>
-          <span class="meta">不分類別 / 不分資料集，共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
+          <span class="meta">不分類別 / 資料集 / 子領域,共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
         </button>
       </div>
     </div>
@@ -1219,6 +1435,30 @@ function renderList() {
     mode = 'as-all';
     title = 'All Papers (Anomaly Synthesis)';
     subTitle = '不分類別 / 資料集，依年月新→舊';
+  } else if (listType === 'ad-sub') {
+    const sub = state.subarea, ds = listKey;
+    const meta = AD_SUBAREAS.find(s => s.key === sub);
+    let pool = AD_RAW.filter(r => r.dataset === ds && adSubareasOfMethod(r).includes(sub));
+    rows = adSortByMetric(pool);
+    mode = 'ad-metrics';
+    title = `${meta ? meta.label : sub} · ${ds}`;
+    subTitle = `子領域: ${meta ? meta.label : sub}`;
+  } else if (listType === 'od-sub') {
+    const sub = state.subarea, ds = listKey;
+    const meta = OD_SUBAREAS.find(s => s.key === sub);
+    let pool = OD_DATA.rows.filter(r => r.dataset === ds && odSubareasOfMethod(r).includes(sub));
+    rows = odSortByMetric(pool);
+    mode = 'od-metrics';
+    title = `${meta ? meta.label : sub} · ${ds}`;
+    subTitle = `子領域: ${meta ? meta.label : sub}`;
+  } else if (listType === 'cls-sub') {
+    const sub = state.subarea, ds = listKey;
+    const meta = CLS_SUBAREAS.find(s => s.key === sub);
+    let pool = CLS_DATA.rows.filter(r => r.dataset === ds && clsSubareasOfMethod(r).includes(sub));
+    rows = clsSortByMetric(pool);
+    mode = 'cls-metrics';
+    title = `${meta ? meta.label : sub} · ${ds}`;
+    subTitle = `子領域: ${meta ? meta.label : sub}`;
   }
 
   const q = state.query.trim().toLowerCase();
@@ -1626,7 +1866,18 @@ function renderSearch() {
 
 function bindAfterRender() {
   document.querySelectorAll('[data-nav]').forEach(el => {
-    el.addEventListener('click', () => navigate(el.dataset.nav));
+    el.addEventListener('click', () => {
+      const nav = el.dataset.nav;
+      if (nav === 'list-sub') {
+        navigate('list-sub', {
+          listType: el.dataset.listType,
+          subarea:  el.dataset.sub,
+          dataset:  el.dataset.ds,
+        });
+      } else {
+        navigate(nav, { key: el.dataset.key });
+      }
+    });
   });
   document.querySelectorAll('[data-list]').forEach(el => {
     el.addEventListener('click', () => navigate('list', { listType: el.dataset.list, listKey: el.dataset.key }));
