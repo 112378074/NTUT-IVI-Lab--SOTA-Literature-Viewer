@@ -53,62 +53,13 @@ ATOM_NS   = '{http://www.w3.org/2005/Atom}'
 # Polite to arXiv: 5s sleep between queries, 60s timeout, 3 retries.
 
 AD_QUERIES = [
-    # Core AD topics
-    'cat:cs.CV+AND+%28all:%22industrial+anomaly+detection%22+OR+all:%22visual+anomaly+detection%22%29',
-    'cat:cs.CV+AND+all:%22anomaly+detection+and+localization%22',
-    'cat:cs.CV+AND+all:%22surface+defect+detection%22',
-    'cat:cs.CV+AND+all:%22defect+localization%22',
-    'cat:cs.CV+AND+all:%22anomaly+segmentation%22',
-    # Datasets
-    'cat:cs.CV+AND+all:%22MVTec%22+AND+all:%22anomaly%22',
-    'cat:cs.CV+AND+all:%22VisA%22+AND+all:%22anomaly%22',
-    'cat:cs.CV+AND+all:%22Real-IAD%22',
-    'cat:cs.CV+AND+all:%22MVTec+LOCO%22',
-    'cat:cs.CV+AND+all:%22MVTec+AD+2%22',
-    'cat:cs.CV+AND+all:%22MVTec+3D%22',
-    'cat:cs.CV+AND+all:%22MPDD%22+AND+all:%22anomaly%22',
-    'cat:cs.CV+AND+all:%22BTAD%22+AND+all:%22anomaly%22',
-    # Method angles
-    'cat:cs.CV+AND+all:%22zero-shot+anomaly%22',
-    'cat:cs.CV+AND+all:%22few-shot+anomaly%22',
-    'cat:cs.CV+AND+all:%22logical+anomaly%22',
-    'cat:cs.CV+AND+%28all:%22DINOv2%22+OR+all:%22CLIP%22%29+AND+all:%22anomaly%22',
-    'cat:cs.CV+AND+%28all:%22foundation+model%22+OR+all:%22vision-language%22%29+AND+all:%22anomaly%22',
-    'cat:cs.CV+AND+%28all:%22diffusion%22+OR+all:%22normalizing+flow%22%29+AND+all:%22anomaly+detection%22',
-    # Recent strong baselines
-    'cat:cs.CV+AND+all:%22Dinomaly%22',
-    'cat:cs.CV+AND+all:%22EfficientAD%22',
-    'cat:cs.CV+AND+all:%22PatchCore%22',
-    'cat:cs.CV+AND+all:%22GLASS%22+AND+all:%22anomaly%22',
+    # Single broad AD query: anomaly + relevant dataset/method tokens
+    'cat:cs.CV+AND+%28all:%22anomaly+detection%22+OR+all:%22anomaly+segmentation%22+OR+all:%22defect+detection%22+OR+all:%22defect+localization%22%29',
 ]
 
 OD_QUERIES = [
-    # General OD
-    'cat:cs.CV+AND+all:%22object+detection%22+AND+all:%22COCO%22',
-    'cat:cs.CV+AND+all:%22DETR%22',
-    'cat:cs.CV+AND+all:%22Co-DETR%22',
-    'cat:cs.CV+AND+all:%22Relation-DETR%22',
-    # YOLO family aliases (CLAUDE_updated.md §2.3 alias rule)
-    'cat:cs.CV+AND+%28all:%22YOLO26%22+OR+all:%22YOLOv26%22%29',
-    'cat:cs.CV+AND+all:%22YOLOv13%22',
-    'cat:cs.CV+AND+all:%22YOLOv12%22',
-    'cat:cs.CV+AND+all:%22RT-DETR%22',
-    'cat:cs.CV+AND+all:%22D-FINE%22+AND+all:%22detection%22',
-    'cat:cs.CV+AND+all:%22DEIM%22+AND+all:%22detection%22',
-    'cat:cs.CV+AND+%28all:%22RF-DETR%22+OR+all:%22RFDETR%22%29',
-    'cat:cs.CV+AND+all:%22RTMDet%22',
-    # Real-Time OD generally
-    'cat:cs.CV+AND+all:%22real-time+object+detection%22',
-    # Salient OD
-    'cat:cs.CV+AND+all:%22salient+object+detection%22',
-    'cat:cs.CV+AND+all:%22BiRefNet%22',
-    'cat:cs.CV+AND+all:%22InSPyReNet%22',
-    # Few-Shot OD
-    'cat:cs.CV+AND+%28all:%22few-shot+object+detection%22+OR+all:%22open-vocabulary+detection%22%29',
-    'cat:cs.CV+AND+all:%22Grounding+DINO%22',
-    'cat:cs.CV+AND+all:%22CD-ViTO%22',
-    'cat:cs.CV+AND+all:%22UniFS%22',
-    'cat:cs.CV+AND+all:%22ODinW%22',
+    # Single broad OD query: detection + COCO/LVIS/DUTS/ODinW + key model tokens
+    'cat:cs.CV+AND+%28all:%22object+detection%22+OR+all:%22salient+object%22+OR+all:%22few-shot+detection%22+OR+all:%22YOLO%22+OR+all:%22DETR%22%29',
 ]
 
 # CLAUDE_updated.md §4: hard-exclude 3D / LiDAR / BEV / point-cloud / medical /
@@ -228,7 +179,7 @@ def log(msg):
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(line + '\n')
 
-def fetch_arxiv(query, max_results=40, retries=3):
+def fetch_arxiv(query, max_results=200, retries=3):
     url = f'{ARXIV_API}?search_query={query}&sortBy=submittedDate&sortOrder=descending&max_results={max_results}'
     last_err = None
     for attempt in range(retries):
