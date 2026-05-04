@@ -835,6 +835,20 @@ def regenerate_cls_json():
                 'github':   _clean(row.get('GitHub')),
             }
             if rec['method']: rows.append(rec)
+    # Merge supplemental hand-curated entries (e.g. Semi-Supervised, Small-Data)
+    supp_path = PROJECT_DIR / 'cls_supplemental.json'
+    if supp_path.exists():
+        try:
+            supp = json.loads(supp_path.read_text(encoding='utf-8'))
+            for r in supp.get('rows', []):
+                if r.get('method') and r.get('dataset'):
+                    rows.append(r)
+                    # Also add a method-level entry to all_papers if not already present
+                    seen = any(p.get('method') == r['method'] for p in all_papers)
+                    if not seen:
+                        all_papers.append({k: v for k, v in r.items() if k != 'dataset'})
+        except Exception as e:
+            log(f'  cls_supplemental merge failed: {e}')
     payload = {'datasets': dataset_sheets, 'all_papers': all_papers, 'rows': rows}
     CLS_JSON.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     return payload
