@@ -607,6 +607,81 @@ def _extract_hyperlink_display(s):
     m = re.search(r'=HYPERLINK\("[^"]*"\s*,\s*"([^"]+)"\)', s)
     return m.group(1) if m else s
 
+# ---- OD per-dataset primary metric (label, extraction strategy) ----
+# Each dataset's primary ranking metric depends on the dataset.  For datasets
+# that only report metric values inside the 'AP' string column (e.g. SOD's
+# S-measure, Argoverse's sAP, Few-Shot novel AP), we parse the number with a
+# regex.  For COCO-family datasets the primary number is already in the 'mAP'
+# column.
+def _to_float(v):
+    if v is None: return None
+    if isinstance(v, (int, float)):
+        return None if (isinstance(v, float) and (v != v)) else float(v)
+    s = str(v).strip()
+    m = re.search(r'-?\d+\.?\d*', s)
+    return float(m.group(0)) if m else None
+
+def _parse_metric_re(s, pattern):
+    if not isinstance(s, str): return None
+    m = re.search(pattern, s, re.IGNORECASE)
+    return _to_float(m.group(1)) if m else None
+
+# (label, kind, value-extractor, lower_is_better)
+# kind: 'higher' = larger is better;  'lower' = smaller is better.
+def _od_extract(row):
+    ds = row.get('dataset', '')
+    mAP_v = _to_float(row.get('mAP'))
+    AP_str = str(row.get('AP') or '')
+
+    # COCO family: primary in mAP col
+    if ds in ('COCO test-dev','COCO 2017 val','COCO 2017','COCO minival'):
+        return ('COCO AP', 'higher', mAP_v)
+    if ds == 'COCO-O':
+        return ('Effective robustness AP', 'higher', mAP_v)
+    if ds == 'PASCAL VOC 2007':
+        return ('mAP@0.5', 'higher', mAP_v)
+    if ds in ('GraZPEDWRI-DX', 'CPPE-5'):
+        return ('mAP@0.5', 'higher', mAP_v)
+    if ds == 'CrowdHuman':
+        return ('AP',  'higher', mAP_v)
+    if ds == 'Waymo 2D':
+        return ('Waymo 2D AP', 'higher', mAP_v)
+
+    # Argoverse-HD: streaming AP from AP-string
+    if ds.startswith('Argoverse-HD'):
+        return ('Streaming AP (sAP)', 'higher',
+                _parse_metric_re(AP_str, r'sAP[^\d]*([\d.]+)') or mAP_v)
+
+    # SOD datasets: S-measure from AP-string
+    if ds in ('DUTS-TE','DUT-OMRON','ECSSD','HKU-IS','PASCAL-S',
+              'HRSOD','UHRSD','DAVIS-S'):
+        return ('S-measure', 'higher',
+                _parse_metric_re(AP_str, r'\bS[α]?\s*[:= ]?\s*([\d.]+)'))
+    if ds in ('SBU-Refine','ISTD'):
+        return ('MAE (lower better)', 'lower',
+                _parse_metric_re(AP_str, r'\bMAE[^\d]*([\d.]+)'))
+    if ds == 'CAMO-FS':
+        return ('AP (CD-FSOD)', 'higher',
+                _parse_metric_re(AP_str, r'\bAP[^\d]*([\d.]+)') or mAP_v)
+
+    # Few-shot detection: novel AP from AP-string
+    if ds in ('PASCAL VOC 2007 15+5',):
+        return ('mAP / novel AP', 'higher',
+                _parse_metric_re(AP_str, r'\b(?:nAP|novel AP|AP)[^\d]*([\d.]+)') or mAP_v)
+    if ds in ('MS-COCO 1-shot','MS-COCO 5-shot','MS-COCO 10-shot','MS-COCO 30-shot','COCO 2017 FSOD'):
+        return ('novel AP', 'higher',
+                _parse_metric_re(AP_str, r'\b(?:nAP|novel AP|AP)[^\d]*([\d.]+)') or mAP_v)
+    if ds in ('LVIS v1.0 val','LVIS v1.0 test-dev'):
+        return ('AP / AP_rare', 'higher',
+                _parse_metric_re(AP_str, r'\b(?:AP_?rare|AP)[^\d]*([\d.]+)') or mAP_v)
+    if ds in ('ODinW-13','ODinW-35'):
+        return ('AP (avg)', 'higher',
+                _parse_metric_re(AP_str, r'\bAP[^\d]*([\d.]+)') or mAP_v)
+
+    # Default: COCO-style mAP
+    return ('mAP', 'higher', mAP_v)
+
+
 def regenerate_od_json():
     import pandas as pd
     xl = pd.ExcelFile(OD_XLSX)
@@ -669,10 +744,22 @@ def regenerate_od_json():
                 'github':   _clean(row.get('GitHub')),
             }
             if rec['method']:
+                # Attach dataset-specific primary metric for ranking + display
+                label, kind, val = _od_extract(rec)
+                rec['primary_label'] = label
+                rec['primary_kind']  = kind
+                rec['primary_value'] = val
                 rows.append(rec)
+    # Build per-dataset primary metric metadata (for See All headers / sorting)
+    ds_primary = {}
+    for r in rows:
+        ds = r['dataset']
+        if ds not in ds_primary:
+            ds_primary[ds] = {'label': r.get('primary_label'), 'kind': r.get('primary_kind')}
     payload = {
         'datasets': dataset_sheets,
         'dataset_category_map': ds_cat,
+        'dataset_primary_metric': ds_primary,
         'all_papers': all_papers,
         'rows': rows,
     }
