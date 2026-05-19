@@ -629,6 +629,8 @@
   .status-pre  { background: var(--badge-aug-bg);  color: var(--badge-aug-fg);  border-color: var(--badge-aug-bd); }
   .status-rev  { background: var(--badge-red-bg);  color: var(--badge-red-fg);  border-color: var(--badge-red-bd); }
   .status-rep  { background: var(--badge-purp-bg); color: var(--badge-purp-fg); border-color: var(--badge-purp-bd); }
+  .vbadge-ok    { background: var(--badge-repr-bg); color: var(--badge-repr-fg); border-color: var(--badge-repr-bd); }
+  .vbadge-draft { background: var(--badge-aug-bg);  color: var(--badge-aug-fg);  border-color: var(--badge-aug-bd); }
   .status-tbd  { background: var(--panel-2); color: var(--muted); border-color: var(--border); }
 
   .link-btn {
@@ -1639,6 +1641,15 @@ function renderList() {
 function rankCls(rank) {
   return rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
 }
+/* Verification badge: hand-verified vs auto-extracted draft */
+function verifyBadge(notes) {
+  const n = notes || '';
+  if (n.indexOf('✅ 已驗證') > -1)
+    return ' <span class="badge vbadge-ok" title="指標已逐篇核對 PDF">✅</span>';
+  if (n.indexOf('⚠️ 自動抽取') > -1)
+    return ' <span class="badge vbadge-draft" title="自動偵測使用此資料集；指標尚未人工驗證">⚠️ 未驗證</span>';
+  return '';
+}
 function arxivBtn(link) {
   return link ? `<a class="link-btn" href="${escapeHtml(link)}" target="_blank" rel="noopener">論文 ↗</a>` : '<span style="color:var(--muted)">—</span>';
 }
@@ -1656,7 +1667,7 @@ function renderADRow(r, i, listType) {
   return `
     <tr>
       <td class="rank ${rankCls(rank)}">${rank}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       ${middle}
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
@@ -1676,7 +1687,7 @@ function renderADRowAll(r, i) {
   return `
     <tr>
       <td class="rank">${i + 1}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       <td><span class="badge cat-badge ${catCls}">${escapeHtml(adCategoryLabel(r.category))}</span></td>
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
@@ -1699,7 +1710,7 @@ function renderODRow(r, i, listType) {
   return `
     <tr>
       <td class="rank ${rankCls(rank)}">${rank}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       ${middle}
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
@@ -1739,7 +1750,7 @@ function renderCLSRow(r, i, listType) {
   return `
     <tr>
       <td class="rank ${rankCls(rank)}">${rank}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       ${middle}
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
@@ -1760,7 +1771,7 @@ function renderCLSRowAll(r, i) {
   return `
     <tr>
       <td class="rank ${rankCls(i + 1)}">${i + 1}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       <td><span class="badge cat-badge ${catCls}">${escapeHtml(clsCategoryLabel(r.category))}</span></td>
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
@@ -1781,7 +1792,7 @@ function renderASRow(r, i, listType) {
   return `
     <tr>
       <td class="rank">${i + 1}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       ${middle}
       <td>${escapeHtml(r.synth_type || '—')}</td>
       <td>${escapeHtml(r.task_setting || '—')}</td>
@@ -1799,7 +1810,7 @@ function renderASRowAll(r, i) {
   return `
     <tr>
       <td class="rank">${i + 1}</td>
-      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}</td>
+      <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       <td><span class="badge cat-badge ${catCls}">${escapeHtml(asCategoryLabel(r.category))}</span></td>
       <td>${escapeHtml(r.synth_type || '—')}</td>
       <td>${escapeHtml(r.task_setting || '—')}</td>
