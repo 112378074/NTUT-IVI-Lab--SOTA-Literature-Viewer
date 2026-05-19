@@ -1,0 +1,78 @@
+{
+  "_purpose": "Seed entries for the OD sub-area '3D Object Detection', which the source workbook excluded. Metrics blank (flagged) — verifiable paper metadata only, numbers added after PDF verification.",
+  "_curated_at": "2026-05-19",
+  "rows": [
+    {
+      "subarea": "3d-object-detection", "dataset": "KITTI 3D",
+      "category": "3D Object Detection", "method": "PV-RCNN",
+      "authors": "Shaoshuai Shi, Chaoxu Guo, et al.", "venue": "CVPR 2020", "date": "2019-12",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：Point-Voxel Feature Set Abstraction;LiDAR 3D 偵測經典基線",
+      "link": "https://arxiv.org/abs/1912.13192",
+      "github": "https://github.com/open-mmlab/OpenPCDet"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "nuScenes",
+      "category": "3D Object Detection", "method": "CenterPoint",
+      "authors": "Tianwei Yin, Xingyi Zhou, Philipp Krähenbühl", "venue": "CVPR 2021", "date": "2020-06",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：Center-based 3D 偵測與追蹤",
+      "link": "https://arxiv.org/abs/2006.11275",
+      "github": "https://github.com/tianweiy/CenterPoint"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "nuScenes",
+      "category": "3D Object Detection", "method": "TransFusion",
+      "authors": "Xuyang Bai, Zeyu Hu, et al.", "venue": "CVPR 2022", "date": "2022-03",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：LiDAR-camera 融合 Transformer 3D 偵測",
+      "link": "https://arxiv.org/abs/2203.11496",
+      "github": "https://github.com/XuyangBai/TransFusion"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "nuScenes",
+      "category": "3D Object Detection", "method": "BEVFusion",
+      "authors": "Zhijian Liu, Haotian Tang, et al.", "venue": "ICRA 2023", "date": "2022-05",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：統一 BEV 表徵的多感測器融合 3D 偵測 (MIT)",
+      "link": "https://arxiv.org/abs/2205.13542",
+      "github": "https://github.com/mit-han-lab/bevfusion"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "nuScenes",
+      "category": "3D Object Detection", "method": "VoxelNeXt",
+      "authors": "Yukang Chen, Jianhui Liu, et al.", "venue": "CVPR 2023", "date": "2023-03",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：全稀疏 voxel-based 3D 偵測與追蹤",
+      "link": "https://arxiv.org/abs/2303.11301",
+      "github": "https://github.com/dvlab-research/VoxelNeXt"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "Waymo 3D",
+      "category": "3D Object Detection", "method": "DSVT",
+      "authors": "Haiyang Wang, Chen Shi, et al.", "venue": "CVPR 2023", "date": "2023-01",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：Dynamic Sparse Voxel Transformer 3D 偵測",
+      "link": "https://arxiv.org/abs/2301.06051",
+      "github": "https://github.com/Haiyang-W/DSVT"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "nuScenes",
+      "category": "3D Object Detection", "method": "FocalFormer3D",
+      "authors": "Yilun Chen, Zhiding Yu, et al.", "venue": "ICCV 2023", "date": "2023-08",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：Focal multi-stage query 3D 偵測 (NVIDIA)",
+      "link": "https://arxiv.org/abs/2308.04556",
+      "github": "https://github.com/NVlabs/FocalFormer3D"
+    },
+    {
+      "subarea": "3d-object-detection", "dataset": "KITTI 3D",
+      "category": "3D Object Detection", "method": "Voxel R-CNN",
+      "authors": "Jiajun Deng, Shaoshuai Shi, et al.", "venue": "AAAI 2021", "date": "2020-12",
+      "status": "Published", "mAP": null, "AP": null, "FPS": null, "params": null,
+      "notes": "⚠️ 子領域種子・指標待驗證：Voxel-based 兩階段 3D 偵測",
+      "link": "https://arxiv.org/abs/2012.15712",
+      "github": "https://github.com/djiajunustc/Voxel-R-CNN"
+    }
+  ]
+}

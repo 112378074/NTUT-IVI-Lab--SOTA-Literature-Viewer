@@ -769,6 +769,15 @@ def regenerate_ad_json():
                 if rec.get('dataset') == 'MVTec AD2':
                     rec['dataset'] = 'MVTec AD 2'
                 rows.append(rec)
+    # Merge hand-curated sub-area seed rows (One-Class / Supervised / Graph AD)
+    supp = PROJECT_DIR / 'ad_supplemental.json'
+    if supp.exists():
+        try:
+            for r in json.loads(supp.read_text(encoding='utf-8')).get('rows', []):
+                if r.get('method') and r.get('dataset'):
+                    rows.append(r)
+        except Exception as e:
+            log(f'  ad_supplemental merge failed: {e}')
     AD_JSON.write_text(json.dumps(rows, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     return rows
 
@@ -928,6 +937,17 @@ def regenerate_od_json():
         ds = r['dataset']
         if ds not in ds_primary:
             ds_primary[ds] = {'label': r.get('primary_label'), 'kind': r.get('primary_kind')}
+    # Merge hand-curated sub-area seed rows (3D Object Detection)
+    supp = PROJECT_DIR / 'od_supplemental.json'
+    if supp.exists():
+        try:
+            for r in json.loads(supp.read_text(encoding='utf-8')).get('rows', []):
+                if r.get('method') and r.get('dataset'):
+                    rows.append(r)
+                    if r['dataset'] not in dataset_sheets:
+                        dataset_sheets.append(r['dataset'])
+        except Exception as e:
+            log(f'  od_supplemental merge failed: {e}')
     payload = {
         'datasets': dataset_sheets,
         'dataset_category_map': ds_cat,
