@@ -1,5 +1,7 @@
-.claude/
+.claude/*
+!.claude/skills/
 scripts/update_log.txt
 scripts/.last_run
 scripts/.env
 scripts/__pycache__/
+.claude/skills/**/__pycache__/
