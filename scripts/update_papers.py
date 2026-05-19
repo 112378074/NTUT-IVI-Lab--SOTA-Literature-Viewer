@@ -373,6 +373,178 @@ def is_within_window(published_iso, days):
 # ====================================================================
 # Existing-papers index (to dedupe)
 # ====================================================================
+# ====================================================================
+# CVF Open Access scan (CVPR / ICCV / ECCV / WACV proceedings)
+# ====================================================================
+CVF_BASE = 'https://openaccess.thecvf.com'
+# (conference, year) pairs to scan every run.  Dedup makes re-scans harmless;
+# new proceedings (e.g. CVPR 2026) are picked up automatically once published.
+CVF_TARGETS = [
+    ('CVPR', '2025'), ('ICCV', '2025'), ('ECCV', '2024'), ('WACV', '2025'),
+    ('CVPR', '2026'), ('WACV', '2026'),
+]
+CVF_AD_KW  = ['anomaly detection', 'anomaly segmentation', 'defect detection',
+              'defect localization', 'mvtec', 'visa', 'mpdd', 'btad',
+              'industrial anomaly', 'surface defect']
+CVF_OD_KW  = ['object detection', 'salient object', 'few-shot detection',
+              'real-time detection', '3d object detection', 'detr', 'yolo',
+              'open-vocabulary detection']
+CVF_CLS_KW = ['image classification', 'fine-grained classification',
+              'few-shot classification', 'semi-supervised classification',
+              'long-tailed classification', 'small data classification',
+              'image recognition']
+CVF_EXCLUDE = ['autonomous driv', 'lidar', 'medical', 'x-ray', 'oral ', 'dental',
+               'retinal', 'tooth', 'video anomaly', 'audio', 'speech', 'eeg',
+               'remote sensing', 'satellite', 'underwater', 'whole slide',
+               'histopath', 'climate']
+CVF_VENUE_DATE = {'CVPR': '2025-06', 'ICCV': '2025-10', 'ECCV': '2024-10', 'WACV': '2025-01'}
+
+
+def fetch_cvf_conference(conf, year):
+    """Return list of {title, paper_url} for one CVF proceedings page.
+    Tries two URL forms; each with up to 2 retries on a transient error."""
+    out = []
+    for suffix in (f'{conf}{year}?day=all', f'{conf}{year}'):
+        html = None
+        for attempt in range(2):
+            try:
+                req = urllib.request.Request(f'{CVF_BASE}/{suffix}',
+                                             headers={'User-Agent': 'NTUT-AIL-PaperBot/1.0'})
+                with urllib.request.urlopen(req, timeout=45, context=SSL_CTX) as r:
+                    html = r.read().decode('utf-8', errors='replace')
+                break
+            except Exception as e:
+                if attempt == 0:
+                    time.sleep(8)
+                    continue
+                log(f'  CVF fetch failed {conf}{year}: {e}')
+        if not html:
+            continue
+        for m in re.finditer(
+                r'<dt class="ptitle">(?:<br>)?<a href="(/content/[^"]+)">([^<]+)</a>', html):
+            out.append({'title': re.sub(r'\s+', ' ', m.group(2)).strip(),
+                        'paper_url': CVF_BASE + m.group(1)})
+        if out:
+            break
+    return out
+
+
+def _cvf_domain(text):
+    t = text.lower()
+    if any(k in t for k in CVF_EXCLUDE): return None
+    if any(k in t for k in CVF_AD_KW):   return 'AD'
+    if any(k in t for k in CVF_OD_KW):   return 'OD'
+    if any(k in t for k in CVF_CLS_KW):  return 'CLS'
+    return None
+
+
+def process_cvf():
+    """Scan CVF Open Access, append genuinely-new papers to the All Papers
+    sheets of each workbook.  Returns a list of added paper dicts."""
+    # Existing method names for dedup
+    existing = set()
+    for path, mcol in [(AD_XLSX, 3), (OD_XLSX, 2), (CLS_XLSX, 2)]:
+        if not path.exists(): continue
+        wb = load_workbook(path, read_only=True, data_only=True)
+        for sn in wb.sheetnames:
+            for row in wb[sn].iter_rows(values_only=True):
+                if len(row) >= mcol and isinstance(row[mcol-1], str):
+                    base = re.sub(r'\(.*?\)', '', row[mcol-1]).strip().lower()
+                    existing.add(re.sub(r'[^a-z0-9]', '', base))
+        wb.close()
+
+    def method_of(title):
+        if ':' in title:
+            cand = title.split(':')[0].strip()
+            if 1 <= len(cand.split()) <= 5:
+                return cand
+        return title[:60]
+
+    new = []
+    for conf, year in CVF_TARGETS:
+        papers = fetch_cvf_conference(conf, year)
+        if not papers:
+            continue
+        log(f'  CVF {conf}{year}: {len(papers)} papers')
+        for p in papers:
+            dom = _cvf_domain(p['title'])
+            if not dom:
+                continue
+            method = method_of(p['title'])
+            if re.sub(r'[^a-z0-9]', '', method.lower()) in existing:
+                continue
+            existing.add(re.sub(r'[^a-z0-9]', '', method.lower()))
+            new.append({'domain': dom, 'conf': conf, 'year': year,
+                        'title': p['title'], 'method': method,
+                        'venue': f'{conf} {year}',
+                        'date': CVF_VENUE_DATE.get(conf, f'{year}-00'),
+                        'link': p['paper_url']})
+        time.sleep(3)
+    log(f'CVF new papers: {len(new)}')
+    return new
+
+
+def append_cvf_rows(new_cvf):
+    """Append CVF papers to the All Papers sheets (metrics blank — pending verification)."""
+    from copy import copy as _copy
+    def _style(sh, src, dest, n):
+        for c in range(1, n+1):
+            s = sh.cell(row=src, column=c); d = sh.cell(row=dest, column=c)
+            if s.has_style:
+                d.font=_copy(s.font); d.fill=_copy(s.fill); d.border=_copy(s.border)
+                d.alignment=_copy(s.alignment); d.number_format=s.number_format
+    def _last(sh, kc):
+        last = sh.max_row
+        while last > 1 and sh.cell(row=last, column=kc).value in (None, ''):
+            last -= 1
+        return last
+    note = lambda t: f'CVF Open Access 自動收錄；指標待人工驗證。{t}'
+
+    ad = [r for r in new_cvf if r['domain'] == 'AD']
+    od = [r for r in new_cvf if r['domain'] == 'OD']
+    cl = [r for r in new_cvf if r['domain'] == 'CLS']
+
+    if ad and AD_XLSX.exists():
+        wb = load_workbook(AD_XLSX); sh = wb['總覽 All Papers']; last = _last(sh, 3)
+        for r in ad:
+            cat = classify_category(r['title'], AD_CATEGORIES_BY_KEYWORDS) or AD_DEFAULT_CATEGORY
+            nr = last + 1; last = nr
+            vals = ['—', cat, r['method'], '—', r['venue'], r['date'], '已發表',
+                    None, None, None, None, None, note(r['title']), r['link'], 'N/A']
+            for c, v in enumerate(vals, 1): sh.cell(row=nr, column=c).value = v
+            _style(sh, nr-1 if nr > 2 else 2, nr, 15)
+        wb.save(AD_XLSX)
+        log(f'  CVF -> AD 總覽 All Papers: +{len(ad)}')
+
+    if od and OD_XLSX.exists():
+        wb = load_workbook(OD_XLSX); sh = wb['OD all papers']; last = _last(sh, 2)
+        for r in od:
+            cat = classify_category(r['title'], OD_CATEGORIES_BY_KEYWORDS) or OD_DEFAULT_CATEGORY
+            nr = last + 1; last = nr
+            vals = [cat, r['method'], '—', r['venue'], r['date'], note(r['title']), r['link'], 'N/A']
+            for c, v in enumerate(vals, 1): sh.cell(row=nr, column=c).value = v
+            _style(sh, nr-1 if nr > 2 else 2, nr, 8)
+        wb.save(OD_XLSX)
+        log(f'  CVF -> OD all papers: +{len(od)}')
+
+    if cl and CLS_XLSX.exists():
+        wb = load_workbook(CLS_XLSX); sh = wb['Classification all papers']; last = _last(sh, 2)
+        for r in cl:
+            tl = r['title'].lower()
+            cat = ('Few-Shot Image Classification-based' if 'few-shot' in tl or 'few shot' in tl
+                   else 'Fine-Grained Image Classification-based' if 'fine-grained' in tl
+                   else 'Semi-Supervised Image Classification-based' if 'semi-supervised' in tl
+                   else 'Small Data Image Classification-based' if 'small data' in tl or 'small-data' in tl
+                   else 'General Image Classification-based')
+            nr = last + 1; last = nr
+            vals = [cat, r['method'], '—', r['venue'], r['date'], '已發表',
+                    None, None, None, None, None, None, note(r['title']), r['link'], 'N/A']
+            for c, v in enumerate(vals, 1): sh.cell(row=nr, column=c).value = v
+            _style(sh, nr-1 if nr > 2 else 2, nr, 15)
+        wb.save(CLS_XLSX)
+        log(f'  CVF -> CLS all papers: +{len(cl)}')
+
+
 def collect_existing_arxiv_ids(xlsx_path):
     ids = set()
     titles = set()
@@ -1269,11 +1441,18 @@ def main():
     for p in new_as:
         log(f'  AS + [{p["dataset"]}|{p["category"]}] {p["title"][:80]}')
 
+    # 3b. Scan CVF Open Access (CVPR/ICCV/ECCV/WACV proceedings)
+    new_cvf = []
+    try:
+        new_cvf = process_cvf()
+    except Exception as e:
+        log(f'  CVF scan failed: {e}')
+
     if args.dry:
-        log('Dry run complete; no files written')
+        log(f'Dry run complete; no files written (CVF would add {len(new_cvf)})')
         return 0
 
-    if not new_ad and not new_od and not new_cls and not new_as:
+    if not new_ad and not new_od and not new_cls and not new_as and not new_cvf:
         log('No new papers found — nothing to update')
         if not args.no_email:
             send_notification([], [], ran_at, pushed=False, new_cls=[], new_as=[])
@@ -1318,6 +1497,13 @@ def main():
         wb.save(AS_XLSX)
         log(f'AS xlsx updated: +{len(new_as)} rows')
 
+    # 7b. Append CVF Open Access papers to the All Papers sheets
+    if new_cvf:
+        try:
+            append_cvf_rows(new_cvf)
+        except Exception as e:
+            log(f'  CVF append failed: {e}')
+
     # 8. Regenerate JSON & inject HTML
     ad_data  = regenerate_ad_json()
     od_data  = regenerate_od_json()
@@ -1330,7 +1516,8 @@ def main():
     # 9. Git push
     pushed = False
     if not args.no_push:
-        msg = f'auto: +{len(new_ad)} AD / +{len(new_od)} OD / +{len(new_cls)} CLS / +{len(new_as)} AS papers ({datetime.now().strftime("%Y-%m-%d")})'
+        cvf_n = len(new_cvf)
+        msg = f'auto: +{len(new_ad)} AD / +{len(new_od)} OD / +{len(new_cls)} CLS / +{len(new_as)} AS / +{cvf_n} CVF papers ({datetime.now().strftime("%Y-%m-%d")})'
         pushed = git_push(msg)
 
     # 10. Email notification

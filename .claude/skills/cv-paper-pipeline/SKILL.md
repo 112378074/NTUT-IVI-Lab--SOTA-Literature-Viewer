@@ -5,9 +5,12 @@ description: >
   Science, ScienceDirect, Scopus) for Computer Vision papers in Anomaly
   Detection / Object Detection / Image Classification, collect them into the
   project's Excel workbooks, then regenerate the literature-viewer website
-  (index.html) from those workbooks. Use this skill when the user wants to
+  (index.html) from those workbooks. The pipeline runs automatically every
+  Wednesday and Friday at 02:00 via Windows Task Scheduler and emails a summary
+  to azaz31855@gmail.com after each run. Use this skill when the user wants to
   update the paper database, add papers from a new source, pull the latest
-  conference proceedings, or rebuild the website data from the .xlsx files.
+  conference proceedings, rebuild the website data, or change the schedule /
+  email settings.
 ---
 
 # CV Paper Pipeline
@@ -37,8 +40,10 @@ CVF / arXiv / IEEE / WoS / ScienceDirect / Scopus
 | `Anomaly_Synthesis_Papers_Benchmark_2021_2026.xlsx`  | AS source workbook (domain disabled on site) |
 | `cls_supplemental.json` | Hand-curated CLS rows merged on top of the xlsx |
 | `index.html` | Single-file website; data is injected as `const *_DATA = …` |
-| `scripts/update_papers.py` | Main pipeline (arXiv fetch, regenerate, inject, push, email) |
-| `.claude/skills/cv-paper-pipeline/scripts/fetch_cvf.py` | CVF Open Access scraper |
+| `scripts/update_papers.py` | Main pipeline — arXiv + CVF fetch, regenerate, inject, push, email. Run by Task Scheduler Wed/Fri 02:00. |
+| `scripts/run_update.bat` | Task Scheduler wrapper |
+| `scripts/.env` | SMTP credentials (gitignored) |
+| `.claude/skills/cv-paper-pipeline/scripts/fetch_cvf.py` | Standalone CVF scraper (for ad-hoc / specific-conference scans) |
 
 ## Step 1 — Search the sources
 
@@ -50,7 +55,10 @@ python scripts\update_papers.py --dry        # preview only
 python scripts\update_papers.py               # full run + push + email
 ```
 
-**CVF Open Access** — public HTML, scrape with the bundled script:
+**CVF Open Access** — public HTML. The scheduled pipeline scans it
+automatically (`process_cvf()` in `update_papers.py`, see *Automation*
+below). For an **ad-hoc scan of a specific conference**, use the standalone
+script:
 ```bash
 python .claude\skills\cv-paper-pipeline\scripts\fetch_cvf.py --conf CVPR --year 2025
 python .claude\skills\cv-paper-pipeline\scripts\fetch_cvf.py --conf ICCV --year 2025 --domain ad
@@ -108,6 +116,61 @@ git push
 ```
 
 GitHub Pages redeploys automatically.
+
+## Automation — scheduled runs
+
+The whole pipeline runs **unattended every Wednesday and Friday at 02:00**
+via Windows Task Scheduler, and **emails a summary to azaz31855@gmail.com**
+after each run.
+
+### What a scheduled run does
+`scripts/update_papers.py` (invoked by `scripts/run_update.bat`) executes:
+1. **arXiv** fetch — last 7 days, AD / OD / CLS / AS queries.
+2. **CVF Open Access** scan — `process_cvf()` scrapes CVPR / ICCV / ECCV /
+   WACV proceedings, dedups by method name, appends genuinely-new papers to
+   the "All Papers" sheets (metrics left blank — pending verification).
+3. Append rows to the `.xlsx` workbooks.
+4. Regenerate `*_data.json` and re-inject into `index.html`.
+5. `git push` → GitHub Pages redeploys.
+6. **Email** a summary (new papers per domain, arXiv + CVF) to
+   `azaz31855@gmail.com`.
+
+### Task Scheduler entries
+Two weekly tasks (run as the logged-in user):
+
+| Task name | Trigger |
+| --- | --- |
+| `AD-OD Paper Auto-Update Wed` | Weekly · Wednesday · 02:00 |
+| `AD-OD Paper Auto-Update Fri` | Weekly · Friday · 02:00 |
+
+Register / re-register them (run in an elevated shell):
+```
+schtasks /Create /TN "AD-OD Paper Auto-Update Wed" /TR "C:\Users\user\Desktop\Mypaper\scripts\run_update.bat" /SC WEEKLY /D WED /ST 02:00 /F
+schtasks /Create /TN "AD-OD Paper Auto-Update Fri" /TR "C:\Users\user\Desktop\Mypaper\scripts\run_update.bat" /SC WEEKLY /D FRI /ST 02:00 /F
+```
+Verify: `schtasks /Query /TN "AD-OD Paper Auto-Update Wed"`
+Run on demand: `schtasks /Run /TN "AD-OD Paper Auto-Update Wed"`
+Change the time: re-create with a different `/ST`. Change the days: edit `/D`.
+
+### Email configuration
+SMTP credentials live in `scripts/.env` (gitignored):
+```
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=azaz31855@gmail.com
+SMTP_PASSWORD=<gmail app password>
+NOTIFY_TO=azaz31855@gmail.com
+```
+To change the recipient, edit `NOTIFY_TO`. If `.env` is missing or the
+password is empty, the run logs `email skipped` and still completes.
+`--no-email` skips the email for a single manual run.
+
+### Caveats
+- Tasks run only while the user is logged in (Windows default). To run when
+  logged out, open `taskschd.msc` and tick *Run whether user is logged on or
+  not* (requires the Windows password).
+- If a workbook is open in Excel during a scheduled run, the write step fails
+  with a PermissionError — keep the `.xlsx` files closed overnight.
 
 ## Per-domain rules
 
