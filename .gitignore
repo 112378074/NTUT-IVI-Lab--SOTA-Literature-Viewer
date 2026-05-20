@@ -5,3 +5,4 @@ scripts/.last_run
 scripts/.env
 scripts/__pycache__/
 .claude/skills/**/__pycache__/
+.pdf_cache/
