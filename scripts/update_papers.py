@@ -301,7 +301,14 @@ LOOKBACK_DAYS = 7
 # ====================================================================
 def log(msg):
     line = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {msg}'
-    print(line, flush=True)
+    # On Windows the default stdout encoding is cp950/cp1252 and crashes on
+    # non-ASCII paper titles. Re-encode the print call defensively so the run
+    # never aborts on a stray accent/CJK char.
+    try:
+        print(line, flush=True)
+    except UnicodeEncodeError:
+        enc = getattr(sys.stdout, 'encoding', None) or 'ascii'
+        print(line.encode(enc, 'replace').decode(enc, 'replace'), flush=True)
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(line + '\n')

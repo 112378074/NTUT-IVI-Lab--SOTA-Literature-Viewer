@@ -11,9 +11,13 @@ cd /d "%PROJ%"
 REM Use the Python on PATH (Python 3.12 detected). Override here if needed.
 set "PY=python"
 
-echo. >> "%PROJ%\scripts\update_log.txt"
-echo ====== Task Scheduler invoke at %date% %time% ====== >> "%PROJ%\scripts\update_log.txt"
+REM IMPORTANT: redirect stdout/stderr to a SEPARATE file (run_update_console.log)
+REM so we don't lock update_log.txt — update_papers.py opens that file directly
+REM via its log() function, and Windows can't share the handle across both.
 
-%PY% "%PROJ%\scripts\update_papers.py" >> "%PROJ%\scripts\update_log.txt" 2>&1
+echo. >> "%PROJ%\scripts\run_update_console.log"
+echo ====== Task Scheduler invoke at %date% %time% ====== >> "%PROJ%\scripts\run_update_console.log"
+
+%PY% "%PROJ%\scripts\update_papers.py" >> "%PROJ%\scripts\run_update_console.log" 2>&1
 
 exit /b %errorlevel%
