@@ -7,10 +7,11 @@ description: >
   project's Excel workbooks, then regenerate the literature-viewer website
   (index.html) from those workbooks. The pipeline runs automatically every
   Wednesday and Friday at 02:00 via Windows Task Scheduler and emails a summary
-  to azaz31855@gmail.com after each run. Use this skill when the user wants to
-  update the paper database, add papers from a new source, pull the latest
-  conference proceedings, rebuild the website data, or change the schedule /
-  email settings.
+  to azaz31855@gmail.com AND fctien@ntut.edu.tw after each run (multi-recipient
+  via comma-separated NOTIFY_TO in scripts/.env). Use this skill when the user
+  wants to update the paper database, add papers from a new source, pull the
+  latest conference proceedings, rebuild the website data, or change the
+  schedule / email settings.
 ---
 
 # CV Paper Pipeline
@@ -120,8 +121,8 @@ GitHub Pages redeploys automatically.
 ## Automation — scheduled runs
 
 The whole pipeline runs **unattended every Wednesday and Friday at 02:00**
-via Windows Task Scheduler, and **emails a summary to azaz31855@gmail.com**
-after each run.
+via Windows Task Scheduler, and **emails a summary to two recipients
+(azaz31855@gmail.com + fctien@ntut.edu.tw)** after each run.
 
 ### What a scheduled run does
 `scripts/update_papers.py` (invoked by `scripts/run_update.bat`) executes:
@@ -132,8 +133,9 @@ after each run.
 3. Append rows to the `.xlsx` workbooks.
 4. Regenerate `*_data.json` and re-inject into `index.html`.
 5. `git push` → GitHub Pages redeploys.
-6. **Email** a summary (new papers per domain, arXiv + CVF) to
-   `azaz31855@gmail.com`.
+6. **Email** a summary (new papers per domain, arXiv + CVF) to **both**
+   `azaz31855@gmail.com` and `fctien@ntut.edu.tw` in a single send
+   (multi-recipient via comma-separated `NOTIFY_TO`).
 
 ### Task Scheduler entries
 Two weekly tasks (run as the logged-in user):
@@ -159,10 +161,16 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=azaz31855@gmail.com
 SMTP_PASSWORD=<gmail app password>
-NOTIFY_TO=azaz31855@gmail.com
+NOTIFY_TO=azaz31855@gmail.com,fctien@ntut.edu.tw
 ```
-To change the recipient, edit `NOTIFY_TO`. If `.env` is missing or the
-password is empty, the run logs `email skipped` and still completes.
+`NOTIFY_TO` is **comma- or whitespace-separated** — list as many recipients as
+needed. The script parses it via regex split (`re.split(r'[,;\s]+', ...)`) so
+either commas, semicolons, or spaces work. All listed addresses receive the
+same email in a single SMTP send (one `sendmail` call with the recipient list,
+and the `To:` header shows all addresses).
+
+To change recipients, edit `NOTIFY_TO` in `scripts/.env`. If `.env` is missing
+or the password is empty, the run logs `email skipped` and still completes.
 `--no-email` skips the email for a single manual run.
 
 ### Caveats

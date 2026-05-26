@@ -1287,10 +1287,16 @@ def send_notification(new_ad, new_od, ran_at, pushed, new_cls=None, new_as=None)
     port = int(cfg.get('SMTP_PORT', '587'))
     user = cfg.get('SMTP_USER', '')
     pwd  = cfg.get('SMTP_PASSWORD', '')
-    to   = cfg.get('NOTIFY_TO', 'azaz31855@gmail.com')
+    # NOTIFY_TO may be a comma-separated list, e.g.
+    #   NOTIFY_TO=azaz31855@gmail.com,fctien@ntut.edu.tw
+    to_raw = cfg.get('NOTIFY_TO', 'azaz31855@gmail.com')
+    recipients = [addr.strip() for addr in re.split(r'[,;\s]+', to_raw) if addr.strip()]
 
     if not user or not pwd:
         log(f'  email skipped: SMTP_USER / SMTP_PASSWORD not set in {ENV_FILE}')
+        return False
+    if not recipients:
+        log(f'  email skipped: NOTIFY_TO empty in {ENV_FILE}')
         return False
 
     subject = (f'[AIL Auto-Update] +{len(new_ad)} AD / +{len(new_od)} OD / '
@@ -1301,7 +1307,7 @@ def send_notification(new_ad, new_od, ran_at, pushed, new_cls=None, new_as=None)
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
     msg['From']    = user
-    msg['To']      = to
+    msg['To']      = ', '.join(recipients)
     msg['Date']    = formatdate(localtime=True)
     msg['Message-ID'] = make_msgid()
     msg.attach(MIMEText(text, 'plain', 'utf-8'))
@@ -1313,8 +1319,8 @@ def send_notification(new_ad, new_od, ran_at, pushed, new_cls=None, new_as=None)
             s.starttls(context=SSL_CTX)
             s.ehlo()
             s.login(user, pwd)
-            s.sendmail(user, [to], msg.as_string())
-        log(f'  email sent to {to}')
+            s.sendmail(user, recipients, msg.as_string())
+        log(f'  email sent to {", ".join(recipients)}')
         return True
     except Exception as e:
         log(f'  email send failed: {type(e).__name__}: {e}')
