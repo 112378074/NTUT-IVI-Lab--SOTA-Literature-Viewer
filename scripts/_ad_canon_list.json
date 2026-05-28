@@ -1,0 +1,449 @@
+{
+"DDAD": {
+"aid": "2305.15956",
+"link": "https://arxiv.org/abs/2305.15956",
+"vals": {
+"MVTec AD": "99.8",
+"VisA": "98.9"
+}
+},
+"RealNet": {
+"aid": "2403.05897",
+"link": "https://arxiv.org/abs/2403.05897",
+"vals": {
+"MVTec AD": "99.7",
+"VisA": "97.8",
+"MPDD": "96.3",
+"BTAD": "96.1"
+}
+},
+"INP-Former (CVPR'25)": {
+"aid": "2503.02424",
+"link": "https://arxiv.org/abs/2503.02424",
+"vals": {
+"MVTec AD": "99.7",
+"VisA": "98.5"
+}
+},
+"SimpleNet": {
+"aid": "2303.15140",
+"link": "https://arxiv.org/abs/2303.15140",
+"vals": {
+"MVTec AD": "99.6",
+"VisA": "87.2",
+"MPDD": "90.6",
+"BTAD": "94.1"
+}
+},
+"CFA": {
+"aid": "2206.04325",
+"link": "https://arxiv.org/abs/2206.04325",
+"vals": {
+"MVTec AD": "99.5"
+}
+},
+"VQ-Flow": {
+"aid": "2409.00942",
+"link": "https://arxiv.org/abs/2409.00942",
+"vals": {
+"MVTec AD": 99.5,
+"VisA": 95.9
+}
+},
+"PRN": {
+"aid": "2212.02031",
+"link": "https://arxiv.org/abs/2212.02031",
+"vals": {
+"MVTec AD": 99.4,
+"BTAD": 94.7
+}
+},
+"One-Step Inverse Residual Diffusion": {
+"aid": "2604.18393",
+"link": "https://arxiv.org/abs/2604.18393",
+"vals": {
+"MVTec AD": 99,
+"VisA": 96.8,
+"MPDD": 98.3
+}
+},
+"RD++": {
+"aid": "2304.02216",
+"link": "https://arxiv.org/abs/2304.02216",
+"vals": {
+"MVTec AD": "99.4",
+"BTAD": "95.6"
+}
+},
+"AnomalyDiffusion": {
+"aid": "2312.05767",
+"link": "https://arxiv.org/abs/2312.05767",
+"vals": {
+"MVTec AD": "99.2"
+}
+},
+"TransFusion": {
+"aid": "2311.09999",
+"link": "https://arxiv.org/abs/2311.09999",
+"vals": {
+"MVTec AD": "99.2",
+"VisA": "98.5"
+}
+},
+"PatchCore": {
+"aid": "2106.08265",
+"link": "https://arxiv.org/abs/2106.08265",
+"vals": {
+"MVTec AD": "99.1",
+"MVTec LOCO": "69.0",
+"VisA": "95.1",
+"MPDD": "94.5",
+"BTAD": "93.1",
+"MVTec 3D": "81.1"
+}
+},
+"EfficientAD": {
+"aid": "2303.14535",
+"link": "https://arxiv.org/abs/2303.14535",
+"vals": {
+"MVTec AD": "99.1",
+"MVTec LOCO": "90.7",
+"VisA": "98.1"
+}
+},
+"U-Flow": {
+"aid": "2211.12353",
+"link": "https://arxiv.org/abs/2211.12353",
+"vals": {
+"MVTec AD": "98.7"
+}
+},
+"CS-Flow": {
+"aid": "2110.02855",
+"link": "https://arxiv.org/abs/2110.02855",
+"vals": {
+"MVTec AD": "98.7"
+}
+},
+"DeSTSeg": {
+"aid": "2211.11317",
+"link": "https://arxiv.org/abs/2211.11317",
+"vals": {
+"MVTec AD": "98.6",
+"VisA": "88.9"
+}
+},
+"RD4AD (Reverse Distillation)": {
+"aid": "2201.10703",
+"link": "https://arxiv.org/abs/2201.10703",
+"vals": {
+"MVTec AD": "98.5",
+"MVTec LOCO": "77.6",
+"VisA": "96.0",
+"MPDD": "92.7"
+}
+},
+"CFLOW-AD": {
+"aid": "2107.12571",
+"link": "https://arxiv.org/abs/2107.12571",
+"vals": {
+"MVTec AD": "98.3",
+"MPDD": "86.1",
+"BTAD": "92.9"
+}
+},
+"OCR-GAN": {
+"aid": "2203.00259",
+"link": "https://arxiv.org/abs/2203.00259",
+"vals": {
+"MVTec AD": "98.3"
+}
+},
+"DRAEM": {
+"aid": "2108.07610",
+"link": "https://arxiv.org/abs/2108.07610",
+"vals": {
+"MVTec AD": "98.0",
+"VisA": "88.7",
+"MPDD": "94.1",
+"BTAD": "93.1"
+}
+},
+"PaDiM": {
+"aid": "2011.08785",
+"link": "https://arxiv.org/abs/2011.08785",
+"vals": {
+"MVTec AD": "97.9",
+"VisA": "89.1",
+"MPDD": "74.8",
+"BTAD": "94.0"
+}
+},
+"PromptAD": {
+"aid": "2404.05231",
+"link": "https://arxiv.org/abs/2404.05231",
+"vals": {
+"MVTec AD": "96.6",
+"MVTec LOCO": 73.5,
+"VisA": "89.1",
+"MPDD": 87.2
+}
+},
+"UniAD": {
+"aid": "2206.03687",
+"link": "https://arxiv.org/abs/2206.03687",
+"vals": {
+"MVTec AD": "96.5",
+"VisA": "88.8",
+"BTAD": "94.5"
+}
+},
+"DifferNet": {
+"aid": "2008.12577",
+"link": "https://arxiv.org/abs/2008.12577",
+"vals": {
+"MVTec AD": "94.9"
+}
+},
+"WinCLIP": {
+"aid": "2303.14814",
+"link": "https://arxiv.org/abs/2303.14814",
+"vals": {
+"MVTec AD": "91.8",
+"VisA": "78.1"
+}
+},
+"April-GAN (CLIP-AD)": {
+"aid": "2305.17382",
+"link": "https://arxiv.org/abs/2305.17382",
+"vals": {
+"MVTec AD": "86.1",
+"VisA": 78
+}
+},
+"DeCo-Diff": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Beizaee_Correcting_Deviations_from_Normality_A_Reformulated_Diffusion_Model_for_Multi-Class_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 99.3,
+"VisA": 96.4
+}
+},
+"FUN-AD": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Im_FUN-AD_Fully_Unsupervised_Learning_for_Anomaly_Detection_with_Noisy_Training_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 99.2,
+"VisA": 95
+}
+},
+"UniAS": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Ma_Towards_Accurate_Unified_Anomaly_Segmentation_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": null,
+"VisA": null
+}
+},
+"LASB": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Akshay_A_Unified_Latent_Schrodinger_Bridge_Diffusion_Model_for_Unsupervised_Anomaly_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 99.66,
+"VisA": 98.52
+}
+},
+"PatchGuard": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Nafez_PatchGuard_Adversarially_Robust_Anomaly_Detection_and_Localization_through_Vision_Transformers_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 88.1,
+"VisA": 88.5,
+"MPDD": 85.4,
+"BTAD": 85.3
+}
+},
+"SPACE": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kim_SPACE_SPAtial-Aware_Consistency_rEgularization_for_Anomaly_Detection_in_Industrial_Applications_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 99.2,
+"MVTec LOCO": 92.6,
+"VisA": 98.5
+}
+},
+"AST (Asymmetric Student-Teacher)": {
+"aid": "2210.07829",
+"link": "https://arxiv.org/abs/2210.07829",
+"vals": {
+"MVTec AD": 99.2,
+"MVTec LOCO": "86.0",
+"MVTec 3D": "93.7"
+}
+},
+"Towards Zero-Shot Anomaly Detection and Reasoning with Multi": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xu_Towards_Zero-Shot_Anomaly_Detection_and_Reasoning_with_Multimodal_Large_Language_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 94,
+"VisA": 91.1,
+"MPDD": 81.7,
+"BTAD": 89
+}
+},
+"Beyond Single-Modal Boundary": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Mao_Beyond_Single-Modal_Boundary_Cross-Modal_Anomaly_Detection_through_Visual_Prototype_and_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 92.3,
+"VisA": 86.8,
+"MPDD": 72.8,
+"BTAD": 97.5,
+"MVTec 3D": 79.6
+}
+},
+"Bayesian Prompt Flow Learning for Zero-Shot Anomaly Detectio": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Qu_Bayesian_Prompt_Flow_Learning_for_Zero-Shot_Anomaly_Detection_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 92.3,
+"VisA": 87,
+"BTAD": 93.2
+}
+},
+"Self-Supervised Anomaly Segmentation via Diffusion Models wi": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kumar_Self-Supervised_Anomaly_Segmentation_via_Diffusion_Models_with_Dynamic_Transformer_UNet_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 99.17
+}
+},
+"Adaptive Deviation Learning for Visual Anomaly Detection wit": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Das_Adaptive_Deviation_Learning_for_Visual_Anomaly_Detection_with_Data_Contamination_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 92.4,
+"VisA": 84.4
+}
+},
+"ROADS": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kashiani_ROADS_Robust_Prompt-Driven_Multi-Class_Anomaly_Detection_under_Domain_Shift_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 98.83,
+"VisA": 95.42
+}
+},
+"IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agentic Tools": {
+"aid": "2605.20682",
+"link": "https://arxiv.org/abs/2605.20682",
+"vals": {
+"MVTec AD": 83.6
+}
+},
+"CSAD (Component Segmentation AD)": {
+"aid": "2408.15628",
+"link": "https://arxiv.org/abs/2408.15628",
+"vals": {
+"MVTec LOCO": "95.3"
+}
+},
+"PSAD (Few-Shot Part Segmentation)": {
+"aid": "2312.13783",
+"link": "https://arxiv.org/abs/2312.13783",
+"vals": {
+"MVTec LOCO": "91.4"
+}
+},
+"ComAD (Component Aware AD)": {
+"aid": "2305.13509",
+"link": "https://arxiv.org/abs/2305.13509",
+"vals": {
+"MVTec LOCO": "88.8"
+}
+},
+"SINBAD (Set Features)": {
+"aid": "2311.14773",
+"link": "https://arxiv.org/abs/2311.14773",
+"vals": {
+"MVTec LOCO": "86.8"
+}
+},
+"GCAD (Bergmann et al.)": {
+"aid": null,
+"link": "https://link.springer.com/article/10.1007/s11263-022-01578-9",
+"vals": {
+"MVTec LOCO": "80.2"
+}
+},
+"Towards Training-free Anomaly Detection with Vision and Lang": {
+"aid": null,
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Towards_Training-free_Anomaly_Detection_with_Vision_and_Language_Foundation_Models_CVPR_2025_paper.html",
+"vals": {
+"MVTec LOCO": 90.2
+}
+},
+"VT-ADL": {
+"aid": "2104.10036",
+"link": "https://arxiv.org/abs/2104.10036",
+"vals": {
+"BTAD": "94.5"
+}
+},
+"CFM (Crossmodal Feature Mapping)": {
+"aid": "2312.04521",
+"link": "https://arxiv.org/abs/2312.04521",
+"vals": {
+"MVTec 3D": "98.5"
+}
+},
+"CPMF (Complementary Pseudo Multimodal Feature)": {
+"aid": "2310.13513",
+"link": "https://arxiv.org/abs/2310.13513",
+"vals": {
+"MVTec 3D": "95.2"
+}
+},
+"Shape-Guided (Dual-Memory)": {
+"aid": null,
+"link": "https://proceedings.mlr.press/v202/chu23b.html",
+"vals": {
+"MVTec 3D": "94.7"
+}
+},
+"M3DM-NR (Noisy-Resistant)": {
+"aid": "2406.02263",
+"link": "https://arxiv.org/abs/2406.02263",
+"vals": {
+"MVTec 3D": "94.6"
+}
+},
+"M3DM (Multimodal Hybrid Fusion)": {
+"aid": "2303.00601",
+"link": "https://arxiv.org/abs/2303.00601",
+"vals": {
+"MVTec 3D": "94.5"
+}
+},
+"EasyNet": {
+"aid": "2307.13925",
+"link": "https://arxiv.org/abs/2307.13925",
+"vals": {
+"MVTec 3D": "92.4"
+}
+},
+"BTF (Back to the Feature)": {
+"aid": "2203.05550",
+"link": "https://arxiv.org/abs/2203.05550",
+"vals": {
+"MVTec 3D": "86.5"
+}
+},
+"Text-Guided Multimodal Unified Industrial Anomaly Detection": {
+"aid": "2604.22899",
+"link": "https://arxiv.org/abs/2604.22899",
+"vals": {
+"MVTec 3D": 93.99
+}
+}
+}
