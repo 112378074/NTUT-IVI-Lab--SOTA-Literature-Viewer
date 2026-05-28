@@ -1,0 +1,1285 @@
+{
+"GLASS": {
+"link": "https://arxiv.org/abs/2407.09359",
+"vals": {
+"MVTec AD": "99.9",
+"VisA": "98.8",
+"MPDD": "99.0"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅"
+}
+},
+"UniNet (Contrastive S-T Unified)": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wei_UniNet_A_Contrastive_Learning-guided_Unified_Framework_with_Feature_Selection_for_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": "99.9",
+"BTAD": "97.7",
+"MVTec 3D": "95.8"
+},
+"st": {
+"MVTec AD": "flag",
+"BTAD": "flag",
+"MVTec 3D": "flag"
+}
+},
+"Dinomaly2 (Dinomaly Extended)": {
+"link": "https://arxiv.org/abs/2510.17611",
+"vals": {
+"MVTec AD": "99.9",
+"VisA": "99.3",
+"MPDD": "99.0",
+"BTAD": 97.5,
+"MVTec 3D": 95
+},
+"st": {
+"MVTec AD": "PDFok",
+"VisA": "PDFok",
+"MPDD": "PDFok",
+"BTAD": "mem✅",
+"MVTec 3D": "PDFok"
+}
+},
+"DDAD": {
+"link": "https://arxiv.org/abs/2305.15956",
+"vals": {
+"MVTec AD": "99.8",
+"VisA": "98.9"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"RealNet": {
+"link": "https://arxiv.org/abs/2403.05897",
+"vals": {
+"MVTec AD": "99.7",
+"VisA": "97.8",
+"MPDD": "96.3",
+"BTAD": "96.1"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"MSFlow": {
+"link": "https://arxiv.org/abs/2308.15300",
+"vals": {
+"MVTec AD": "99.7"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"Generalist Multi-Class AD (Dual-Student)": {
+"link": "https://arxiv.org/abs/2509.24448",
+"vals": {
+"MVTec AD": "99.7",
+"MVTec LOCO": 86.1,
+"VisA": 98.8
+},
+"st": {
+"MVTec AD": "PDFok",
+"MVTec LOCO": "mem✅",
+"VisA": "PDFok"
+}
+},
+"INP-Former (CVPR'25)": {
+"link": "https://arxiv.org/abs/2503.02424",
+"vals": {
+"MVTec AD": "99.7",
+"VisA": "98.5"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"DiffusionAD": {
+"link": "https://arxiv.org/abs/2303.08730",
+"vals": {
+"MVTec AD": "99.7",
+"VisA": "98.8",
+"MPDD": "95.9"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅"
+}
+},
+"Effective Synthetic Images": {
+"link": "https://arxiv.org/abs/2512.23227",
+"vals": {
+"MVTec AD": "99.6",
+"VisA": "98.0"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"Dinomaly": {
+"link": "https://arxiv.org/abs/2405.14325",
+"vals": {
+"MVTec AD": "99.6",
+"VisA": "98.7",
+"MPDD": 97.2,
+"BTAD": "96.7"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"SimpleNet": {
+"link": "https://arxiv.org/abs/2303.15140",
+"vals": {
+"MVTec AD": "99.6",
+"VisA": "87.2",
+"MPDD": "90.6",
+"BTAD": "94.1"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"STAGE (Graded Diffusion + Mask Alignment)": {
+"link": "https://arxiv.org/abs/2509.06693",
+"vals": {
+"MVTec AD": "99.5",
+"VisA": "98.0"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"AnomalyAgent (Agentic RL Synthesis)": {
+"link": "https://arxiv.org/abs/2604.07900",
+"vals": {
+"MVTec AD": "99.5",
+"VisA": "98.5"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"CFA": {
+"link": "https://arxiv.org/abs/2206.04325",
+"vals": {
+"MVTec AD": "99.5"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"ReContrast": {
+"link": "https://arxiv.org/abs/2306.02602",
+"vals": {
+"MVTec AD": "99.5",
+"MVTec LOCO": 82.1,
+"VisA": "97.5",
+"BTAD": "95.1",
+"MVTec 3D": "88.6"
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"VisA": "mem✅",
+"BTAD": "mem✅",
+"MVTec 3D": "flag"
+}
+},
+"VQ-Flow": {
+"link": "https://arxiv.org/abs/2409.00942",
+"vals": {
+"MVTec AD": 99.5,
+"VisA": 95.9
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"PRN": {
+"link": "https://arxiv.org/abs/2212.02031",
+"vals": {
+"MVTec AD": 99.4,
+"BTAD": 94.7
+},
+"st": {
+"MVTec AD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"GroundingAnomaly (Spatial Diffusion)": {
+"link": "https://arxiv.org/abs/2604.08301",
+"vals": {
+"MVTec AD": "99.4",
+"VisA": "98.2"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"One-Step Inverse Residual Diffusion": {
+"link": "https://arxiv.org/abs/2604.18393",
+"vals": {
+"MVTec AD": 99,
+"VisA": 96.8,
+"MPDD": 98.3
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅"
+}
+},
+"DFM (Differentiable Feature Matching)": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wu_Differentiable_Feature_Matching_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": "99.4",
+"VisA": "98.5"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"FastFlow": {
+"link": "https://arxiv.org/abs/2111.07677",
+"vals": {
+"MVTec AD": "99.4",
+"BTAD": "95.0"
+},
+"st": {
+"MVTec AD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"UniMMAD (MoE Multi-Modal AD)": {
+"link": "https://arxiv.org/abs/2509.25934",
+"vals": {
+"MVTec AD": "99.4",
+"VisA": "98.4",
+"MVTec 3D": 92.5
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"MVTec 3D": "mem✅"
+}
+},
+"RD++": {
+"link": "https://arxiv.org/abs/2304.02216",
+"vals": {
+"MVTec AD": "99.4",
+"BTAD": "95.6"
+},
+"st": {
+"MVTec AD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"SNARM (Self-Navigated Residual Mamba)": {
+"link": "https://arxiv.org/abs/2508.01591",
+"vals": {
+"MVTec AD": "99.3",
+"VisA": "98.0",
+"MVTec 3D": 93.9
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"MVTec 3D": "mem✅"
+}
+},
+"MIRAGE (Realistic Anomaly Generation)": {
+"link": "https://arxiv.org/abs/2603.13507",
+"vals": {
+"MVTec AD": "99.3",
+"VisA": "97.8"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"GLAD": {
+"link": "https://arxiv.org/abs/2406.07487",
+"vals": {
+"MVTec AD": "99.3",
+"VisA": 99.5,
+"MPDD": 97.5
+},
+"st": {
+"MVTec AD": "PDFok",
+"VisA": "PDFok",
+"MPDD": "mem✅"
+}
+},
+"AnomalyHybrid (GAN-Hybrid Synthesis)": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025W/SyntaGen/",
+"vals": {
+"MVTec AD": "99.3",
+"VisA": "98.2"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"InvAD-Diff (Inversion-based Diffusion)": {
+"link": "https://arxiv.org/abs/2504.05662",
+"vals": {
+"MVTec AD": "99.3",
+"VisA": "98.5",
+"MPDD": 96.5
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"MPDD": "mem✅"
+}
+},
+"AnomalyDiffusion": {
+"link": "https://arxiv.org/abs/2312.05767",
+"vals": {
+"MVTec AD": "99.2"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"DefectFill (Inpainting Diffusion)": {
+"link": "https://arxiv.org/abs/2503.13985",
+"vals": {
+"MVTec AD": "99.2",
+"VisA": "97.8"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"TransFusion": {
+"link": "https://arxiv.org/abs/2311.09999",
+"vals": {
+"MVTec AD": "99.2",
+"VisA": "98.5"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"Schrödinger Bridge Diffusion AD": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/",
+"vals": {
+"MVTec AD": "99.2",
+"VisA": "98.3"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"HVQ-Trans": {
+"link": "https://arxiv.org/abs/2310.14228",
+"vals": {
+"MVTec AD": "99.2",
+"VisA": "91.3"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"PatchCore": {
+"link": "https://arxiv.org/abs/2106.08265",
+"vals": {
+"MVTec AD": "99.1",
+"MVTec LOCO": "69.0",
+"VisA": "95.1",
+"MPDD": "94.5",
+"BTAD": "93.1",
+"MVTec 3D": "81.1"
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅",
+"MVTec 3D": "mem✅"
+}
+},
+"AMI-Net": {
+"link": "https://arxiv.org/abs/2412.11802",
+"vals": {
+"MVTec AD": "99.1",
+"VisA": "97.9",
+"BTAD": 95.1
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"BTAD": "mem✅"
+}
+},
+"UniFlow (Unified NF)": {
+"link": "https://www.mdpi.com/2078-2489/15/12/791",
+"vals": {
+"MVTec AD": "99.1",
+"VisA": "97.5"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"EfficientAD": {
+"link": "https://arxiv.org/abs/2303.14535",
+"vals": {
+"MVTec AD": "99.1",
+"MVTec LOCO": "90.7",
+"VisA": "98.1"
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"VisA": "mem✅"
+}
+},
+"Training-Free Diffusion Defect Generation": {
+"link": "https://openaccess.thecvf.com/content/ICCV2025/papers/Xu_Training-Free_Industrial_Defect_Generation_with_Diffusion_Models_ICCV_2025_paper.pdf",
+"vals": {
+"MVTec AD": "99.0",
+"VisA": "97.5"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"AnomalyAny (Unseen Visual Anomaly Generation)": {
+"link": "https://arxiv.org/abs/2406.01078",
+"vals": {
+"MVTec AD": "99.0",
+"VisA": "97.5"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"InvAD (Feature Inversion)": {
+"link": "https://arxiv.org/abs/2404.10760",
+"vals": {
+"MVTec AD": 98.9,
+"VisA": "95.5",
+"MVTec 3D": 86.1
+},
+"st": {
+"MVTec AD": "PDFok",
+"VisA": "PDFok",
+"MVTec 3D": "mem✅"
+}
+},
+"Pyramid-based Mamba NF": {
+"link": "https://arxiv.org/abs/2504.03442",
+"vals": {
+"MVTec AD": "99.0",
+"VisA": "97.6"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"Adversarially Robust Diffusion AD": {
+"link": "https://arxiv.org/abs/2408.04839",
+"vals": {
+"MVTec AD": "98.9",
+"VisA": "97.0"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"U-Flow": {
+"link": "https://arxiv.org/abs/2211.12353",
+"vals": {
+"MVTec AD": "98.7"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"TFA-Net (Template-based Feature Aggregation)": {
+"link": "https://arxiv.org/abs/2603.22874",
+"vals": {
+"MVTec AD": "98.7"
+},
+"st": {
+"MVTec AD": "flag"
+}
+},
+"CS-Flow": {
+"link": "https://arxiv.org/abs/2110.02855",
+"vals": {
+"MVTec AD": "98.7"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"DeSTSeg": {
+"link": "https://arxiv.org/abs/2211.11317",
+"vals": {
+"MVTec AD": "98.6",
+"VisA": "88.9"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"MambaAD": {
+"link": "https://arxiv.org/abs/2404.06564",
+"vals": {
+"MVTec AD": "98.6",
+"VisA": "94.3",
+"BTAD": "95.6",
+"MVTec 3D": 86.2
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"BTAD": "mem✅",
+"MVTec 3D": "mem✅"
+}
+},
+"RD4AD (Reverse Distillation)": {
+"link": "https://arxiv.org/abs/2201.10703",
+"vals": {
+"MVTec AD": "98.5",
+"MVTec LOCO": "77.6",
+"VisA": "96.0",
+"MPDD": "92.7"
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅"
+}
+},
+"CFLOW-AD": {
+"link": "https://arxiv.org/abs/2107.12571",
+"vals": {
+"MVTec AD": "98.3",
+"MPDD": "86.1",
+"BTAD": "92.9"
+},
+"st": {
+"MVTec AD": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"OCR-GAN": {
+"link": "https://arxiv.org/abs/2203.00259",
+"vals": {
+"MVTec AD": "98.3"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"USAGI (Memory-Retrieval Transformer)": {
+"link": "https://www.sciencedirect.com/science/article/pii/S003132032501667X",
+"vals": {
+"MVTec AD": "98.2"
+},
+"st": {
+"MVTec AD": "flag"
+}
+},
+"RareCLIP": {
+"link": "https://openaccess.thecvf.com/content/ICCV2025/",
+"vals": {
+"MVTec AD": "98.2",
+"VisA": "94.4"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"DRAEM": {
+"link": "https://arxiv.org/abs/2108.07610",
+"vals": {
+"MVTec AD": "98.0",
+"VisA": "88.7",
+"MPDD": "94.1",
+"BTAD": "93.1"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"PaDiM": {
+"link": "https://arxiv.org/abs/2011.08785",
+"vals": {
+"MVTec AD": "97.9",
+"VisA": "89.1",
+"MPDD": "74.8",
+"BTAD": "94.0"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"MuSc": {
+"link": "https://arxiv.org/abs/2401.16753",
+"vals": {
+"MVTec AD": "97.8",
+"VisA": "92.8",
+"BTAD": 94.8
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"UniVAD (Training-Free Universal AD)": {
+"link": "https://arxiv.org/abs/2412.03342",
+"vals": {
+"MVTec AD": "97.8",
+"MVTec LOCO": "71.0",
+"VisA": "93.5"
+},
+"st": {
+"MVTec AD": "flag",
+"MVTec LOCO": "flag",
+"VisA": "flag"
+}
+},
+"VisionAD (Search Is All You Need)": {
+"link": "https://arxiv.org/abs/2504.11895",
+"vals": {
+"MVTec AD": "97.4",
+"VisA": "94.8"
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag"
+}
+},
+"DiAD": {
+"link": "https://arxiv.org/abs/2312.06607",
+"vals": {
+"MVTec AD": "97.2",
+"VisA": "86.8",
+"MVTec 3D": 84.6
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MVTec 3D": "mem✅"
+}
+},
+"AnomalyDINO": {
+"link": "https://arxiv.org/abs/2405.14529",
+"vals": {
+"MVTec AD": "96.6",
+"VisA": "94.0"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"PromptAD": {
+"link": "https://arxiv.org/abs/2404.05231",
+"vals": {
+"MVTec AD": "96.6",
+"MVTec LOCO": 73.5,
+"VisA": "89.1",
+"MPDD": 87.2
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅"
+}
+},
+"CutPaste": {
+"link": "https://arxiv.org/abs/2104.04015",
+"vals": {
+"MVTec AD": "96.6"
+},
+"st": {
+"MVTec AD": "flag"
+}
+},
+"UniAD": {
+"link": "https://arxiv.org/abs/2206.03687",
+"vals": {
+"MVTec AD": "96.5",
+"VisA": "88.8",
+"BTAD": "94.5"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"PatchEAD": {
+"link": "https://arxiv.org/abs/2509.25856",
+"vals": {
+"MVTec AD": "96.0",
+"VisA": "89.5",
+"MPDD": 68.6,
+"BTAD": 91.2
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"DifferNet": {
+"link": "https://arxiv.org/abs/2008.12577",
+"vals": {
+"MVTec AD": "94.9"
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"AA-CLIP (Anomaly-Aware CLIP)": {
+"link": "https://arxiv.org/abs/2503.06661",
+"vals": {
+"MVTec AD": "92.5",
+"VisA": "85.6",
+"MPDD": 75.1,
+"BTAD": 94.8
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"MultiADS (Multi-Type Zero-Shot AD)": {
+"link": "https://arxiv.org/abs/2504.06740",
+"vals": {
+"MVTec AD": "92.2",
+"VisA": "86.5",
+"MPDD": 78.3
+},
+"st": {
+"MVTec AD": "flag",
+"VisA": "flag",
+"MPDD": "mem✅"
+}
+},
+"WinCLIP": {
+"link": "https://arxiv.org/abs/2303.14814",
+"vals": {
+"MVTec AD": "91.8",
+"VisA": "78.1"
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"AnomalyCLIP": {
+"link": "https://arxiv.org/abs/2310.18961",
+"vals": {
+"MVTec AD": "91.5",
+"VisA": "82.1",
+"MPDD": 77,
+"BTAD": 88.3
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"April-GAN (CLIP-AD)": {
+"link": "https://arxiv.org/abs/2305.17382",
+"vals": {
+"MVTec AD": "86.1",
+"VisA": 78
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"PyramidFlow": {
+"link": "https://arxiv.org/abs/2303.02595",
+"vals": {
+"MVTec AD": "N/A",
+"BTAD": "95.8"
+},
+"st": {
+"MVTec AD": "flag",
+"BTAD": "mem✅"
+}
+},
+"DeCo-Diff": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Beizaee_Correcting_Deviations_from_Normality_A_Reformulated_Diffusion_Model_for_Multi-Class_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 99.3,
+"VisA": 96.4
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"FUN-AD": {
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Im_FUN-AD_Fully_Unsupervised_Learning_for_Anomaly_Detection_with_Noisy_Training_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 99.2,
+"VisA": 95
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"UniAS": {
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Ma_Towards_Accurate_Unified_Anomaly_Segmentation_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": null,
+"VisA": null
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"LASB": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Akshay_A_Unified_Latent_Schrodinger_Bridge_Diffusion_Model_for_Unsupervised_Anomaly_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 99.66,
+"VisA": 98.52
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"PatchGuard": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Nafez_PatchGuard_Adversarially_Robust_Anomaly_Detection_and_Localization_through_Vision_Transformers_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 88.1,
+"VisA": 88.5,
+"MPDD": 85.4,
+"BTAD": 85.3
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"SPACE": {
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kim_SPACE_SPAtial-Aware_Consistency_rEgularization_for_Anomaly_Detection_in_Industrial_Applications_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 99.2,
+"MVTec LOCO": 92.6,
+"VisA": 98.5
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"VisA": "mem✅"
+}
+},
+"AST (Asymmetric Student-Teacher)": {
+"link": "https://arxiv.org/abs/2210.07829",
+"vals": {
+"MVTec AD": 99.2,
+"MVTec LOCO": "86.0",
+"MVTec 3D": "93.7"
+},
+"st": {
+"MVTec AD": "mem✅",
+"MVTec LOCO": "mem✅",
+"MVTec 3D": "mem✅"
+}
+},
+"Towards Zero-Shot Anomaly Detection and Reasoning with Multi": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xu_Towards_Zero-Shot_Anomaly_Detection_and_Reasoning_with_Multimodal_Large_Language_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 94,
+"VisA": 91.1,
+"MPDD": 81.7,
+"BTAD": 89
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"Beyond Single-Modal Boundary": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Mao_Beyond_Single-Modal_Boundary_Cross-Modal_Anomaly_Detection_through_Visual_Prototype_and_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 92.3,
+"VisA": 86.8,
+"MPDD": 72.8,
+"BTAD": 97.5,
+"MVTec 3D": 79.6
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"MPDD": "mem✅",
+"BTAD": "mem✅",
+"MVTec 3D": "mem✅"
+}
+},
+"Bayesian Prompt Flow Learning for Zero-Shot Anomaly Detectio": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Qu_Bayesian_Prompt_Flow_Learning_for_Zero-Shot_Anomaly_Detection_CVPR_2025_paper.html",
+"vals": {
+"MVTec AD": 92.3,
+"VisA": 87,
+"BTAD": 93.2
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅",
+"BTAD": "mem✅"
+}
+},
+"Self-Supervised Anomaly Segmentation via Diffusion Models wi": {
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kumar_Self-Supervised_Anomaly_Segmentation_via_Diffusion_Models_with_Dynamic_Transformer_UNet_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 99.17
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"Adaptive Deviation Learning for Visual Anomaly Detection wit": {
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Das_Adaptive_Deviation_Learning_for_Visual_Anomaly_Detection_with_Data_Contamination_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 92.4,
+"VisA": 84.4
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"ROADS": {
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kashiani_ROADS_Robust_Prompt-Driven_Multi-Class_Anomaly_Detection_under_Domain_Shift_WACV_2025_paper.html",
+"vals": {
+"MVTec AD": 98.83,
+"VisA": 95.42
+},
+"st": {
+"MVTec AD": "mem✅",
+"VisA": "mem✅"
+}
+},
+"IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agentic Tools": {
+"link": "https://arxiv.org/abs/2605.20682",
+"vals": {
+"MVTec AD": 83.6
+},
+"st": {
+"MVTec AD": "mem✅"
+}
+},
+"Memory-Distilled Selection for Noise-Robust Anomaly Detection": {
+"link": "https://arxiv.org/abs/2605.26676",
+"vals": {
+"MVTec AD": null
+},
+"st": {
+"MVTec AD": "none"
+}
+},
+"CSAD (Component Segmentation AD)": {
+"link": "https://arxiv.org/abs/2408.15628",
+"vals": {
+"MVTec LOCO": "95.3"
+},
+"st": {
+"MVTec LOCO": "mem✅"
+}
+},
+"PSAD (Few-Shot Part Segmentation)": {
+"link": "https://arxiv.org/abs/2312.13783",
+"vals": {
+"MVTec LOCO": "91.4"
+},
+"st": {
+"MVTec LOCO": "mem✅"
+}
+},
+"ComAD (Component Aware AD)": {
+"link": "https://arxiv.org/abs/2305.13509",
+"vals": {
+"MVTec LOCO": "88.8"
+},
+"st": {
+"MVTec LOCO": "mem✅"
+}
+},
+"LogicQA (VLM Logical AD)": {
+"link": "https://arxiv.org/abs/2503.20252",
+"vals": {
+"MVTec LOCO": "87.6"
+},
+"st": {
+"MVTec LOCO": "flag"
+}
+},
+"SINBAD (Set Features)": {
+"link": "https://arxiv.org/abs/2311.14773",
+"vals": {
+"MVTec LOCO": "86.8"
+},
+"st": {
+"MVTec LOCO": "mem✅"
+}
+},
+"GCAD (Bergmann et al.)": {
+"link": "https://link.springer.com/article/10.1007/s11263-022-01578-9",
+"vals": {
+"MVTec LOCO": "80.2"
+},
+"st": {
+"MVTec LOCO": "mem✅"
+}
+},
+"Towards Training-free Anomaly Detection with Vision and Lang": {
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Towards_Training-free_Anomaly_Detection_with_Vision_and_Language_Foundation_Models_CVPR_2025_paper.html",
+"vals": {
+"MVTec LOCO": 90.2
+},
+"st": {
+"MVTec LOCO": "mem✅"
+}
+},
+"ISVL (VAND 2025 第一名)": {
+"link": "https://github.com/ISVL119/isvl/blob/main/vand3.0.pdf",
+"vals": {
+"MVTec AD2": "82.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"RoBiS (VAND 2025 第二名)": {
+"link": "https://arxiv.org/abs/2505.21152",
+"vals": {
+"MVTec AD2": "79.62"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"SuperAD (Training-free DINOv2)": {
+"link": "https://arxiv.org/abs/2505.19750",
+"vals": {
+"MVTec AD2": "70.2"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"INP-Former (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.02424",
+"vals": {
+"MVTec AD2": "55.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"EfficientAD (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.21622",
+"vals": {
+"MVTec AD2": "63.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"DDAD (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.21622",
+"vals": {
+"MVTec AD2": "53.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"RD4AD (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.21622",
+"vals": {
+"MVTec AD2": "50.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"PatchCore (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.21622",
+"vals": {
+"MVTec AD2": "52.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"DRAEM (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.21622",
+"vals": {
+"MVTec AD2": "48.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"SimpleNet (AD2 baseline)": {
+"link": "https://arxiv.org/abs/2503.21622",
+"vals": {
+"MVTec AD2": "46.0"
+},
+"st": {
+"MVTec AD2": "flag"
+}
+},
+"SuperADD: Training-free Class-agnostic Anomaly Segmentation -- CVPR 2026 VAND 4.0 Workshop": {
+"link": "https://arxiv.org/abs/2605.14808",
+"vals": {
+"MVTec AD2": 57.42
+},
+"st": {
+"MVTec AD2": "mem✅"
+}
+},
+"VT-ADL": {
+"link": "https://arxiv.org/abs/2104.10036",
+"vals": {
+"BTAD": "94.5"
+},
+"st": {
+"BTAD": "mem✅"
+}
+},
+"CFM (Crossmodal Feature Mapping)": {
+"link": "https://arxiv.org/abs/2312.04521",
+"vals": {
+"MVTec 3D": "98.5"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"CPMF (Complementary Pseudo Multimodal Feature)": {
+"link": "https://arxiv.org/abs/2310.13513",
+"vals": {
+"MVTec 3D": "95.2"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"Shape-Guided (Dual-Memory)": {
+"link": "https://proceedings.mlr.press/v202/chu23b.html",
+"vals": {
+"MVTec 3D": "94.7"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"M3DM-NR (Noisy-Resistant)": {
+"link": "https://arxiv.org/abs/2406.02263",
+"vals": {
+"MVTec 3D": "94.6"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"M3DM (Multimodal Hybrid Fusion)": {
+"link": "https://arxiv.org/abs/2303.00601",
+"vals": {
+"MVTec 3D": "94.5"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"EasyNet": {
+"link": "https://arxiv.org/abs/2307.13925",
+"vals": {
+"MVTec 3D": "92.4"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"BTF (Back to the Feature)": {
+"link": "https://arxiv.org/abs/2203.05550",
+"vals": {
+"MVTec 3D": "86.5"
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+},
+"Text-Guided Multimodal Unified Industrial Anomaly Detection": {
+"link": "https://arxiv.org/abs/2604.22899",
+"vals": {
+"MVTec 3D": 93.99
+},
+"st": {
+"MVTec 3D": "mem✅"
+}
+}
+}
