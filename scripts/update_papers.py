@@ -937,6 +937,16 @@ def regenerate_od_json():
                 rec['primary_label'] = label
                 rec['primary_kind']  = kind
                 rec['primary_value'] = val
+                # Parse structured per-metric breakdown from the AP column,
+                # e.g. "AP=52.9 | AP50=85.1 | AP75=58.3 | APS=42.6 | APM=41.3 | APL=62.6"
+                # -> {'AP':52.9,'AP50':85.1,...} for the sortable multi-metric table UI.
+                metrics = {}
+                for mk, mv in re.findall(r'([A-Za-z][\w/.\^+\-]*?)\s*=\s*(-?\d+\.?\d*)', str(rec.get('AP') or '')):
+                    try:
+                        metrics[mk] = float(mv)
+                    except ValueError:
+                        pass
+                rec['metrics'] = metrics
                 rows.append(rec)
     # Build per-dataset primary metric metadata (for See All headers / sorting)
     ds_primary = {}
