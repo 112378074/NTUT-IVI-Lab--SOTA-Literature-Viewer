@@ -1646,9 +1646,12 @@ function rankCls(rank) {
 /* Verification badge: hand-verified vs auto-extracted draft */
 function verifyBadge(notes) {
   const n = notes || '';
-  if (n.indexOf('✅ 已驗證') > -1)
-    return ' <span class="badge vbadge-ok" title="指標已逐篇核對 PDF">✅</span>';
-  if (n.indexOf('⚠️') > -1)
+  // ✅ first: any note starting with / containing ✅ is hand-verified
+  // (accepts both "✅ 已驗證" and "✅ verified" conventions). Checked before ⚠️
+  // so a verified note that mentions a ⚠️ caveat inside still shows ✅.
+  if (n.indexOf('✅') > -1)
+    return ' <span class="badge vbadge-ok" title="指標已逐篇核對 PDF / 來源">✅</span>';
+  if (n.indexOf('⚠️') > -1 || n.indexOf('⚠') > -1)
     return ' <span class="badge vbadge-draft" title="自動偵測使用此資料集；指標尚未人工驗證">⚠️ 未驗證</span>';
   return '';
 }
