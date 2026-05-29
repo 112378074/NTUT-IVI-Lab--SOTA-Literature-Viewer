@@ -1,0 +1,835 @@
+[2026-05-19 17:27:45] ============================================================
+[2026-05-19 17:27:45] [ad] 142 papers in All Papers
+[2026-05-19 17:27:45] [ad] (1) GLASS
+[2026-05-19 17:27:46]     datasets=['MVTec AD', 'VisA', 'MPDD'] (metric blank — draft)
+[2026-05-19 17:27:48] [ad] (2) UniNet (Contrastive S-T Unified)
+[2026-05-19 17:27:59]     datasets=['MVTec 3D', 'MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:28:01] [ad] (3) Dinomaly2 (Dinomaly Extended)
+[2026-05-19 17:28:02]     datasets=['MVTec 3D', 'MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:28:04] [ad] (4) DDAD
+[2026-05-19 17:28:04]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:28:06] [ad] (5) RealNet
+[2026-05-19 17:28:07]     datasets=['MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:28:09] [ad] (6) MSFlow
+[2026-05-19 17:28:19]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:28:21] [ad] (7) Generalist Multi-Class AD (Dual-Student)
+[2026-05-19 17:28:27]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:28:29] [ad] (8) INP-Former (CVPR'25)
+[2026-05-19 17:28:31]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:28:33] [ad] (9) DiffusionAD
+[2026-05-19 17:28:34]     datasets=['MVTec AD', 'VisA', 'MPDD'] (metric blank — draft)
+[2026-05-19 17:28:36] [ad] (10) Effective Synthetic Images
+[2026-05-19 17:28:37]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:28:37]     [checkpoint saved @ 10]
+[2026-05-19 17:28:39] [ad] (11) Dual-Interrelated Diffusion (DualAnoDiff)
+[2026-05-19 17:28:40]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:28:42] [ad] (12) Dinomaly
+[2026-05-19 17:28:43]     datasets=['MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:28:45] [ad] (13) SimpleNet
+[2026-05-19 17:28:45]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:28:47] [ad] (14) AnomalyAgent (Agentic RL Synthesis)
+[2026-05-19 17:28:49]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:28:51] [ad] (15) STAGE (Graded Diffusion + Mask Alignment)
+[2026-05-19 17:28:52]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:28:54] [ad] (16) INP-Former++
+[2026-05-19 17:28:55]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:28:57] [ad] (17) One-for-More (Continual Diffusion)
+[2026-05-19 17:28:58]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:00] [ad] (18) CFA
+[2026-05-19 17:29:01]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:29:03] [ad] (19) ReContrast
+[2026-05-19 17:29:05]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:07] [ad] (20) VQ-Flow
+[2026-05-19 17:29:08]     datasets=['MVTec AD 2', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:08]     [checkpoint saved @ 20]
+[2026-05-19 17:29:10] [ad] (21) PRN
+[2026-05-19 17:29:11]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:29:13] [ad] (22) AnomalyXFusion (Multi-modal Diffusion)
+[2026-05-19 17:29:14]     datasets=['MVTec LOCO', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:29:16] [ad] (23) GroundingAnomaly (Spatial Diffusion)
+[2026-05-19 17:29:18]     datasets=['MVTec AD 2', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:20] [ad] (24) DFM (Differentiable Feature Matching)
+[2026-05-19 17:29:28]     pdf fetch failed: HTTP Error 404: Not Found
+[2026-05-19 17:29:28]     no PDF — skipped
+[2026-05-19 17:29:28] [ad] (25) AnoGen (Few-Shot Anomaly-Driven Generation)
+[2026-05-19 17:29:29]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:29:31] [ad] (26) FastFlow
+[2026-05-19 17:29:31]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:29:33] [ad] (27) UniMMAD (MoE Multi-Modal AD)
+[2026-05-19 17:29:34]     datasets=['MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:36] [ad] (28) RD++
+[2026-05-19 17:29:38]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:40] [ad] (29) SNARM (Self-Navigated Residual Mamba)
+[2026-05-19 17:29:40]     datasets=['MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:42] [ad] (30) MIRAGE (Realistic Anomaly Generation)
+[2026-05-19 17:29:42]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:29:42]     [checkpoint saved @ 30]
+[2026-05-19 17:29:44] [ad] (31) AnomalyHybrid (GAN-Hybrid Synthesis)
+[2026-05-19 17:29:44]     no PDF — skipped
+[2026-05-19 17:29:44] [ad] (32) GLAD
+[2026-05-19 17:29:53]     datasets=['MVTec AD', 'VisA', 'MPDD'] (metric blank — draft)
+[2026-05-19 17:29:55] [ad] (33) InvAD-Diff (Inversion-based Diffusion)
+[2026-05-19 17:29:55]     datasets=['MVTec AD', 'VisA', 'MPDD'] (metric blank — draft)
+[2026-05-19 17:29:57] [ad] (34) AnomalyDiffusion
+[2026-05-19 17:29:58]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:30:00] [ad] (35) DefectFill (Inpainting Diffusion)
+[2026-05-19 17:30:05]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:07] [ad] (36) Schrödinger Bridge Diffusion AD
+[2026-05-19 17:30:07]     no PDF — skipped
+[2026-05-19 17:30:07] [ad] (37) TransFusion
+[2026-05-19 17:30:09]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:11] [ad] (38) HVQ-Trans
+[2026-05-19 17:30:13]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:15] [ad] (39) PatchCore
+[2026-05-19 17:30:16]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:30:18] [ad] (40) AMI-Net
+[2026-05-19 17:30:25]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:30:25]     [checkpoint saved @ 40]
+[2026-05-19 17:30:27] [ad] (41) UniFlow (Unified NF)
+[2026-05-19 17:30:27]     no PDF — skipped
+[2026-05-19 17:30:27] [ad] (42) EfficientAD
+[2026-05-19 17:30:28]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:30] [ad] (43) Training-Free Diffusion Defect Generation
+[2026-05-19 17:30:32]     datasets=['MVTec AD 2', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:34] [ad] (44) AnomalyAny (Unseen Visual Anomaly Generation)
+[2026-05-19 17:30:35]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:37] [ad] (45) InvAD (Feature Inversion)
+[2026-05-19 17:30:38]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:30:40] [ad] (46) Pyramid-based Mamba NF
+[2026-05-19 17:30:41]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:30:43] [ad] (47) SALAD (Logical AD)
+[2026-05-19 17:30:46]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:30:48] [ad] (48) Adversarially Robust Diffusion AD
+[2026-05-19 17:30:48]     datasets=['MVTec AD', 'VisA', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:30:50] [ad] (49) U-Flow
+[2026-05-19 17:30:51]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:30:53] [ad] (50) TFA-Net (Template-based Feature Aggregation)
+[2026-05-19 17:30:54]     datasets=['MVTec LOCO', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:30:54]     [checkpoint saved @ 50]
+[2026-05-19 17:30:56] [ad] (51) CS-Flow
+[2026-05-19 17:30:58]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:00] [ad] (52) DeSTSeg
+[2026-05-19 17:31:00]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:02] [ad] (53) MambaAD
+[2026-05-19 17:31:02]     datasets=['MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:31:04] [ad] (54) CFM (Crossmodal Feature Mapping)
+[2026-05-19 17:31:10]     datasets=['MVTec 3D', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:12] [ad] (55) Triad (LMM-Aided AD)
+[2026-05-19 17:31:13]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:31:15] [ad] (56) RD4AD (Reverse Distillation)
+[2026-05-19 17:31:15]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:17] [ad] (57) CFLOW-AD
+[2026-05-19 17:31:18]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:20] [ad] (58) OCR-GAN
+[2026-05-19 17:31:20]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:22] [ad] (59) USAGI (Memory-Retrieval Transformer)
+[2026-05-19 17:31:22]     no PDF — skipped
+[2026-05-19 17:31:22] [ad] (60) RareCLIP
+[2026-05-19 17:31:22]     no PDF — skipped
+[2026-05-19 17:31:22] [ad] (61) DRAEM
+[2026-05-19 17:31:23]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:25] [ad] (62) PaDiM
+[2026-05-19 17:31:26]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:28] [ad] (63) MuSc
+[2026-05-19 17:31:29]     datasets=['MVTec AD', 'VisA', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:31:31] [ad] (64) UniVAD (Training-Free Universal AD)
+[2026-05-19 17:31:31]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:31:33] [ad] (65) VisionAD (Search Is All You Need)
+[2026-05-19 17:31:35]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:31:37] [ad] (66) DiAD
+[2026-05-19 17:31:37]     datasets=['MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:31:39] [ad] (67) AnomalyDINO
+[2026-05-19 17:31:41]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:31:43] [ad] (68) PromptAD
+[2026-05-19 17:31:44]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA', 'MPDD'] (metric blank — draft)
+[2026-05-19 17:31:46] [ad] (69) CutPaste
+[2026-05-19 17:31:56]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:58] [ad] (70) UniAD
+[2026-05-19 17:31:58]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:31:59]     [checkpoint saved @ 70]
+[2026-05-19 17:32:01] [ad] (71) PatchEAD
+[2026-05-19 17:32:03]     datasets=['MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:32:05] [ad] (72) CSAD (Component Segmentation AD)
+[2026-05-19 17:32:06]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:32:08] [ad] (73) CPMF (Complementary Pseudo Multimodal Feature)
+[2026-05-19 17:32:10]     no target dataset detected
+[2026-05-19 17:32:10] [ad] (74) DifferNet
+[2026-05-19 17:32:14]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:32:16] [ad] (75) Shape-Guided (Dual-Memory)
+[2026-05-19 17:32:16]     no PDF — skipped
+[2026-05-19 17:32:16] [ad] (76) M3DM-NR (Noisy-Resistant)
+[2026-05-19 17:32:17]     datasets=['MVTec 3D', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:32:19] [ad] (77) M3DM (Multimodal Hybrid Fusion)
+[2026-05-19 17:32:20]     datasets=['MVTec 3D', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:32:22] [ad] (78) VT-ADL
+[2026-05-19 17:32:23]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:32:25] [ad] (79) AST (Asymmetric Student-Teacher)
+[2026-05-19 17:32:25]     datasets=['MVTec 3D', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:32:27] [ad] (80) AA-CLIP (Anomaly-Aware CLIP)
+[2026-05-19 17:32:28]     datasets=['MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:32:28]     [checkpoint saved @ 80]
+[2026-05-19 17:32:30] [ad] (81) EasyNet
+[2026-05-19 17:32:31]     datasets=['MVTec 3D', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:32:33] [ad] (82) MultiADS (Multi-Type Zero-Shot AD)
+[2026-05-19 17:32:37]     datasets=['MVTec AD', 'VisA', 'MPDD'] (metric blank — draft)
+[2026-05-19 17:32:39] [ad] (83) WinCLIP
+[2026-05-19 17:32:41]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:32:43] [ad] (84) AnomalyCLIP
+[2026-05-19 17:33:01]     datasets=['MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:33:03] [ad] (85) PSAD (Few-Shot Part Segmentation)
+[2026-05-19 17:33:03]     datasets=['MVTec LOCO', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:33:05] [ad] (86) Multi-Flow (Multi-View NF)
+[2026-05-19 17:33:06]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:08] [ad] (87) ComAD (Component Aware AD)
+[2026-05-19 17:33:09]     no target dataset detected
+[2026-05-19 17:33:09] [ad] (88) LogicQA (VLM Logical AD)
+[2026-05-19 17:33:09]     datasets=['MVTec LOCO', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:33:11] [ad] (89) SINBAD (Set Features)
+[2026-05-19 17:33:12]     datasets=['MVTec LOCO', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:33:14] [ad] (90) BTF (Back to the Feature)
+[2026-05-19 17:33:15]     datasets=['MVTec 3D', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:33:15]     [checkpoint saved @ 90]
+[2026-05-19 17:33:17] [ad] (91) April-GAN (CLIP-AD)
+[2026-05-19 17:33:18]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:20] [ad] (92) SAA+ (Segment Any Anomaly)
+[2026-05-19 17:33:20]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:22] [ad] (93) GCAD (Bergmann et al.)
+[2026-05-19 17:33:22]     no PDF — skipped
+[2026-05-19 17:33:22] [ad] (94) RoBiS (VAND 2025 第二名)
+[2026-05-19 17:33:23]     datasets=['MVTec AD 2', 'MVTec AD'] (metric blank — draft)
+[2026-05-19 17:33:25] [ad] (95) SuperAD (Training-free DINOv2)
+[2026-05-19 17:33:25]     datasets=['MVTec AD 2', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:27] [ad] (96) PyramidFlow
+[2026-05-19 17:33:28]     datasets=['MVTec AD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:33:30] [ad] (97) ISVL (VAND 2025 第一名)
+[2026-05-19 17:33:30]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:32] [ad] (98) INP-Former (AD2 baseline)
+[2026-05-19 17:33:34]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:36] [ad] (99) PatchCore (AD2 baseline)
+[2026-05-19 17:33:42]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:44] [ad] (100) EfficientAD (AD2 baseline)
+[2026-05-19 17:33:46]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:46]     [checkpoint saved @ 100]
+[2026-05-19 17:33:48] [ad] (101) DRAEM (AD2 baseline)
+[2026-05-19 17:33:50]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:52] [ad] (102) RD4AD (AD2 baseline)
+[2026-05-19 17:33:54]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:33:56] [ad] (103) SimpleNet (AD2 baseline)
+[2026-05-19 17:33:58]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:34:00] [ad] (104) DDAD (AD2 baseline)
+[2026-05-19 17:34:01]     datasets=['MVTec AD 2', 'MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:34:03] [ad] (105) PIAD
+[2026-05-19 17:34:07]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:34:09] [ad] (106) Wavelet and Prototype Augmented Query-based Transformer
+[2026-05-19 17:34:12]     no target dataset detected
+[2026-05-19 17:34:12] [ad] (107) Distribution Prototype Diffusion Learning for Open-set 
+[2026-05-19 17:34:13]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:34:15] [ad] (108) MANTA
+[2026-05-19 17:34:17]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:34:19] [ad] (109) Real-IAD D3
+[2026-05-19 17:34:22]     datasets=['MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:34:24] [ad] (110) Odd-One-Out
+[2026-05-19 17:34:28]     datasets=['MVTec 3D', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:34:29]     [checkpoint saved @ 110]
+[2026-05-19 17:34:31] [ad] (111) Towards Zero-Shot Anomaly Detection and Reasoning with 
+[2026-05-19 17:34:36]     datasets=['MVTec 3D', 'MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:34:38] [ad] (112) Beyond Single-Modal Boundary
+[2026-05-19 17:34:40]     datasets=['MVTec 3D', 'MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:34:42] [ad] (113) Exploring Intrinsic Normal Prototypes within a Single I
+[2026-05-19 17:34:49]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:34:51] [ad] (114) Multi-Sensor Object Anomaly Detection
+[2026-05-19 17:34:53]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:34:55] [ad] (115) Towards Visual Discrimination and Reasoning of Real-Wor
+[2026-05-19 17:34:57]     datasets=['MVTec LOCO', 'MVTec 3D', 'MVTec AD', 'VisA', 'MPDD', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:34:59] [ad] (116) Towards Training-free Anomaly Detection with Vision and
+[2026-05-19 17:35:08]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:35:10] [ad] (117) Bayesian Prompt Flow Learning for Zero-Shot Anomaly Det
+[2026-05-19 17:35:18]     datasets=['MVTec AD', 'VisA', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:35:20] [ad] (118) TailedCore
+[2026-05-19 17:35:22]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:35:24] [ad] (119) Self-Supervised Anomaly Segmentation via Diffusion Mode
+[2026-05-19 17:35:28]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:35:30] [ad] (120) Removing Geometric Bias in One-Class Anomaly Detection 
+[2026-05-19 17:35:34]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:35:34]     [checkpoint saved @ 120]
+[2026-05-19 17:35:36] [ad] (121) Anomaly Detection for People with Visual Impairments us
+[2026-05-19 17:35:47]     no target dataset detected
+[2026-05-19 17:35:47] [ad] (122) Looking at Model Debiasing through the Lens of Anomaly 
+[2026-05-19 17:35:57]     no target dataset detected
+[2026-05-19 17:35:57] [ad] (123) PV-VTT
+[2026-05-19 17:36:03]     no target dataset detected
+[2026-05-19 17:36:03] [ad] (124) Adaptive Deviation Learning for Visual Anomaly Detectio
+[2026-05-19 17:36:11]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:36:13] [ad] (125) Single-Layer Distillation with Fourier Convolutions for
+[2026-05-19 17:36:24]     datasets=['MVTec AD'] (metric blank — draft)
+[2026-05-19 17:36:26] [ad] (126) Heterogeneous Datasets for Unsupervised Image Anomaly D
+[2026-05-19 17:36:38]     datasets=['MVTec LOCO', 'MVTec AD', 'VisA', 'BTAD'] (metric blank — draft)
+[2026-05-19 17:36:40] [ad] (127) ROADS
+[2026-05-19 17:36:57]     datasets=['MVTec AD', 'VisA'] (metric blank — draft)
+[2026-05-19 17:36:59] [ad] done — processed 127 this run
+[2026-05-19 17:36:59] [od] 157 papers in All Papers
+[2026-05-19 17:36:59] [od] (1) RF-DETR (Large)
+[2026-05-19 17:37:00]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:37:02] [od] (2) RF-DETR (Nano)
+[2026-05-19 17:37:03]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:37:05] [od] (3) YOLO26 (l)
+[2026-05-19 17:37:05]     no PDF — skipped
+[2026-05-19 17:37:05] [od] (4) YOLO26 (n)
+[2026-05-19 17:37:05]     no PDF — skipped
+[2026-05-19 17:37:05] [od] (5) RT-DETRv4 (X)
+[2026-05-19 17:37:05]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:07] [od] (6) S3OD (synthetic)
+[2026-05-19 17:37:11]     datasets=['DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:37:13] [od] (7) DEIMv2 (DINOv3)
+[2026-05-19 17:37:14]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:16] [od] (8) YOLO-Master
+[2026-05-19 17:37:16]     no PDF — skipped
+[2026-05-19 17:37:16] [od] (9) DEIM-D-FINE-X
+[2026-05-19 17:37:16]     datasets=['COCO 2017 val', 'COCO 2017', 'CrowdHuman'] (metric blank — draft)
+[2026-05-19 17:37:18] [od] (10) YOLOv13-X
+[2026-05-19 17:37:20]     datasets=['COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:37:21]     [checkpoint saved @ 10]
+[2026-05-19 17:37:23] [od] (11) DEIM-D-FINE-L
+[2026-05-19 17:37:23]     datasets=['COCO 2017 val', 'COCO 2017', 'CrowdHuman'] (metric blank — draft)
+[2026-05-19 17:37:25] [od] (12) NTIRE 2025 CD-FSOD top method
+[2026-05-19 17:37:29]     datasets=['COCO 2017', 'ODinW-35'] (metric blank — draft)
+[2026-05-19 17:37:31] [od] (13) D-FINE-X
+[2026-05-19 17:37:32]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:34] [od] (14) D-FINE-L
+[2026-05-19 17:37:34]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:36] [od] (15) YOLOv12-X
+[2026-05-19 17:37:37]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:39] [od] (16) RT-DETRv3-R101
+[2026-05-19 17:37:39]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:41] [od] (17) UGRAN
+[2026-05-19 17:37:41]     no PDF — skipped
+[2026-05-19 17:37:41] [od] (18) FII-DETR
+[2026-05-19 17:37:41]     no PDF — skipped
+[2026-05-19 17:37:41] [od] (19) YOLOv10-X
+[2026-05-19 17:37:42]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:44] [od] (20) DINO-X
+[2026-05-19 17:37:45]     datasets=['COCO 2017', 'LVIS v1.0 val', 'CrowdHuman'] (metric blank — draft)
+[2026-05-19 17:37:46]     [checkpoint saved @ 20]
+[2026-05-19 17:37:48] [od] (21) Grounding DINO
+[2026-05-19 17:37:48]     datasets=['COCO test-dev', 'COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007', 'LVIS v1.0 val', 'ODinW-35'] (metric blank — draft)
+[2026-05-19 17:37:50] [od] (22) CD-ViTO
+[2026-05-19 17:37:51]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:53] [od] (23) Relation-DETR (FocalNet-L)
+[2026-05-19 17:37:54]     datasets=['COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:37:56] [od] (24) YOLOv9-E
+[2026-05-19 17:37:56]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:37:58] [od] (25) YOLO11x
+[2026-05-19 17:37:58]     no PDF — skipped
+[2026-05-19 17:37:58] [od] (26) RT-DETRv2-R101
+[2026-05-19 17:37:59]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:01] [od] (27) RT-DETR-R101
+[2026-05-19 17:38:02]     datasets=['COCO test-dev', 'COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:04] [od] (28) MVANet
+[2026-05-19 17:38:06]     no target dataset detected
+[2026-05-19 17:38:06] [od] (29) VSCode
+[2026-05-19 17:38:06]     datasets=['DUTS-TE', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:38:08] [od] (30) FM-FSOD
+[2026-05-19 17:38:09]     no target dataset detected
+[2026-05-19 17:38:09] [od] (31) Grounding DINO 1.5 Pro
+[2026-05-19 17:38:12]     datasets=['COCO 2017', 'PASCAL VOC 2007', 'LVIS v1.0 val', 'CrowdHuman', 'ODinW-13', 'ODinW-35'] (metric blank — draft)
+[2026-05-19 17:38:14] [od] (32) BiRefNet
+[2026-05-19 17:38:14]     datasets=['COCO 2017', 'DUTS-TE', 'DUT-OMRON'] (metric blank — draft)
+[2026-05-19 17:38:16] [od] (33) hANMCL
+[2026-05-19 17:38:16]     no target dataset detected
+[2026-05-19 17:38:16] [od] (34) Co-DETR (ViT-L)
+[2026-05-19 17:38:17]     datasets=['COCO test-dev', 'COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:38:19] [od] (35) EVA-02 (Det)
+[2026-05-19 17:38:19]     datasets=['COCO test-dev', 'COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:38:21] [od] (36) M3Net
+[2026-05-19 17:38:26]     datasets=['DUTS-TE', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:38:28] [od] (37) InternImage-H
+[2026-05-19 17:38:29]     datasets=['COCO test-dev', 'COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007', 'LVIS v1.0 val', 'CrowdHuman'] (metric blank — draft)
+[2026-05-19 17:38:31] [od] (38) YOLOv7-X
+[2026-05-19 17:38:31]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:33] [od] (39) UniFS (UniDetector)
+[2026-05-19 17:38:34]     datasets=['COCO 2017 val', 'COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:38:36] [od] (40) YOLO-NAS-L
+[2026-05-19 17:38:36]     no PDF — skipped
+[2026-05-19 17:38:36] [od] (41) DINO (Swin-L)
+[2026-05-19 17:38:36]     datasets=['COCO test-dev', 'COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:38] [od] (42) ICON-S (Swin)
+[2026-05-19 17:38:38]     no target dataset detected
+[2026-05-19 17:38:38] [od] (43) YOLOv8x
+[2026-05-19 17:38:38]     no PDF — skipped
+[2026-05-19 17:38:38] [od] (44) RTMDet-X
+[2026-05-19 17:38:39]     datasets=['COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:38:41] [od] (45) DAMO-YOLO-l
+[2026-05-19 17:38:41]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:43] [od] (46) InSPyReNet
+[2026-05-19 17:38:49]     datasets=['DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:38:51] [od] (47) ViTDet (ViT-H, MAE)
+[2026-05-19 17:38:51]     datasets=['COCO 2017 val', 'COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:38:53] [od] (48) MaxViT-XL Cascade
+[2026-05-19 17:38:55]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:57] [od] (49) YOLOv6-L
+[2026-05-19 17:38:57]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:38:59] [od] (50) EDN
+[2026-05-19 17:38:59]     datasets=['DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:39:00]     [checkpoint saved @ 50]
+[2026-05-19 17:39:02] [od] (51) Meta-DETR
+[2026-05-19 17:39:03]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:05] [od] (52) PP-YOLOE+ (X)
+[2026-05-19 17:39:05]     datasets=['COCO test-dev', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:07] [od] (53) DETReg
+[2026-05-19 17:39:09]     datasets=['COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:11] [od] (54) ConvNeXt-XL Cascade
+[2026-05-19 17:39:12]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:14] [od] (55) DN-DETR
+[2026-05-19 17:39:14]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:16] [od] (56) DAB-DETR
+[2026-05-19 17:39:17]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:19] [od] (57) NanoDet-Plus-m
+[2026-05-19 17:39:19]     no PDF — skipped
+[2026-05-19 17:39:19] [od] (58) VST
+[2026-05-19 17:39:20]     datasets=['DUTS-TE', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:39:22] [od] (59) DeFRCN
+[2026-05-19 17:39:23]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:25] [od] (60) Swin-L Cascade Mask R-CNN
+[2026-05-19 17:39:25]     datasets=['COCO test-dev', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:26]     [checkpoint saved @ 60]
+[2026-05-19 17:39:28] [od] (61) YOLOX-X
+[2026-05-19 17:39:28]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:30] [od] (62) FSCE
+[2026-05-19 17:39:31]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:33] [od] (63) Deformable DETR (R50)
+[2026-05-19 17:39:34]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:37] [od] (64) PoolNet+
+[2026-05-19 17:39:37]     datasets=['PASCAL VOC 2007', 'DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:39:39] [od] (65) Sparse R-CNN (R101)
+[2026-05-19 17:39:40]     datasets=['COCO test-dev', 'COCO 2017 val', 'COCO 2017', 'CrowdHuman'] (metric blank — draft)
+[2026-05-19 17:39:42] [od] (66) DETR (R101)
+[2026-05-19 17:39:42]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:39:44] [od] (67) MPSR
+[2026-05-19 17:39:45]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:47] [od] (68) TFA w/cos
+[2026-05-19 17:39:47]     datasets=['COCO 2017', 'PASCAL VOC 2007', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:39:49] [od] (69) EfficientDet-D7
+[2026-05-19 17:39:50]     datasets=['COCO test-dev', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:52] [od] (70) YOLOv5-x
+[2026-05-19 17:39:52]     no PDF — skipped
+[2026-05-19 17:39:52] [od] (71) MINet
+[2026-05-19 17:39:52]     datasets=['DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:39:54] [od] (72) U^2-Net
+[2026-05-19 17:39:55]     datasets=['DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:39:57] [od] (73) Meta R-CNN
+[2026-05-19 17:39:57]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:39:59] [od] (74) FSRW
+[2026-05-19 17:40:00]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:40:02] [od] (75) BASNet
+[2026-05-19 17:40:03]     no target dataset detected
+[2026-05-19 17:40:03] [od] (76) CPD-R
+[2026-05-19 17:40:04]     datasets=['DUTS-TE', 'DUT-OMRON', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:40:06] [od] (77) CenterNet
+[2026-05-19 17:40:13]     datasets=['COCO test-dev', 'COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:40:15] [od] (78) FCOS (R101)
+[2026-05-19 17:40:15]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:17] [od] (79) Cascade R-CNN (R101-FPN)
+[2026-05-19 17:40:18]     datasets=['COCO test-dev', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:20] [od] (80) RetinaNet (R101)
+[2026-05-19 17:40:20]     datasets=['COCO test-dev', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:20]     [checkpoint saved @ 80]
+[2026-05-19 17:40:22] [od] (81) Mask R-CNN (R50-FPN)
+[2026-05-19 17:40:23]     datasets=['COCO test-dev', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:25] [od] (82) Faster R-CNN (R50-FPN)
+[2026-05-19 17:40:26]     datasets=['COCO test-dev', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:40:28] [od] (83) Exploring Hierarchical Consistency and Unbiased Objectn
+[2026-05-19 17:40:28]     datasets=['COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:40:30] [od] (84) VFM$^{4}$SDG: Unveiling the Power of VFMs for Single-Do
+[2026-05-19 17:40:30]     no target dataset detected
+[2026-05-19 17:40:30] [od] (85) UHR-DETR: Efficient End-to-End Small Object Detection f
+[2026-05-19 17:40:31]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:33] [od] (86) PointSR
+[2026-05-19 17:40:42]     no target dataset detected
+[2026-05-19 17:40:42] [od] (87) Brain-Inspired Spiking Neural Networks for Energy-Effic
+[2026-05-19 17:40:47]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:49] [od] (88) ViKIENet
+[2026-05-19 17:40:54]     no target dataset detected
+[2026-05-19 17:40:54] [od] (89) Believing is Seeing
+[2026-05-19 17:40:56]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:40:58] [od] (90) OW-OVD
+[2026-05-19 17:41:01]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:41:02]     [checkpoint saved @ 90]
+[2026-05-19 17:41:04] [od] (91) SEEN-DA
+[2026-05-19 17:41:11]     datasets=['PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:41:13] [od] (92) Point2RBox-v2
+[2026-05-19 17:41:20]     no target dataset detected
+[2026-05-19 17:41:20] [od] (93) SparseAlign
+[2026-05-19 17:41:22]     no target dataset detected
+[2026-05-19 17:41:22] [od] (94) Efficient Test-time Adaptive Object Detection via Sensi
+[2026-05-19 17:41:29]     no target dataset detected
+[2026-05-19 17:41:29] [od] (95) GauCho
+[2026-05-19 17:41:38]     no target dataset detected
+[2026-05-19 17:41:38] [od] (96) Shift the Lens
+[2026-05-19 17:41:41]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:41:43] [od] (97) Mr. DETR
+[2026-05-19 17:41:45]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:41:47] [od] (98) Large Self-Supervised Models Bridge the Gap in Domain A
+[2026-05-19 17:41:52]     no target dataset detected
+[2026-05-19 17:41:52] [od] (99) Uncertainty Meets Diversity
+[2026-05-19 17:42:05]     no target dataset detected
+[2026-05-19 17:42:05] [od] (100) Visual Consensus Prompting for Co-Salient Object Detect
+[2026-05-19 17:42:20]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:42:21]     [checkpoint saved @ 100]
+[2026-05-19 17:42:23] [od] (101) Language-Guided Salient Object Ranking
+[2026-05-19 17:42:47]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:42:49] [od] (102) SP3D
+[2026-05-19 17:43:06]     no target dataset detected
+[2026-05-19 17:43:06] [od] (103) Test-Time Backdoor Detection for Object Detection Model
+[2026-05-19 17:43:23]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:43:25] [od] (104) RaCFormer
+[2026-05-19 17:43:45]     no target dataset detected
+[2026-05-19 17:43:45] [od] (105) Samba
+[2026-05-19 17:44:38]     datasets=['DUTS-TE', 'ECSSD', 'HKU-IS'] (metric blank — draft)
+[2026-05-19 17:44:40] [od] (106) Search and Detect
+[2026-05-19 17:44:58]     datasets=['COCO 2017 val', 'COCO 2017', 'LVIS v1.0 val', 'ODinW-35'] (metric blank — draft)
+[2026-05-19 17:45:00] [od] (107) ROD-MLLM
+[2026-05-19 17:45:16]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:45:18] [od] (108) SET
+[2026-05-19 17:45:29]     datasets=['COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:45:31] [od] (109) UCOD-DPL
+[2026-05-19 17:45:43]     no target dataset detected
+[2026-05-19 17:45:43] [od] (110) Style Evolving along Chain-of-Thought for Unknown-Domai
+[2026-05-19 17:45:55]     datasets=['PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:45:55]     [checkpoint saved @ 110]
+[2026-05-19 17:45:57] [od] (111) FSHNet
+[2026-05-19 17:46:00]     no target dataset detected
+[2026-05-19 17:46:00] [od] (112) Object Detection using Event Camera
+[2026-05-19 17:46:03]     no target dataset detected
+[2026-05-19 17:46:03] [od] (113) ReDiffDet
+[2026-05-19 17:46:12]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:46:14] [od] (114) Towards RAW Object Detection in Diverse Conditions
+[2026-05-19 17:46:21]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:46:23] [od] (115) Pseudo Visible Feature Fine-Grained Fusion for Thermal 
+[2026-05-19 17:46:27]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:46:29] [od] (116) ReRAW
+[2026-05-19 17:46:37]     no target dataset detected
+[2026-05-19 17:46:37] [od] (117) MonoDGP
+[2026-05-19 17:46:52]     no target dataset detected
+[2026-05-19 17:46:52] [od] (118) DEIM
+[2026-05-19 17:46:57]     datasets=['COCO 2017 val', 'COCO 2017', 'CrowdHuman'] (metric blank — draft)
+[2026-05-19 17:46:59] [od] (119) CorrBEV
+[2026-05-19 17:47:10]     no target dataset detected
+[2026-05-19 17:47:10] [od] (120) Feature Information Driven Position Gaussian Distributi
+[2026-05-19 17:47:15]     no target dataset detected
+[2026-05-19 17:47:15] [od] (121) Revisiting Generative Replay for Class Incremental Obje
+[2026-05-19 17:47:20]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:47:22] [od] (122) MI-DETR
+[2026-05-19 17:47:26]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:47:28] [od] (123) Fractal Calibration for Long-tailed Object Detection
+[2026-05-19 17:47:37]     datasets=['COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:47:39] [od] (124) Open-World Objectness Modeling Unifies Novel Object Det
+[2026-05-19 17:47:46]     datasets=['COCO 2017', 'PASCAL VOC 2007', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:47:48] [od] (125) MonoTAKD
+[2026-05-19 17:47:53]     no target dataset detected
+[2026-05-19 17:47:53] [od] (126) RICCARDO
+[2026-05-19 17:47:59]     no target dataset detected
+[2026-05-19 17:47:59] [od] (127) Cubify Anything
+[2026-05-19 17:48:10]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:48:12] [od] (128) Learning Class Prototypes for Unified Sparse-Supervised
+[2026-05-19 17:48:15]     no target dataset detected
+[2026-05-19 17:48:15] [od] (129) Percept, Memory, and Imagine
+[2026-05-19 17:48:19]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:48:21] [od] (130) SimLTD
+[2026-05-19 17:48:25]     datasets=['COCO 2017 val', 'COCO 2017', 'PASCAL VOC 2007', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:48:25]     [checkpoint saved @ 130]
+[2026-05-19 17:48:27] [od] (131) Learning Endogenous Attention for Incremental Object De
+[2026-05-19 17:48:31]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:48:33] [od] (132) DiL
+[2026-05-19 17:48:37]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:48:39] [od] (133) HDPNet
+[2026-05-19 17:48:43]     no target dataset detected
+[2026-05-19 17:48:43] [od] (134) Multispectral Object Detection Enhanced by Cross-Modal 
+[2026-05-19 17:48:45]     no target dataset detected
+[2026-05-19 17:48:45] [od] (135) Bit-Flip Induced Latency Attacks in Object Detection
+[2026-05-19 17:48:47]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:48:49] [od] (136) Enhancing Novel Object Detection via Cooperative Founda
+[2026-05-19 17:48:58]     datasets=['COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:49:00] [od] (137) On the Importance of Dual-Space Augmentation for Domain
+[2026-05-19 17:49:08]     no target dataset detected
+[2026-05-19 17:49:08] [od] (138) DSTR
+[2026-05-19 17:49:14]     no target dataset detected
+[2026-05-19 17:49:14] [od] (139) Elemental Composite Prototypical Network
+[2026-05-19 17:49:21]     no target dataset detected
+[2026-05-19 17:49:21] [od] (140) ALPI
+[2026-05-19 17:49:27]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:49:27]     [checkpoint saved @ 140]
+[2026-05-19 17:49:29] [od] (141) AIC3DOD
+[2026-05-19 17:49:32]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:49:34] [od] (142) Reflective Teacher
+[2026-05-19 17:49:42]     no target dataset detected
+[2026-05-19 17:49:42] [od] (143) MaskVD
+[2026-05-19 17:49:46]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:49:48] [od] (144) Diffusion-Based Particle-DETR for BEV Perception
+[2026-05-19 17:49:52]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:49:54] [od] (145) ERUP-YOLO
+[2026-05-19 17:50:17]     datasets=['PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:50:19] [od] (146) PK-YOLO
+[2026-05-19 17:50:21]     datasets=['COCO test-dev', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:50:23] [od] (147) Decoupled PROB
+[2026-05-19 17:50:28]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:50:30] [od] (148) RT-DETRv3
+[2026-05-19 17:50:32]     datasets=['COCO 2017 val', 'COCO 2017'] (metric blank — draft)
+[2026-05-19 17:50:34] [od] (149) Mixed Patch Visible-Infrared Modality Agnostic Object D
+[2026-05-19 17:50:38]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:50:40] [od] (150) Generalist YOLO
+[2026-05-19 17:50:42]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:50:42]     [checkpoint saved @ 150]
+[2026-05-19 17:50:44] [od] (151) Enhancing Embodied Object Detection with Spatial Featur
+[2026-05-19 17:50:46]     datasets=['COCO 2017', 'LVIS v1.0 val'] (metric blank — draft)
+[2026-05-19 17:50:48] [od] (152) Interactive Object Detection for Tiny Objects in Large 
+[2026-05-19 17:50:54]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:50:56] [od] (153) Cross-Domain Multi-Modal Few-Shot Object Detection via 
+[2026-05-19 17:50:58]     datasets=['COCO 2017', 'PASCAL VOC 2007'] (metric blank — draft)
+[2026-05-19 17:51:00] [od] (154) No Annotations for Object Detection in Art through Stab
+[2026-05-19 17:51:02]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:51:04] [od] (155) ECF-YOLOv7-Tiny
+[2026-05-19 17:51:06]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:51:08] [od] (156) Shape-Biased Texture Agnostic Representations for Impro
+[2026-05-19 17:51:12]     datasets=['COCO 2017'] (metric blank — draft)
+[2026-05-19 17:51:14] [od] done — processed 156 this run
+[2026-05-19 17:51:14] [cls] 113 papers in All Papers
+[2026-05-19 17:51:14] [cls] (1) Hierarchical ViT + GCN (HVT-GCN)
+[2026-05-19 17:51:15]     no target dataset detected
+[2026-05-19 17:51:15] [cls] (2) MHLA (Multi-Head Linear Attention)
+[2026-05-19 17:51:15]     no PDF — skipped
+[2026-05-19 17:51:15] [cls] (3) Fast Vision Mamba
+[2026-05-19 17:51:17]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:19] [cls] (4) Swin Transformer V3 (reported)
+[2026-05-19 17:51:19]     no PDF — skipped
+[2026-05-19 17:51:19] [cls] (5) DeiT-V4 (reported)
+[2026-05-19 17:51:19]     no PDF — skipped
+[2026-05-19 17:51:19] [cls] (6) GlobalMamba
+[2026-05-19 17:51:19]     no PDF — skipped
+[2026-05-19 17:51:19] [cls] (7) DINOv3 ViT-7B
+[2026-05-19 17:51:19]     no PDF — skipped
+[2026-05-19 17:51:19] [cls] (8) MambaVision-L3
+[2026-05-19 17:51:21]     datasets=['ImageNet-1K', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:51:23] [cls] (9) MambaVision-B
+[2026-05-19 17:51:25]     datasets=['ImageNet-1K', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:51:27] [cls] (10) MambaVision-S
+[2026-05-19 17:51:28]     datasets=['ImageNet-1K', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:51:29]     [checkpoint saved @ 10]
+[2026-05-19 17:51:31] [cls] (11) MambaVision-T
+[2026-05-19 17:51:33]     datasets=['ImageNet-1K', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:51:35] [cls] (12) P2P-Net+
+[2026-05-19 17:51:35]     no PDF — skipped
+[2026-05-19 17:51:35] [cls] (13) VMamba-B
+[2026-05-19 17:51:35]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:37] [cls] (14) VMamba-S
+[2026-05-19 17:51:38]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:40] [cls] (15) VMamba-T
+[2026-05-19 17:51:40]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:42] [cls] (16) BCL+RCL (Rebalanced Contrastive)
+[2026-05-19 17:51:43]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:51:45] [cls] (17) CLIP + LP-FT (linear probe fine-tune)
+[2026-05-19 17:51:45]     datasets=['ImageNet-1K', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:51:47] [cls] (18) Vim-Ti
+[2026-05-19 17:51:47]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:49] [cls] (19) Vim-S
+[2026-05-19 17:51:50]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:52] [cls] (20) PMF (Pre-train-Meta-Fine-tune)
+[2026-05-19 17:51:53]     datasets=['ImageNet-1K', 'CIFAR-100', 'CUB-200-2011', 'FGVC-Aircraft', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:51:53]     [checkpoint saved @ 20]
+[2026-05-19 17:51:55] [cls] (21) LTGC
+[2026-05-19 17:51:56]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:51:58] [cls] (22) DINOv2 ViT-g/14
+[2026-05-19 17:51:59]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:52:01] [cls] (23) SigLIP-G/14 (zero-shot)
+[2026-05-19 17:52:01]     datasets=['ImageNet-1K', 'ImageNet-V2'] (metric blank — draft)
+[2026-05-19 17:52:03] [cls] (24) InternImage-G
+[2026-05-19 17:52:04]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:06] [cls] (25) InternImage-H
+[2026-05-19 17:52:07]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:09] [cls] (26) ConvNeXt V2-Huge (FCMAE+IN-22K)
+[2026-05-19 17:52:09]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:11] [cls] (27) ConvNeXt V2-Large
+[2026-05-19 17:52:15]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:17] [cls] (28) ConvNeXt V2-Base
+[2026-05-19 17:52:18]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:20] [cls] (29) ConvNeXt V2-Tiny
+[2026-05-19 17:52:21]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:23] [cls] (30) BEiT v3
+[2026-05-19 17:52:23]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:24]     [checkpoint saved @ 30]
+[2026-05-19 17:52:26] [cls] (31) DINOv2 ViT-L/14
+[2026-05-19 17:52:26]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:52:28] [cls] (32) PaCo
+[2026-05-19 17:52:28]     datasets=['ImageNet-1K', 'CIFAR-100'] (metric blank — draft)
+[2026-05-19 17:52:31] [cls] (33) EVA-02-L (304M, ft 448)
+[2026-05-19 17:52:31]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101', 'STL-10'] (metric blank — draft)
+[2026-05-19 17:52:33] [cls] (34) EVA-02-B
+[2026-05-19 17:52:33]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101', 'STL-10'] (metric blank — draft)
+[2026-05-19 17:52:35] [cls] (35) TIP-Adapter-F
+[2026-05-19 17:52:36]     datasets=['ImageNet-1K', 'ImageNet-V2', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:52:38] [cls] (36) FocalNet-Huge
+[2026-05-19 17:52:39]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:52:41] [cls] (37) LiVT (Long-tail ViT)
+[2026-05-19 17:52:43]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:52:45] [cls] (38) EVA (1.0B)
+[2026-05-19 17:52:45]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:52:47] [cls] (39) MaxViT-XL
+[2026-05-19 17:52:47]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:52:49] [cls] (40) TIP-Adapter
+[2026-05-19 17:52:51]     datasets=['ImageNet-1K', 'ImageNet-V2', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:52:52]     [checkpoint saved @ 40]
+[2026-05-19 17:52:54] [cls] (41) DeiT III-Large
+[2026-05-19 17:52:55]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars'] (metric blank — draft)
+[2026-05-19 17:52:57] [cls] (42) BALLAD (CLIP based)
+[2026-05-19 17:52:58]     datasets=['ImageNet-1K', 'CIFAR-100'] (metric blank — draft)
+[2026-05-19 17:53:00] [cls] (43) CoOp
+[2026-05-19 17:53:01]     datasets=['ImageNet-1K', 'ImageNet-V2', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:53:03] [cls] (44) CoCa (frozen-encoder)
+[2026-05-19 17:53:03]     datasets=['ImageNet-1K', 'ImageNet-V2'] (metric blank — draft)
+[2026-05-19 17:53:05] [cls] (45) BEiT v2 Large
+[2026-05-19 17:53:09]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:11] [cls] (46) ViT-G/14 (JFT-3B)
+[2026-05-19 17:53:11]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:53:13] [cls] (47) SwinV2-G
+[2026-05-19 17:53:14]     datasets=['ImageNet-1K', 'ImageNet-V2'] (metric blank — draft)
+[2026-05-19 17:53:16] [cls] (48) MAE ViT-H/14
+[2026-05-19 17:53:16]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:18] [cls] (49) ConvNeXt-XL (IN-22K)
+[2026-05-19 17:53:19]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:21] [cls] (50) ConvNeXt-Large (IN-22K)
+[2026-05-19 17:53:21]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:21]     [checkpoint saved @ 50]
+[2026-05-19 17:53:23] [cls] (51) ConvNeXt-Base
+[2026-05-19 17:53:24]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:26] [cls] (52) DCAL (Dual Cross-Attention Learning)
+[2026-05-19 17:53:28]     datasets=['ImageNet-1K', 'CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:53:30] [cls] (53) BCL (Balanced Contrastive Learning)
+[2026-05-19 17:53:31]     no target dataset detected
+[2026-05-19 17:53:31] [cls] (54) PMF (CLIP/DINO)
+[2026-05-19 17:53:31]     datasets=['ImageNet-1K', 'CIFAR-100', 'CUB-200-2011', 'FGVC-Aircraft', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:53:33] [cls] (55) CoCoOp
+[2026-05-19 17:53:33]     datasets=['ImageNet-1K', 'ImageNet-V2', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:53:35] [cls] (56) GCL
+[2026-05-19 17:53:36]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:53:38] [cls] (57) DeepEMD v2
+[2026-05-19 17:53:38]     datasets=['ImageNet-1K', 'CIFAR-100', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:53:40] [cls] (58) iBOT ViT-L (IN-22K ft)
+[2026-05-19 17:53:41]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:53:43] [cls] (59) BASIC + Model Soups
+[2026-05-19 17:53:44]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:53:46] [cls] (60) TransFG
+[2026-05-19 17:53:46]     datasets=['CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:53:47]     [checkpoint saved @ 60]
+[2026-05-19 17:53:49] [cls] (61) CoAtNet-7
+[2026-05-19 17:53:49]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:51] [cls] (62) FFVT
+[2026-05-19 17:53:51]     datasets=['ImageNet-1K', 'CUB-200-2011'] (metric blank — draft)
+[2026-05-19 17:53:53] [cls] (63) Twins-SVT-L
+[2026-05-19 17:53:54]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:53:56] [cls] (64) RAMS-Trans
+[2026-05-19 17:53:56]     datasets=['CUB-200-2011'] (metric blank — draft)
+[2026-05-19 17:53:58] [cls] (65) Meta-Baseline
+[2026-05-19 17:53:59]     datasets=['ImageNet-1K', 'FGVC-Aircraft', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:54:01] [cls] (66) Swin-Large (IN-22K, 384)
+[2026-05-19 17:54:01]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:03] [cls] (67) Swin-B
+[2026-05-19 17:54:04]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:06] [cls] (68) CaiT-M-48 (448)
+[2026-05-19 17:54:06]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars'] (metric blank — draft)
+[2026-05-19 17:54:08] [cls] (69) CAL
+[2026-05-19 17:54:09]     datasets=['CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:54:11] [cls] (70) PVTv2-B5
+[2026-05-19 17:54:11]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:12]     [checkpoint saved @ 70]
+[2026-05-19 17:54:14] [cls] (71) CLIP ViT-L/14 (zero-shot)
+[2026-05-19 17:54:14]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars', 'FGVC-Aircraft', 'Food-101', 'STL-10'] (metric blank — draft)
+[2026-05-19 17:54:16] [cls] (72) EfficientNetV2-L
+[2026-05-19 17:54:17]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:54:19] [cls] (73) EfficientNetV2-M
+[2026-05-19 17:54:19]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:54:21] [cls] (74) EfficientNetV2-S
+[2026-05-19 17:54:21]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:54:23] [cls] (75) DeiT-Base
+[2026-05-19 17:54:24]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars'] (metric blank — draft)
+[2026-05-19 17:54:26] [cls] (76) DeiT-Small
+[2026-05-19 17:54:26]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CIFAR-100', 'CIFAR-10', 'Stanford Cars'] (metric blank — draft)
+[2026-05-19 17:54:28] [cls] (77) CSWin-Large (IN-22K, 384)
+[2026-05-19 17:54:28]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:30] [cls] (78) RegNet-Y-128GF (SEER)
+[2026-05-19 17:54:31]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:33] [cls] (79) NFNet-F6+SAM
+[2026-05-19 17:54:33]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:35] [cls] (80) BEiT-Large
+[2026-05-19 17:54:35]     datasets=['ImageNet-1K', 'CIFAR-100'] (metric blank — draft)
+[2026-05-19 17:54:36]     [checkpoint saved @ 80]
+[2026-05-19 17:54:38] [cls] (81) DisAlign
+[2026-05-19 17:54:38]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:54:40] [cls] (82) MiSLAS
+[2026-05-19 17:54:41]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:54:43] [cls] (83) LADE
+[2026-05-19 17:54:43]     datasets=['ImageNet-1K', 'CIFAR-100'] (metric blank — draft)
+[2026-05-19 17:54:45] [cls] (84) RIDE
+[2026-05-19 17:54:46]     datasets=['ImageNet-1K', 'CIFAR-100'] (metric blank — draft)
+[2026-05-19 17:54:48] [cls] (85) API-Net
+[2026-05-19 17:54:49]     datasets=['ImageNet-1K', 'CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:54:51] [cls] (86) PMG
+[2026-05-19 17:54:51]     datasets=['CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:54:53] [cls] (87) FEAT
+[2026-05-19 17:54:54]     datasets=['ImageNet-1K', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:54:56] [cls] (88) MMAL-Net
+[2026-05-19 17:54:58]     datasets=['ImageNet-1K', 'CUB-200-2011', 'Stanford Cars', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:55:00] [cls] (89) Balanced Softmax
+[2026-05-19 17:55:01]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:55:03] [cls] (90) LDAM-DRW
+[2026-05-19 17:55:03]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:55:04]     [checkpoint saved @ 90]
+[2026-05-19 17:55:06] [cls] (91) cRT
+[2026-05-19 17:55:06]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:55:08] [cls] (92) Baseline++
+[2026-05-19 17:55:09]     datasets=['ImageNet-1K', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:11] [cls] (93) Prototypical Networks
+[2026-05-19 17:55:11]     datasets=['ImageNet-1K', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:13] [cls] (94) MAML
+[2026-05-19 17:55:13]     datasets=['ImageNet-1K', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:15] [cls] (95) MetaOptNet
+[2026-05-19 17:55:16]     datasets=['ImageNet-1K', 'CIFAR-100', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:18] [cls] (96) RFS (Rethinking Few-Shot)
+[2026-05-19 17:55:18]     datasets=['ImageNet-1K', 'CIFAR-100', 'FGVC-Aircraft', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:20] [cls] (97) SimpleShot
+[2026-05-19 17:55:21]     datasets=['ImageNet-1K', 'CIFAR-100', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:23] [cls] (98) LaplacianShot
+[2026-05-19 17:55:23]     datasets=['ImageNet-1K', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:25] [cls] (99) TIM
+[2026-05-19 17:55:26]     datasets=['ImageNet-1K', 'CUB-200-2011', 'miniImageNet 5w-1s'] (metric blank — draft)
+[2026-05-19 17:55:28] [cls] (100) Interpretable Image Classification via Non-parametric P
+[2026-05-19 17:55:32]     datasets=['ImageNet-1K', 'CUB-200-2011', 'Stanford Cars'] (metric blank — draft)
+[2026-05-19 17:55:32]     [checkpoint saved @ 100]
+[2026-05-19 17:55:34] [cls] (101) No Pains, More Gains
+[2026-05-19 17:55:37]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:55:39] [cls] (102) Beyond Image Classification
+[2026-05-19 17:55:41]     no target dataset detected
+[2026-05-19 17:55:41] [cls] (103) MExD
+[2026-05-19 17:55:44]     no target dataset detected
+[2026-05-19 17:55:44] [cls] (104) Text Augmented Correlation Transformer For Few-shot Cla
+[2026-05-19 17:55:45]     no target dataset detected
+[2026-05-19 17:55:45] [cls] (105) Fast and Accurate Gigapixel Pathological Image Classifi
+[2026-05-19 17:55:47]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:55:49] [cls] (106) Explaining Domain Shifts in Language
+[2026-05-19 17:55:52]     datasets=['CUB-200-2011'] (metric blank — draft)
+[2026-05-19 17:55:54] [cls] (107) Unconstrained Open Vocabulary Image Classification
+[2026-05-19 17:55:56]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10', 'Food-101'] (metric blank — draft)
+[2026-05-19 17:55:58] [cls] (108) CAMEL
+[2026-05-19 17:56:00]     no target dataset detected
+[2026-05-19 17:56:00] [cls] (109) Pixel-Wise Shuffling with Collaborative Sparsity for Me
+[2026-05-19 17:56:03]     no target dataset detected
+[2026-05-19 17:56:03] [cls] (110) Data Augmentation for Image Classification using Genera
+[2026-05-19 17:56:06]     datasets=['ImageNet-1K', 'ImageNet-V2', 'CUB-200-2011'] (metric blank — draft)
+[2026-05-19 17:56:06]     [checkpoint saved @ 110]
+[2026-05-19 17:56:08] [cls] (111) Flatness Improves Backbone Generalisation in Few-Shot C
+[2026-05-19 17:56:35]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10', 'FGVC-Aircraft'] (metric blank — draft)
+[2026-05-19 17:56:37] [cls] (112) Invariant Shape Representation Learning for Image Class
+[2026-05-19 17:56:39]     datasets=['ImageNet-1K'] (metric blank — draft)
+[2026-05-19 17:56:41] [cls] (113) Class-Conditioned Transformation for Enhanced Robust Im
+[2026-05-19 17:56:48]     datasets=['ImageNet-1K', 'CIFAR-100', 'CIFAR-10'] (metric blank — draft)
+[2026-05-19 17:56:51] [cls] done — processed 113 this run
+[2026-05-19 17:56:53] regenerated JSON + index.html
+[2026-05-19 17:56:53] all done

@@ -1,0 +1,157 @@
+[
+ {
+  "method": "RD++",
+  "link": "https://arxiv.org/abs/2304.02216",
+  "vals": {
+   "MVTec AD": "99.4",
+   "BTAD": "95.6"
+  }
+ },
+ {
+  "method": "RD4AD (AD2 baseline)",
+  "link": "https://arxiv.org/abs/2503.21622",
+  "vals": {
+   "MVTec AD2": "50.0"
+  }
+ },
+ {
+  "method": "RD4AD (Reverse Distillation)",
+  "link": "https://arxiv.org/abs/2201.10703",
+  "vals": {
+   "MVTec AD": "98.5",
+   "MVTec LOCO": "77.6",
+   "VisA": "96.0",
+   "MPDD": "92.7"
+  }
+ },
+ {
+  "method": "ROADS",
+  "link": "https://openaccess.thecvf.com/content/WACV2025/html/Kashiani_ROADS_Robust_Prompt-Driven_Multi-Class_Anomaly_Detection_under_Domain_Shift_WACV_2025_paper.html",
+  "vals": {
+   "MVTec AD": 98.83,
+   "VisA": 95.42
+  }
+ },
+ {
+  "method": "RareCLIP",
+  "link": "https://openaccess.thecvf.com/content/ICCV2025/",
+  "vals": {
+   "MVTec AD": "98.2",
+   "VisA": "94.4"
+  }
+ },
+ {
+  "method": "ReContrast",
+  "link": "https://arxiv.org/abs/2306.02602",
+  "vals": {
+   "MVTec AD": "99.5",
+   "MVTec LOCO": 82.1,
+   "VisA": "97.5",
+   "BTAD": "95.1",
+   "MVTec 3D": "88.6"
+  }
+ },
+ {
+  "method": "RealNet",
+  "link": "https://arxiv.org/abs/2403.05897",
+  "vals": {
+   "MVTec AD": "99.7",
+   "VisA": "97.8",
+   "MPDD": "96.3",
+   "BTAD": "96.1"
+  }
+ },
+ {
+  "method": "RoBiS (VAND 2025 第二名)",
+  "link": "https://arxiv.org/abs/2505.21152",
+  "vals": {
+   "MVTec AD2": "79.62"
+  }
+ },
+ {
+  "method": "SINBAD (Set Features)",
+  "link": "https://arxiv.org/abs/2311.14773",
+  "vals": {
+   "MVTec LOCO": "86.8"
+  }
+ },
+ {
+  "method": "SNARM (Self-Navigated Residual Mamba)",
+  "link": "https://arxiv.org/abs/2508.01591",
+  "vals": {
+   "MVTec AD": "99.3",
+   "VisA": "98.0",
+   "MVTec 3D": 93.9
+  }
+ },
+ {
+  "method": "SPACE",
+  "link": "https://openaccess.thecvf.com/content/WACV2025/html/Kim_SPACE_SPAtial-Aware_Consistency_rEgularization_for_Anomaly_Detection_in_Industrial_Applications_WACV_2025_paper.html",
+  "vals": {
+   "MVTec AD": 99.2,
+   "MVTec LOCO": 92.6,
+   "VisA": 98.5
+  }
+ },
+ {
+  "method": "STAGE (Graded Diffusion + Mask Alignment)",
+  "link": "https://arxiv.org/abs/2509.06693",
+  "vals": {
+   "MVTec AD": "99.5",
+   "VisA": "98.0"
+  }
+ },
+ {
+  "method": "Schrödinger Bridge Diffusion AD",
+  "link": "https://openaccess.thecvf.com/content/CVPR2025/",
+  "vals": {
+   "MVTec AD": "99.2",
+   "VisA": "98.3"
+  }
+ },
+ {
+  "method": "Self-Supervised Anomaly Segmentation via Diffusion Models wi",
+  "link": "https://openaccess.thecvf.com/content/WACV2025/html/Kumar_Self-Supervised_Anomaly_Segmentation_via_Diffusion_Models_with_Dynamic_Transformer_UNet_WACV_2025_paper.html",
+  "vals": {
+   "MVTec AD": 99.17
+  }
+ },
+ {
+  "method": "Shape-Guided (Dual-Memory)",
+  "link": "https://proceedings.mlr.press/v202/chu23b.html",
+  "vals": {
+   "MVTec 3D": "94.7"
+  }
+ },
+ {
+  "method": "SimpleNet",
+  "link": "https://arxiv.org/abs/2303.15140",
+  "vals": {
+   "MVTec AD": "99.6",
+   "VisA": "87.2",
+   "MPDD": "90.6",
+   "BTAD": "94.1"
+  }
+ },
+ {
+  "method": "SimpleNet (AD2 baseline)",
+  "link": "https://arxiv.org/abs/2503.21622",
+  "vals": {
+   "MVTec AD2": "46.0"
+  }
+ },
+ {
+  "method": "SuperAD (Training-free DINOv2)",
+  "link": "https://arxiv.org/abs/2505.19750",
+  "vals": {
+   "MVTec AD2": "70.2"
+  }
+ },
+ {
+  "method": "SuperADD: Training-free Class-agnostic Anomaly Segmentation -- CVPR 2026 VAND 4.0 Workshop",
+  "link": "https://arxiv.org/abs/2605.14808",
+  "vals": {
+   "MVTec AD2": 57.42
+  }
+ }
+]
