@@ -4,42 +4,42 @@
 "method": "YOLO26 (l)",
 "cat": "Real-Time OD",
 "link": "https://docs.ultralytics.com/models/yolo26/",
-"done": false
+"done": true
 },
 {
 "row": 5,
 "method": "YOLO26 (n)",
 "cat": "Real-Time OD",
 "link": "https://docs.ultralytics.com/models/yolo26/",
-"done": false
+"done": true
 },
 {
 "row": 9,
 "method": "YOLO-Master",
 "cat": "Real-Time OD",
 "link": "https://github.com/topics/yolo-master",
-"done": false
+"done": true
 },
 {
 "row": 42,
 "method": "YOLO-NAS-L",
 "cat": "Real-Time OD",
 "link": "https://github.com/Deci-AI/super-gradients",
-"done": false
+"done": true
 },
 {
 "row": 45,
 "method": "YOLOv8x",
 "cat": "Real-Time OD",
 "link": "https://docs.ultralytics.com/models/yolov8/",
-"done": false
+"done": true
 },
 {
 "row": 72,
 "method": "YOLOv5-x",
 "cat": "Real-Time OD",
 "link": "https://github.com/ultralytics/yolov5",
-"done": false
+"done": true
 },
 {
 "row": 88,
@@ -235,7 +235,7 @@
 "method": "YOLO-Count",
 "cat": "Real-Time OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Zeng_YOLO-Count_Differentiable_Object_Counting_for_Text-to-Image_Generation_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 183,
@@ -424,7 +424,7 @@
 "method": "DualRes",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Hassani_DualRes_Production-ready_Dynamic_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 236,
@@ -445,7 +445,7 @@
 "method": "SPAN",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_SPAN_Spatial-Projection_Alignment_for_Monocular_3D_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 240,
@@ -459,7 +459,7 @@
 "method": "TF-SSD",
 "cat": "RGB Salient OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/He_TF-SSD_A_Strong_Pipeline_via_Synergic_Mask_Filter_for_Training-free_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 244,
@@ -473,7 +473,7 @@
 "method": "PaQ-DETR",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Kang_PaQ-DETR_Learning_Pattern_and_Quality-Aware_Dynamic_Queries_for_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 248,
@@ -627,7 +627,7 @@
 "method": "InsCal",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Que_InsCal_Calibrated_Multi-Source_Fully_Test-Time_Prompt_Tuning_for_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 290,
