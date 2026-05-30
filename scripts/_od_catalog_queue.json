@@ -46,7 +46,7 @@
 "method": "PointSR",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_PointSR_Self-Regularized_Point_Supervision_for_Drone-View_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 90,
@@ -81,7 +81,7 @@
 "method": "UCOD-DPL",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Yan_UCOD-DPL_Unsupervised_Camouflaged_Object_Detection_via_Dynamic_Pseudo-label_Learning_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 113,
@@ -109,7 +109,7 @@
 "method": "CorrBEV",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xue_CorrBEV_Multi-View_3D_Object_Detection_by_Correlation_Learning_with_Multi-modal_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 127,
@@ -130,14 +130,14 @@
 "method": "DiL",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Giloni_DiL_An_Explainable_and_Practical_Metric_for_Abnormal_Uncertainty_in_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 135,
 "method": "HDPNet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/He_HDPNet_Hourglass_Vision_Transformer_with_Dual-Path_Feature_Pyramid_for_Camouflaged_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 140,
@@ -172,7 +172,7 @@
 "method": "ESCNet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Ye_ESCNetEdge-Semantic_Collaborative_Network_for_Camouflaged_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 163,
@@ -494,7 +494,7 @@
 "method": "SDDF",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Liang_SDDF_Specificity-Driven_Dynamic_Focusing_for_Open-Vocabulary_Camouflaged_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 254,
@@ -564,7 +564,7 @@
 "method": "NoOVD",
 "cat": "Few-Shot OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_NoOVD_Novel_Category_Discovery_and_Embedding_for_Open-Vocabulary_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 273,
@@ -578,7 +578,7 @@
 "method": "D2FANet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Qi_D2FANet_Enhancing_Video_Object_Detection_with_Dual-Domain_Feature_Aggregation_Network_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 276,
@@ -641,14 +641,14 @@
 "method": "BDNet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Guan_BDNetBio-Inspired_Dual-Backbone_Small_Object_Detection_Network_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 294,
 "method": "M4-SAM",
 "cat": "RGB Salient OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Liu_M4-SAM_Multi-Modal_Mixture-of-Experts_with_Memory-Augmented_SAM_for_RGB-D_Video_Salient_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 296,
