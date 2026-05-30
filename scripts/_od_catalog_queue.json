@@ -95,7 +95,7 @@
 "method": "ReRAW",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Berdan_ReRAW_RGB-to-RAW_Image_Reconstruction_via_Stratified_Sampling_for_Efficient_Object_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 119,
@@ -165,7 +165,7 @@
 "method": "SFUOD",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Park_SFUOD_Source-Free_Unknown_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 161,
@@ -186,21 +186,21 @@
 "method": "UPRE",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Zhang_UPRE_Zero-Shot_Domain_Adaptation_for_Object_Detection_via_Unified_Prompt_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 166,
 "method": "ASGS",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Yuan_ASGS_Single-Domain_Generalizable_Open-Set_Object_Detection_via_Adaptive_Subgraph_Searching_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 170,
 "method": "PBCAT",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Li_PBCAT_Patch-Based_Composite_Adversarial_Training_against_Physically_Realizable_Attacks_on_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 171,
@@ -228,7 +228,7 @@
 "method": "DuET",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Monga_DuET_Dual_Incremental_Object_Detection_via_Exemplar-Free_Task_Arithmetic_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 182,
@@ -312,14 +312,14 @@
 "method": "Beyond RGB",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Gamrian_Beyond_RGB_Adaptive_Parallel_Processing_for_RAW_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 207,
 "method": "Dark-ISP",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Guo_Dark-ISP_Enhancing_RAW_Image_Processing_for_Low-Light_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 208,
@@ -382,7 +382,7 @@
 "method": "DMAT",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Hill_DMAT_An_End-to-End_Framework_for_Joint_Atmospheric_Turbulence_Mitigation_and_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 225,
@@ -410,14 +410,14 @@
 "method": "TRACE",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Lee_TRACE_Confounder-free_Adversarial_Fine-tuning_for_Robust_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 234,
 "method": "CropAT",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Huang_CropAT_Leveraging_Diffusion-Generated_Target-Like_Cropped_Objects_for_Pseudo-Label_Refinement_in_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 235,
@@ -543,7 +543,7 @@
 "method": "WeDetect",
 "cat": "Few-Shot OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Fu_WeDetect_Fast_Open-Vocabulary_Object_Detection_as_Retrieval_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 270,
@@ -557,7 +557,7 @@
 "method": "EW-DETR",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Monga_EW-DETR_Evolving_World_Object_Detection_via_Incremental_Low-Rank_DEtection_TRansformer_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 272,
@@ -585,7 +585,7 @@
 "method": "AgentDet",
 "cat": "Few-Shot OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_AgentDet_A_Shared-Blackboard_Multi-Agent_Framework_for_Zero-Few-Shot_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 278,
@@ -655,7 +655,7 @@
 "method": "AntiStyler",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Yankelev_AntiStyler_Defending_Object_Detection_Models_Against_Adversarial_Patch_Attacks_Using_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 300,
