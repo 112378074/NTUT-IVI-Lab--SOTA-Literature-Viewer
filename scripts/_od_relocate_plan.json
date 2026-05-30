@@ -223,20 +223,6 @@
 "link": "https://arxiv.org/abs/2303.05499"
 }
 ],
-"Incremental OD": [
-{
-"method": "Revisiting Generative Replay for Class Incremental Object De",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Revisiting_Generative_Replay_for_Class_Incremental_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "Learning Endogenous Attention for Incremental Object Detecti",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Song_Learning_Endogenous_Attention_for_Incremental_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "DiL",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Giloni_DiL_An_Explainable_and_Practical_Metric_for_Abnormal_Uncertainty_in_WACV_2025_paper.html"
-}
-],
 "Security/Adversarial OD": [
 {
 "method": "Test-Time Backdoor Detection for Object Detection Models",
