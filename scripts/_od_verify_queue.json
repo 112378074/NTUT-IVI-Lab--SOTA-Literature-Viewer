@@ -60,56 +60,56 @@
 "row": 53,
 "method": "CD-ViTO",
 "link": "https://arxiv.org/abs/2402.03094",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 54,
 "method": "BiRefNet",
 "link": "https://arxiv.org/abs/2401.03407",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 55,
 "method": "Meta-DETR",
 "link": "https://arxiv.org/abs/2208.00219",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 56,
 "method": "DeFRCN",
 "link": "https://arxiv.org/abs/2108.09017",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 57,
 "method": "Swin-L Cascade Mask R-CNN",
 "link": "https://arxiv.org/abs/2103.14030",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 58,
 "method": "FSCE",
 "link": "https://arxiv.org/abs/2103.05950",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 59,
 "method": "MPSR",
 "link": "https://arxiv.org/abs/2007.09384",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 60,
 "method": "TFA w/cos",
 "link": "https://arxiv.org/abs/2003.06957",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -571,21 +571,21 @@
 "row": 23,
 "method": "Meta-DETR",
 "link": "https://arxiv.org/abs/2208.00219",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 24,
 "method": "DeFRCN",
 "link": "https://arxiv.org/abs/2108.09017",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 25,
 "method": "FSCE",
 "link": "https://arxiv.org/abs/2103.05950",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -599,14 +599,14 @@
 "row": 27,
 "method": "MPSR",
 "link": "https://arxiv.org/abs/2007.09384",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 28,
 "method": "TFA w/cos",
 "link": "https://arxiv.org/abs/2003.06957",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -830,7 +830,7 @@
 "row": 19,
 "method": "TFA w/cos",
 "link": "https://arxiv.org/abs/2003.06957",
-"done": false
+"done": true
 },
 {
 "dataset": "LVIS v1.0 val",
