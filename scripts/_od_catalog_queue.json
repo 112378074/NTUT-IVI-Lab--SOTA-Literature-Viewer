@@ -60,7 +60,7 @@
 "method": "GauCho",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Marques_GauCho_Gaussian_Distributions_with_Cholesky_Decomposition_for_Oriented_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 104,
@@ -291,7 +291,7 @@
 "method": "VISO",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Wang_VISO_Accelerating_In-orbit_Object_Detection_with_Language-Guided_Mask_Learning_and_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 203,
@@ -396,7 +396,7 @@
 "method": "SPAR-Det",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Kwon_SPAR-Det_Segmentation-guided_and_Prior-Aided_Routing_for_Small_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 232,
@@ -431,7 +431,7 @@
 "method": "Meta-YOLO",
 "cat": "Real-Time OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Yoon_Meta-YOLO_Metadata-Guided_Real-Time_Object_Detector_in_Aerial_Imagery_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 237,
@@ -536,7 +536,7 @@
 "method": "YOLO-ULM",
 "cat": "Real-Time OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Han_YOLO-ULM_Ultra-Lightweight_Models_for_Real-Time_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 265,
@@ -550,7 +550,7 @@
 "method": "RAVEN",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Sen_RAVEN_Radar_Adaptive_Vision_Encoders_for_Efficient_Chirp-wise_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 271,
