@@ -826,7 +826,7 @@ def _od_comparable(status, notes=''):
     if '⏳' in st or 'Pending' in st or 'pending' in st:
         return 'pending'
     # verified-but-non-standard protocols
-    if any(e in st for e in ('🟣', '🟠', '🟢')):
+    if any(e in st for e in ('🟣', '🟠', '🟢', '🟡')):
         return 'nonstandard'
     if '⚠' in st:
         return 'nonstandard'
@@ -835,7 +835,7 @@ def _od_comparable(status, notes=''):
     # legacy / publication-state status: infer from notes
     if '⏳' in note or 'Pending' in note:
         return 'pending'
-    if any(e in note for e in ('🟣', '🟠', '🟢')):
+    if any(e in note for e in ('🟣', '🟠', '🟢', '🟡')):
         return 'nonstandard'
     if '⚠' in note:
         return 'nonstandard'
@@ -852,6 +852,8 @@ def _od_protocol(status, notes=''):
         return 'Zero-shot'
     if '🟢' in st:
         return 'Few-shot'
+    if '🟡' in st:
+        return 'Non-standard protocol'
     if 'Domain adapt' in st or 'domain adapt' in st:
         return 'Domain adaptation'
     if 'Robust' in st:

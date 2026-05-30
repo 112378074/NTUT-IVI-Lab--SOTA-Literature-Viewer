@@ -98,6 +98,38 @@ The `.xlsx` files are the **single source of truth**. For each new paper:
    `cls_supplemental.json` for the pattern) which `regenerate_*_json()` merges
    on top of the xlsx.
 
+## Step 2.5 — Classify & verify before any leaderboard insert (MANDATORY)
+
+**A new OD or AD paper is NEVER auto-inserted into a standard sortable
+leaderboard.** It enters as catalog-only with a **blank metric** and status
+`⏳ Pending visual table read`, and only becomes a ranked row after it passes the
+full classify-and-verify procedure in
+[`references/verification_workflow.md`](references/verification_workflow.md).
+
+The short version of the gate:
+
+1. **Task type** — confirm the real task + eval protocol; don't call it Standard
+   OD just because it says "object detection".
+2. **Dataset + split** — record exactly (COCO test-dev vs val2017 vs minival;
+   LVIS val vs minival vs test-dev). **Never mix splits.**
+3. **Protocol** — fully-supervised / open-vocab / zero-shot / few-shot / long-tail
+   / domain-adapt / robustness / oriented / 3D / SOD / referring / etc.
+4. **Primary metric** — use the paper's + dataset's expected metric; **never
+   convert** one metric to another (no COCO→COCO-O, no S-measure/novel-AP/ASR as COCO AP).
+5. **Where it goes** — Standard board only if *same dataset + split + standard
+   protocol + primary metric + source-verified*. Same dataset / different
+   protocol → keep on the page under a **colored protocol-verified** status
+   (`🟣 Open-vocab` / `🟠 Zero-shot` / `🟢 Few-shot` / `🟡 Non-standard`), **never
+   "unverified"**. Different dataset → move/create the right sheet. No source →
+   `⚠️ No authoritative source`, **blank score**, not in any rank.
+6. **Source note** — every numeric score records arXiv ID + table/page + split +
+   metric + original-vs-cross-paper. No source note ⇒ not a leaderboard row.
+
+Status vocabulary, decision rules A–F, sorting, and required fields are in the
+reference file. The engine that enforces grouping/sorting from these labels is
+`_od_comparable()` / `_od_protocol()` in `update_papers.py` plus the protocol
+grouping + colored badges + `🔀 全部 protocol 一起比較` toggle in `index.html`.
+
 ## Step 3 — Regenerate the website
 
 ```bash
@@ -129,7 +161,10 @@ via Windows Task Scheduler, and **emails a summary to two recipients
 1. **arXiv** fetch — last 7 days, AD / OD / CLS / AS queries.
 2. **CVF Open Access** scan — `process_cvf()` scrapes CVPR / ICCV / ECCV /
    WACV proceedings, dedups by method name, appends genuinely-new papers to
-   the "All Papers" sheets (metrics left blank — pending verification).
+   the "All Papers" **catalog** sheets **with metrics blank and status
+   `⏳ Pending visual table read`** — they are *not* leaderboard rows until a
+   human/agent runs Step 2.5 (classify & verify). The scheduled run never
+   inserts a number into a standard ranking.
 3. Append rows to the `.xlsx` workbooks.
 4. Regenerate `*_data.json` and re-inject into `index.html`.
 5. `git push` → GitHub Pages redeploys.
@@ -192,8 +227,15 @@ or the password is empty, the run logs `email skipped` and still completes.
 - **AS** — domain disabled on the website ("待開發中"); do not surface.
 - Different datasets and different evaluation protocols are **never** mixed in
   one ranking. Flag incomparable rows in the notes column.
+- Same dataset + different protocol (open-vocab / zero-shot / few-shot / 3D /
+  logical / segmentation-only …) → keep on the dataset page under a colored
+  protocol-verified status, **grouped & labeled**, never deleted and never
+  labeled "unverified" once the source is checked (see Step 2.5).
 
 ## References
 
+- `references/verification_workflow.md` — **classify-&-verify gate** for every new
+  OD/AD paper (task → dataset+split → protocol → metric → placement → source →
+  sorting → fields → report). Read this before adding any paper to a leaderboard.
 - `references/source_access.md` — how to search/export from each of the 6 sources
 - `references/excel_schema.md`  — exact column layout for every workbook
