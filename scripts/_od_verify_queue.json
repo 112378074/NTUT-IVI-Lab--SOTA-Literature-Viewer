@@ -186,7 +186,7 @@
 "row": 71,
 "method": "Test-Time Backdoor Detection for Object Detection Models",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Test-Time_Backdoor_Detection_for_Object_Detection_Models_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -200,7 +200,7 @@
 "row": 73,
 "method": "ROD-MLLM",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Yin_ROD-MLLM_Towards_More_Reliable_Object_Detection_in_Multimodal_Large_Language_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -214,42 +214,42 @@
 "row": 75,
 "method": "ReDiffDet",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhao_ReDiffDet_Rotation-equivariant_Diffusion_Model_for_Oriented_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 76,
 "method": "Towards RAW Object Detection in Diverse Conditions",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Towards_RAW_Object_Detection_in_Diverse_Conditions_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 77,
 "method": "Pseudo Visible Feature Fine-Grained Fusion for Thermal Objec",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Pseudo_Visible_Feature_Fine-Grained_Fusion_for_Thermal_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 78,
 "method": "DEIM",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Huang_DEIM_DETR_with_Improved_Matching_for_Fast_Convergence_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 79,
 "method": "Revisiting Generative Replay for Class Incremental Object De",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Revisiting_Generative_Replay_for_Class_Incremental_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 80,
 "method": "Fractal Calibration for Long-tailed Object Detection",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Alexandridis_Fractal_Calibration_for_Long-tailed_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -655,7 +655,7 @@
 "row": 35,
 "method": "Test-Time Backdoor Detection for Object Detection Models",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Test-Time_Backdoor_Detection_for_Object_Detection_Models_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -676,14 +676,14 @@
 "row": 38,
 "method": "Towards RAW Object Detection in Diverse Conditions",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Towards_RAW_Object_Detection_in_Diverse_Conditions_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 39,
 "method": "Revisiting Generative Replay for Class Incremental Object De",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Revisiting_Generative_Replay_for_Class_Incremental_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -816,7 +816,7 @@
 "row": 19,
 "method": "DEIM",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Huang_DEIM_DETR_with_Improved_Matching_for_Fast_Convergence_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "LVIS v1.0 val",
@@ -844,7 +844,7 @@
 "row": 21,
 "method": "Fractal Calibration for Long-tailed Object Detection",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Alexandridis_Fractal_Calibration_for_Long-tailed_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "LVIS v1.0 val",
