@@ -270,7 +270,7 @@
 "method": "EvRT-DETR",
 "cat": "Real-Time OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Torbunov_EvRT-DETR_Latent_Space_Adaptation_of_Image_Detectors_for_Event-based_Vision_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 196,
@@ -326,7 +326,7 @@
 "method": "WaveMamba",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Zhu_WaveMamba_Wavelet-Driven_Mamba_Fusion_for_RGB-Infrared_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 210,
@@ -361,7 +361,7 @@
 "method": "SeaClips",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Denk_SeaClips_A_Video_Dataset_for_Maritime_Object_Detection._WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 220,
@@ -403,7 +403,7 @@
 "method": "WiSE-OD",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Medeiros_WiSE-OD_Benchmarking_Robustness_in_Infrared_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 233,
@@ -508,7 +508,7 @@
 "method": "DyFCLT",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_DyFCLT_Dynamic_Frequency-Decoupled_Cross-Modal_Learning_Transformer_for_Multimodal_Tiny_Object_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 257,
@@ -529,7 +529,7 @@
 "method": "Thermal-Det",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Ranasinghe_Thermal-Det_Language-Guided_Cross-Modal_Distillation_for_Open-Vocabulary_Thermal_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 263,
