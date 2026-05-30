@@ -319,56 +319,56 @@
 "row": 90,
 "method": "AIC3DOD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Cheng_AIC3DOD_Advancing_Indoor_Class-Incremental_3D_Object_Detection_with_Point_Transformer_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 91,
 "method": "MaskVD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Sarkar_MaskVD_Region_Masking_for_Efficient_Video_Object_Detection_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 92,
 "method": "Diffusion-Based Particle-DETR for BEV Perception",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Nachkov_Diffusion-Based_Particle-DETR_for_BEV_Perception_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 93,
 "method": "PK-YOLO",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Kang_PK-YOLO_Pretrained_Knowledge_Guided_YOLO_for_Brain_Tumor_Detection_in_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 94,
 "method": "Decoupled PROB",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Inoue_Decoupled_PROB_Decoupled_Query_Initialization_Tasks_and_Objectness-Class_Learning_for_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 95,
 "method": "Mixed Patch Visible-Infrared Modality Agnostic Object Detect",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Medeiros_Mixed_Patch_Visible-Infrared_Modality_Agnostic_Object_Detection_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 96,
 "method": "Generalist YOLO",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Chang_Generalist_YOLO_Towards_Real-Time_End-to-End_Multi-Task_Visual_Language_Models_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 97,
 "method": "Enhancing Embodied Object Detection with Spatial Feature Mem",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Chapman_Enhancing_Embodied_Object_Detection_with_Spatial_Feature_Memory_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -732,7 +732,7 @@
 "row": 46,
 "method": "Decoupled PROB",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Inoue_Decoupled_PROB_Decoupled_Query_Initialization_Tasks_and_Objectness-Class_Learning_for_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -872,6 +872,6 @@
 "row": 25,
 "method": "Enhancing Embodied Object Detection with Spatial Feature Mem",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Chapman_Enhancing_Embodied_Object_Detection_with_Spatial_Feature_Memory_WACV_2025_paper.html",
-"done": false
+"done": true
 }
 ]
