@@ -1,0 +1,877 @@
+[
+{
+"dataset": "COCO test-dev",
+"row": 17,
+"method": "Focal-L DINO",
+"link": "https://arxiv.org/abs/2203.11926",
+"done": true
+},
+{
+"dataset": "COCO 2017 val",
+"row": 37,
+"method": "VFM$^{4}$SDG: Unveiling the Power of VFMs for Single-Domain Generalized Object Detection",
+"link": "https://arxiv.org/abs/2604.21502",
+"done": true
+},
+{
+"dataset": "COCO 2017 val",
+"row": 38,
+"method": "UHR-DETR: Efficient End-to-End Small Object Detection for Ultra-High-Resolution Remote Sen",
+"link": "https://arxiv.org/abs/2604.21435",
+"done": true
+},
+{
+"dataset": "COCO 2017 val",
+"row": 39,
+"method": "Brain-Inspired Spiking Neural Networks for Energy-Efficient",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Brain-Inspired_Spiking_Neural_Networks_for_Energy-Efficient_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017 val",
+"row": 40,
+"method": "Search and Detect",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sidhu_Search_and_Detect_Training-Free_Long_Tail_Object_Detection_via_Web-Image_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017 val",
+"row": 41,
+"method": "SET",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sun_SET_Spectral_Enhancement_for_Tiny_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017 val",
+"row": 42,
+"method": "SimLTD",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Tran_SimLTD_Simple_Supervised_and_Semi-Supervised_Long-Tailed_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 52,
+"method": "NTIRE 2025 CD-FSOD top method",
+"link": "https://arxiv.org/abs/2504.10685",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 53,
+"method": "CD-ViTO",
+"link": "https://arxiv.org/abs/2402.03094",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 54,
+"method": "BiRefNet",
+"link": "https://arxiv.org/abs/2401.03407",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 55,
+"method": "Meta-DETR",
+"link": "https://arxiv.org/abs/2208.00219",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 56,
+"method": "DeFRCN",
+"link": "https://arxiv.org/abs/2108.09017",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 57,
+"method": "Swin-L Cascade Mask R-CNN",
+"link": "https://arxiv.org/abs/2103.14030",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 58,
+"method": "FSCE",
+"link": "https://arxiv.org/abs/2103.05950",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 59,
+"method": "MPSR",
+"link": "https://arxiv.org/abs/2007.09384",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 60,
+"method": "TFA w/cos",
+"link": "https://arxiv.org/abs/2003.06957",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 61,
+"method": "Meta R-CNN",
+"link": "https://arxiv.org/abs/1909.13032",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 62,
+"method": "FSRW",
+"link": "https://arxiv.org/abs/1812.01866",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 63,
+"method": "Exploring Hierarchical Consistency and Unbiased Objectness for Open-Vocabulary Object Dete",
+"link": "https://arxiv.org/abs/2604.23344",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 64,
+"method": "UHR-DETR: Efficient End-to-End Small Object Detection for Ultra-High-Resolution Remote Sen",
+"link": "https://arxiv.org/abs/2604.21435",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 65,
+"method": "Brain-Inspired Spiking Neural Networks for Energy-Efficient",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Brain-Inspired_Spiking_Neural_Networks_for_Energy-Efficient_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 66,
+"method": "Believing is Seeing",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Bhattacharjee_Believing_is_Seeing_Unobserved_Object_Detection_using_Generative_Models_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 67,
+"method": "OW-OVD",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xi_OW-OVD_Unified_Open_World_and_Open_Vocabulary_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 68,
+"method": "Shift the Lens",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Du_Shift_the_Lens_Environment-Aware_Unsupervised_Camouflaged_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 69,
+"method": "Visual Consensus Prompting for Co-Salient Object Detection",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wang_Visual_Consensus_Prompting_for_Co-Salient_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 70,
+"method": "Language-Guided Salient Object Ranking",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Liu_Language-Guided_Salient_Object_Ranking_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 71,
+"method": "Test-Time Backdoor Detection for Object Detection Models",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Test-Time_Backdoor_Detection_for_Object_Detection_Models_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 72,
+"method": "Search and Detect",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sidhu_Search_and_Detect_Training-Free_Long_Tail_Object_Detection_via_Web-Image_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 73,
+"method": "ROD-MLLM",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Yin_ROD-MLLM_Towards_More_Reliable_Object_Detection_in_Multimodal_Large_Language_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 74,
+"method": "SET",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sun_SET_Spectral_Enhancement_for_Tiny_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 75,
+"method": "ReDiffDet",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhao_ReDiffDet_Rotation-equivariant_Diffusion_Model_for_Oriented_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 76,
+"method": "Towards RAW Object Detection in Diverse Conditions",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Towards_RAW_Object_Detection_in_Diverse_Conditions_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 77,
+"method": "Pseudo Visible Feature Fine-Grained Fusion for Thermal Objec",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Pseudo_Visible_Feature_Fine-Grained_Fusion_for_Thermal_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 78,
+"method": "DEIM",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Huang_DEIM_DETR_with_Improved_Matching_for_Fast_Convergence_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 79,
+"method": "Revisiting Generative Replay for Class Incremental Object De",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Revisiting_Generative_Replay_for_Class_Incremental_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 80,
+"method": "Fractal Calibration for Long-tailed Object Detection",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Alexandridis_Fractal_Calibration_for_Long-tailed_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 81,
+"method": "Open-World Objectness Modeling Unifies Novel Object Detectio",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Open-World_Objectness_Modeling_Unifies_Novel_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 82,
+"method": "Cubify Anything",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Lazarow_Cubify_Anything_Scaling_Indoor_3D_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 83,
+"method": "Percept, Memory, and Imagine",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wu_Percept_Memory_and_Imagine_World_Feature_Simulating_for_Open-Domain_Unknown_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 84,
+"method": "SimLTD",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Tran_SimLTD_Simple_Supervised_and_Semi-Supervised_Long-Tailed_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "COCO 2017",
+"row": 85,
+"method": "Learning Endogenous Attention for Incremental Object Detecti",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Song_Learning_Endogenous_Attention_for_Incremental_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 86,
+"method": "DiL",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Giloni_DiL_An_Explainable_and_Practical_Metric_for_Abnormal_Uncertainty_in_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 87,
+"method": "Bit-Flip Induced Latency Attacks in Object Detection",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Sistla_Bit-Flip_Induced_Latency_Attacks_in_Object_Detection_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 88,
+"method": "Enhancing Novel Object Detection via Cooperative Foundationa",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Bharadwaj_Enhancing_Novel_Object_Detection_via_Cooperative_Foundational_Models_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 89,
+"method": "ALPI",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Lahlali_ALPI_Auto-Labeller_with_Proxy_Injection_for_3D_Object_Detection_using_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 90,
+"method": "AIC3DOD",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Cheng_AIC3DOD_Advancing_Indoor_Class-Incremental_3D_Object_Detection_with_Point_Transformer_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 91,
+"method": "MaskVD",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Sarkar_MaskVD_Region_Masking_for_Efficient_Video_Object_Detection_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 92,
+"method": "Diffusion-Based Particle-DETR for BEV Perception",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Nachkov_Diffusion-Based_Particle-DETR_for_BEV_Perception_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 93,
+"method": "PK-YOLO",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Kang_PK-YOLO_Pretrained_Knowledge_Guided_YOLO_for_Brain_Tumor_Detection_in_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 94,
+"method": "Decoupled PROB",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Inoue_Decoupled_PROB_Decoupled_Query_Initialization_Tasks_and_Objectness-Class_Learning_for_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 95,
+"method": "Mixed Patch Visible-Infrared Modality Agnostic Object Detect",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Medeiros_Mixed_Patch_Visible-Infrared_Modality_Agnostic_Object_Detection_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 96,
+"method": "Generalist YOLO",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Chang_Generalist_YOLO_Towards_Real-Time_End-to-End_Multi-Task_Visual_Language_Models_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 97,
+"method": "Enhancing Embodied Object Detection with Spatial Feature Mem",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Chapman_Enhancing_Embodied_Object_Detection_with_Spatial_Feature_Memory_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 98,
+"method": "Interactive Object Detection for Tiny Objects in Large Remot",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Burges_Interactive_Object_Detection_for_Tiny_Objects_in_Large_Remotely_Sensed_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 99,
+"method": "Cross-Domain Multi-Modal Few-Shot Object Detection via Rich",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Shangguan_Cross-Domain_Multi-Modal_Few-Shot_Object_Detection_via_Rich_Text_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 100,
+"method": "No Annotations for Object Detection in Art through Stable Di",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Ramos_No_Annotations_for_Object_Detection_in_Art_through_Stable_Diffusion_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 101,
+"method": "ECF-YOLOv7-Tiny",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Bacea_ECF-YOLOv7-Tiny_Improving_Feature_Fusion_and_the_Receptive_Field_for_Lightweight_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO 2017",
+"row": 102,
+"method": "Shape-Biased Texture Agnostic Representations for Improved T",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Honig_Shape-Biased_Texture_Agnostic_Representations_for_Improved_Textureless_and_Metallic_Object_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "COCO-O",
+"row": 7,
+"method": "InternImage-H",
+"link": "https://arxiv.org/abs/2211.05778",
+"done": false
+},
+{
+"dataset": "COCO-O",
+"row": 8,
+"method": "EVA-02-Det",
+"link": "https://arxiv.org/abs/2303.11331",
+"done": false
+},
+{
+"dataset": "COCO-O",
+"row": 9,
+"method": "Co-DETR",
+"link": "https://arxiv.org/abs/2211.12860",
+"done": false
+},
+{
+"dataset": "COCO-O",
+"row": 10,
+"method": "YOLOv8x",
+"link": "https://docs.ultralytics.com/models/yolov8/",
+"done": false
+},
+{
+"dataset": "COCO-O",
+"row": 11,
+"method": "RT-DETR",
+"link": "https://arxiv.org/abs/2304.08069",
+"done": false
+},
+{
+"dataset": "COCO-O",
+"row": 12,
+"method": "Grounding DINO 1.5 Pro",
+"link": "https://arxiv.org/abs/2405.10300",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 3,
+"method": "DINO (Swin-L)",
+"link": "https://arxiv.org/abs/2203.03605",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 4,
+"method": "YOLOv7",
+"link": "https://arxiv.org/abs/2207.02696",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 5,
+"method": "YOLOv4",
+"link": "https://arxiv.org/abs/2004.10934",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 6,
+"method": "Cascade R-CNN",
+"link": "https://arxiv.org/abs/1712.00726",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 7,
+"method": "DETR",
+"link": "https://arxiv.org/abs/2005.12872",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 8,
+"method": "Sparse R-CNN",
+"link": "https://arxiv.org/abs/2011.12450",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 10,
+"method": "RetinaNet (R101)",
+"link": "https://arxiv.org/abs/1708.02002",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 13,
+"method": "YOLOv8x",
+"link": "https://docs.ultralytics.com/models/yolov8/",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 14,
+"method": "YOLO-NAS",
+"link": "https://github.com/Deci-AI/super-gradients",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 15,
+"method": "Grounding DINO (zero-shot)",
+"link": "https://arxiv.org/abs/2303.05499",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 16,
+"method": "RF-DETR (Large)",
+"link": "https://arxiv.org/abs/2511.09554",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 17,
+"method": "RF-DETR (Nano)",
+"link": "https://arxiv.org/abs/2511.09554",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 18,
+"method": "YOLOv13-X",
+"link": "https://arxiv.org/abs/2506.17733",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 19,
+"method": "Grounding DINO",
+"link": "https://arxiv.org/abs/2303.05499",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 20,
+"method": "Relation-DETR (FocalNet-L)",
+"link": "https://arxiv.org/abs/2407.11699",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 21,
+"method": "Grounding DINO 1.5 Pro",
+"link": "https://arxiv.org/abs/2405.10300",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 22,
+"method": "RTMDet-X",
+"link": "https://arxiv.org/abs/2212.07784",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 23,
+"method": "Meta-DETR",
+"link": "https://arxiv.org/abs/2208.00219",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 24,
+"method": "DeFRCN",
+"link": "https://arxiv.org/abs/2108.09017",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 25,
+"method": "FSCE",
+"link": "https://arxiv.org/abs/2103.05950",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 26,
+"method": "PoolNet+",
+"link": "https://arxiv.org/abs/1904.09569",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 27,
+"method": "MPSR",
+"link": "https://arxiv.org/abs/2007.09384",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 28,
+"method": "TFA w/cos",
+"link": "https://arxiv.org/abs/2003.06957",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 29,
+"method": "EfficientDet-D7",
+"link": "https://arxiv.org/abs/1911.09070",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 30,
+"method": "Meta R-CNN",
+"link": "https://arxiv.org/abs/1909.13032",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 31,
+"method": "FSRW",
+"link": "https://arxiv.org/abs/1812.01866",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 32,
+"method": "CenterNet",
+"link": "https://arxiv.org/abs/1904.07850",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 33,
+"method": "OW-OVD",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xi_OW-OVD_Unified_Open_World_and_Open_Vocabulary_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 34,
+"method": "SEEN-DA",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_SEEN-DA_SEmantic_ENtropy_guided_Domain-aware_Attention_for_Domain_Adaptive_Object_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 35,
+"method": "Test-Time Backdoor Detection for Object Detection Models",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Test-Time_Backdoor_Detection_for_Object_Detection_Models_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 36,
+"method": "SET",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sun_SET_Spectral_Enhancement_for_Tiny_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 37,
+"method": "Style Evolving along Chain-of-Thought for Unknown-Domain Obj",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Style_Evolving_along_Chain-of-Thought_for_Unknown-Domain_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 38,
+"method": "Towards RAW Object Detection in Diverse Conditions",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Towards_RAW_Object_Detection_in_Diverse_Conditions_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 39,
+"method": "Revisiting Generative Replay for Class Incremental Object De",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Revisiting_Generative_Replay_for_Class_Incremental_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 40,
+"method": "Open-World Objectness Modeling Unifies Novel Object Detectio",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Open-World_Objectness_Modeling_Unifies_Novel_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 41,
+"method": "Percept, Memory, and Imagine",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wu_Percept_Memory_and_Imagine_World_Feature_Simulating_for_Open-Domain_Unknown_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 42,
+"method": "SimLTD",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Tran_SimLTD_Simple_Supervised_and_Semi-Supervised_Long-Tailed_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 43,
+"method": "Learning Endogenous Attention for Incremental Object Detecti",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Song_Learning_Endogenous_Attention_for_Incremental_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 44,
+"method": "Bit-Flip Induced Latency Attacks in Object Detection",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Sistla_Bit-Flip_Induced_Latency_Attacks_in_Object_Detection_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 45,
+"method": "ERUP-YOLO",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Ogino_ERUP-YOLO_Enhancing_Object_Detection_Robustness_for_Adverse_Weather_Condition_by_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 46,
+"method": "Decoupled PROB",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Inoue_Decoupled_PROB_Decoupled_Query_Initialization_Tasks_and_Objectness-Class_Learning_for_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "PASCAL VOC 2007",
+"row": 47,
+"method": "Cross-Domain Multi-Modal Few-Shot Object Detection via Rich",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Shangguan_Cross-Domain_Multi-Modal_Few-Shot_Object_Detection_via_Rich_Text_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 4,
+"method": "DDETR (CrowdHuman ft)",
+"link": "https://arxiv.org/abs/2010.04159",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 8,
+"method": "YOLOv7",
+"link": "https://arxiv.org/abs/2207.02696",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 11,
+"method": "EOD",
+"link": "https://arxiv.org/abs/2309.00000",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 12,
+"method": "YOLOv8x",
+"link": "https://docs.ultralytics.com/models/yolov8/",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 13,
+"method": "DEIM-D-FINE-X",
+"link": "https://arxiv.org/abs/2412.04234",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 14,
+"method": "DEIM-D-FINE-L",
+"link": "https://arxiv.org/abs/2412.04234",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 15,
+"method": "DINO-X",
+"link": "https://arxiv.org/abs/2411.14347",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 16,
+"method": "Grounding DINO 1.5 Pro",
+"link": "https://arxiv.org/abs/2405.10300",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 17,
+"method": "InternImage-H",
+"link": "https://arxiv.org/abs/2211.05778",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 18,
+"method": "Sparse R-CNN (R101)",
+"link": "https://arxiv.org/abs/2011.12450",
+"done": false
+},
+{
+"dataset": "CrowdHuman",
+"row": 19,
+"method": "DEIM",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Huang_DEIM_DETR_with_Improved_Matching_for_Fast_Convergence_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 18,
+"method": "Exploring Hierarchical Consistency and Unbiased Objectness for Open-Vocabulary Object Dete",
+"link": "https://arxiv.org/abs/2604.23344",
+"done": false
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 19,
+"method": "TFA w/cos",
+"link": "https://arxiv.org/abs/2003.06957",
+"done": false
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 20,
+"method": "Search and Detect",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sidhu_Search_and_Detect_Training-Free_Long_Tail_Object_Detection_via_Web-Image_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 21,
+"method": "Fractal Calibration for Long-tailed Object Detection",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Alexandridis_Fractal_Calibration_for_Long-tailed_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 22,
+"method": "Open-World Objectness Modeling Unifies Novel Object Detectio",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Open-World_Objectness_Modeling_Unifies_Novel_Object_Detection_CVPR_2025_paper.html",
+"done": false
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 23,
+"method": "SimLTD",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Tran_SimLTD_Simple_Supervised_and_Semi-Supervised_Long-Tailed_Object_Detection_CVPR_2025_paper.html",
+"done": true
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 24,
+"method": "Enhancing Novel Object Detection via Cooperative Foundationa",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Bharadwaj_Enhancing_Novel_Object_Detection_via_Cooperative_Foundational_Models_WACV_2025_paper.html",
+"done": false
+},
+{
+"dataset": "LVIS v1.0 val",
+"row": 25,
+"method": "Enhancing Embodied Object Detection with Spatial Feature Mem",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Chapman_Enhancing_Embodied_Object_Detection_with_Spatial_Feature_Memory_WACV_2025_paper.html",
+"done": false
+}
+]
