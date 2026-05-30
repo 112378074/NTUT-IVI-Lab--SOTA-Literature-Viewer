@@ -452,119 +452,119 @@
 "row": 3,
 "method": "DINO (Swin-L)",
 "link": "https://arxiv.org/abs/2203.03605",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 4,
 "method": "YOLOv7",
 "link": "https://arxiv.org/abs/2207.02696",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 5,
 "method": "YOLOv4",
 "link": "https://arxiv.org/abs/2004.10934",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 6,
 "method": "Cascade R-CNN",
 "link": "https://arxiv.org/abs/1712.00726",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 7,
 "method": "DETR",
 "link": "https://arxiv.org/abs/2005.12872",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 8,
 "method": "Sparse R-CNN",
 "link": "https://arxiv.org/abs/2011.12450",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 10,
 "method": "RetinaNet (R101)",
 "link": "https://arxiv.org/abs/1708.02002",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 13,
 "method": "YOLOv8x",
 "link": "https://docs.ultralytics.com/models/yolov8/",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 14,
 "method": "YOLO-NAS",
 "link": "https://github.com/Deci-AI/super-gradients",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 15,
 "method": "Grounding DINO (zero-shot)",
 "link": "https://arxiv.org/abs/2303.05499",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 16,
 "method": "RF-DETR (Large)",
 "link": "https://arxiv.org/abs/2511.09554",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 17,
 "method": "RF-DETR (Nano)",
 "link": "https://arxiv.org/abs/2511.09554",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 18,
 "method": "YOLOv13-X",
 "link": "https://arxiv.org/abs/2506.17733",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 19,
 "method": "Grounding DINO",
 "link": "https://arxiv.org/abs/2303.05499",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 20,
 "method": "Relation-DETR (FocalNet-L)",
 "link": "https://arxiv.org/abs/2407.11699",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 21,
 "method": "Grounding DINO 1.5 Pro",
 "link": "https://arxiv.org/abs/2405.10300",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 22,
 "method": "RTMDet-X",
 "link": "https://arxiv.org/abs/2212.07784",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -592,7 +592,7 @@
 "row": 26,
 "method": "PoolNet+",
 "link": "https://arxiv.org/abs/1904.09569",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -613,7 +613,7 @@
 "row": 29,
 "method": "EfficientDet-D7",
 "link": "https://arxiv.org/abs/1911.09070",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -634,7 +634,7 @@
 "row": 32,
 "method": "CenterNet",
 "link": "https://arxiv.org/abs/1904.07850",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -648,7 +648,7 @@
 "row": 34,
 "method": "SEEN-DA",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_SEEN-DA_SEmantic_ENtropy_guided_Domain-aware_Attention_for_Domain_Adaptive_Object_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -669,7 +669,7 @@
 "row": 37,
 "method": "Style Evolving along Chain-of-Thought for Unknown-Domain Obj",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Style_Evolving_along_Chain-of-Thought_for_Unknown-Domain_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -725,7 +725,7 @@
 "row": 45,
 "method": "ERUP-YOLO",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Ogino_ERUP-YOLO_Enhancing_Object_Detection_Robustness_for_Adverse_Weather_Condition_by_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -746,70 +746,70 @@
 "row": 4,
 "method": "DDETR (CrowdHuman ft)",
 "link": "https://arxiv.org/abs/2010.04159",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 8,
 "method": "YOLOv7",
 "link": "https://arxiv.org/abs/2207.02696",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 11,
 "method": "EOD",
 "link": "https://arxiv.org/abs/2309.00000",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 12,
 "method": "YOLOv8x",
 "link": "https://docs.ultralytics.com/models/yolov8/",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 13,
 "method": "DEIM-D-FINE-X",
 "link": "https://arxiv.org/abs/2412.04234",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 14,
 "method": "DEIM-D-FINE-L",
 "link": "https://arxiv.org/abs/2412.04234",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 15,
 "method": "DINO-X",
 "link": "https://arxiv.org/abs/2411.14347",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 16,
 "method": "Grounding DINO 1.5 Pro",
 "link": "https://arxiv.org/abs/2405.10300",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 17,
 "method": "InternImage-H",
 "link": "https://arxiv.org/abs/2211.05778",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
 "row": 18,
 "method": "Sparse R-CNN (R101)",
 "link": "https://arxiv.org/abs/2011.12450",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
