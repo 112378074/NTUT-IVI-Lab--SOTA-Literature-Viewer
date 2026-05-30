@@ -816,6 +816,21 @@ def _parse_metric_re(s, pattern):
 
 # (label, kind, value-extractor, lower_is_better)
 # kind: 'higher' = larger is better;  'lower' = smaller is better.
+def _od_comparable(status, notes=''):
+    """Classify a row into the Standard / Related-Non-standard / Pending bucket.
+    Driven by the precise 狀態 label; falls back to legacy ✅/⚠️ and notes."""
+    s = (status or '') + ' ' + (notes or '')
+    if '⏳' in s or 'Pending verification' in s or 'pending verification' in s:
+        return 'pending'
+    if '⚠' in (status or ''):
+        return 'nonstandard'
+    if '✅' in (status or ''):
+        return 'standard'
+    # legacy / empty status: infer from notes
+    if '⚠' in (notes or ''):
+        return 'nonstandard'
+    return 'standard'
+
 def _od_extract(row):
     ds = row.get('dataset', '')
     mAP_v = _to_float(row.get('mAP'))
@@ -865,6 +880,28 @@ def _od_extract(row):
     if ds in ('ODinW-13','ODinW-35'):
         return ('AP (avg)', 'higher',
                 _parse_metric_re(AP_str, r'\bAP[^\d]*([\d.]+)') or mAP_v)
+
+    # Sub-area (Related / Non-standard task) sheets — each has its own primary metric
+    _SUBAREA = {
+        '3D-BEV OD':             '3D AP / NDS',
+        'Open-World OD':         'U-Recall / mAP',
+        'Incremental OD':        'mAP (incremental)',
+        'Tiny-Object OD':        'AP (tiny)',
+        'Domain-Robust OD':      'mAP (domain/robust)',
+        'Open-Vocabulary OD':    'Novel AP / APr',
+        'Oriented-RS OD':        'Oriented mAP',
+        'Referring OD':          'Acc@0.5 (referring)',
+        'Security-Robustness OD':'robust AP / F1·AUROC',
+        'Co-SOD & Ranking':      'S-measure / SA-SOR',
+        'CD-FSOD':               'CD-FSOD score / novel AP',
+        'Camouflaged OD':        'S-measure',
+        'Event-Camera OD':       'mAP (event)',
+        'Thermal-Multispectral OD':'mAP (thermal)',
+        'Video OD':              'mAP (video)',
+        'Medical OD':            'mAP@0.5 (medical)',
+    }
+    if ds in _SUBAREA:
+        return (_SUBAREA[ds], 'higher', mAP_v)
 
     # Default: COCO-style mAP
     return ('mAP', 'higher', mAP_v)
@@ -932,6 +969,9 @@ def regenerate_od_json():
                 'github':   _clean(row.get('GitHub')),
             }
             if rec['method']:
+                # Comparable group + precise status label (Standard vs Related/Non-standard).
+                rec['comparable'] = _od_comparable(rec['status'], rec['notes'])
+                rec['status_label'] = rec['status'] or ''
                 # Attach dataset-specific primary metric for ranking + display
                 label, kind, val = _od_extract(rec)
                 rec['primary_label'] = label
@@ -960,6 +1000,8 @@ def regenerate_od_json():
         try:
             for r in json.loads(supp.read_text(encoding='utf-8')).get('rows', []):
                 if r.get('method') and r.get('dataset'):
+                    r.setdefault('comparable', _od_comparable(r.get('status', ''), r.get('notes', '')))
+                    r.setdefault('status_label', r.get('status', ''))
                     rows.append(r)
                     if r['dataset'] not in dataset_sheets:
                         dataset_sheets.append(r['dataset'])
