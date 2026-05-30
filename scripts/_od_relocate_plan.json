@@ -265,24 +265,6 @@
 "link": "https://arxiv.org/abs/1904.09569"
 }
 ],
-"3D / BEV OD": [
-{
-"method": "Cubify Anything",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Lazarow_Cubify_Anything_Scaling_Indoor_3D_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "ALPI",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Lahlali_ALPI_Auto-Labeller_with_Proxy_Injection_for_3D_Object_Detection_using_WACV_2025_paper.html"
-},
-{
-"method": "AIC3DOD",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Cheng_AIC3DOD_Advancing_Indoor_Class-Incremental_3D_Object_Detection_with_Point_Transformer_WACV_2025_paper.html"
-},
-{
-"method": "Enhancing Embodied Object Detection with Spatial Feature Mem",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Chapman_Enhancing_Embodied_Object_Detection_with_Spatial_Feature_Memory_WACV_2025_paper.html"
-}
-],
 "Referring/Grounding OD": [
 {
 "method": "ROD-MLLM",
