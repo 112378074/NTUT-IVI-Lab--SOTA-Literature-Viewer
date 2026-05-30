@@ -86,7 +86,10 @@
       "Bash(git commit -q -m 'verify AD batches 5-6: UniVAD/VisionAD/PatchEAD confirmed; InvAD-Diff/Pyramid-Mamba/UniMMAD/SNARM corrected *)",
       "Bash(git commit -q -m 'verify AD batches 7-8: large corrections \\(AnomalyAny 99.0->94.9, AdvRAD 98.9->93.9, MIRAGE 99.3->81.0\\) *)",
       "Bash(git commit -q -m 'verify AD canonical batches 1-2: Dinomaly/GLASS/MambaAD/DiffusionAD/AnomalyCLIP/DiAD *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "WebFetch(domain:pangdatangtt.github.io)",
+      "WebFetch(domain:www.mdpi.com)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

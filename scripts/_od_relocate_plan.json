@@ -139,44 +139,6 @@
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Shangguan_Cross-Domain_Multi-Modal_Few-Shot_Object_Detection_via_Rich_Text_WACV_2025_paper.html"
 }
 ],
-"Domain/Robust OD": [
-{
-"method": "VFM$^{4}$SDG: Unveiling the Power of VFMs for Single-Domain Generalized Object Detection",
-"link": "https://arxiv.org/abs/2604.21502"
-},
-{
-"method": "Shift the Lens",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Du_Shift_the_Lens_Environment-Aware_Unsupervised_Camouflaged_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "Towards RAW Object Detection in Diverse Conditions",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Towards_RAW_Object_Detection_in_Diverse_Conditions_CVPR_2025_paper.html"
-},
-{
-"method": "Pseudo Visible Feature Fine-Grained Fusion for Thermal Objec",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_Pseudo_Visible_Feature_Fine-Grained_Fusion_for_Thermal_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "Mixed Patch Visible-Infrared Modality Agnostic Object Detect",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Medeiros_Mixed_Patch_Visible-Infrared_Modality_Agnostic_Object_Detection_WACV_2025_paper.html"
-},
-{
-"method": "Shape-Biased Texture Agnostic Representations for Improved T",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Honig_Shape-Biased_Texture_Agnostic_Representations_for_Improved_Textureless_and_Metallic_Object_WACV_2025_paper.html"
-},
-{
-"method": "SEEN-DA",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Li_SEEN-DA_SEmantic_ENtropy_guided_Domain-aware_Attention_for_Domain_Adaptive_Object_CVPR_2025_paper.html"
-},
-{
-"method": "Style Evolving along Chain-of-Thought for Unknown-Domain Obj",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Style_Evolving_along_Chain-of-Thought_for_Unknown-Domain_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "ERUP-YOLO",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Ogino_ERUP-YOLO_Enhancing_Object_Detection_Robustness_for_Adverse_Weather_Condition_by_WACV_2025_paper.html"
-}
-],
 "UNCLASSIFIED": [
 {
 "method": "Focal-L DINO",
