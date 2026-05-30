@@ -256,21 +256,21 @@
 "row": 81,
 "method": "Open-World Objectness Modeling Unifies Novel Object Detectio",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Open-World_Objectness_Modeling_Unifies_Novel_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 82,
 "method": "Cubify Anything",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Lazarow_Cubify_Anything_Scaling_Indoor_3D_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 83,
 "method": "Percept, Memory, and Imagine",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wu_Percept_Memory_and_Imagine_World_Feature_Simulating_for_Open-Domain_Unknown_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -284,35 +284,35 @@
 "row": 85,
 "method": "Learning Endogenous Attention for Incremental Object Detecti",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Song_Learning_Endogenous_Attention_for_Incremental_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 86,
 "method": "DiL",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Giloni_DiL_An_Explainable_and_Practical_Metric_for_Abnormal_Uncertainty_in_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 87,
 "method": "Bit-Flip Induced Latency Attacks in Object Detection",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Sistla_Bit-Flip_Induced_Latency_Attacks_in_Object_Detection_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 88,
 "method": "Enhancing Novel Object Detection via Cooperative Foundationa",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Bharadwaj_Enhancing_Novel_Object_Detection_via_Cooperative_Foundational_Models_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 89,
 "method": "ALPI",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Lahlali_ALPI_Auto-Labeller_with_Proxy_Injection_for_3D_Object_Detection_using_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -690,14 +690,14 @@
 "row": 40,
 "method": "Open-World Objectness Modeling Unifies Novel Object Detectio",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Open-World_Objectness_Modeling_Unifies_Novel_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 41,
 "method": "Percept, Memory, and Imagine",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wu_Percept_Memory_and_Imagine_World_Feature_Simulating_for_Open-Domain_Unknown_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -711,14 +711,14 @@
 "row": 43,
 "method": "Learning Endogenous Attention for Incremental Object Detecti",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Song_Learning_Endogenous_Attention_for_Incremental_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 44,
 "method": "Bit-Flip Induced Latency Attacks in Object Detection",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Sistla_Bit-Flip_Induced_Latency_Attacks_in_Object_Detection_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -851,7 +851,7 @@
 "row": 22,
 "method": "Open-World Objectness Modeling Unifies Novel Object Detectio",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhang_Open-World_Objectness_Modeling_Unifies_Novel_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "LVIS v1.0 val",
@@ -865,7 +865,7 @@
 "row": 24,
 "method": "Enhancing Novel Object Detection via Cooperative Foundationa",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Bharadwaj_Enhancing_Novel_Object_Detection_via_Cooperative_Foundational_Models_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "LVIS v1.0 val",
