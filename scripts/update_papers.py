@@ -840,7 +840,7 @@ def _od_extract(row):
     if ds in ('COCO test-dev','COCO 2017 val','COCO 2017','COCO minival'):
         return ('COCO AP', 'higher', mAP_v)
     if ds == 'COCO-O':
-        return ('Effective robustness AP', 'higher', mAP_v)
+        return ('COCO-O mAP', 'higher', mAP_v)
     if ds == 'PASCAL VOC 2007':
         return ('mAP@0.5', 'higher', mAP_v)
     if ds in ('GraZPEDWRI-DX', 'CPPE-5'):
