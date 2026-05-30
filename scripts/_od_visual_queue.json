@@ -1,0 +1,341 @@
+[
+{
+"row": 4,
+"method": "YOLO26 (l)",
+"link": "https://docs.ultralytics.com/models/yolo26/",
+"reason": "NOPDF",
+"done": false
+},
+{
+"row": 5,
+"method": "YOLO26 (n)",
+"link": "https://docs.ultralytics.com/models/yolo26/",
+"reason": "NOPDF",
+"done": false
+},
+{
+"row": 9,
+"method": "YOLO-Master",
+"link": "https://github.com/topics/yolo-master",
+"reason": "NOPDF",
+"done": false
+},
+{
+"row": 42,
+"method": "YOLO-NAS-L",
+"link": "https://github.com/Deci-AI/super-gradients",
+"reason": "NOPDF",
+"done": false
+},
+{
+"row": 45,
+"method": "YOLOv8x",
+"link": "https://docs.ultralytics.com/models/yolov8/",
+"reason": "NOPDF",
+"done": false
+},
+{
+"row": 72,
+"method": "YOLOv5-x",
+"link": "https://github.com/ultralytics/yolov5",
+"reason": "NOPDF",
+"done": false
+},
+{
+"row": 97,
+"method": "GauCho",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Marques_GauCho_Gaussian_Distributions_with_Cholesky_Decomposition_for_Oriented_Object_Detection_CVPR_2025_paper.html",
+"prim": "DOTA",
+"metric": "mAP (oriented OBB)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 111,
+"method": "UCOD-DPL",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Yan_UCOD-DPL_Unsupervised_Camouflaged_Object_Detection_via_Dynamic_Pseudo-label_Learning_CVPR_2025_paper.html",
+"prim": "CAMO",
+"metric": "S-measure/MAE (camouflaged)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 118,
+"method": "ReRAW",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Berdan_ReRAW_RGB-to-RAW_Image_Reconstruction_via_Stratified_Sampling_for_Efficient_Object_CVPR_2025_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 128,
+"method": "RICCARDO",
+"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Long_RICCARDO_Radar_Hit_Prediction_and_Convolution_for_Camera-Radar_3D_Object_CVPR_2025_paper.html",
+"prim": "nuScenes",
+"metric": "NDS / mAP (3D)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 134,
+"method": "DiL",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Giloni_DiL_An_Explainable_and_Practical_Metric_for_Abnormal_Uncertainty_in_WACV_2025_paper.html",
+"prim": "COCO",
+"metric": "AP",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 143,
+"method": "AIC3DOD",
+"link": "https://openaccess.thecvf.com/content/WACV2025/html/Cheng_AIC3DOD_Advancing_Indoor_Class-Incremental_3D_Object_Detection_with_Point_Transformer_WACV_2025_paper.html",
+"prim": "ScanNet",
+"metric": "AP25/AP50 (3D indoor)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 163,
+"method": "Motal",
+"link": "https://openaccess.thecvf.com/content/ICCV2025/html/Wu_Motal_Unsupervised_3D_Object_Detection_by_Modality_and_Task-specific_Knowledge_ICCV_2025_paper.html",
+"prim": "KITTI",
+"metric": "AP3D (E/M/H)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 171,
+"method": "STEP-DETR",
+"link": "https://openaccess.thecvf.com/content/ICCV2025/html/Shehzadi_STEP-DETR_Advancing_DETR-based_Semi-Supervised_Object_Detection_with_Super_Teacher_and_ICCV_2025_paper.html",
+"prim": "COCO",
+"metric": "AP",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 185,
+"method": "CVFusion",
+"link": "https://openaccess.thecvf.com/content/ICCV2025/html/Zhong_CVFusion_Cross-View_Fusion_of_4D_Radar_and_Camera_for_3D_ICCV_2025_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 187,
+"method": "OV-SCAN",
+"link": "https://openaccess.thecvf.com/content/ICCV2025/html/Chow_OV-SCAN_Semantically_Consistent_Alignment_for_Novel_Object_Discovery_in_Open-Vocabulary_ICCV_2025_paper.html",
+"prim": "nuScenes",
+"metric": "NDS / mAP (3D)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 201,
+"method": "VISO",
+"link": "https://openaccess.thecvf.com/content/ICCV2025/html/Wang_VISO_Accelerating_In-orbit_Object_Detection_with_Language-Guided_Mask_Learning_and_ICCV_2025_paper.html",
+"prim": "DOTA",
+"metric": "mAP (oriented OBB)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 213,
+"method": "YOLOE",
+"link": "https://openaccess.thecvf.com/content/ICCV2025/html/Wang_YOLOE_Real-Time_Seeing_Anything_ICCV_2025_paper.html",
+"prim": "LVIS",
+"metric": "AP / APr (open-vocab/LT)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 216,
+"method": "MUSE",
+"link": "https://openaccess.thecvf.com/content/WACV2026/html/Cho_MUSE_Model-based_Uncertainty-aware_Similarity_Estimation_for_zero-shot_2D_Object_Detection_WACV_2026_paper.html",
+"prim": "COCO",
+"metric": "AP",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 218,
+"method": "SeaClips",
+"link": "https://openaccess.thecvf.com/content/WACV2026/html/Denk_SeaClips_A_Video_Dataset_for_Maritime_Object_Detection._WACV_2026_paper.html",
+"prim": "nuScenes",
+"metric": "NDS / mAP (3D)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 220,
+"method": "SSMRadNet",
+"link": "https://openaccess.thecvf.com/content/WACV2026/html/Sen_SSMRadNet__A_Sample-wise_State-Space_Framework_for_Efficient_and_Ultra-Light_WACV_2026_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 232,
+"method": "WiSE-OD",
+"link": "https://openaccess.thecvf.com/content/WACV2026/html/Medeiros_WiSE-OD_Benchmarking_Robustness_in_Infrared_Object_Detection_WACV_2026_paper.html",
+"prim": "FLIR",
+"metric": "mAP (thermal)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 233,
+"method": "TRACE",
+"link": "https://openaccess.thecvf.com/content/WACV2026/html/Lee_TRACE_Confounder-free_Adversarial_Fine-tuning_for_Robust_Object_Detection_WACV_2026_paper.html",
+"prim": "COCO",
+"metric": "AP",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 237,
+"method": "FSP-DETR",
+"link": "https://openaccess.thecvf.com/content/WACV2026/html/Trehan_FSP-DETR_Few-Shot_Prototypical_Parasitic_Ova_Detection_WACV_2026_paper.html",
+"prim": "CODA",
+"metric": "AR (corner-case OV)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 238,
+"method": "SPAN",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_SPAN_Spatial-Projection_Alignment_for_Monocular_3D_Object_Detection_CVPR_2026_paper.html",
+"prim": "KITTI",
+"metric": "AP3D (E/M/H)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 240,
+"method": "MonoSAOD",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Jung_MonoSAOD_Monocular_3D_Object_Detection_with_Sparsely_Annotated_Label_CVPR_2026_paper.html",
+"prim": "Omni3D",
+"metric": "AP3D",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 241,
+"method": "TF-SSD",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/He_TF-SSD_A_Strong_Pipeline_via_Synergic_Mask_Filter_for_Training-free_CVPR_2026_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 244,
+"method": "Mind the Gap",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Kennerley_Mind_the_Gap_Transferring_Labels_to_Align_Object_Detection_Datasets_CVPR_2026_paper.html",
+"prim": "nuScenes",
+"metric": "NDS / mAP (3D)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 253,
+"method": "SDDF",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Liang_SDDF_Specificity-Driven_Dynamic_Focusing_for_Open-Vocabulary_Camouflaged_Object_Detection_CVPR_2026_paper.html",
+"prim": "LVIS",
+"metric": "AP / APr (open-vocab/LT)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 265,
+"method": "WeDetect",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Fu_WeDetect_Fast_Open-Vocabulary_Object_Detection_as_Retrieval_CVPR_2026_paper.html",
+"prim": "RefCOCO",
+"metric": "Acc@0.5 (referring)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 270,
+"method": "RAVEN",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Sen_RAVEN_Radar_Adaptive_Vision_Encoders_for_Efficient_Chirp-wise_Object_Detection_CVPR_2026_paper.html",
+"prim": "DOTA",
+"metric": "mAP (oriented OBB)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 271,
+"method": "EW-DETR",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Monga_EW-DETR_Evolving_World_Object_Detection_via_Incremental_Low-Rank_DEtection_TRansformer_CVPR_2026_paper.html",
+"prim": "Cityscapes",
+"metric": "mAP (domain-adapt)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 273,
+"method": "R4Det",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Xia_R4Det_4D_Radar-Camera_Fusion_for_High-Performance_3D_Object_Detection_CVPR_2026_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 278,
+"method": "Zoo3D",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Lemeshko_Zoo3D_Zero-Shot_3D_Object_Detection_at_Scene_Level_CVPR_2026_paper.html",
+"prim": "ScanNet",
+"metric": "AP25/AP50 (3D indoor)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 280,
+"method": "H^2A^2",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Xie_H2A2_Homogeneity-Aware_and_Heterogeneity-Aware_Feature_Perception_for_Unified_Indoor_3D_CVPR_2026_paper.html",
+"prim": "Omni3D",
+"metric": "AP3D",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 283,
+"method": "Spe-BEVHead",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Spe-BEVHead_Rethinking_the_Detection_Head_Design_for_Birds-Eye-View_Object_Detection_CVPR_2026_paper.html",
+"prim": "nuScenes",
+"metric": "NDS / mAP (3D)",
+"reason": "no-ours",
+"done": false
+},
+{
+"row": 284,
+"method": "RaGS",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Bai_RaGS_Unleashing_3D_Gaussian_Splatting_from_4D_Radar_and_Monocular_CVPR_2026_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 286,
+"method": "InsCal",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Que_InsCal_Calibrated_Multi-Source_Fully_Test-Time_Prompt_Tuning_for_Object_Detection_CVPR_2026_paper.html",
+"prim": "",
+"metric": "metric",
+"reason": "no-dataset",
+"done": false
+},
+{
+"row": 290,
+"method": "SToRe3D",
+"link": "https://openaccess.thecvf.com/content/CVPR2026/html/Papais_SToRe3D_Sparse_Token_Relevance_in_ViTs_for_Efficient_Multi-View_3D_CVPR_2026_paper.html",
+"prim": "nuScenes",
+"metric": "NDS / mAP (3D)",
+"reason": "no-ours",
+"done": false
+}
+]
