@@ -207,7 +207,7 @@
 "method": "STEP-DETR",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Shehzadi_STEP-DETR_Advancing_DETR-based_Semi-Supervised_Object_Detection_with_Super_Teacher_and_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 174,
@@ -221,7 +221,7 @@
 "method": "LMM-Det",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Li_LMM-Det_Make_Large_Multimodal_Models_Excel_in_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 178,
@@ -263,7 +263,7 @@
 "method": "DM-EFS",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Sharma_DM-EFS_Dynamically_Multiplexed_Expanded_Features_Set_Form_for_Robust_and_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 189,
@@ -340,21 +340,21 @@
 "method": "YOLOE",
 "cat": "Real-Time OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Wang_YOLOE_Real-Time_Seeing_Anything_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 215,
 "method": "OW-Rep",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Lee_OW-Rep_Open_World_Object_Detection_with_Instance_Representation_Learning_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 216,
 "method": "MUSE",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Cho_MUSE_Model-based_Uncertainty-aware_Similarity_Estimation_for_zero-shot_2D_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 218,
@@ -438,7 +438,7 @@
 "method": "FSP-DETR",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Trehan_FSP-DETR_Few-Shot_Prototypical_Parasitic_Ova_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 238,
@@ -487,7 +487,7 @@
 "method": "ViTPrompt",
 "cat": "Few-Shot OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Qin_ViTPrompt_Training-Free_Prompt_Refinement_with_Visual_Tokens_for_Open-Vocabulary_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 253,
@@ -515,7 +515,7 @@
 "method": "SRA-Det",
 "cat": "Few-Shot OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Yang_SRA-Det_Learning_Omni-Grained_Open-Vocabulary_Detection_Beyond_Category_Names_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 260,
