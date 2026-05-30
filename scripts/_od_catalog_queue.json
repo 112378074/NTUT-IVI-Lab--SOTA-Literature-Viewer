@@ -53,7 +53,7 @@
 "method": "ViKIENet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Yu_ViKIENet_Towards_Efficient_3D_Object_Detection_with_Virtual_Key_Instance_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 97,
@@ -67,14 +67,14 @@
 "method": "SP3D",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhao_SP3D_Boosting_Sparsely-Supervised_3D_Object_Detection_via_Accurate_Cross-Modal_Semantic_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 106,
 "method": "RaCFormer",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Chu_RaCFormer_Towards_High-Quality_3D_Object_Detection_via_Query-based_Radar-Camera_Fusion_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 111,
@@ -88,7 +88,7 @@
 "method": "FSHNet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Liu_FSHNet_Fully_Sparse_Hybrid_Network_for_3D_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 118,
@@ -102,7 +102,7 @@
 "method": "MonoDGP",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Pu_MonoDGP_Monocular_3D_Object_Detection_with_Decoupled-Query_and_Geometry-Error_Priors_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 121,
@@ -116,14 +116,14 @@
 "method": "MonoTAKD",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Liu_MonoTAKD_Teaching_Assistant_Knowledge_Distillation_for_Monocular_3D_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 128,
 "method": "RICCARDO",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Long_RICCARDO_Radar_Hit_Prediction_and_Convolution_for_Camera-Radar_3D_Object_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 134,
@@ -144,21 +144,21 @@
 "method": "DSTR",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Cai_DSTR_Dual_Scenes_Transformer_for_Cross-Modal_Fusion_in_3D_Object_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 142,
 "method": "ALPI",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Lahlali_ALPI_Auto-Labeller_with_Proxy_Injection_for_3D_Object_Detection_using_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 143,
 "method": "AIC3DOD",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Cheng_AIC3DOD_Advancing_Indoor_Class-Incremental_3D_Object_Detection_with_Point_Transformer_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 160,
@@ -179,7 +179,7 @@
 "method": "Motal",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Wu_Motal_Unsupervised_3D_Object_Detection_by_Modality_and_Task-specific_Knowledge_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 165,
@@ -214,7 +214,7 @@
 "method": "GeoFormer",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Jin_GeoFormer_Geometry_Point_Encoder_for_3D_Object_Detection_with_Graph-based_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 176,
@@ -242,21 +242,21 @@
 "method": "EVT",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Lee_EVT_Efficient_View_Transformation_for_Multi-Modal_3D_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 185,
 "method": "CVFusion",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Zhong_CVFusion_Cross-View_Fusion_of_4D_Radar_and_Camera_for_3D_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 187,
 "method": "OV-SCAN",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Chow_OV-SCAN_Semantically_Consistent_Alignment_for_Novel_Object_Discovery_in_Open-Vocabulary_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 188,
@@ -277,14 +277,14 @@
 "method": "FreqPDE",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Su_FreqPDE_Rethinking_Positional_Depth_Embedding_for_Multi-View_3D_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 199,
 "method": "DiffRefine",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Shin_DiffRefine_Diffusion-based_Proposal_Specific_Point_Cloud_Densification_for_Cross-Domain_Object_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 201,
@@ -298,14 +298,14 @@
 "method": "3D-MOOD",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Yang_3D-MOOD_Lifting_2D_to_3D_for_Monocular_Open-Set_Object_Detection_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 204,
 "method": "OpenM3D",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Hsu_OpenM3D_Open_Vocabulary_Multi-view_Indoor_3D_Object_Detection_without_Human_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 205,
@@ -333,7 +333,7 @@
 "method": "ForeSight",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/ICCV2025/html/Papais_ForeSight_Multi-View_Streaming_Joint_Object_Detection_and_Trajectory_Forecasting_ICCV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 213,
@@ -368,14 +368,14 @@
 "method": "SSMRadNet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Sen_SSMRadNet__A_Sample-wise_State-Space_Framework_for_Efficient_and_Ultra-Light_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 222,
 "method": "MVAT",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Lahlali_MVAT_Multi-View_Aware_Teacher_for_Weakly_Supervised_3D_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 224,
@@ -389,7 +389,7 @@
 "method": "SFMNet",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/WACV2026/html/Shrout_SFMNet_Sparse_Focal_Modulation_for_3D_Object_Detection_WACV_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 229,
@@ -452,7 +452,7 @@
 "method": "MonoSAOD",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Jung_MonoSAOD_Monocular_3D_Object_Detection_with_Sparsely_Annotated_Label_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 241,
@@ -466,7 +466,7 @@
 "method": "Mind the Gap",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Kennerley_Mind_the_Gap_Transferring_Labels_to_Align_Object_Detection_Datasets_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 246,
@@ -480,7 +480,7 @@
 "method": "CoIn3D",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Kuang_CoIn3D_Revisiting_Configuration-Invariant_Multi-Camera_3D_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 252,
@@ -501,7 +501,7 @@
 "method": "CCF",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_CCF_Complementary_Collaborative_Fusion_for_Domain_Generalized_Multi-Modal_3D_Object_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 255,
@@ -522,7 +522,7 @@
 "method": "SemLT3D",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Vo_SemLT3D_Semantic-Guided_Expert_Distillation_for_Camera-only_Long-Tailed_3D_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 261,
@@ -571,7 +571,7 @@
 "method": "R4Det",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Xia_R4Det_4D_Radar-Camera_Fusion_for_High-Performance_3D_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 274,
@@ -592,35 +592,35 @@
 "method": "Zoo3D",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Lemeshko_Zoo3D_Zero-Shot_3D_Object_Detection_at_Scene_Level_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 279,
 "method": "DA-Mamba",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_DA-Mamba_Learning_Domain-Aware_State_Space_Model_for_Global-Local_Alignment_in_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 280,
 "method": "H^2A^2",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Xie_H2A2_Homogeneity-Aware_and_Heterogeneity-Aware_Feature_Perception_for_Unified_Indoor_3D_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 283,
 "method": "Spe-BEVHead",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Spe-BEVHead_Rethinking_the_Detection_Head_Design_for_Birds-Eye-View_Object_Detection_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 284,
 "method": "RaGS",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Bai_RaGS_Unleashing_3D_Gaussian_Splatting_from_4D_Radar_and_Monocular_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 286,
@@ -634,7 +634,7 @@
 "method": "SToRe3D",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Papais_SToRe3D_Sparse_Token_Relevance_in_ViTs_for_Efficient_Multi-View_3D_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 292,
@@ -662,20 +662,20 @@
 "method": "CD-Buffer",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Song_CD-Buffer_Complementary_Dual-Buffer_Framework_for_Test-Time_Adaptation_in_Adverse_Weather_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 301,
 "method": "VGGT-Det",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Cao_VGGT-Det_Mining_VGGT_Internal_Priors_for_Sensor-Geometry-Free_Multi-View_Indoor_3D_CVPR_2026_paper.html",
-"done": false
+"done": true
 },
 {
 "row": 303,
 "method": "RARE",
 "cat": "General OD",
 "link": "https://openaccess.thecvf.com/content/CVPR2026/html/Park_RARE_Learn_to_RAnk_and_REtrieve_for_Monocular_3D_Object_CVPR_2026_paper.html",
-"done": false
+"done": true
 }
 ]
