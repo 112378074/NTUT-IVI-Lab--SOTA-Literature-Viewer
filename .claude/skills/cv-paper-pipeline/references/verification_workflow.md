@@ -35,6 +35,34 @@ If the source is checked, use the colored 🟣/🟠/🟢/🟡 label, not ⚠️.
 
 ---
 
+## Filling a sheet to ≥10 papers (do NOT pad by mixing protocols)
+
+Goal: every dataset page should hold **≥10 papers, all year 2020–2026, all
+source-verified**; new papers keep slotting in and re-sorting.
+
+**Hard constraint — never merge different protocols into the same Standard
+Leaderboard just to reach 10 rows.** Reaching "10 on the page" may legitimately
+*include* protocol groups, but the **Standard Leaderboard itself only counts
+same-dataset + same-split + same-standard-protocol + same-primary-metric +
+source-verified rows.**
+
+- A same-dataset paper with a **different protocol** (open-vocab / zero-shot /
+  few-shot / long-tail / domain-adapt / robustness / 3D / logical / seg-only …)
+  stays on the page but **only under its correct Protocol Group**, with
+  **Protocol, Primary Metric, Source Note, and Comparable Group** all labeled
+  (colored 🟣/🟠/🟢/🟡 status). It does **not** enter the standard ranking.
+- A paper on a **different dataset** goes to that dataset's page (or a new sheet),
+  never padded onto this one.
+- If genuine **same-protocol standard** papers number fewer than 10, that is
+  acceptable — **flag it, never pad** with mismatched-protocol or unsourced rows.
+  (e.g., a niche benchmark may only have 6 fully-supervised papers; report "6
+  Standard + N protocol-group + needs-more" rather than inventing 4.)
+- AD equivalent: the Standard AD board counts only standard-unsupervised + same
+  metric (rank by I-AUROC); zero-shot/few-shot/continual/3D-multimodal/logical/
+  seg-only rows stay on the dataset page under their own labeled protocol group.
+
+---
+
 ## OD workflow (9 steps)
 
 ### Step 1 — Identify the actual task type
