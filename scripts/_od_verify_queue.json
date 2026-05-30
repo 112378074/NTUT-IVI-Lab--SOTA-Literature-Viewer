@@ -116,21 +116,21 @@
 "row": 61,
 "method": "Meta R-CNN",
 "link": "https://arxiv.org/abs/1909.13032",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 62,
 "method": "FSRW",
 "link": "https://arxiv.org/abs/1812.01866",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 63,
 "method": "Exploring Hierarchical Consistency and Unbiased Objectness for Open-Vocabulary Object Dete",
 "link": "https://arxiv.org/abs/2604.23344",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -151,35 +151,35 @@
 "row": 66,
 "method": "Believing is Seeing",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Bhattacharjee_Believing_is_Seeing_Unobserved_Object_Detection_using_Generative_Models_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 67,
 "method": "OW-OVD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xi_OW-OVD_Unified_Open_World_and_Open_Vocabulary_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 68,
 "method": "Shift the Lens",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Du_Shift_the_Lens_Environment-Aware_Unsupervised_Camouflaged_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 69,
 "method": "Visual Consensus Prompting for Co-Salient Object Detection",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Wang_Visual_Consensus_Prompting_for_Co-Salient_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 70,
 "method": "Language-Guided Salient Object Ranking",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Liu_Language-Guided_Salient_Object_Ranking_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
@@ -620,14 +620,14 @@
 "row": 30,
 "method": "Meta R-CNN",
 "link": "https://arxiv.org/abs/1909.13032",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
 "row": 31,
 "method": "FSRW",
 "link": "https://arxiv.org/abs/1812.01866",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -641,7 +641,7 @@
 "row": 33,
 "method": "OW-OVD",
 "link": "https://openaccess.thecvf.com/content/CVPR2025/html/Xi_OW-OVD_Unified_Open_World_and_Open_Vocabulary_Object_Detection_CVPR_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -823,7 +823,7 @@
 "row": 18,
 "method": "Exploring Hierarchical Consistency and Unbiased Objectness for Open-Vocabulary Object Dete",
 "link": "https://arxiv.org/abs/2604.23344",
-"done": false
+"done": true
 },
 {
 "dataset": "LVIS v1.0 val",
