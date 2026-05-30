@@ -375,77 +375,77 @@
 "row": 98,
 "method": "Interactive Object Detection for Tiny Objects in Large Remot",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Burges_Interactive_Object_Detection_for_Tiny_Objects_in_Large_Remotely_Sensed_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 99,
 "method": "Cross-Domain Multi-Modal Few-Shot Object Detection via Rich",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Shangguan_Cross-Domain_Multi-Modal_Few-Shot_Object_Detection_via_Rich_Text_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 100,
 "method": "No Annotations for Object Detection in Art through Stable Di",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Ramos_No_Annotations_for_Object_Detection_in_Art_through_Stable_Diffusion_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 101,
 "method": "ECF-YOLOv7-Tiny",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Bacea_ECF-YOLOv7-Tiny_Improving_Feature_Fusion_and_the_Receptive_Field_for_Lightweight_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO 2017",
 "row": 102,
 "method": "Shape-Biased Texture Agnostic Representations for Improved T",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Honig_Shape-Biased_Texture_Agnostic_Representations_for_Improved_Textureless_and_Metallic_Object_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO-O",
 "row": 7,
 "method": "InternImage-H",
 "link": "https://arxiv.org/abs/2211.05778",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO-O",
 "row": 8,
 "method": "EVA-02-Det",
 "link": "https://arxiv.org/abs/2303.11331",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO-O",
 "row": 9,
 "method": "Co-DETR",
 "link": "https://arxiv.org/abs/2211.12860",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO-O",
 "row": 10,
 "method": "YOLOv8x",
 "link": "https://docs.ultralytics.com/models/yolov8/",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO-O",
 "row": 11,
 "method": "RT-DETR",
 "link": "https://arxiv.org/abs/2304.08069",
-"done": false
+"done": true
 },
 {
 "dataset": "COCO-O",
 "row": 12,
 "method": "Grounding DINO 1.5 Pro",
 "link": "https://arxiv.org/abs/2405.10300",
-"done": false
+"done": true
 },
 {
 "dataset": "PASCAL VOC 2007",
@@ -739,7 +739,7 @@
 "row": 47,
 "method": "Cross-Domain Multi-Modal Few-Shot Object Detection via Rich",
 "link": "https://openaccess.thecvf.com/content/WACV2025/html/Shangguan_Cross-Domain_Multi-Modal_Few-Shot_Object_Detection_via_Rich_Text_WACV_2025_paper.html",
-"done": false
+"done": true
 },
 {
 "dataset": "CrowdHuman",
