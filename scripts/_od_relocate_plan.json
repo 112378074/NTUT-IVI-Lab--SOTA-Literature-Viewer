@@ -229,24 +229,6 @@
 "link": "https://arxiv.org/abs/2411.14347"
 }
 ],
-"Tiny-Object OD": [
-{
-"method": "UHR-DETR: Efficient End-to-End Small Object Detection for Ultra-High-Resolution Remote Sen",
-"link": "https://arxiv.org/abs/2604.21435"
-},
-{
-"method": "SET",
-"link": "https://openaccess.thecvf.com/content/CVPR2025/html/Sun_SET_Spectral_Enhancement_for_Tiny_Object_Detection_CVPR_2025_paper.html"
-},
-{
-"method": "Interactive Object Detection for Tiny Objects in Large Remot",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Burges_Interactive_Object_Detection_for_Tiny_Objects_in_Large_Remotely_Sensed_WACV_2025_paper.html"
-},
-{
-"method": "ECF-YOLOv7-Tiny",
-"link": "https://openaccess.thecvf.com/content/WACV2025/html/Bacea_ECF-YOLOv7-Tiny_Improving_Feature_Fusion_and_the_Receptive_Field_for_Lightweight_WACV_2025_paper.html"
-}
-],
 "SOD/DIS (exists)": [
 {
 "method": "BiRefNet",
