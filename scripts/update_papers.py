@@ -818,18 +818,47 @@ def _parse_metric_re(s, pattern):
 # kind: 'higher' = larger is better;  'lower' = smaller is better.
 def _od_comparable(status, notes=''):
     """Classify a row into the Standard / Related-Non-standard / Pending bucket.
-    Driven by the precise 狀態 label; falls back to legacy ✅/⚠️ and notes."""
-    s = (status or '') + ' ' + (notes or '')
-    if '⏳' in s or 'Pending verification' in s or 'pending verification' in s:
+    Driven by the precise 狀態 label; falls back to legacy ✅/⚠️ and notes.
+    Colored protocol-verified statuses (🟣 open-vocab / 🟠 zero-shot / 🟢 few-shot)
+    are VERIFIED but Non-standard (different protocol), so they sort after Standard."""
+    st = status or ''
+    note = notes or ''
+    if '⏳' in st or 'Pending' in st or 'pending' in st:
         return 'pending'
-    if '⚠' in (status or ''):
+    # verified-but-non-standard protocols
+    if any(e in st for e in ('🟣', '🟠', '🟢')):
         return 'nonstandard'
-    if '✅' in (status or ''):
+    if '⚠' in st:
+        return 'nonstandard'
+    if '✅' in st:
         return 'standard'
-    # legacy / empty status: infer from notes
-    if '⚠' in (notes or ''):
+    # legacy / publication-state status: infer from notes
+    if '⏳' in note or 'Pending' in note:
+        return 'pending'
+    if any(e in note for e in ('🟣', '🟠', '🟢')):
+        return 'nonstandard'
+    if '⚠' in note:
         return 'nonstandard'
     return 'standard'
+
+def _od_protocol(status, notes=''):
+    """Evaluation protocol for the Protocol column. Driven by the colored 狀態 label
+    (authoritative); defaults to fully-supervised closed-set. Status-only to avoid
+    note-text leakage (e.g. a zero-shot row whose note mentions 'open-vocabulary')."""
+    st = status or ''
+    if '🟣' in st:
+        return 'Open-vocabulary'
+    if '🟠' in st:
+        return 'Zero-shot'
+    if '🟢' in st:
+        return 'Few-shot'
+    if 'Domain adapt' in st or 'domain adapt' in st:
+        return 'Domain adaptation'
+    if 'Robust' in st:
+        return 'Robustness'
+    if 'Long-tail' in st:
+        return 'Long-tail'
+    return 'Fully-supervised closed-set'
 
 def _od_extract(row):
     ds = row.get('dataset', '')
@@ -971,6 +1000,7 @@ def regenerate_od_json():
             if rec['method']:
                 # Comparable group + precise status label (Standard vs Related/Non-standard).
                 rec['comparable'] = _od_comparable(rec['status'], rec['notes'])
+                rec['protocol'] = _od_protocol(rec['status'], rec['notes'])
                 rec['status_label'] = rec['status'] or ''
                 # Attach dataset-specific primary metric for ranking + display
                 label, kind, val = _od_extract(rec)
@@ -1001,6 +1031,7 @@ def regenerate_od_json():
             for r in json.loads(supp.read_text(encoding='utf-8')).get('rows', []):
                 if r.get('method') and r.get('dataset'):
                     r.setdefault('comparable', _od_comparable(r.get('status', ''), r.get('notes', '')))
+                    r.setdefault('protocol', _od_protocol(r.get('status', ''), r.get('notes', '')))
                     r.setdefault('status_label', r.get('status', ''))
                     rows.append(r)
                     if r['dataset'] not in dataset_sheets:
