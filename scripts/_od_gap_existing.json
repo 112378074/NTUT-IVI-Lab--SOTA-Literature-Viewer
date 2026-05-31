@@ -1,0 +1,207 @@
+{
+"PASCAL VOC 2007": [
+"InternImage-H",
+"DETReg",
+"Faster R-CNN (VGG16)"
+],
+"CrowdHuman": [
+"Iter-Deformable-DETR",
+"PEDR",
+"Sparse R-CNN",
+"MIP",
+"CrowdDet",
+"PBM",
+"Faster R-CNN (FPN)"
+],
+"GraZPEDWRI-DX": [
+"YOLOv9-E",
+"YOLOv9-C",
+"YOLOv8+SA",
+"YOLOv8+ResGAM",
+"YOLOv8+GAM",
+"YOLOv8+ResCBAM",
+"YOLOv8+ECA",
+"YOLOv8 (base)"
+],
+"Waymo 2D": [
+"RW-TSDet",
+"HorizonDet",
+"SPNAS-Noah",
+"dereyly_alex_2",
+"dereyly_alex"
+],
+"Argoverse-HD DO Val": [
+"DAMO-StreamNet",
+"StreamYOLO-Large",
+"LongShortNet",
+"StreamYOLO",
+"YOLOX-Streaming",
+"Streaming Mask R-CNN"
+],
+"PASCAL-S": [
+"InSPyReNet",
+"M3Net",
+"ICON-S",
+"VST",
+"EDN",
+"PoolNet+",
+"MINet",
+"U^2-Net",
+"BASNet"
+],
+"HRSOD": [
+"BiRefNet",
+"InSPyReNet"
+],
+"DAVIS-S": [
+"BiRefNet",
+"InSPyReNet"
+],
+"UHRSD": [
+"BiRefNet",
+"InSPyReNet"
+],
+"MS-COCO 1-shot": [
+"Meta-DETR (1-shot)",
+"DeFRCN (1-shot)",
+"DETReg (1-shot)",
+"FSCE (1-shot)",
+"MPSR (1-shot)",
+"TFA w/cos (1-shot)",
+"Meta R-CNN (1-shot)"
+],
+"MS-COCO 5-shot": [
+"Meta-DETR (5-shot)",
+"DeFRCN (5-shot)",
+"DETReg (5-shot)",
+"FSCE (5-shot)",
+"MPSR (5-shot)",
+"TFA w/cos (5-shot)",
+"Meta R-CNN (5-shot)"
+],
+"MS-COCO 10-shot": [
+"Meta-DETR (10-shot)",
+"DeFRCN (10-shot)",
+"DETReg (10-shot)",
+"FSCE (10-shot)",
+"TFA w/cos (10-shot)",
+"MPSR (10-shot)",
+"Meta R-CNN (10-shot)",
+"FSRW (10-shot)"
+],
+"MS-COCO 30-shot": [
+"DeFRCN (30-shot)",
+"Meta-DETR (30-shot)",
+"DETReg (30-shot)",
+"FSCE (30-shot)",
+"MPSR (30-shot)",
+"TFA w/cos (30-shot)",
+"Meta R-CNN (30-shot)",
+"FSRW (30-shot)"
+],
+"COCO 2017 FSOD": [
+"Meta-DETR (10-shot)",
+"DeFRCN (10-shot)",
+"DETReg (10-shot)",
+"FSCE (10-shot)",
+"TFA w/cos (10-shot)",
+"MPSR (10-shot)",
+"Meta R-CNN (10-shot)",
+"FSRW (10-shot)"
+],
+"ODinW-13": [
+"Grounding DINO 1.5 Pro",
+"Grounding DINO",
+"GLIP-L",
+"GLIPv2",
+"OWL-ViT",
+"OWLv2",
+"UniDetector"
+],
+"ODinW-35": [
+"Grounding DINO 1.5 Pro",
+"Grounding DINO",
+"GLIP-L",
+"UniDetector"
+],
+"Open-World OD": [
+"OW-OVD",
+"OWOBJ (MEPU-FS+OWOBJ)",
+"Decoupled PROB",
+"OW-Rep"
+],
+"Tiny-Object OD": [
+"ECF-YOLOv7-Tiny",
+"DM-EFS",
+"SET (RFLA+SET)",
+"Interactive OD for Tiny Objects",
+"UHR-DETR"
+],
+"Incremental OD": [
+"RGR (Revisiting Generative Replay)",
+"LEA (Learning Endogenous Attention)",
+"DiL (Abnormal Uncertainty Metric)"
+],
+"Oriented-RS OD": [
+"ReDiffDet",
+"GauCho",
+"Meta-YOLO",
+"SPAR-Det",
+"RAVEN",
+"VISO"
+],
+"Referring OD": [
+"ROD-MLLM",
+"WeDetect",
+"AgentDet"
+],
+"Security-Robustness OD": [
+"TRACE (Test-Time Backdoor Detection)",
+"TRACE",
+"DMAT",
+"AntiStyler",
+"PBCAT"
+],
+"Co-SOD & Ranking": [
+"Visual Consensus Prompting (Co-SOD)",
+"Language-Guided Salient Object Ranking"
+],
+"CD-FSOD": [
+"NTIRE 2025 CD-FSOD (MoveFree)",
+"Cross-Domain Multi-Modal FSOD",
+"CD-ViTO"
+],
+"Event-Camera OD": [
+"EvRT-DETR (B)"
+],
+"Thermal-Multispectral OD": [
+"WaveMamba",
+"WiSE-OD",
+"DyFCLT",
+"Thermal-Det",
+"SeaClips"
+],
+"Camouflaged OD": [
+"M4-SAM",
+"HDPNet",
+"ESCNet",
+"UCOD-DPL",
+"SDDF",
+"D2FANet",
+"PointSR"
+],
+"KITTI 3D": [
+"PV-RCNN",
+"Voxel R-CNN"
+],
+"nuScenes": [
+"CenterPoint",
+"TransFusion",
+"BEVFusion",
+"VoxelNeXt",
+"FocalFormer3D"
+],
+"Waymo 3D": [
+"DSVT"
+]
+}
