@@ -93,6 +93,26 @@ The supported automated sources are:
 - arXiv
 - CVF Open Access
 
+## Step 1c — Journal-sourced harvest (agent-driven)
+
+In addition to the automated arXiv + CVF scan, run a **journal-targeted harvest**: pick target journals, search for AD/OD papers they published, and verify each metric against the paper's own table before it is ranked. This is agent-driven (web search + per-paper verification); the headless `.bat` cannot do it.
+
+**Workflow (verify → add → classify → sort → never fabricate):**
+
+1. **Pick target journals.** Use the journal list produced by the `journal-finder` skill (`期刊清單_*.xlsx`). IVAD-relevant journals by domain:
+   - *Image / CV*: IEEE TPAMI, IJCV, IEEE TIP, Pattern Recognition, IEEE TCSVT, CVIU, IVC.
+   - *Smart manufacturing*: IEEE TII, Computers in Industry, IEEE TIM, J. Manufacturing Systems, J. Intelligent Manufacturing, RCIM, IEEE T-ASE, IEEE TIE.
+   - *AI / ML*: Information Fusion, IEEE TNNLS, Knowledge-Based Systems, Information Sciences, Neural Networks, IEEE TCYB, AIJ, Nature Machine Intelligence.
+2. **Search** `WebSearch` per `journal + dataset + metric + year(2020-2026)`, e.g. `anomaly detection MVTec AD VisA "IEEE Transactions on Industrial Informatics" 2024 2025 arxiv github`, or `multispectral object detection "Information Fusion" FLIR LLVIP mAP github`.
+3. **Verify the metric from an authoritative table** before ranking — read the paper's own results table from the **official GitHub repo README** or the **arXiv HTML** (`https://arxiv.org/html/<id>`). Cross-paper tables are acceptable only with an explicit note. If no accessible table exists (paywalled, no arXiv, repo has no table) → **do not rank it**; stage catalog/⏳ Pending with blank metric (e.g. IGAF/Information Fusion had no table → not added).
+4. **Classify** (method-based category) and pick the **dataset + split + protocol + primary metric** per `references/verification_workflow.md`. Mind dataset-specific metrics — e.g. **MVTec AD 2 uses SegF1 / ClassF1 / AU-PRO@0.05, not AUROC**; RGB-T detection uses per-dataset mAP50 (FLIR vs M3FD vs LLVIP are different comparable groups — never cross-rank).
+5. **Insert** into the correct workbook sheet (AD: `AnomalyDetection_*.xlsx`; OD: `Object_Detection_*.xlsx`) with the value in the right column, a `✅ … verified` source note citing repo/arXiv table + dataset + metric, and dupe-check first. The website sorts client-side, so appending is fine.
+6. **Regenerate + reinject + push + email** (Step 3 below).
+
+**Verified examples added this way:** Hyper-YOLO-L & YOLO-MS (IEEE TPAMI → COCO val2017), CDO (IEEE TII) & MSFlow (IEEE TNNLS) → MVTec AD + VisA, COMO (Information Fusion → LLVIP). Each carries a source note pointing at the official repo/arXiv table.
+
+**Never fabricate:** if a value isn't in an authoritative table, leave it blank with the reason — do not pad a leaderboard. Re-verify before changing any existing number (the MVTec AD 2 sheet contained placeholder values and was rebuilt from the VAND 3.0 report + RoBiS paper tables).
+
 ## Step 2 — Classify & verify before any leaderboard insert
 
 A new AD / OD / CLS paper is never auto-inserted into a standard sortable leaderboard with a numeric score. It first enters as a candidate or catalog entry with a blank score and a pending / needs-verification status.
