@@ -1,0 +1,34 @@
+{
+  "title": "期刊清單_影像CV_智慧製造 (sample)",
+  "output": "journal_list_sample.xlsx",
+  "date": "2026-06-01",
+  "relevance_label": "對 IVAD 關聯",
+  "domains": [
+    {"name": "影像 / 電腦視覺", "color": "E8F1FB"},
+    {"name": "智慧製造", "color": "FCEFE3"}
+  ],
+  "journals": [
+    {"domain": "影像 / 電腦視覺", "tier": "Tier1", "name": "IEEE Transactions on Pattern Analysis and Machine Intelligence", "abbrev": "IEEE TPAMI", "publisher": "IEEE", "if": "", "quartile": "Q1", "issn": "0162-8828", "scope": "電腦視覺、模式辨識、機器學習方法論", "relevance": "◎"},
+    {"domain": "影像 / 電腦視覺", "tier": "Tier1", "name": "International Journal of Computer Vision", "abbrev": "IJCV", "publisher": "Springer", "if": "", "quartile": "Q1", "issn": "0920-5691", "scope": "純電腦視覺、資料集/benchmark", "relevance": "◎"},
+    {"domain": "影像 / 電腦視覺", "tier": "Tier1", "name": "Pattern Recognition", "abbrev": "PR", "publisher": "Elsevier", "if": "7.6", "quartile": "Q1", "issn": "0031-3203", "scope": "模式辨識、電腦視覺、機器學習", "relevance": "◎"},
+    {"domain": "影像 / 電腦視覺", "tier": "Tier2", "name": "Computer Vision and Image Understanding", "abbrev": "CVIU", "publisher": "Elsevier", "if": "3.5", "quartile": "Q1", "issn": "1077-3142", "scope": "電腦視覺 + 影像處理 + 模式辨識", "relevance": "○"},
+    {"domain": "智慧製造", "tier": "Tier1", "name": "IEEE Transactions on Industrial Informatics", "abbrev": "IEEE TII", "publisher": "IEEE", "if": "9.9", "quartile": "Q1", "issn": "1551-3203", "scope": "工業資訊、AI 檢測、Industry 4.0", "relevance": "◎◎"},
+    {"domain": "智慧製造", "tier": "Tier1", "name": "Computers in Industry", "abbrev": "CinI", "publisher": "Elsevier", "if": "9.1", "quartile": "Q1", "issn": "0166-3615", "scope": "工業電腦應用、視覺檢測", "relevance": "◎◎"},
+    {"domain": "智慧製造", "tier": "Tier1/2", "name": "Journal of Intelligent Manufacturing", "abbrev": "JIM", "publisher": "Springer", "if": "7.4", "quartile": "Q1", "issn": "0956-5515", "scope": "智慧製造、機器學習、瑕疵分類", "relevance": "◎"},
+    {"domain": "智慧製造", "tier": "Tier1/2", "name": "IEEE Transactions on Instrumentation and Measurement", "abbrev": "IEEE TIM", "publisher": "IEEE", "if": "", "quartile": "Q1", "issn": "0018-9456", "scope": "量測式表面瑕疵檢測", "relevance": "◎"}
+  ],
+  "verified_if": [
+    "Pattern Recognition 7.6 — https://www.journalmetrics.org/journal/pattern-recognition",
+    "Computer Vision and Image Understanding 3.5 — https://research.com/journal/computer-vision-and-image-understanding",
+    "IEEE Transactions on Industrial Informatics 9.9 — https://www.journalmetrics.org/journal/ieee-transactions-on-industrial-informatics",
+    "Computers in Industry 9.1 — https://www.bioxbio.com/journal/COMPUT-IND",
+    "Journal of Intelligent Manufacturing 7.4 — https://www.resurchify.com/impact/details/24363"
+  ],
+  "sources": [
+    ["Pattern Recognition (IF 7.6, Q1)", "https://www.journalmetrics.org/journal/pattern-recognition"],
+    ["Computer Vision and Image Understanding (IF 3.5, Q1)", "https://research.com/journal/computer-vision-and-image-understanding"],
+    ["IEEE Transactions on Industrial Informatics (IF 9.9, Q1)", "https://www.journalmetrics.org/journal/ieee-transactions-on-industrial-informatics"],
+    ["Computers in Industry (IF 9.1, Q1)", "https://www.bioxbio.com/journal/COMPUT-IND"],
+    ["Journal of Intelligent Manufacturing (IF 7.4, Q1)", "https://www.resurchify.com/impact/details/24363"]
+  ]
+}
