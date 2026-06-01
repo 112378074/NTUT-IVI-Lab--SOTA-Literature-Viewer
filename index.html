@@ -1586,7 +1586,10 @@ function renderList() {
     ? rows.filter(r => [r.method, r.authors, r.notes, r.venue, r.dataset].filter(Boolean).join(' ').toLowerCase().includes(q))
     : rows;
 
-  const adIsAD2 = (listType === 'dataset' && listKey === 'MVTec AD 2');
+  // AD2 uses SegF1/ClassF1/AU-PRO@0.05 (not AUROC). Detect by the rows on screen so it
+  // applies on every route (dataset page, sub-area page, category page filtered to AD2).
+  const adIsAD2 = (mode === 'ad-metrics' && filtered.length > 0 && filtered.every(r => r.dataset === 'MVTec AD 2'));
+  if (adIsAD2) filtered = adSortBySegF1(filtered);
   const sortHint = (mode === 'ad-metrics')
     ? (adIsAD2 ? '排序：SegF1 高→低（MVTec AD 2 官方指標；ClassF1 / AU-PRO@0.05 僅部分公布）' : '排序：I-AUROC 高→低；相同則 P-AUROC 高→低')
     : (mode === 'od-metrics')
