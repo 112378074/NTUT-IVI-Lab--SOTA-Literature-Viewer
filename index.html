@@ -1980,10 +1980,10 @@ function renderList() {
       <tr>
         <th>#</th><th>方法</th><th>類別</th>
         <th>發表</th><th>年月</th><th>狀態</th>
-        <th>連結</th><th>GitHub</th>
+        <th>論文 / 程式碼</th>
       </tr>`;
     body = filtered.length === 0
-      ? `<tr><td colspan="8" class="empty">沒有符合條件的論文</td></tr>`
+      ? `<tr><td colspan="7" class="empty">沒有符合條件的論文</td></tr>`
       : filtered.map((r, i) => renderADRowAll(r, i)).join('');
   } else if (mode === 'od-metrics') {
     // Dataset-specific primary metric label (e.g. "S-measure" for SOD, "Streaming AP" for Argoverse)
@@ -2009,7 +2009,7 @@ function renderList() {
     const PROTO_ORDER = ['Open-vocabulary','Zero-shot','Few-shot','Long-tail','Domain adaptation','Robustness','Non-standard protocol','Fully-supervised closed-set'];
     const relatedHead = `<thead><tr>
         <th>#</th><th>方法</th><th>任務 / 類別</th><th>發表</th><th>年月</th>
-        <th>狀態</th><th>Protocol</th><th>比較組</th><th>指標</th><th class="metric">數值</th><th>來源 / 原因</th><th>連結</th><th>GitHub</th>
+        <th>狀態</th><th>Protocol</th><th>比較組</th><th>指標</th><th class="metric">數值</th><th>來源 / 原因</th><th>論文 / 程式碼</th>
       </tr></thead>`;
     const relatedTable = (rowsArr, titleTxt, cls, group) => {
       if (!rowsArr.length) return '';
@@ -2091,10 +2091,10 @@ function renderList() {
       <tr>
         <th>#</th><th>類別</th><th>方法</th><th>作者</th>
         <th>發表</th><th>年月</th><th>備註</th>
-        <th>連結</th><th>GitHub</th>
+        <th>論文 / 程式碼</th>
       </tr>`;
     body = filtered.length === 0
-      ? `<tr><td colspan="9" class="empty">沒有符合條件的論文</td></tr>`
+      ? `<tr><td colspan="8" class="empty">沒有符合條件的論文</td></tr>`
       : filtered.map((r, i) => renderODRowAll(r, i)).join('');
   } else if (mode === 'cls-metrics') {
     head = `
@@ -2117,10 +2117,10 @@ function renderList() {
         <th>#</th><th>方法</th><th>類別</th>
         <th>發表</th><th>年月</th><th>狀態</th>
         <th class="metric">Top-1</th><th class="metric">Top-5</th>
-        <th>連結</th><th>GitHub</th>
+        <th>論文 / 程式碼</th>
       </tr>`;
     body = filtered.length === 0
-      ? `<tr><td colspan="10" class="empty">沒有符合條件的論文</td></tr>`
+      ? `<tr><td colspan="9" class="empty">沒有符合條件的論文</td></tr>`
       : filtered.map((r, i) => renderCLSRowAll(r, i)).join('');
   } else if (mode === 'as-list') {
     head = `
@@ -2131,10 +2131,10 @@ function renderList() {
         <th>合成類型</th><th>任務設定</th>
         <th>發表</th><th>年月</th><th>狀態</th>
         <th>Backbone / Detector</th>
-        <th>連結</th><th>GitHub</th>
+        <th>論文 / 程式碼</th>
       </tr>`;
     body = filtered.length === 0
-      ? `<tr><td colspan="11" class="empty">沒有符合條件的論文</td></tr>`
+      ? `<tr><td colspan="10" class="empty">沒有符合條件的論文</td></tr>`
       : filtered.map((r, i) => renderASRow(r, i, listType)).join('');
   } else if (mode === 'as-all') {
     head = `
@@ -2142,10 +2142,10 @@ function renderList() {
         <th>#</th><th>方法</th><th>類別</th>
         <th>合成類型</th><th>任務設定</th>
         <th>發表</th><th>年月</th><th>狀態</th>
-        <th>連結</th><th>GitHub</th>
+        <th>論文 / 程式碼</th>
       </tr>`;
     body = filtered.length === 0
-      ? `<tr><td colspan="9" class="empty">沒有符合條件的論文</td></tr>`
+      ? `<tr><td colspan="8" class="empty">沒有符合條件的論文</td></tr>`
       : filtered.map((r, i) => renderASRowAll(r, i)).join('');
   }
 
@@ -2244,8 +2244,7 @@ function renderODNonStd(r, i) {
       <td>${escapeHtml(metricLabel)}</td>
       <td class="metric">${escapeHtml(score)}</td>
       <td class="notes" title="${escapeHtml(r.notes || '')}">${escapeHtml((r.notes || '—').slice(0, 140))}</td>
-      <td>${arxivBtn(r.link)}</td>
-      <td>${ghBtn(r.github)}</td>
+      ${linkCell(r.link, r.github)}
     </tr>`;
 }
 
@@ -2330,8 +2329,7 @@ function renderADRowAll(r, i) {
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
       <td><span class="badge ${statCls}">${escapeHtml(r.status || '—')}</span></td>
-      <td>${arxivBtn(r.link)}</td>
-      <td>${ghBtn(r.github)}</td>
+      ${linkCell(r.link, r.github)}
     </tr>`;
 }
 
@@ -2382,8 +2380,7 @@ function renderODRowAll(r, i) {
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
       <td class="notes">${escapeHtml(r.notes || '—')}</td>
-      <td>${arxivBtn(r.link)}</td>
-      <td>${ghBtn(r.github)}</td>
+      ${linkCell(r.link, r.github)}
     </tr>`;
 }
 
@@ -2424,8 +2421,7 @@ function renderCLSRowAll(r, i) {
       <td><span class="badge ${statCls}">${escapeHtml(r.status || '—')}</span></td>
       <td class="metric">${fmtNum(r.top1)}</td>
       <td class="metric">${fmtNum(r.top5)}</td>
-      <td>${arxivBtn(r.link)}</td>
-      <td>${ghBtn(r.github)}</td>
+      ${linkCell(r.link, r.github)}
     </tr>`;
 }
 
@@ -2446,8 +2442,7 @@ function renderASRow(r, i, listType) {
       <td>${escapeHtml(r.date || '')}</td>
       <td><span class="badge ${statCls}">${escapeHtml(r.status || '—')}</span></td>
       <td class="notes">${escapeHtml(r.backbone || '—')}</td>
-      <td>${arxivBtn(r.link)}</td>
-      <td>${ghBtn(r.github)}</td>
+      ${linkCell(r.link, r.github)}
     </tr>`;
 }
 function renderASRowAll(r, i) {
@@ -2463,8 +2458,7 @@ function renderASRowAll(r, i) {
       <td>${escapeHtml(r.venue || '')}</td>
       <td>${escapeHtml(r.date || '')}</td>
       <td><span class="badge ${statCls}">${escapeHtml(r.status || '—')}</span></td>
-      <td>${arxivBtn(r.link)}</td>
-      <td>${ghBtn(r.github)}</td>
+      ${linkCell(r.link, r.github)}
     </tr>`;
 }
 
