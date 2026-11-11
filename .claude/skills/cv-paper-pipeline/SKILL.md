@@ -540,7 +540,11 @@ Do not mix:
 
 ### AS
 
-If anomaly synthesis is disabled on the public site, do not surface it unless the user explicitly asks to enable it.
+Anomaly Synthesis means **generating anomalous / defect images** — chiefly diffusion-based (Stable Diffusion 1.x / 2 / XL / 3, FLUX, LDM, DiT), plus flow, autoregressive and GAN generators — and the classic rule-based / feature-space synthesis behind DRAEM, CutPaste, NSA, SimpleNet, GLASS. It is **not** a second copy of the AD leaderboards: detectors (PatchCore, EfficientAD, UniAD, WinCLIP, AnomalyCLIP, MuSc, INP-Former, DiAD …), dataset papers and unrelated papers do not belong in `Anomaly_Synthesis_*.xlsx`.
+
+- Seed / dupe-check new candidates against the curated list `github.com/Plateaulk/Awesome-Industrial-Anomaly-Image-Generation` (README + TOPICS.md, readable via `raw.githubusercontent.com`). Its TOPICS.md research-focus groups are the site's AS categories (`類別`), plus `Classic synthesis (rule-based / feature-space / GAN)`, `Other` and `Survey`.
+- Typical metrics: generation quality (IS ↑, IC-LPIPS ↑, FID/KID ↓) and downstream detection/segmentation trained on the synthetic data (AnomalyDiffusion protocol on MVTec AD). Record which downstream model produced a downstream number; numbers from different downstream models are not comparable.
+- Never delete rows: move non-synthesis rows to the `_archive 非合成方法` sheet. Any sheet whose name starts with `_` is skipped by `regenerate_as_json()`.
 
 ## Final report requirements
 

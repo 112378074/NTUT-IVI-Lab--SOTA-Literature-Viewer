@@ -1162,7 +1162,9 @@ def regenerate_as_json():
                 'github':        _clean(row.get('GitHub')),
             }
             if rec['method']: all_papers.append(rec)
-    dataset_sheets = [s for s in xl.sheet_names if s != 'AS all papers']
+    # Sheets named with a leading '_' are archives (e.g. non-synthesis rows moved out
+    # of the catalog) and must not reach the site.
+    dataset_sheets = [s for s in xl.sheet_names if s != 'AS all papers' and not s.startswith('_')]
     rows = []
     for sn in dataset_sheets:
         df = pd.read_excel(xl, sheet_name=sn)
