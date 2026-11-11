@@ -1301,7 +1301,6 @@ function benchmarksSection(domain) {
                metric: other ? '各列設定不同，不排名' : x.metric, n: b.rows.length, mixed: other };
     });
     if (boards.length) extra = `<section class="bm-section"><h2>其他評測協定（${boards.length}）</h2>
-      <p>比照 Papers with Code，零樣本、少樣本（不同 k 分開）、監督式、異常合成等協定各自成榜，不與標準榜混排。</p>
       ${bmTable(boards, ['協定 · 資料集', '目前最佳方法', '分數', '指標', '筆數'])}</section>`;
   }
   return `<section class="bm-section"><h2>Benchmarks（${items.length}）</h2><p>${note}點任一列直接開啟該資料集的排行榜。</p>${bmTable(items, cols)}</section>${extra}`;
