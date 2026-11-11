@@ -108,6 +108,11 @@ In addition to the automated arXiv + CVF scan, run a **journal-targeted harvest*
 4. **Classify** (method-based category) and pick the **dataset + split + protocol + primary metric** per `references/verification_workflow.md`. Mind dataset-specific metrics — e.g. **MVTec AD 2 uses SegF1 / ClassF1 / AU-PRO@0.05, not AUROC**; RGB-T detection uses per-dataset mAP50 (FLIR vs M3FD vs LLVIP are different comparable groups — never cross-rank).
 5. **Insert** into the correct workbook sheet (AD: `AnomalyDetection_*.xlsx`; OD: `Object_Detection_*.xlsx`) with the value in the right column, a `✅ … verified` source note citing repo/arXiv table + dataset + metric, and dupe-check first. The website sorts client-side, so appending is fine.
 6. **Regenerate + reinject + push + email** (Step 3 below).
+7. **Re-verify the ⏳ Pending backlog — every run, not only new papers.** Every paper must end up verified, so each run also walks the existing ⏳ Pending rows (oldest first, as time allows) and retries their authoritative sources. A row leaves Pending only with a cited table; otherwise it stays Pending with its reason refreshed. Never fill a metric from an abstract, a search snippet or a relative gain ("+1.6%").
+   - In the remote scheduled runner, the only verification source that is reachable is **GitHub through `raw.githubusercontent.com`** (try `main` then `master`, `README.md`). `api.github.com` is scoped to this repo only, and arXiv / CVF / IEEE / ScienceDirect / Springer / MDPI / Semantic Scholar / OpenAlex / Crossref / Hugging Face are refused by the egress proxy (re-probe each run, since the network policy may change).
+   - A README table is acceptable when the repo is the official one; record its exact setting (shot count, backbone, protocol) in the note, and use `✅ Repo-README verified (<setting>)` when it is not the paper's headline table. Example: ResAD++ — `xcyao00/ResAD` README, 4-shot, wide_resnet50, cross-dataset class-agnostic.
+   - On a combined-dataset row in `總覽 All Papers` (e.g. "MVTec AD, VisA"), put per-dataset values in the note and leave the metric cells blank, so one dataset's number is never read as another's.
+8. **Email when new papers are found** — see *Email configuration* below. Recipients come from `NOTIFY_TO` (two people: `azaz31855@gmail.com,fctien@ntut.edu.tw`). Send whenever the run adds at least one paper **or** moves a row from Pending to verified; when nothing changed, send nothing. Report `email sent` / `email skipped: <reason>` / `email failed: <reason>` exactly as `scripts/send_mail.py` prints it.
 
 **Verified examples added this way:** Hyper-YOLO-L & YOLO-MS (IEEE TPAMI → COCO val2017), CDO (IEEE TII) & MSFlow (IEEE TNNLS) → MVTec AD + VisA, COMO (Information Fusion → LLVIP). Each carries a source note pointing at the official repo/arXiv table.
 
@@ -446,7 +451,25 @@ schtasks /Run /TN "AD-OD Paper Auto-Update Wed"
 
 ### Email configuration
 
-SMTP credentials live in `scripts/.env` and must stay gitignored:
+**Remote scheduled runs (the weekly journal harvest) send through the Gmail API** with `scripts/send_mail.py`. That runner is a fresh clone in a container that blocks raw SMTP and most mail-API hosts (Resend, SendGrid, LINE), but `oauth2.googleapis.com` and `gmail.googleapis.com` are reachable. `scripts/.env` never exists there, so the credentials are environment variables of the scheduled environment:
+
+```text
+GMAIL_CLIENT_ID=<OAuth client ID, Desktop app>
+GMAIL_CLIENT_SECRET=<OAuth client secret>
+GMAIL_REFRESH_TOKEN=<from scripts/gmail_auth.py, run once locally>
+NOTIFY_TO=azaz31855@gmail.com,fctien@ntut.edu.tw
+```
+
+At the end of a run that added or verified papers:
+
+```bash
+python scripts/send_mail.py --check          # token OK? (sends nothing)
+python scripts/send_mail.py --subject "[文獻收錄] <date>：新增 N 篇、補驗 M 篇" --body-file <summary.txt>
+```
+
+The body lists each new or newly verified paper with venue, date, datasets, status, the metric with its source note (or the reason it is still Pending), and the site link. `send_mail.py` exits 0 sent, 2 not configured, 1 failed. Setup steps: `scripts/README.md` → *Gmail API*.
+
+**Local Windows runs** may still use SMTP — credentials live in `scripts/.env` and must stay gitignored:
 
 ```text
 SMTP_HOST=smtp.gmail.com
@@ -464,7 +487,8 @@ If `.env` is missing or the password is empty, the run should log `email skipped
 
 - Windows scheduled tasks may run only while the user is logged in unless configured otherwise.
 - Git push requires valid GitHub credentials in the environment.
-- Email requires valid SMTP credentials.
+- Email requires valid credentials: Gmail API variables for the remote runner, SMTP in `scripts/.env` for local runs.
+- If the Gmail OAuth app is left in "Testing", Google expires the refresh token after 7 days and sends fail with `invalid_grant`; publish the app to "In production" to stop that.
 - If legacy Excel files still exist, they should be treated as archival backups, not as the required update path.
 
 ## Per-domain ranking rules

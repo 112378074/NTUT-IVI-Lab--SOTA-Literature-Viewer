@@ -11,7 +11,9 @@ source files, regenerates the data inside `index.html`, and pushes to GitHub
 | --- | --- |
 | `update_papers.py` | Main script. Fetches arXiv → classifies → appends rows → regenerates JSON → injects HTML → `git push` → email notification. |
 | `run_update.bat`   | Windows wrapper invoked by Task Scheduler. Logs to `update_log.txt`. |
-| `.env`             | SMTP credentials for email notification (gitignored). Copy `.env.example` and fill in. |
+| `send_mail.py`     | Sends the harvest summary through the Gmail API. Used by the remote weekly harvest, where SMTP is blocked. |
+| `gmail_auth.py`    | One-time Gmail authorisation, run on your own computer; prints the refresh token for `send_mail.py`. |
+| `.env`             | SMTP credentials for local email notification (gitignored). Copy `.env.example` and fill in. |
 | `update_log.txt`   | Append-only run log (auto-created on first run). |
 
 ## Manual usage
@@ -32,9 +34,50 @@ python scripts\update_papers.py
 python scripts\update_papers.py --no-email
 ```
 
-## Email notification setup
+## Gmail API (weekly remote harvest)
 
-After every scheduled run the script sends a summary email listing the new
+The weekly harvest runs in a cloud container that blocks SMTP and most
+mail services, but can reach Google's API hosts. It therefore sends with
+`send_mail.py` through the Gmail API, from your own Gmail account, to
+`NOTIFY_TO` (currently `azaz31855@gmail.com` and `fctien@ntut.edu.tw`).
+Set it up once:
+
+1. **Create a Google Cloud project** at https://console.cloud.google.com/
+   and enable the **Gmail API** (APIs & Services → Library → Gmail API → Enable).
+2. **OAuth consent screen** → User type *External* → fill in an app name and
+   your email → under *Audience* add `azaz31855@gmail.com` as a test user.
+   Then click **Publish app** so it is *In production*. In *Testing* mode
+   Google expires the refresh token after 7 days and weekly mail stops
+   with `invalid_grant`. An unverified personal app only shows a warning
+   screen once, when you authorise it.
+3. **Credentials** → Create credentials → OAuth client ID → Application type
+   **Desktop app**. Copy the client ID and client secret.
+4. **On your own computer** (not in the cloud), from the repo folder:
+
+   ```bash
+   python scripts/gmail_auth.py --client-id <ID> --client-secret <SECRET>
+   ```
+
+   A browser opens; sign in with the Gmail account that should send, and
+   allow "Send email on your behalf" (the only permission requested — the
+   token cannot read your mail). The script prints four lines.
+5. **Add those four lines as environment variables** of the Claude Code
+   cloud environment the weekly harvest uses (environment settings →
+   environment variables): `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`,
+   `GMAIL_REFRESH_TOKEN`, `NOTIFY_TO`. Do not commit them.
+6. **Test** in a session on that environment:
+
+   ```bash
+   python scripts/send_mail.py --check   # verifies the token, sends nothing
+   python scripts/send_mail.py --test    # sends one test message to NOTIFY_TO
+   ```
+
+`send_mail.py` prints one status line — `email sent …`, `email skipped:
+not configured — missing …`, or `email failed: …` — and exits 0 / 2 / 1.
+
+## Email notification setup (local Windows runs, SMTP)
+
+After every local scheduled run the script sends a summary email listing the new
 papers (AD + OD), with arXiv links and the classification it picked. Setup:
 
 1. **Enable 2-Step Verification** on the Gmail account (required by Google
