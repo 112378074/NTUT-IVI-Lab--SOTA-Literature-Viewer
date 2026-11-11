@@ -725,6 +725,15 @@
   .bm-more { margin-top: 10px; }
   .bm-more summary { cursor: pointer; color: var(--accent); font-size: 13px; }
 
+  .proto-links { max-width: 1500px; margin: 0 auto 14px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .proto-links .pl-lead { color: var(--muted); font-size: 12px; margin-right: 4px; }
+  .proto-chip { font: inherit; font-size: 12px; padding: 4px 10px; border-radius: 999px; cursor: pointer;
+    background: var(--panel); color: var(--text); border: 1px solid var(--border); }
+  .proto-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .proto-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .proto-chip .pc-n { color: var(--muted); margin-left: 6px; font-variant-numeric: tabular-nums; }
+  .badge.proto-tag { background: var(--badge-purp-bg); color: var(--badge-purp-fg); border-color: var(--badge-purp-bd); margin-left: 4px; }
+
   /* ---- SOTA-over-time chart ---- */
   .sota-chart { max-width: 1500px; margin: 0 auto 14px; background: var(--panel); border: 1px solid var(--border);
     border-radius: 12px; padding: 14px 18px 8px; box-shadow: var(--shadow-sm); }
@@ -808,6 +817,83 @@ for (let i = AD_RAW.length - 1; i >= 0; i--) {
   if (AD_OFFTOPIC_DATASETS.has(AD_RAW[i].dataset)) AD_RAW.splice(i, 1);
 }
 
+/* ====== AD evaluation protocols (Papers-with-Code style tasks) ======
+   Zero-shot, k-shot, supervised, synthesis-downstream … results are not
+   comparable with standard full-data unsupervised AD, so each (dataset,
+   protocol) gets its own leaderboard. Evidence comes only from dataset /
+   status / notes / category — never the method name ("PSAD: Few-Shot Part
+   Segmentation" reports a full-data LOCO result). */
+const AD_BASE_DATASETS = ['MVTec AD', 'MVTec LOCO', 'MVTec AD 2', 'VisA', 'MPDD', 'BTAD', 'MVTec 3D'];
+const AD_PROTO_ORDER = ['standard', 'zero-shot', 'few-shot', 'class-agnostic', 'continual', 'supervised', 'weakly', 'synthesis', 'other'];
+const AD_PROTOCOLS = {
+  'standard':       { zh: '標準協定',            en: 'Anomaly Detection',                   desc: '全量正常樣本訓練、非監督' },
+  'zero-shot':      { zh: '零樣本',              en: 'Zero-Shot Anomaly Detection',         desc: '不使用目標類別的任何訓練樣本（含開放詞彙設定）' },
+  'few-shot':       { zh: '少樣本',              en: 'Few-Shot Anomaly Detection',          desc: '每類只用 k 張正常樣本，不同 k 分開排名' },
+  'class-agnostic': { zh: '跨資料集／類別無關',   en: 'Class-Agnostic Anomaly Detection',    desc: '在其他資料集或類別上訓練，直接用於目標資料集' },
+  'continual':      { zh: '持續學習',            en: 'Continual Anomaly Detection',         desc: '類別依序到來的持續／漸進學習設定' },
+  'supervised':     { zh: '監督式',              en: 'Supervised Anomaly Detection',        desc: '訓練時使用真實異常樣本或其標註' },
+  'weakly':         { zh: '弱監督',              en: 'Weakly-Supervised Anomaly Detection', desc: '使用少量或粗略的異常標註' },
+  'synthesis':      { zh: '異常合成（下游評估）', en: 'Anomaly Synthesis → Detection',       desc: '以合成異常訓練下游偵測器；分數也受所用偵測器影響' },
+  'other':          { zh: '其他非標準設定',       en: 'Other Non-standard Settings',         desc: '只報 accuracy、TTA、類別子集、競賽報告等，各列設定不同、不排名' },
+};
+function adBaseDataset(ds) {
+  const t = String(ds || '');
+  if (/^MVTec LOCO/i.test(t)) return 'MVTec LOCO';
+  if (/^MVTec 3D/i.test(t)) return 'MVTec 3D';
+  if (/^MVTec AD 2/i.test(t)) return 'MVTec AD 2';
+  return AD_BASE_DATASETS.find(b => t === b || t.startsWith(b + ' ') || t.startsWith(b + '(')) || t;
+}
+function adProtocolOf(r) {
+  const t = [r.dataset, r.status, r.notes, r.category].map(x => String(x || '')).join(' ').toLowerCase();
+  const pseudo = adBaseDataset(r.dataset) !== r.dataset;
+  if (/downstream|異常合成框架|評估下游/.test(t)) return { key: 'synthesis' };
+  if (/continual|持續學習|持續\/漸進|task-free/.test(t)) return { key: 'continual' };
+  if (/\baccuracy\b|準確率|\btta\b|test-time|object-class subset|類別子集|challenge report|vand 4\.0 challenge/.test(t)) return { key: 'other' };
+  if (/zero[- ]?shot|\b0-shot|零樣本|open[- ]vocab|開放詞彙|\bzsad\b/.test(t)) return { key: 'zero-shot' };
+  if (/class[- ]agnostic|類別無關|cross[- ]dataset|跨資料集|cross[- ]domain (?:protocol|multi)/.test(t)) {
+    const k = t.match(/(\d+)[- ]?(?:normal[- ])?shot/);
+    return { key: 'class-agnostic', shot: k ? +k[1] : null };
+  }
+  if (/weakly|弱監督/.test(t)) return { key: 'weakly' };
+  const sup = t.replace(/un-?supervised|self-?supervised|semi-?supervised|weakly-?supervised|非監督|無監督|自監督|半監督|弱監督|與有監督方法不可直接比較/g, '');
+  if (/\bsupervised\b|監督式|有監督|全監督|cold-start/.test(sup)) return { key: 'supervised' };
+  const k = t.match(/(\d+)[- ]?(?:normal[- ])?shot/) || t.match(/(\d+)-normal/);
+  if (k && +k[1] > 0) return { key: 'few-shot', shot: +k[1] };
+  if (/few[- ]?shot|少樣本/.test(t)) return { key: 'few-shot', shot: null };
+  return { key: pseudo ? 'other' : 'standard' };
+}
+function adProtoLabel(p) {
+  const m = AD_PROTOCOLS[p.key] || AD_PROTOCOLS.other;
+  if (p.key === 'few-shot') return p.shot ? `少樣本 ${p.shot}-shot` : '少樣本（shot 未註明）';
+  if (p.key === 'class-agnostic' && p.shot) return `${m.zh} ${p.shot}-shot`;
+  return m.zh;
+}
+function adProtoId(p) { return p.key + (p.shot ? ':' + p.shot : ''); }
+function adBoardTitle(base, p) {
+  const m = AD_PROTOCOLS[p.key] || AD_PROTOCOLS.other;
+  const shot = p.shot ? ` (${p.shot}-shot)` : (p.key === 'few-shot' ? ' (shot 未註明)' : '');
+  return `${m.en} on ${base}${shot}`;
+}
+AD_RAW.forEach(r => { r._base = adBaseDataset(r.dataset); r._p = adProtocolOf(r); r._proto = adProtoId(r._p); });
+function adProtoBoards() {
+  const m = new Map();
+  AD_RAW.forEach(r => {
+    if (r._p.key === 'standard' || !AD_BASE_DATASETS.includes(r._base)) return;
+    const id = r._base + '||' + r._proto;
+    if (!m.has(id)) m.set(id, { id, base: r._base, p: r._p, rows: [] });
+    m.get(id).rows.push(r);
+  });
+  return [...m.values()].sort((a, b) =>
+    AD_PROTO_ORDER.indexOf(a.p.key) - AD_PROTO_ORDER.indexOf(b.p.key) ||
+    (a.p.shot || 0) - (b.p.shot || 0) ||
+    AD_BASE_DATASETS.indexOf(a.base) - AD_BASE_DATASETS.indexOf(b.base));
+}
+function adBestOf(rows, base) {
+  const ad2 = base === 'MVTec AD 2', k = ad2 ? 'p_ap' : 'i_auroc';
+  const best = (ad2 ? adSortBySegF1(rows) : adSortByMetric(rows)).find(r => isNum(r[k]));
+  return { best, val: best ? parseFloat(best[k]).toFixed(1) : null, metric: ad2 ? 'SegF1' : 'I-AUROC' };
+}
+
 /* ====== AD constants ====== */
 const AD_CATEGORIES = [
   { key: '基於重構 (Reconstruction)',         label: '基於重構',          en: 'Reconstruction-based',         cls: 'cat-recon' },
@@ -866,12 +952,12 @@ const AD_SUBAREA_DATASETS = {
 };
 // Heuristic: most existing AD methods are unsupervised + general. Hand-classify exceptions in 備註.
 function adSubareasOfMethod(r) {
+  if (r._p && r._p.key === 'supervised') return ['supervised-anomaly-detection'];
+  if (r._p && r._p.key !== 'standard') return [];
   if (r.subarea) return [r.subarea, 'anomaly-detection'];
   const txt = ((r.method || '') + ' ' + (r.notes || '') + ' ' + (r.category || '')).toLowerCase();
   const out = ['anomaly-detection']; // umbrella always
   if (/\bone[-\s]?class\b|\bsvdd\b|\bdeepsvdd\b/.test(txt))   out.push('one-class-anomaly-detection');
-  if (/\bsupervis/.test(txt) && !/un[-\s]?supervised/.test(txt))
-                                                              out.push('supervised-anomaly-detection');
   // Default: unsupervised (covers PatchCore / DRAEM / Dinomaly / GLASS / EfficientAD / RD4AD / etc.)
   out.push('unsupervised-anomaly-detection');
   return out;
@@ -1136,7 +1222,7 @@ function bmTable(items, cols) {
   const row = it => `
     <tr data-list="${it.listType}" data-key="${escapeHtml(it.key)}">
       <td class="bm-ds"><button class="bm-open" type="button">${escapeHtml(it.ds)}</button></td>
-      <td class="bm-best">${it.best ? escapeHtml(it.best) : `<span class="dim">${it.mixed ? '各列為不同資料集，僅供瀏覽' : '尚無可比較的分數'}</span>`}</td>
+      <td class="bm-best">${it.best ? escapeHtml(it.best) : `<span class="dim">${it.mixed ? '各列資料集或設定不同，僅供瀏覽' : '尚無可比較的分數'}</span>`}</td>
       <td class="bm-val">${it.val != null ? escapeHtml(it.val) : '—'}</td>
       <td class="bm-metric">${escapeHtml(it.metric || '')}</td>
       <td class="bm-n">${it.n}</td>
@@ -1151,16 +1237,13 @@ function benchmarksSection(domain) {
   let items = [], cols = ['資料集', '目前最佳方法', '分數', '指標', '筆數'], note = '';
   if (domain === 'ad') {
     items = AD_DATASETS.map(d => {
-      const pool = AD_RAW.filter(r => r.dataset === d.key);
+      const pool = AD_RAW.filter(r => r.dataset === d.key && r._p.key === 'standard');
       if (!pool.length) return null;
-      const ad2 = d.key === 'MVTec AD 2';
-      const k = ad2 ? 'p_ap' : 'i_auroc';
-      const best = (ad2 ? adSortBySegF1(pool) : adSortByMetric(pool)).find(r => isNum(r[k]));
-      return { ds: d.label, key: d.key, listType: 'dataset', best: best && best.method,
-               val: best ? parseFloat(best[k]).toFixed(1) : null, metric: ad2 ? 'SegF1' : 'I-AUROC',
-               n: pool.length };
+      const b = adBestOf(pool, d.key);
+      return { ds: d.label, key: d.key, listType: 'dataset', best: b.best && b.best.method,
+               val: b.val, metric: b.metric, n: pool.length };
     }).filter(Boolean);
-    note = '工業視覺異常檢測的標準資料集。MVTec AD 2 依官方指標 SegF1 排名，其餘依 I-AUROC。';
+    note = '標準協定（全量正常樣本、非監督）。MVTec AD 2 依官方指標 SegF1 排名，其餘依 I-AUROC。';
   } else if (domain === 'od') {
     items = OD_DATA.datasets.map(ds => {
       const pool = OD_DATA.rows.filter(r => r.dataset === ds);
@@ -1201,7 +1284,20 @@ function benchmarksSection(domain) {
     note = '異常合成以下游異常檢測的效果評估，各論文設定不同，這裡依資料集列出最新的方法。';
   }
   if (!items.length) return '';
-  return `<section class="bm-section"><h2>Benchmarks（${items.length}）</h2><p>${note}點任一列直接開啟該資料集的排行榜。</p>${bmTable(items, cols)}</section>`;
+  let extra = '';
+  if (domain === 'ad') {
+    const boards = adProtoBoards().map(b => {
+      const other = b.p.key === 'other';
+      const x = other ? {} : adBestOf(b.rows, b.base);
+      return { ds: `${adProtoLabel(b.p)} · ${b.base}`, key: b.id, listType: 'ad-proto',
+               best: x.best && x.best.method, val: x.val || null,
+               metric: other ? '各列設定不同，不排名' : x.metric, n: b.rows.length, mixed: other };
+    });
+    if (boards.length) extra = `<section class="bm-section"><h2>其他評測協定（${boards.length}）</h2>
+      <p>比照 Papers with Code，零樣本、少樣本（不同 k 分開）、監督式、異常合成等協定各自成榜，不與標準榜混排。</p>
+      ${bmTable(boards, ['協定 · 資料集', '目前最佳方法', '分數', '指標', '筆數'])}</section>`;
+  }
+  return `<section class="bm-section"><h2>Benchmarks（${items.length}）</h2><p>${note}點任一列直接開啟該資料集的排行榜。</p>${bmTable(items, cols)}</section>${extra}`;
 }
 
 /* ====== SOTA-over-time chart (higher-is-better metrics only) ====== */
@@ -1457,13 +1553,11 @@ function renderCLSMenu() {
   return `
     ${benchmarksSection('cls')}
     <div class="menu-section">
-      <h2>子領域</h2>
-      <div class="button-grid">${subBtns}</div>
-      <h2>全部論文 (跨子領域)</h2>
+      <h2>全部論文</h2>
       <div class="button-grid">
         <button class="menu-btn all" data-list="cls-all" data-key="all">
           <span class="name">All Papers</span>
-          <span class="meta">不分類別 / 資料集 / 子領域,共 ${totalMethods} 個獨立方法 · 依 Top-1 高→低</span>
+          <span class="meta">不分類別 / 資料集，共 ${totalMethods} 個獨立方法 · 依 Top-1 高→低</span>
         </button>
       </div>
     </div>
@@ -1672,13 +1766,11 @@ function renderADMenu() {
   return `
     ${benchmarksSection('ad')}
     <div class="menu-section">
-      <h2>子領域</h2>
-      <div class="button-grid">${subBtns}</div>
-      <h2>全部論文 (跨子領域)</h2>
+      <h2>全部論文</h2>
       <div class="button-grid">
         <button class="menu-btn all" data-list="all" data-key="all">
           <span class="name">All Papers</span>
-          <span class="meta">不分類別 / 資料集 / 子領域,共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
+          <span class="meta">不分類別 / 資料集，共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
         </button>
       </div>
     </div>
@@ -1698,13 +1790,11 @@ function renderODMenu() {
   return `
     ${benchmarksSection('od')}
     <div class="menu-section">
-      <h2>子領域</h2>
-      <div class="button-grid">${subBtns}</div>
-      <h2>全部論文 (跨子領域)</h2>
+      <h2>全部論文</h2>
       <div class="button-grid">
         <button class="menu-btn all" data-list="od-all" data-key="all">
           <span class="name">All Papers</span>
-          <span class="meta">不分類別 / 資料集 / 子領域,共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
+          <span class="meta">不分類別 / 資料集，共 ${totalMethods} 個獨立方法 · 依年月新→舊</span>
         </button>
       </div>
     </div>
@@ -1726,13 +1816,22 @@ function renderList() {
   } else if (listType === 'dataset') {
     const meta = AD_DATASETS.find(d => d.key === listKey);
     const _isAD2 = (listKey === 'MVTec AD 2');
-    const _adPool = AD_RAW.filter(r => r.dataset === listKey);
+    const _adPool = AD_RAW.filter(r => r.dataset === listKey && r._p.key === 'standard');
     rows = _isAD2 ? adSortBySegF1(_adPool) : adSortByMetric(_adPool);
     mode = 'ad-metrics';
     title = `資料集：${meta ? meta.label : listKey}`;
     subTitle = _isAD2
       ? `${meta ? meta.desc : ''} ｜ 官方指標：ClassF1 / SegF1（排名依據）/ AU-PRO@0.05（非 AUROC）`
       : (meta ? meta.desc : '');
+  } else if (listType === 'ad-proto') {
+    const [base, pid] = String(listKey || '').split('||');
+    const pool = AD_RAW.filter(r => r._base === base && r._proto === pid);
+    const p = pool.length ? pool[0]._p : { key: 'other' };
+    rows = p.key === 'other' ? sortByDateDesc(pool)
+         : (base === 'MVTec AD 2' ? adSortBySegF1(pool) : adSortByMetric(pool));
+    mode = 'ad-metrics';
+    title = adBoardTitle(base, p);
+    subTitle = (AD_PROTOCOLS[p.key] || AD_PROTOCOLS.other).desc + '；不可與標準排行榜直接比較';
   } else if (listType === 'all') {
     rows = sortByDateDesc(dedupeByMethodAD(AD_RAW));
     mode = 'ad-all';
@@ -1796,7 +1895,7 @@ function renderList() {
   } else if (listType === 'ad-sub') {
     const sub = state.subarea, ds = listKey;
     const meta = AD_SUBAREAS.find(s => s.key === sub);
-    let pool = AD_RAW.filter(r => r.dataset === ds && adSubareasOfMethod(r).includes(sub));
+    let pool = AD_RAW.filter(r => r.dataset === ds && (r._p.key === 'standard' || r._p.key === 'supervised') && adSubareasOfMethod(r).includes(sub));
     rows = adSortByMetric(pool);
     mode = 'ad-metrics';
     title = `${meta ? meta.label : sub} · ${ds}`;
@@ -1826,9 +1925,11 @@ function renderList() {
 
   // AD2 uses SegF1/ClassF1/AU-PRO@0.05 (not AUROC). Detect by the rows on screen so it
   // applies on every route (dataset page, sub-area page, category page filtered to AD2).
-  const adIsAD2 = (mode === 'ad-metrics' && filtered.length > 0 && filtered.every(r => r.dataset === 'MVTec AD 2'));
+  const adIsAD2 = (mode === 'ad-metrics' && filtered.length > 0 && filtered.every(r => (r._base || r.dataset) === 'MVTec AD 2'));
+  const adUnranked = listType === 'ad-proto' && filtered.length > 0 && filtered[0]._p && filtered[0]._p.key === 'other';
   if (adIsAD2) filtered = adSortBySegF1(filtered);
-  const sortHint = (mode === 'ad-metrics')
+  const sortHint = adUnranked ? '各列設定不同，不排名（依年月新→舊）'
+    : (mode === 'ad-metrics')
     ? (adIsAD2 ? '排序：SegF1 高→低（MVTec AD 2 官方指標；ClassF1 / AU-PRO@0.05 僅部分公布）' : '排序：I-AUROC 高→低；相同則 P-AUROC 高→低')
     : (mode === 'od-metrics')
       ? '排序：mAP 高→低；無數值或相同則年月新→舊'
@@ -1839,9 +1940,15 @@ function renderList() {
   let head, body;
   let odStdHeader = '', odExtraSection = '';
   let chartHtml = '';
-  const singleDataset = ['dataset', 'ad-sub', 'cls-dataset', 'cls-sub', 'od-dataset', 'od-sub'].includes(listType);
-  if (singleDataset && mode === 'ad-metrics') {
-    const ad2 = rows.length && rows.every(r => r.dataset === 'MVTec AD 2');
+  const singleDataset = ['dataset', 'ad-sub', 'ad-proto', 'cls-dataset', 'cls-sub', 'od-dataset', 'od-sub'].includes(listType);
+  let protoLinks = '';
+  if (listType === 'dataset') {
+    const bs = adProtoBoards().filter(b => b.base === listKey);
+    if (bs.length) protoLinks = `<div class="proto-links"><span class="pl-lead">此資料集的其他評測協定（各自排名，不與本榜混排）：</span>${
+      bs.map(b => `<button class="proto-chip" type="button" data-list="ad-proto" data-key="${escapeHtml(b.id)}">${escapeHtml(adProtoLabel(b.p))}<span class="pc-n">${b.rows.length}</span></button>`).join('')}</div>`;
+  }
+  if (singleDataset && mode === 'ad-metrics' && !adUnranked) {
+    const ad2 = rows.length && rows.every(r => (r._base || r.dataset) === 'MVTec AD 2');
     chartHtml = sotaChart(rows, r => ad2 ? r.p_ap : r.i_auroc, ad2 ? 'SegF1' : 'I-AUROC');
   } else if (singleDataset && mode === 'cls-metrics') {
     chartHtml = sotaChart(rows, r => r.top1, 'Top-1');
@@ -2076,6 +2183,7 @@ function renderList() {
       ${dsFilterHtml}
       <input class="search" id="search" type="search" placeholder="搜尋方法 / 作者 / 備註…" value="${escapeHtml(state.query)}" />
     </div>
+    ${protoLinks}
     ${chartHtml}
     ${odStdHeader}
     ${head ? `<div class="table-wrap">
@@ -2186,14 +2294,15 @@ function renderADRow(r, i, listType) {
   const catCls = adCategoryClass(r.category);
   const statCls = statusClass(r.status);
   const middle = listType === 'category'
-    ? `<td class="ds-cell">${escapeHtml(r.dataset || '')}</td>`
+    ? `<td class="ds-cell">${escapeHtml(r._base || r.dataset || '')}${r._p && r._p.key !== 'standard' ? ` <span class="badge proto-tag">${escapeHtml(adProtoLabel(r._p))}</span>` : ''}</td>`
     : badgeCell('cat-badge ' + catCls, r.category, adCategoryLabel(r.category) === r.category ? shortLabel(r.category) : adCategoryLabel(r.category));
-  const isAD2 = r.dataset === 'MVTec AD 2';
+  const isAD2 = (r._base || r.dataset) === 'MVTec AD 2';
+  const unranked = listType === 'ad-proto' && r._p && r._p.key === 'other';
   const lead = isAD2 ? 'p_ap' : 'i_auroc';
   const m = k => `<td class="metric${k === lead ? ' lead' : ''}">${fmtNum(r[k])}</td>`;
   return `
     <tr>
-      <td class="rank ${rankCls(rank)}">${rank}</td>
+      <td class="rank ${unranked ? '' : rankCls(rank)}">${unranked ? '—' : rank}</td>
       <td class="method" title="${escapeHtml(r.notes || '')}">${escapeHtml(r.method || '')}${verifyBadge(r.notes)}</td>
       ${m('i_auroc')}${m('p_auroc')}${m('p_ap')}${m('p_pro')}${m('fps')}
       ${linkCell(r.link, r.github)}
@@ -2367,15 +2476,16 @@ function domainsOfMethod(method){
 // Rank of a method within every dataset it appears in (own dataset metric).
 function rankingsOfMethod(method){
   const n = normMethod(method); const out = [];
-  const collect = (rows, key, dom, labelFor) => {
+  const collect = (rows, key, dom, labelFor, groupOf = r => r.dataset) => {
     const byDs = {};
-    rows.forEach(r => { (byDs[r.dataset] = byDs[r.dataset] || []).push(r); });
+    rows.forEach(r => { const g = groupOf(r); if (g) (byDs[g] = byDs[g] || []).push(r); });
     Object.keys(byDs).forEach(ds => {
       const pool = byDs[ds];
       if (!pool.some(r => normMethod(r.method)===n)) return;
-      const k = (typeof key === 'function') ? key(ds) : key;
+      const k = (typeof key === 'function') ? key(pool[0]) : key;
+      const lower = pool[0].primary_kind === 'lower';
       const ranked = pool.filter(r => numMetric(r[k]) > -Infinity)
-                         .sort((a,b) => numMetric(b[k]) - numMetric(a[k]));
+                         .sort((a,b) => lower ? numMetric(a[k]) - numMetric(b[k]) : numMetric(b[k]) - numMetric(a[k]));
       const idx = ranked.findIndex(r => normMethod(r.method)===n);
       if (idx < 0) return; // method present but has no numeric value -> unranked
       const me = ranked[idx];
@@ -2383,9 +2493,11 @@ function rankingsOfMethod(method){
                  value: me[k], label: labelFor ? labelFor(me, ds) : k });
     });
   };
-  collect(AD_RAW, ds => ds === 'MVTec AD 2' ? 'p_ap' : 'i_auroc', 'AD',
-          (me, ds) => ds === 'MVTec AD 2' ? 'SegF1' : 'I-AUROC');
-  collect(OD_DATA.rows, 'primary_value', 'OD', me => me.primary_label || 'mAP');
+  collect(AD_RAW, r => r._base === 'MVTec AD 2' ? 'p_ap' : 'i_auroc', 'AD',
+          me => me._base === 'MVTec AD 2' ? 'SegF1' : 'I-AUROC',
+          r => r._p.key === 'other' ? null : r._base + (r._p.key === 'standard' ? '' : ' · ' + adProtoLabel(r._p)));
+  collect(OD_DATA.rows, 'primary_value', 'OD', me => me.primary_label || 'mAP',
+          r => ((r.comparable || 'standard') === 'standard' && odIsHomogeneous(r.dataset)) ? r.dataset : null);
   collect(CLS_DATA.rows, 'top1', 'CLS', () => 'Top-1');
   return out;
 }
