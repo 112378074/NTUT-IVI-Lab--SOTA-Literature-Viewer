@@ -1136,7 +1136,7 @@ function bmTable(items, cols) {
   const row = it => `
     <tr data-list="${it.listType}" data-key="${escapeHtml(it.key)}">
       <td class="bm-ds"><button class="bm-open" type="button">${escapeHtml(it.ds)}</button></td>
-      <td class="bm-best">${it.best ? escapeHtml(it.best) : '<span class="dim">尚無可比較的分數</span>'}</td>
+      <td class="bm-best">${it.best ? escapeHtml(it.best) : `<span class="dim">${it.mixed ? '各列為不同資料集，僅供瀏覽' : '尚無可比較的分數'}</span>`}</td>
       <td class="bm-val">${it.val != null ? escapeHtml(it.val) : '—'}</td>
       <td class="bm-metric">${escapeHtml(it.metric || '')}</td>
       <td class="bm-n">${it.n}</td>
@@ -1165,6 +1165,12 @@ function benchmarksSection(domain) {
     items = OD_DATA.datasets.map(ds => {
       const pool = OD_DATA.rows.filter(r => r.dataset === ds);
       if (!pool.length) return null;
+      // Grab-bag sheets (e.g. Thermal-Multispectral OD = FLIR + M3FD + LLVIP) mix
+      // datasets/metrics; picking a "best" there would cross-rank them. Browse only.
+      if (!odIsHomogeneous(ds)) {
+        return { ds, key: ds, listType: 'od-dataset', best: null, val: null,
+                 metric: '多個資料集／協定，不排名', n: pool.length, mixed: true };
+      }
       const std = pool.filter(r => (r.comparable || 'standard') === 'standard' && isNum(r.primary_value));
       const best = odSortByMetric(std)[0];
       const meta = (OD_DATA.dataset_primary_metric || {})[ds] || {};
