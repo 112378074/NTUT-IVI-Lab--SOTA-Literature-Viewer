@@ -1,0 +1,65 @@
+name: Update papers
+
+on:
+  schedule:
+    # Wed & Fri 02:00 Asia/Taipei (UTC+8)
+    - cron: '0 18 * * 2,4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-papers
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install --quiet openpyxl pandas certifi
+
+      - name: Configure git identity
+        run: |
+          git config user.name "Lin"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Write SMTP config
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
+        run: |
+          if [ -n "$SMTP_PASSWORD" ]; then
+            umask 077
+            {
+              echo "SMTP_HOST=smtp.gmail.com"
+              echo "SMTP_PORT=587"
+              echo "SMTP_USER=$SMTP_USER"
+              echo "SMTP_PASSWORD=$SMTP_PASSWORD"
+              echo "NOTIFY_TO=$NOTIFY_TO"
+            } > scripts/.env
+          else
+            echo "SMTP secrets not set; email step will be skipped."
+          fi
+
+      - name: Run pipeline
+        run: python scripts/update_papers.py
+
+      - name: Show log tail
+        if: always()
+        run: tail -n 40 scripts/update_log.txt || true
+
+      - name: Remove SMTP config
+        if: always()
+        run: rm -f scripts/.env
