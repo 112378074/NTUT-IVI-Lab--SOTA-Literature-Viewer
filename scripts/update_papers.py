@@ -761,7 +761,7 @@ def _clean(v):
 def regenerate_ad_json():
     import pandas as pd
     xl = pd.ExcelFile(AD_XLSX)
-    sheets = ['MVTec AD', 'MVTec LOCO', 'MVTec AD2', 'VisA', 'MPDD', 'BTAD', 'MVTec 3D']
+    sheets = ['MVTec AD', 'MVTec LOCO', 'MVTec AD2', 'VisA', 'MPDD', 'BTAD', 'MVTec 3D', 'Real-IAD']
     rows = []
     for sn in sheets:
         if sn not in xl.sheet_names:
