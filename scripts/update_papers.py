@@ -281,9 +281,9 @@ AS_DATASETS_BY_PATTERNS = [
     ('KSDD2',               [r'\bksdd2\b']),
     ('Magnetic Tile Defects',[r'magnetic\s*tile']),
     ('BTech',               [r'\bbtech\b']),
-    ('Synthesis Quality',   [r'fid', r'kid score', r'synthesis quality', r'fréchet inception']),
+    ('Synthesis Quality',   [r'\bfid\b', r'kid score', r'synthesis quality', r'fréchet inception']),
 ]
-AS_DEFAULT_DATASET = 'MVTec AD image-level'
+AS_TOPIC_RE = re.compile(r'anomal|defect', re.IGNORECASE)
 
 AS_EXCLUSION_KEYWORDS = [
     'video anomaly', 'time series anomaly', 'medical anomaly',
@@ -1550,7 +1550,13 @@ def main():
             if is_as_excluded(text):
                 log(f'  AS - skipped (excluded topic): {e["title"][:80]}')
                 continue
-            ds = detect_dataset(text, AS_DATASETS_BY_PATTERNS) or AS_DEFAULT_DATASET
+            if not AS_TOPIC_RE.search(text):
+                log(f'  AS - skipped (no anomaly/defect topic): {e["title"][:80]}')
+                continue
+            ds = detect_dataset(text, AS_DATASETS_BY_PATTERNS)
+            if not ds:
+                log(f'  AS - skipped (no target dataset): {e["title"][:80]}')
+                continue
             cat = classify_category(text, AS_CATEGORIES_BY_KEYWORDS) or AS_DEFAULT_CATEGORY
             method = e['title'][:90]
             as_ids.add(e['arxiv_id'])
