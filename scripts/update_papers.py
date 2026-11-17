@@ -1374,9 +1374,8 @@ def send_notification(new_ad, new_od, ran_at, pushed, new_cls=None, new_as=None)
     port = int(cfg.get('SMTP_PORT', '587'))
     user = cfg.get('SMTP_USER', '')
     pwd  = cfg.get('SMTP_PASSWORD', '')
-    # NOTIFY_TO may be a comma-separated list, e.g.
-    #   NOTIFY_TO=azaz31855@gmail.com,fctien@ntut.edu.tw
-    to_raw = cfg.get('NOTIFY_TO', 'azaz31855@gmail.com')
+    # NOTIFY_TO may be a comma-separated list; must be set in .env
+    to_raw = cfg.get('NOTIFY_TO', '')
     recipients = [addr.strip() for addr in re.split(r'[,;\s]+', to_raw) if addr.strip()]
 
     if not user or not pwd:
@@ -1407,7 +1406,7 @@ def send_notification(new_ad, new_od, ran_at, pushed, new_cls=None, new_as=None)
             s.ehlo()
             s.login(user, pwd)
             s.sendmail(user, recipients, msg.as_string())
-        log(f'  email sent to {", ".join(recipients)}')
+        log(f'  email sent to {len(recipients)} recipient(s)')
         return True
     except Exception as e:
         log(f'  email send failed: {type(e).__name__}: {e}')
